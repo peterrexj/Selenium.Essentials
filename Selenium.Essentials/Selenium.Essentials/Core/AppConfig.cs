@@ -9,5 +9,6 @@ namespace Selenium.Essentials
     public static class AppConfig
     {
         public static int DefaultTimeoutWaitPeriodInSeconds { get; set; } = 60;
+        public static int DefaultRetryElementCount { get; set; } = 2;
     }
 }

@@ -12,6 +12,7 @@ namespace Selenium.Essentials.Web.Controls
     public static class WebElementExtensions
     {
         private const string __HightElementStyle = "background: yellow; border: 2px solid red;";
+
         private static bool WaitGeneric(this IWebElement element, IWebDriver driver, int waitTimeSec, bool throwExceptionWhenNotFound, string errorMessage, Func<bool> process, string reasonForFailedCondition, bool whenConditionFailed = false)
         {
             waitTimeSec = waitTimeSec == 0 ? AppConfig.DefaultTimeoutWaitPeriodInSeconds : waitTimeSec;
@@ -95,16 +96,14 @@ namespace Selenium.Essentials.Web.Controls
         /// <returns></returns>
         public static IWebElement GetFirstVisibleElement(this IList<IWebElement> elementsList)
             => elementsList?.FirstOrDefault(elm => elm.IsVisible() && elm.IsCssDisplayed());
-
         public static List<IWebElement> GetAllVisibleElements(this IList<IWebElement> elementsList)
             => elementsList?.Where(elm => elm.IsVisible() && elm.IsCssDisplayed()).EmptyIfNull().ToList();
 
         public static bool IsReadonly(this IWebElement element) => element.Exists() && element.GetAttribute("readonly").HasValue();
-        public static bool IsEnabled(this IWebElement element) => element.Exists() && element.Enabled;
         public static bool IsDisabled(this IWebElement element) => element.Exists() && !(element.IsEnabled() || element.IsReadonly());
-        public static bool IsVisible(this IWebElement element) => element.Exists() && element.Displayed;
+        public static bool IsEnabled(this IWebElement element) => element.Exists() && element.Enabled;
+        public static bool IsVisible(this IWebElement element) => element.Exists() && element.Displayed && element.IsCssDisplayed();
         public static bool IsCssDisplayed(this IWebElement element) => element.Exists() && !element.GetCssValue("display").EqualsIgnoreCase("none");
-
         public static bool Exists(this IWebElement element)
         {
             try
@@ -114,6 +113,38 @@ namespace Selenium.Essentials.Web.Controls
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+
+        public static string Value(this IWebElement element) => element.GetAttribute("value");
+        public static string Text(this IWebElement element, IWebDriver driver)
+        {
+            try
+            {
+                if (element.Text.HasValue())
+                {
+                    return element.Text;
+                }
+
+                try
+                {
+                    if (element.Value().HasValue())
+                    {
+                        return element.Value();
+                    }
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+
+                return "";
+            }
+            catch (Exception ex)
+            {
+                element.Highlight(driver);
+                throw new WebControlException(driver, ex, "Cannot get Text from the control.", element);
             }
         }
 

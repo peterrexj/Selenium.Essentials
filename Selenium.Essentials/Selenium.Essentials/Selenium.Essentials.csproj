@@ -64,9 +64,11 @@
     <Compile Include="Utilities\Extensions\StringExtensions.cs" />
     <Compile Include="Web\Controls\BaseControlRaw.cs" />
     <Compile Include="Web\Controls\BaseControlWaitable.cs" />
+    <Compile Include="Web\Controls\ControlExtensions.cs" />
     <Compile Include="Web\Controls\ElementUnavailableException.cs" />
     <Compile Include="Web\Controls\IBaseControl.cs" />
     <Compile Include="Web\Controls\IEditableControl.cs" />
+    <Compile Include="Web\Controls\IWaitableControl.cs" />
     <Compile Include="Web\Controls\WebControlException.cs" />
     <Compile Include="Web\Controls\WebDriverExtensions.cs" />
     <Compile Include="Web\Controls\WebElementExtensions.cs" />

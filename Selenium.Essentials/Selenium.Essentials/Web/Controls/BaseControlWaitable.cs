@@ -23,7 +23,7 @@ namespace Selenium.Essentials.Web.Controls
         protected bool WaitGeneric(int waitTimeSec, bool throwExceptionWhenNotFound, string errorMessage, Func<bool> process, string reasonForFailedCondition, bool whenConditionFailed = false)
         {
             waitTimeSec = waitTimeSec == 0 ? AppConfig.DefaultTimeoutWaitPeriodInSeconds : waitTimeSec;
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(waitTimeSec));
+            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(waitTimeSec));
             var conditionSatisfied = false;
             var messageOnFail = errorMessage.HasValue() ? errorMessage : $"Waiting for element failed with reason: {reasonForFailedCondition}";
 
@@ -45,13 +45,13 @@ namespace Selenium.Essentials.Web.Controls
             {
                 if (throwExceptionWhenNotFound)
                 {
-                    throw new WebControlException(_driver, ex, messageOnFail, uiControl: this);
+                    throw new WebControlException(Driver, ex, messageOnFail, uiControl: this);
                 }
             }
 
             if (!conditionSatisfied && throwExceptionWhenNotFound)
             {
-                throw new ElementUnavailableException(_driver, messageOnFail, this);
+                throw new ElementUnavailableException(Driver, messageOnFail, this);
             }
 
             return conditionSatisfied;
@@ -138,12 +138,41 @@ namespace Selenium.Essentials.Web.Controls
         public bool WaitForElementInvisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
             => WaitGeneric(waitTimeSec, throwExceptionWhenNotFound, errorMessage, () => !RawElement.Displayed, "Wait until not visible", whenConditionFailed: true);
 
-
         public bool WaitForElementClickable(bool throwExceptionWhenNotFound = true, string errorMessage = null)
             => WaitForElementClickable(AppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
         public bool WaitForElementClickable(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
             => WaitGeneric(waitTimeSec, throwExceptionWhenNotFound, errorMessage, () => RawElement != null && RawElement.Displayed && RawElement.IsCssDisplayed() && RawElement.Enabled, "Wait until Clickable");
 
+
+        public bool WaitForElementTextTrimEquals(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitForElementTextTrimEquals(textToMatch, AppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitForElementTextTrimEquals(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitGeneric(waitTimeSec, throwExceptionWhenNotFound, errorMessage, () => RawElement.Text.Trim() == textToMatch, $"Wait till Text (trim) is equals '{textToMatch}'");
+
+        public bool WaitForElementTextStartsWith(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitForElementTextStartsWith(textToMatch, AppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitForElementTextStartsWith(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitGeneric(waitTimeSec, throwExceptionWhenNotFound, errorMessage, () => RawElement.Text.Trim().StartsWith(textToMatch), $"Wait till Text starts with '{textToMatch}'");
+
+        public bool WaitForElementTextStartsWith(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitForElementTextStartsWith(textsToMatch, AppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitForElementTextStartsWith(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitGeneric(waitTimeSec, throwExceptionWhenNotFound, errorMessage, () => textsToMatch.Any(text => RawElement.Text.Trim().StartsWith(text)), $"Wait till either one of the Text starts with '{string.Join(",", textsToMatch)}'");
+
+        public bool WaitForElementTextContains(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitForElementTextContains(textToMatch, AppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitForElementTextContains(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitGeneric(waitTimeSec, throwExceptionWhenNotFound, errorMessage, () => RawElement.Text.Contains(textToMatch), $"Wait till Text contains '{textToMatch}'");
+
+        public bool WaitForElementTextContains(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitForElementTextContains(textsToMatch, AppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitForElementTextContains(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitGeneric(waitTimeSec, throwExceptionWhenNotFound, errorMessage, () => textsToMatch.Any(text => RawElement.Text.Contains(text)), $"Wait till either one of the Text contains '{string.Join(",", textsToMatch)}'");
+
+        public bool WaitForElementHasSomeText(bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitForElementHasSomeText(AppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitForElementHasSomeText(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitGeneric(waitTimeSec, throwExceptionWhenNotFound, errorMessage, () => RawElement.Text.HasValue(), $"Wait until the element contains some text");
 
     }
 }
