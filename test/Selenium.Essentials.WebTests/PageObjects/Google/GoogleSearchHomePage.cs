@@ -1,0 +1,43 @@
+﻿using OpenQA.Selenium;
+using Selenium.Essentials.Web.Controls;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Selenium.Essentials.WebTests.PageObjects.Google
+{
+    public class GoogleSearchHomePage : PageBase
+    {
+        private string _url = "https://www.google.com";
+
+        public GoogleSearchHomePage(IWebDriver driver)
+        {
+
+        }
+
+        public override void Navigate(string path = "")
+        {
+            base.Navigate(_url);
+        }
+
+        private TextboxControl _searchInputControl => new TextboxControl(_driver,
+            By.XPath("//input[contains(@title, 'Search')]"), 
+            firstAvailable: true, 
+            useExtendedClear: true);
+
+        private ButtonControl _googleSearchButton => new ButtonControl(_driver,
+            By.XPath("//input[@value = 'Google Search']"));
+
+        public void SetTextToSearch(string searchText)
+        {
+            _searchInputControl.WaitForElementVisible();
+            _searchInputControl.Set(searchText);
+        }
+
+        public void ClickToSearch()
+        {
+            _googleSearchButton.WaitForElementVisible();
+            _googleSearchButton.Click();
+        }
+    }
+}

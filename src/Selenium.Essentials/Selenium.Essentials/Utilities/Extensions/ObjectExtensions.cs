@@ -8,7 +8,7 @@ namespace Selenium.Essentials.Utilities.Extensions
 {
     public static class ObjectExtensions
     {
-        public static string EmptyIfNull(this object obj)
+        public static string ToSafeString(this object obj)
         {
             if (obj == null)
             {

@@ -13,5 +13,9 @@ namespace Selenium.Essentials.Core
         public static string ExecutingFolder => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         public static string LogOutputFolder { get; set; } = Path.Combine(ExecutingFolder, "Logs", $"{DateTimeExtensions.Timestamp}.csv");
 
+        public static void InitializeFramework()
+        {
+            TestContextHelper.CreateTestContext();
+        }
     }
 }

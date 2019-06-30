@@ -14,20 +14,9 @@ namespace Selenium.Essentials.Web.Controls
         {
         }
 
-        public void Set(string val)
+        public void Set(string filePath)
         {
-            SendKeys(val);
-        }
-
-        private void _ClickOpenWindow()
-        {
-            try
-            {
-                ParentRawElement.Click();
-            }
-            catch (Exception ex)
-            {
-            }
+            SendKeys(filePath);
         }
 
         public string Get()

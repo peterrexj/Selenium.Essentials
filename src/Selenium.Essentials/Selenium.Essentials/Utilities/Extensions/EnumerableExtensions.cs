@@ -11,9 +11,7 @@ namespace Selenium.Essentials.Utilities.Extensions
 {
     public static class EnumerableExtensions
     {
-
-
-        [System.Diagnostics.DebuggerStepThrough]
+        [DebuggerStepThrough]
         public static IEnumerable<T> Empty<T>()
         {
             return Enumerable.Empty<T>();
@@ -50,25 +48,25 @@ namespace Selenium.Essentials.Utilities.Extensions
 
         public static IQueryable<TEntity> Where<TEntity>(this IQueryable<TEntity> source, string propertyName, string value)
         {
-            Expression<Func<TEntity, bool>> whereExpression = x => x.GetType().InvokeMember(propertyName, BindingFlags.GetProperty, null, x, null).EmptyIfNull().IndexOf(value, StringComparison.InvariantCultureIgnoreCase) >= 0;
+            Expression<Func<TEntity, bool>> whereExpression = x => x.GetType().InvokeMember(propertyName, BindingFlags.GetProperty, null, x, null).ToString().IndexOf(value, StringComparison.InvariantCultureIgnoreCase) >= 0;
 
             return source.Where(whereExpression);
         }
 
         public static IQueryable<TEntity> WhereHasValue<TEntity>(this IQueryable<TEntity> source, string propertyName)
         {
-            Expression<Func<TEntity, bool>> whereExpression = x => x.GetType().InvokeMember(propertyName, BindingFlags.GetProperty, null, x, null).EmptyIfNull().HasValue();
+            Expression<Func<TEntity, bool>> whereExpression = x => x.GetType().InvokeMember(propertyName, BindingFlags.GetProperty, null, x, null).ToString().HasValue();
 
             return source.Where(whereExpression);
         }
 
-        [System.Diagnostics.DebuggerStepThrough]
+        [DebuggerStepThrough]
         public static bool Contains<T>(this IEnumerable<T> items, Func<T, bool> predicate)
         {
             return !items.EmptyIfNull().Where(predicate).IsEmpty();
         }
 
-        [System.Diagnostics.DebuggerStepThrough]
+        [DebuggerStepThrough]
         public static bool ContainsEx<T>(this IEnumerable<T> items, T value, StringComparison compareOption = StringComparison.CurrentCulture)
         {
             if (compareOption != StringComparison.CurrentCulture)
@@ -80,7 +78,7 @@ namespace Selenium.Essentials.Utilities.Extensions
                 return items.Contains(i => i.Equals(value));
             }
         }
-        [System.Diagnostics.DebuggerStepThrough]
+        [DebuggerStepThrough]
         public static bool ContainsIgnoreCase<T>(this IEnumerable<T> items, T value)
         {
             return items.Contains(i => i.ToString().Equals(value.ToString(), StringComparison.InvariantCultureIgnoreCase));

@@ -124,7 +124,7 @@ namespace Selenium.Essentials.Web.Controls
             }
             catch (Exception e)
             {
-                //Log(e.Message);
+                Console.WriteLine(e.Message);
             }
         }
 

@@ -10,5 +10,6 @@ namespace Selenium.Essentials
     {
         public static int DefaultTimeoutWaitPeriodInSeconds { get; set; } = 60;
         public static int DefaultRetryElementCount { get; set; } = 2;
+        public static int WebDriverPageLoadWaitTime { get; set; } = 60;
     }
 }

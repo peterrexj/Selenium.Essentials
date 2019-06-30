@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Selenium.Essentials.Web.Controls.Controls
+namespace Selenium.Essentials.Web.Controls
 {
     public class CollectionControl : BaseControl
     {

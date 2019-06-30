@@ -6,11 +6,11 @@ namespace Selenium.Essentials.Utilities.Extensions
 {
     public static class DateTimeExtensions
     {
-        public const string __DateFormatString = "yyMMddHHmmssfff";
+        public const string __DateDefaultFormatString = "yyMMddHHmmssfff";
 
         public static DateTime LocalTime => TimeZoneInfo.ConvertTime(DateTime.UtcNow, TimeZoneInfo.Local);
 
-        public static string Timestamp => GetTimestamp(__DateFormatString);
+        public static string Timestamp => GetTimestamp(__DateDefaultFormatString);
 
         public static string GetTimestamp(string format) => LocalTime.ToString(format);
 
