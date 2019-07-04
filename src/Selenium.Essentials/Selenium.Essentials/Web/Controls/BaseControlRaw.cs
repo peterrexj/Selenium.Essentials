@@ -12,14 +12,6 @@ namespace Selenium.Essentials.Web.Controls
 {
     public abstract partial class BaseControl : IBaseControl
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="driver"></param>
-        /// <param name="by"></param>
-        /// <param name="parentControl"></param>
-        /// <param name="description"></param>
-        /// <param name="firstAvailable">Finds the first element from the DOM</param>
         protected BaseControl(IWebDriver driver, By by = null, BaseControl parentControl = null, string description = null, bool firstAvailable = false)
         {
             Driver = driver;
@@ -73,13 +65,12 @@ namespace Selenium.Essentials.Web.Controls
             throw new WebControlException(Driver, $"Retry failed: Not able to find the element [{ToString()}] from the UI", uiControl: this);
         }
 
-
         #region Control Properties
         public IWebDriver Driver { get; set; }
         public IWebElement RawElement => RetryFindElement();
         public IBaseControl ParentControl { get; protected set; }
         public IWebElement ParentRawElement => RawElement.FindElement(By.XPath(".."));
-        public string ElementId => RawElement.GetAttribute("id");
+        public string ElementId => RawElement.Id();
         public By By { get; protected set; }
         public string Description { get; protected set; }
 
@@ -87,36 +78,12 @@ namespace Selenium.Essentials.Web.Controls
         public bool IsDisabled => RawElement.IsDisabled();
         public bool IsEnabled => RawElement.IsEnabled();
         public bool IsVisible => RawElement.IsVisible();
-        /// <summary>
-        /// If this element exists and displayed:none; is set on the CSS for that element then this method return false.
-        /// </summary>
         public bool CssDisplayed => RawElement.IsCssDisplayed();
-
-        /// <summary>
-        /// Element is displayed in the page. Uses the IWebElement.Displayed property and checks the css attribute for display:none is not applied
-        /// </summary>
         public bool IsDisplayed => IsVisible;
-
-        /// <summary>
-        /// Element is not shown in the page.
-        /// </summary>
         public bool IsHidden => !IsVisible;
-
-        /// <summary>
-        /// Elements exists in the DOM. This element may or may not be visible.
-        /// </summary>
         public bool Exists => RawElement.Exists();
-
-        /// <summary>
-        /// Returns value for the HTML attribute [Value] of the control. Mainly used with INPUT controls
-        /// </summary>
         public string Value => RawElement.Value();
-
-        /// <summary>
-        /// Returns the raw text available within the control
-        /// </summary>
-        public string Text => RawElement.Text(Driver);
-
+        public string Text => RawElement.Text();
         public string Class => RawElement.Class();
 
         public string GetAttribute(string attributeName) => RawElement.GetAttribute(attributeName);
@@ -198,7 +165,6 @@ namespace Selenium.Essentials.Web.Controls
         #endregion
 
         #region Control Set Methods
-
         public virtual void SendKeys(string textToSet)
         {
             if (IsDisabled)
@@ -219,7 +185,6 @@ namespace Selenium.Essentials.Web.Controls
         }
         public virtual void SendEnter() => SendKeys(Keys.Enter);
         public virtual void SendTab() => SendKeys(Keys.Tab);
-
         #endregion
 
         public virtual void ScrollTo()

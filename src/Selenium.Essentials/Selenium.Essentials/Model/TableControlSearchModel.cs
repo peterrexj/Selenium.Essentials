@@ -7,7 +7,6 @@ namespace Selenium.Essentials.Model
 {
     public class TableControlSearchModel
     {
-        //int column, string textToFind, bool exactMatch, By selector = null, bool getContentWithinTDelement = false
         public TableControlSearchModel()
         {
             GetTheWholeContentWithInColumn = false;

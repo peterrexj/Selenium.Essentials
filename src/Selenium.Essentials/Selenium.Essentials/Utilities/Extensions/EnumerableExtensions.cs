@@ -26,18 +26,12 @@ namespace Selenium.Essentials.Utilities.Extensions
             return !source.EmptyIfNull().Any();
         }
 
-        /// <summary>
-        /// Iterates the sequence and calls the given action with the item
-        /// </summary>
         [DebuggerStepThrough]
         public static void Iter<TItem>(this IEnumerable<TItem> items, Action<TItem> action)
         {
             items.Iteri((item, _) => action(item));
         }
 
-        /// <summary>
-        /// Iterates the sequence and calls the given action with the item and its index in the sequence
-        /// </summary>
         [DebuggerStepThrough]
         public static void Iteri<TItem>(this IEnumerable<TItem> items, Action<TItem, int> action)
         {

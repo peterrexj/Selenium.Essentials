@@ -125,7 +125,13 @@ namespace Selenium.Essentials.Web.Controls
 
             if (Total == 0) //If there are no such element in the UI then wait for the first one to appear
             {
-                WaitGeneric(waitTimeSec, throwExceptionWhenNotFound, errorMessage, () => Total == position, $"element is not visible {By}");
+                RawElement.WaitGeneric(driver: Driver,
+                    waitTimeSec: waitTimeSec,
+                    throwExceptionWhenNotFound: throwExceptionWhenNotFound,
+                    errorMessage: errorMessage,
+                    () => Total == position,
+                    $"Collection Control failed on element to be visible {By}",
+                    baseControl: this);
             }
         }
 
@@ -140,7 +146,13 @@ namespace Selenium.Essentials.Web.Controls
             if (Total <= 0) return;
 
             var tempTotal = Total;
-            WaitGeneric(waitTimeSec, throwExceptionWhenNotFound, errorMessage, () => tempTotal < Total, $"element is not visible {By}");
+            RawElement.WaitGeneric(driver: Driver,
+                    waitTimeSec: waitTimeSec,
+                    throwExceptionWhenNotFound: throwExceptionWhenNotFound,
+                    errorMessage: errorMessage,
+                    () => tempTotal < Total,
+                    $"Collection Control failed on element to go invisible {By}",
+                    baseControl: this);
         }
     }
 }

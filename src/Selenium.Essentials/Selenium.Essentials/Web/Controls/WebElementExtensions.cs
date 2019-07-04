@@ -454,7 +454,7 @@ namespace Selenium.Essentials.Web.Controls
         }
 
         public static string Value(this IWebElement element) => element.GetAttribute("value");
-        public static string Text(this IWebElement element, IWebDriver driver)
+        public static string Text(this IWebElement element)
         {
             try
             {
@@ -475,16 +475,16 @@ namespace Selenium.Essentials.Web.Controls
                     // ignored
                 }
 
-                return "";
+                return string.Empty;
             }
             catch (Exception ex)
             {
-                element.Highlight(driver);
-                throw new WebControlException(driver, ex, "Cannot get Text from the control.", element);
+                Console.WriteLine($"Cannot get Text from the control due to: {ex.Message}");
+                return string.Empty;
             }
         }
-
         public static string Class(this IWebElement element) => element.GetAttribute("class");
+        public static string Id(this IWebElement element) => element.GetAttribute("id");
 
         public static void WaitAndClick(this IWebElement element, IWebDriver driver, int waitSeconds = 0)
         {

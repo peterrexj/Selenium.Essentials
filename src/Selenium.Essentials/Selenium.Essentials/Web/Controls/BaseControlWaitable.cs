@@ -10,53 +10,6 @@ namespace Selenium.Essentials.Web.Controls
 {
     public abstract partial class BaseControl
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="waitTimeSec">how long to wait to meet the condition</param>
-        /// <param name="throwExceptionWhenNotFound">Should throw exception when encountered</param>
-        /// <param name="errorMessage">Detailed error message to be used when condition not met and error bubbled up</param>
-        /// <param name="process">Func condition whose value is tested to verify</param>
-        /// <param name="reasonForFailedCondition">name the condition so that it can be printed when fails</param>
-        /// <param name="whenConditionFailed">When the condition is tried on and fails with exception, what should be returned</param>
-        /// <returns></returns>
-        protected bool WaitGeneric(int waitTimeSec, bool throwExceptionWhenNotFound, string errorMessage, Func<bool> process, string reasonForFailedCondition, bool whenConditionFailed = false)
-        {
-            waitTimeSec = waitTimeSec == 0 ? AppConfig.DefaultTimeoutWaitPeriodInSeconds : waitTimeSec;
-            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(waitTimeSec));
-            var conditionSatisfied = false;
-            var messageOnFail = errorMessage.HasValue() ? errorMessage : $"Waiting for element failed with reason: {reasonForFailedCondition}";
-
-            try
-            {
-                conditionSatisfied = wait.Until(d =>
-                {
-                    try
-                    {
-                        return process();
-                    }
-                    catch (Exception)
-                    {
-                        return whenConditionFailed;
-                    }
-                });
-            }
-            catch (Exception ex)
-            {
-                if (throwExceptionWhenNotFound)
-                {
-                    throw new WebControlException(Driver, ex, messageOnFail, uiControl: this);
-                }
-            }
-
-            if (!conditionSatisfied && throwExceptionWhenNotFound)
-            {
-                throw new ElementUnavailableException(Driver, messageOnFail, this);
-            }
-
-            return conditionSatisfied;
-        }
-        
         #region Enabled
 
         public bool WaitForElementEnabled(bool throwExceptionWhenNotFound = true, string errorMessage = null)
@@ -176,7 +129,7 @@ namespace Selenium.Essentials.Web.Controls
                 baseControl: this);
         #endregion
 
-
+        #region Text contains
         public bool WaitForElementTextContains(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
             => WaitForElementTextContains(textToMatch, AppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
         public bool WaitForElementTextContains(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
@@ -186,8 +139,9 @@ namespace Selenium.Essentials.Web.Controls
                 waitTimeSec: waitTimeSec,
                 errorMessage: errorMessage,
                 baseControl: this);
+        #endregion
 
-
+        #region Text[] contains
         public bool WaitForElementTextContains(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
             => WaitForElementTextContains(textsToMatch, AppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
         public bool WaitForElementTextContains(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
@@ -197,8 +151,9 @@ namespace Selenium.Essentials.Web.Controls
                 waitTimeSec: waitTimeSec,
                 errorMessage: errorMessage,
                 baseControl: this);
+        #endregion
 
-
+        #region Has text
         public bool WaitForElementHasSomeText(bool throwExceptionWhenNotFound = true, string errorMessage = null)
             => WaitForElementHasSomeText(AppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
         public bool WaitForElementHasSomeText(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
@@ -207,5 +162,6 @@ namespace Selenium.Essentials.Web.Controls
                 waitTimeSec: waitTimeSec,
                 errorMessage: errorMessage,
                 baseControl: this);
+        #endregion
     }
 }

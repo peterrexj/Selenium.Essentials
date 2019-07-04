@@ -153,46 +153,37 @@ namespace Selenium.Essentials.Utilities.Extensions
                 }
             }
         }
+
+        public static T ToJson<T>(this string value, bool exposeError = false)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(value);
+            }
+            catch (Exception)
+            {
+                if (exposeError)
+                {
+                    throw;
+                }
+                else
+                {
+                    return default;
+                }
+            }
+        }
         #endregion
 
 
-
-
-
-
-
-        /// <summary>
-        /// Checks if the string is null or empty or white space
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
         public static bool IsEmpty(this string text) 
             => string.IsNullOrEmpty(text) || string.IsNullOrWhiteSpace(text);
 
-        /// <summary>
-        /// Returns true if the string has any value
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
         public static bool HasValue(this string value) => !IsEmpty(value);
 
-        /// <summary>
-        /// Returns string.empty if the value is null
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
         public static string EmptyIfNull(this string value) => value ?? string.Empty;
 
-        /// <summary>
-        /// Compares two string without considering the culture and case (case insensitive)
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="compareValue"></param>
-        /// <returns></returns>
         public static bool EqualsIgnoreCase(this string value, string compareValue) 
             => value.EmptyIfNull().Equals(compareValue, StringComparison.InvariantCultureIgnoreCase);
-
-
 
 
         public static string SurroundWith(this string str, string surroundString)
@@ -221,55 +212,29 @@ namespace Selenium.Essentials.Utilities.Extensions
         public static bool ContainsIgnoreCase(this string data, string value) => data.Contains(value, StringComparison.InvariantCultureIgnoreCase);
         public static bool ContainsIgnoreCase(this string data, string[] value) => value.Any(str => data.ContainsIgnoreCase(str));
 
-        /// <summary>
-        /// Will convert a string to standard allowed (acceptable) DB column name format
-        /// Removes all non character and prefix with _
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
         public static string ConvertToDbFormatColumnName(this string value) => "_" + Regex.Replace(value, @"[^\w]+", "").ToLower();
 
-        /// <summary>
-        /// Compares the source startWith function against the list of string. For any match found it will trim the match from the source.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="checks"></param>
-        /// <returns>Return the source value after compare and trim </returns>
         public static string StartWithCompareThenTrim(this string value, string[] checks)
-        {
-            return checks.Any(value.StartsWith)
+            => checks.Any(value.StartsWith)
                 ? checks.Where(value.StartsWith)
                     .Select(l => value.Substring(l.Length, value.Length - l.Length)).FirstOrDefault()
                 : value;
-        }
+        
         public static string EndWithCompareThenTrim(this string value, string[] checks)
-        {
-            return checks.Any(value.EndsWith)
+            => checks.Any(value.EndsWith)
                 ? checks.Where(value.EndsWith)
                     .Select(l => value.Substring(0, value.Length - l.Length)).FirstOrDefault()
                 : value;
-        }
+        
 
         public static string StripQuotes(this string value)
-        {
-            return value.StartWithCompareThenTrim(new[] { "\"" }).EndWithCompareThenTrim(new[] { "\"" });
-        }
+            => value
+            .StartWithCompareThenTrim(new[] { "\"" })
+            .EndWithCompareThenTrim(new[] { "\"" });
 
-        /// <summary>
-        /// to extract numbers from the string
-        /// </summary>
-        /// <param name="original"></param>
-        /// <returns></returns>
         public static string ExtractNumber(this string original)
-        {
-            return new string(original.Where(c => Char.IsNumber(c)).ToArray());
-        }
+            => new string(original.Where(c => Char.IsNumber(c)).ToArray());
 
-        /// <summary>
-        /// Converts into a string which can be used as file name
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
         public static string ConvertToValidFileName(this string name, int length = 0)
         {
             StringBuilder result = new StringBuilder();
