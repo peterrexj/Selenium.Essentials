@@ -15,7 +15,5 @@ namespace Selenium.Essentials.Web.Controls.Controls
         }
 
         public string Source => GetAttribute("src");
-
-
     }
 }

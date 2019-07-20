@@ -26,13 +26,11 @@ namespace Selenium.Essentials.Web.Controls
             string textValuePartial = textValue.Length <= preferredCompareLength ? textValue : textValue.Substring(0, preferredCompareLength);
             new SelectElement(RawElement).SelectByText(textValuePartial, true);
         }
-
         public void SelectByValue(string textValue)
         {
             WaitForElementVisible();
             new SelectElement(RawElement).SelectByValue(textValue);
         }
-
         public void SelectByIndex(int index)
         {
             WaitForElementVisible();
@@ -45,9 +43,11 @@ namespace Selenium.Essentials.Web.Controls
             return new SelectElement(RawElement).SelectedOption.Text;
         }
 
+        #region IEditableControl
         public void Set(string value) => SelectByText(value);
 
         public string Get() => GetCurrentlySelectedOption();
+        #endregion
 
         public List<string> AvailableOptions => new SelectElement(RawElement).Options.Select(option => option.Text).ToList();
     }

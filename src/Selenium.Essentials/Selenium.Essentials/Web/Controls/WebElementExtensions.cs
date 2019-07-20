@@ -416,7 +416,6 @@ namespace Selenium.Essentials.Web.Controls
                     baseControl: baseControl);
         #endregion
 
-
         public static string GetElementXPath(this IWebElement e, IWebDriver driver, bool excludeIdCheck = false)
         {
             var scriptWithId = "if(c.id!==''){return'//*[@id=\"'+c.id+'\"]'}";
@@ -485,6 +484,10 @@ namespace Selenium.Essentials.Web.Controls
         }
         public static string Class(this IWebElement element) => element.GetAttribute("class");
         public static string Id(this IWebElement element) => element.GetAttribute("id");
+        public static Dictionary<string, string> GetAttributes(this IWebElement element)
+        {
+            return new Dictionary<string, string>();
+        }
 
         public static void WaitAndClick(this IWebElement element, IWebDriver driver, int waitSeconds = 0)
         {
