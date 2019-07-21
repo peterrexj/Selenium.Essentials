@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Selenium.Essentials.Api.Attributes
+namespace Selenium.Essentials
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
     public class PayloadDataJsonAttribute : Attribute

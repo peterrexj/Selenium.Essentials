@@ -18,7 +18,7 @@ namespace Selenium.Essentials.Utilities
 
         public string ExcelDataSingleValue { get; private set; }
         public IExcelData ExcelDataRaw { get; private set; }
-        public Dictionary<string, string> Data { get; private set; }
+        public Dictionary<string, string> DataContent { get; private set; }
         public dynamic ExcelDataDynamic { get; private set; }
 
         public ExcelData(string filePath, string worksheet, string key = "", string column = "", string filter = "")
@@ -37,14 +37,14 @@ namespace Selenium.Essentials.Utilities
 
             if (key.HasValue() && column.HasValue() && filter.IsEmpty())
             {
-                Data = helper.LoadDatasetBasedOnColumn(keyColumn: key, valueColumn: column);
-                ExcelDataDynamic = DynamicDataContainer.GetDynamicObject(Data);
+                DataContent = helper.LoadDatasetBasedOnColumn(keyColumn: key, valueColumn: column);
+                ExcelDataDynamic = DynamicDataContainer.GetDynamicObject(DataContent);
             }
 
             if (key.HasValue() && filter.HasValue())
             {
-                Data = helper.LoadDatasetBasedOnRow(key, filter);
-                ExcelDataDynamic = DynamicDataContainer.GetDynamicObject(Data);
+                DataContent = helper.LoadDatasetBasedOnRow(key, filter);
+                ExcelDataDynamic = DynamicDataContainer.GetDynamicObject(DataContent);
             }
 
             if (key.HasValue() && column.HasValue() && filter.HasValue())
