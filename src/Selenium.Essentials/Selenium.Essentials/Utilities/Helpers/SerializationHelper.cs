@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Selenium.Essentials.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ namespace Selenium.Essentials.Utilities.Helpers
 {
     public class SerializationHelper
     {
-        public static void SerializeObject<T>(T serializableObject, string fileName)
+        public static void SerializeToXml<T>(T serializableObject, string fileName)
         {
             if (serializableObject == null) { return; }
 
@@ -25,8 +26,7 @@ namespace Selenium.Essentials.Utilities.Helpers
                 stream.Close();
             }
         }
-
-        public static T DeSerializeObject<T>(string fileName)
+        public static T DeSerializeFromXml<T>(string fileName)
         {
             if (string.IsNullOrEmpty(fileName)) { return default(T); }
 
@@ -54,32 +54,21 @@ namespace Selenium.Essentials.Utilities.Helpers
 
             return objectOut;
         }
-        public static XmlDocument DeSerializeObjectToXml(string content)
-        {
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.LoadXml(content);
-            string xmlString = xmlDocument.OuterXml;
-            return xmlDocument;
-        }
-        public static string SerializeJsonObject(dynamic obj)
-        {
-            return JsonConvert.SerializeObject(obj);
-        }
-        public static void SerializeJsonObject<T>(T serializableObject, string fileName)
+
+        public static string SerializeToJson(dynamic obj) => JsonConvert.SerializeObject(obj);
+        public static void SerializeToJson<T>(T serializableObject, string fileName)
         {
             if (serializableObject == null) { return; }
 
             File.WriteAllText(fileName, JsonConvert.SerializeObject(serializableObject, Newtonsoft.Json.Formatting.Indented));
         }
-
-        public static T DeSerializeJsonObject<T>(string fileName)
+        public static T DeSerializeFromJsonFile<T>(string fileName)
         {
-            if (string.IsNullOrEmpty(fileName)) { return default(T); }
+            if (fileName.IsEmpty()) { return default(T); }
 
             return JsonConvert.DeserializeObject<T>(File.ReadAllText(fileName));
         }
-
-        public static T DeSerializeJsonFromString<T>(string content)
+        public static T DeSerializeFromJsonContent<T>(string content)
         {
             if (string.IsNullOrEmpty(content)) { return default(T); }
 
