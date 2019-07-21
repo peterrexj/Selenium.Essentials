@@ -14,12 +14,6 @@ namespace Selenium.Essentials.Utilities.Extensions
 
         public static string GetTimestamp(string format) => LocalTime.ToString(format);
 
-        /// <summary>
-        /// Returns the total duration of start and end date in time format (h:m:s)
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
         public static string GetTotalDurationAsString(DateTime start, DateTime end)
         {
             TimeSpan duration = end - start;
@@ -37,12 +31,6 @@ namespace Selenium.Essentials.Utilities.Extensions
             return res.ToString();
         }
 
-        /// <summary>
-        /// Returns the total duration of start and end date in time stamp format
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
         public static TimeSpan GetTotalDurationAsTimeSpan(DateTime start, DateTime end) => end - start;
     }
 }

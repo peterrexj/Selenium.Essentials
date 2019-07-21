@@ -20,7 +20,7 @@ namespace Selenium.Essentials.Utilities.Extensions
         [DebuggerStepThrough]
         public static IEnumerable<T> EmptyIfNull<T>(this IEnumerable<T> items) => items ?? Enumerable.Empty<T>();
 
-        [System.Diagnostics.DebuggerStepThrough]
+        [DebuggerStepThrough]
         public static bool IsEmpty<T>(this IEnumerable<T> source)
         {
             return !source.EmptyIfNull().Any();
@@ -40,6 +40,7 @@ namespace Selenium.Essentials.Utilities.Extensions
                 action(item, index++);
         }
 
+        [DebuggerStepThrough]
         public static IQueryable<TEntity> Where<TEntity>(this IQueryable<TEntity> source, string propertyName, string value)
         {
             Expression<Func<TEntity, bool>> whereExpression = x => x.GetType().InvokeMember(propertyName, BindingFlags.GetProperty, null, x, null).ToString().IndexOf(value, StringComparison.InvariantCultureIgnoreCase) >= 0;
@@ -47,6 +48,7 @@ namespace Selenium.Essentials.Utilities.Extensions
             return source.Where(whereExpression);
         }
 
+        [DebuggerStepThrough]
         public static IQueryable<TEntity> WhereHasValue<TEntity>(this IQueryable<TEntity> source, string propertyName)
         {
             Expression<Func<TEntity, bool>> whereExpression = x => x.GetType().InvokeMember(propertyName, BindingFlags.GetProperty, null, x, null).ToString().HasValue();
@@ -72,6 +74,7 @@ namespace Selenium.Essentials.Utilities.Extensions
                 return items.Contains(i => i.Equals(value));
             }
         }
+
         [DebuggerStepThrough]
         public static bool ContainsIgnoreCase<T>(this IEnumerable<T> items, T value)
         {
