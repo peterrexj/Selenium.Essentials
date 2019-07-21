@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Essentials.Core
+namespace Selenium.Essentials
 {
     public static class TestContextHelper
     {

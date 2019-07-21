@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
-using Selenium.Essentials.Core;
 using Selenium.Essentials.Model;
 using Selenium.Essentials.Utilities.Extensions;
 using System;
@@ -39,7 +38,7 @@ namespace Selenium.Essentials.Web
             }
             else
             {
-                DriverFolder = Utility.ExecutingFolder;
+                DriverFolder = Utility.Runtime.ExecutingFolder;
             }
         }
 
@@ -51,7 +50,7 @@ namespace Selenium.Essentials.Web
                 if (_chromeOptions == null)
                 {
                     _chromeOptions = new ChromeOptions();
-                    _chromeOptions.AddUserProfilePreference("download.default_directory", Utility.ExecutingFolder);
+                    _chromeOptions.AddUserProfilePreference("download.default_directory", Utility.Runtime.ExecutingFolder);
                     _chromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
                     _chromeOptions.AddUserProfilePreference("profile.content_settings.exceptions.automatic_downloads.*.setting", 1);
                     _chromeOptions.AddArgument("--disable-extensions");

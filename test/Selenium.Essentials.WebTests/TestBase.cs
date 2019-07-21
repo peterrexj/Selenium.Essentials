@@ -1,5 +1,4 @@
-﻿using Selenium.Essentials.Core;
-using Selenium.Essentials.Web;
+﻿using Selenium.Essentials.Web;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,14 +13,13 @@ namespace Selenium.Essentials.WebTests
 
             TestContextHelper.Set("Driver", new BrowserHelper().GetChromeBrowser());
             TestContextHelper.Driver.Manage().Timeouts().PageLoad = (TimeSpan.FromSeconds(120));
-
         }
 
         public virtual void TearDownTest()
         {
             if (TestContextHelper.Driver != null)
             {
-                TestContextHelper.Driver.Quit();
+                TestContextHelper.Driver.CloseDriver();
             }
         }
     }

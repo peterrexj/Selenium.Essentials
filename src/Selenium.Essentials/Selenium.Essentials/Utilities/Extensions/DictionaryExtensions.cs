@@ -10,11 +10,22 @@ namespace Selenium.Essentials.Utilities.Extensions
         {
             if (dictionary.ContainsKey(key))
             {
-                dictionary[key] = value;
+                if (value.ToString().HasValue())
+                {
+                    dictionary[key] = value;
+                }
             }
             else
             {
                 dictionary.Add(key, value);
+            }
+        }
+
+        public static void AddOrUpdate<TKey, TValue>(this Dictionary<TKey, TValue> destination, Dictionary<TKey, TValue> source)
+        {
+            if (source != null)
+            {
+                source.Keys.Iter(k => destination.AddOrUpdate(k, source[k]));
             }
         }
     }

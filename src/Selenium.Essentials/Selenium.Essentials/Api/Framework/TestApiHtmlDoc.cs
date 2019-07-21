@@ -6,11 +6,11 @@ using Selenium.Essentials.Utilities.Extensions;
 
 namespace Selenium.Essentials.Api.Framework
 {
-    public class TestHtmlDoc
+    public class TestApiHtmlDoc
     {
         private HtmlDocument doc;
 
-        public TestHtmlDoc(string htmlContent)
+        public TestApiHtmlDoc(string htmlContent)
         {
             doc = new HtmlDocument();
             doc.LoadHtml(htmlContent);

@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
-using Selenium.Essentials.Core;
 using Selenium.Essentials.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
@@ -89,6 +88,7 @@ namespace Selenium.Essentials.Web
 
         public static void CloseDriver(this IWebDriver driver)
         {
+            driver.Close();
             driver.Quit();
         }
 

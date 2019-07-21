@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Selenium.Essentials.Model
 {
-    public class HeaderCollection : List<TestHeader>
+    public class HeaderCollection : List<TestApiHeader>
     {
         public HeaderCollection()
         {
 
         }
-        public HeaderCollection(IEnumerable<TestHeader> headers)
+        public HeaderCollection(IEnumerable<TestApiHeader> headers)
             : base(headers)
         {
 

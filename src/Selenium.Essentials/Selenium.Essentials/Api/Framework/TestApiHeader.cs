@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Selenium.Essentials.Api
 {
-    public class TestHeader
+    public class TestApiHeader
     {
-        public TestHeader(string key, string value)
+        public TestApiHeader(string key, string value)
         {
             Key = key;
             Value = value;
