@@ -11,24 +11,17 @@ namespace Selenium.Essentials
 {
     public abstract partial class BaseControl : IBaseControl
     {
-        protected BaseControl(IWebDriver driver, By by = null, BaseControl parentControl = null, string description = null, bool firstAvailable = false)
+        protected BaseControl(IWebDriver driver, By by = null, BaseControl parentControl = null, string description = null, bool findFirstAvailable = false)
         {
             Driver = driver;
-            var computedXpath = string.Empty;
-            if (firstAvailable)
+            FindFirstAvailable = findFirstAvailable;
+            ParentControl = parentControl;
+
+            By = by;
+
+            if (findFirstAvailable)
             {
-                computedXpath = parentControl != null ?
-                    parentControl.RawElement.FindElements(by).FirstOrDefault(d => d.Displayed)?.GetElementXPath(Driver) :
-                    Driver.FindElements(by).FirstOrDefault(d => d.Displayed)?.GetElementXPath(Driver);
-            }
-            if (computedXpath.HasValue())
-            {
-                By = By.XPath(computedXpath);
-            }
-            else
-            {
-                By = by;
-                ParentControl = parentControl;
+                By = By.XPath(XpathSelector);
             }
         }
 
@@ -72,6 +65,7 @@ namespace Selenium.Essentials
         public string ElementId => RawElement.Id();
         public By By { get; protected set; }
         public string Description { get; protected set; }
+        public bool FindFirstAvailable { get; protected set; }
 
         public bool IsReadonly => RawElement.IsReadonly();
         public bool IsDisabled => RawElement.IsDisabled();
@@ -87,7 +81,24 @@ namespace Selenium.Essentials
         public string[] Classes => RawElement.Classes();
 
         public string GetAttribute(string attributeName) => RawElement.GetAttribute(attributeName);
-
+        private string _computedXpath;
+        public string XpathSelector
+        {
+            get
+            {
+                if (_computedXpath.IsEmpty() && FindFirstAvailable)
+                {
+                    _computedXpath = ParentControl != null ?
+                        ParentControl.RawElement.FindElements(By).FirstOrDefault(d => d.Displayed)?.GetElementXPath(Driver) :
+                        Driver.FindElements(By).FirstOrDefault(d => d.Displayed)?.GetElementXPath(Driver);
+                }
+                else
+                {
+                    _computedXpath = Driver.FindElements(By).FirstOrDefault(d => d.Displayed)?.GetElementXPath(Driver);
+                }
+                return _computedXpath;
+            }
+        }
         #endregion
 
         #region Control Click Methods
