@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.7.0" />
     <PackageReference Include="nunit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="75.0.3770.140" />
     <PackageReference Include="SpecFlow" Version="3.0.225" />
     <PackageReference Include="SpecFlow.NUnit" Version="3.0.225" />
     <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.0.225" />
@@ -17,10 +19,18 @@
 
   <ItemGroup>
     <Folder Include="IntegrationTests\Definitions\" />
-    <Folder Include="IntegrationTests\Tests\" />
-    <Folder Include="WebTests\Features\" />
-    <Folder Include="WebTests\PageObjects\Wikipedia\" />
-    <Folder Include="WebTests\Steps\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Selenium.Essentials\Selenium.Essentials.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="WebTests\Features\WikipediaMainPageFeature.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>WikipediaMainPageFeature.feature</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +40,13 @@
     <None Update="DataSource\EnvironmentData\UAT\EnvData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="WebTests\Features\WikipediaMainPageFeature.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WikipediaMainPageFeature.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
   </ItemGroup>
 
 </Project>

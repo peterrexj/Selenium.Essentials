@@ -1,0 +1,31 @@
+﻿using OpenQA.Selenium;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Selenium.Essentials.SampleTest
+{
+    public abstract class PageBase
+    {
+        protected IWebDriver _driver;
+
+        public PageBase()
+        {
+            if (TestContextHelper.Driver != null)
+            {
+                _driver = TestContextHelper.Driver;
+            }
+        }
+
+        public PageBase(IWebDriver driver)
+        {
+            _driver = driver;
+        }
+
+        public virtual void Navigate(string path)
+        {
+            TestContextHelper.Driver.Navigate().GoToUrl(path);
+            TestContextHelper.Driver.WaitTillPageLoad();
+        }
+    }
+}
