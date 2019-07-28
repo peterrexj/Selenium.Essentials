@@ -7,19 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="nunit" Version="3.10.1" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="nunit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="SpecFlow" Version="3.0.225" />
+    <PackageReference Include="SpecFlow.NUnit" Version="3.0.225" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.0.225" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataSource\EnvironmentData\Demo\" />
-    <Folder Include="DataSource\EnvironmentData\UAT\" />
     <Folder Include="IntegrationTests\Definitions\" />
     <Folder Include="IntegrationTests\Tests\" />
     <Folder Include="WebTests\Features\" />
+    <Folder Include="WebTests\PageObjects\Wikipedia\" />
     <Folder Include="WebTests\Steps\" />
-    <Folder Include="WebTests\PageObjects\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DataSource\EnvironmentData\Demo\EnvData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataSource\EnvironmentData\UAT\EnvData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
