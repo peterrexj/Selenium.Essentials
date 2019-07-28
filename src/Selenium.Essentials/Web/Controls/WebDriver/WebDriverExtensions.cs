@@ -21,8 +21,6 @@ namespace Selenium.Essentials
 
         public static void Navigate(this IWebDriver driver, string url, bool refreshOnSamePage = true)
         {
-            driver.Capabilities();
-
             if (driver.Url.EqualsIgnoreCase(url) || driver.Url.ContainsIgnoreCase(url))
             {
                 if (refreshOnSamePage)
