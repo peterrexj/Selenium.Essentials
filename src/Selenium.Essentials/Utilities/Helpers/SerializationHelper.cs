@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -72,6 +74,51 @@ namespace Selenium.Essentials
             if (string.IsNullOrEmpty(content)) { return default(T); }
 
             return JsonConvert.DeserializeObject<T>(content);
+        }
+
+        public static Dictionary<string, string> JsonToDictionary(string content) => _JsonReadToDict(content);
+
+        private static Dictionary<string, string> _JsonReadToDict(string content, string parent = "")
+        {
+            var dicCollector = new Dictionary<string, string>();
+            try
+            {
+                var jobj = JObject.Parse(content);
+                jobj.Children()
+                    .OfType<JProperty>()
+                    .Iter(jProp =>
+                    {
+                        if (jProp.Value.ToString().Contains("{"))
+                        {
+                            var innerProps = _JsonReadToDict(jProp.Value.ToString(), jProp.Name);
+                            if (innerProps.Any())
+                            {
+                                innerProps.Iter(d =>
+                                {
+                                    var keyToStore = d.Key;
+                                    if (dicCollector.ContainsKey(d.Key))
+                                    {
+                                        keyToStore = $"{keyToStore}_{Guid.NewGuid()}";
+                                    }
+                                    dicCollector.Add(parent.IsEmpty() ? keyToStore : $"{parent} - {keyToStore}", d.Value);
+                                });
+                            }
+                            else
+                            {
+                                dicCollector.Add(parent.IsEmpty() ? jProp.Name : $"{parent} - {jProp.Name}", jProp.Value.ToString());
+                            }
+                        }
+                        else
+                        {
+                            dicCollector.Add(parent.IsEmpty() ? jProp.Name : $"{parent} - {jProp.Name}", jProp.Value.ToString());
+                        }
+                    });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dicCollector;
         }
     }
 }
