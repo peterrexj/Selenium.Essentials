@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Selenium.Essentials.Utilities.Extensions
+namespace Selenium.Essentials
 {
     public static class StringExtensions
     {

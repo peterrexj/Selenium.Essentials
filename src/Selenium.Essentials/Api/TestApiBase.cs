@@ -1,12 +1,10 @@
-﻿using Selenium.Essentials.Utilities;
-using Selenium.Essentials.Utilities.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Selenium.Essentials.Api
+namespace Selenium.Essentials
 {
     public class TestApiBase
     {

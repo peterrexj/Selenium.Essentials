@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Selenium.Essentials.Utilities.Extensions
+namespace Selenium.Essentials
 {
     public static class EnumerableExtensions
     {

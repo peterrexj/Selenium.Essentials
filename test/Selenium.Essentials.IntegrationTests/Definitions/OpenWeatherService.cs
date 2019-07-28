@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Selenium.Essentials.Api.Framework;
-using Selenium.Essentials.Utilities.Extensions;
-
+﻿
 namespace Selenium.Essentials.IntegrationTests.Definitions
 {
     public class OpenWeatherService

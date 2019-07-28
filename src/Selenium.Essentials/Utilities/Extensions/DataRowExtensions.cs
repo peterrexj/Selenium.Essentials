@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Selenium.Essentials.Utilities.Extensions
+namespace Selenium.Essentials
 {
     public static class DataRowExtensions
     {

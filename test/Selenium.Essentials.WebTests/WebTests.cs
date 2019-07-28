@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using Selenium.Essentials.Web;
 using Selenium.Essentials.WebTests.PageObjects.Google;
 using System;
 using System.Collections.Generic;

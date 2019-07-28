@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using HtmlAgilityPack;
-using Selenium.Essentials.Utilities.Extensions;
 
-namespace Selenium.Essentials.Api.Framework
+namespace Selenium.Essentials
 {
     public class TestApiHtmlDoc
     {

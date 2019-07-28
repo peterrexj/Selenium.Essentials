@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
-using Selenium.Essentials.Api.Framework;
-using Selenium.Essentials.Utilities.Extensions;
 
-namespace Selenium.Essentials.Api
+namespace Selenium.Essentials
 {
     public class TestApiBody
     {

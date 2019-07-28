@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Essentials.Utilities
+namespace Selenium.Essentials
 {
     public abstract class ExcelDataRaw : IDisposable
     {

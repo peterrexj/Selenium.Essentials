@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Essentials.Web.Controls.Controls
+namespace Selenium.Essentials
 {
     public class IconControl : BaseControl
     {

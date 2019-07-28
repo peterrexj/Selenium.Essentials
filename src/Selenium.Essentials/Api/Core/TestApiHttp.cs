@@ -1,9 +1,8 @@
-using Selenium.Essentials.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Essentials.Api.Framework
+namespace Selenium.Essentials
 {
     public class TestApiHttp
     {

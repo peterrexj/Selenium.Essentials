@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Selenium.Essentials.Web.Controls
+namespace Selenium.Essentials
 {
     public class LinkControl : BaseControl
     {

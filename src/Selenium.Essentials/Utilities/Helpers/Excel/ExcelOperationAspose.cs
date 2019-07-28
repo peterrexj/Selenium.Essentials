@@ -5,9 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using FluentAssertions;
-using Selenium.Essentials.Utilities.Helpers;
 
-namespace Selenium.Essentials.Utilities
+namespace Selenium.Essentials
 {
     public class ExcelOperationAspose : IExcelData, IDisposable
     {

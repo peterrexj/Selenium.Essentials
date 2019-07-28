@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Selenium.Essentials.Utilities.Helpers
+namespace Selenium.Essentials
 {
     public static class RandomHelper
     {

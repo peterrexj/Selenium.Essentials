@@ -1,12 +1,11 @@
 ﻿using OpenQA.Selenium.Support.UI;
-using Selenium.Essentials.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Selenium.Essentials.Web.Controls
+namespace Selenium.Essentials
 {
     public abstract partial class BaseControl
     {

@@ -4,8 +4,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
-using Selenium.Essentials.Model;
-using Selenium.Essentials.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,7 +13,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Selenium.Essentials.Web
+namespace Selenium.Essentials
 {
     public enum BrowserType
     {

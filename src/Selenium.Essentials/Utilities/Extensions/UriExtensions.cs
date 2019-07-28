@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Essentials.Utilities.Extensions
+namespace Selenium.Essentials
 {
     public static class UriExtensions
     {

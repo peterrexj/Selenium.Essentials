@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Selenium.Essentials.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +6,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Selenium.Essentials.Utilities.Helpers
+namespace Selenium.Essentials
 {
     public class SerializationHelper
     {

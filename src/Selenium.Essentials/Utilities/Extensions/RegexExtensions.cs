@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
 
-namespace Selenium.Essentials.Utilities.Extensions
+namespace Selenium.Essentials
 {
     public static class RegexExtensions
     {

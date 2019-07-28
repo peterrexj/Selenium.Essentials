@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Essentials.Utilities
+namespace Selenium.Essentials
 {
     public interface IExcelData
     {

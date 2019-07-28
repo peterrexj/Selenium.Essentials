@@ -1,5 +1,4 @@
-﻿using Selenium.Essentials.Utilities.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;

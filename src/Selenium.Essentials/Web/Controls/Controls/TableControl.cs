@@ -3,11 +3,9 @@ using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 using OpenQA.Selenium;
-using Selenium.Essentials.Utilities.Extensions;
 using FluentAssertions;
-using Selenium.Essentials.Model;
 
-namespace Selenium.Essentials.Web.Controls.Controls
+namespace Selenium.Essentials
 {
     public class TableControl : BaseControl
     {

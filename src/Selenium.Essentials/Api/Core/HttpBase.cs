@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Selenium.Essentials.Api.Framework
+namespace Selenium.Essentials
 {
     class HttpBase
     {

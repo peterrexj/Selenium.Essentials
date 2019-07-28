@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Essentials.Model
+namespace Selenium.Essentials
 {
     public class TableControlSearchModel
     {

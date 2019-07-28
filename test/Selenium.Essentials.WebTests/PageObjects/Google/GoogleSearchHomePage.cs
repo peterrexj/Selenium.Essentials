@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using Selenium.Essentials.Web.Controls;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using Selenium.Essentials.Api;
 using Selenium.Essentials.IntegrationTests.Definitions;
 using System;
 using System.Collections.Generic;

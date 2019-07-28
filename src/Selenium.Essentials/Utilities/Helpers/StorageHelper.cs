@@ -1,10 +1,9 @@
-﻿using Selenium.Essentials.Utilities.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Selenium.Essentials.Utilities.Helpers
+namespace Selenium.Essentials
 {
     public static class StorageHelper
     {

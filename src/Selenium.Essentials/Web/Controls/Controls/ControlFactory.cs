@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace Selenium.Essentials.Web.Controls
+namespace Selenium.Essentials
 {
     /// <summary>
     /// Factory for producing user specific control on request

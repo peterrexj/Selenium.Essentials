@@ -1,7 +1,4 @@
 using FluentAssertions;
-using Selenium.Essentials.Model;
-using Selenium.Essentials.Utilities.Extensions;
-using Selenium.Essentials.Utilities.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +9,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Selenium.Essentials.Api.Framework
+namespace Selenium.Essentials
 {
     public class TestApiRequest
     {

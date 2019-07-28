@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using FluentAssertions;
-using Selenium.Essentials.Utilities.Extensions;
-using Selenium.Essentials.Utilities.Helpers;
 
-namespace Selenium.Essentials.Utilities
+namespace Selenium.Essentials
 {
     public class ExcelData
     {

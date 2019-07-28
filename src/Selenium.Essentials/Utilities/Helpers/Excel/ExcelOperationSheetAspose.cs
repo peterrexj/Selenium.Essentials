@@ -1,5 +1,4 @@
 using Aspose.Cells;
-using Selenium.Essentials.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -8,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Selenium.Essentials.Utilities
+namespace Selenium.Essentials
 {
     public class ExcelOperationSheetAspose : ExcelDataRaw, IExcelSheet
     {

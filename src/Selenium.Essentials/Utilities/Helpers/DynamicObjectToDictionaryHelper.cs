@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace Selenium.Essentials.Utilities.Helpers
+namespace Selenium.Essentials
 {
     public static class DynamicObjectToDictionaryHelper
     {
