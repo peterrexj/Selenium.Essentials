@@ -18,6 +18,7 @@ namespace Selenium.Essentials.SampleTest.WebTests.Steps
         [When(@"I have selected Wikipedia Main Page tab")]
         public void WhenIHaveSelectedWikipediaMainPageTab()
         {
+            WikipediaMainPage.SelectMainPageTab("Main Page");
         }
 
         [Then(@"I should see the Wikipedia Welcome content")]
