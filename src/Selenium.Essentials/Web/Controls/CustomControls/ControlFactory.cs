@@ -32,9 +32,9 @@ namespace Selenium.Essentials
             {
                 return new ButtonControl(driver, selector, parentControl as BaseControl) as T;
             }
-            else if (typeof(T) == typeof(Checkbox))
+            else if (typeof(T) == typeof(CheckboxControl))
             {
-                return new Checkbox(driver, selector, parentControl as BaseControl) as T;
+                return new CheckboxControl(driver, selector, parentControl as BaseControl) as T;
             }
             else if (typeof(T) == typeof(LinkControl))
             {

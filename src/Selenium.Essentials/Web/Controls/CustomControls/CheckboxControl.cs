@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace Selenium.Essentials
 {
-    public class Checkbox : BaseControl, IEditableControl
+    public class CheckboxControl : BaseControl, IEditableControl
     {
-        public Checkbox(IWebDriver driver, By by, BaseControl parentControl = null, string description = null)
+        public CheckboxControl(IWebDriver driver, By by, BaseControl parentControl = null, string description = null)
             : base(driver, by, parentControl, description)
         {
         }
-
-        public bool IsChecked => RawElement.Selected;
 
         public void Check()
         {
@@ -34,12 +32,8 @@ namespace Selenium.Essentials
             }
         }
 
-        /// <summary>
-        /// This is introduced with Selenium version 2.48.2 where the element inside another element cannot be clicked
-        /// For example:
-        /// <lable><input type='checkbox'></input></lable>
-        /// Require since the clickable element will be used to check the availabilty of the control in the UI, since the actual input field will be hidden
-        /// </summary>
+        public bool IsChecked => RawElement.Selected;
+
         public BaseControl ClickableElement
         {
             get
@@ -53,10 +47,7 @@ namespace Selenium.Essentials
             }
         }
 
-        private WebControl CheckBoxLabel
-        {
-            get { return new WebControl(Driver, By.XPath(".."), this); }
-        }
+        private WebControl CheckBoxLabel => new WebControl(Driver, By.XPath(".."), this); 
 
         public void Set(string value)
         {
@@ -75,15 +66,8 @@ namespace Selenium.Essentials
                     this.Uncheck();
             }
         }
+        public string Get() => IsChecked.ToString();
 
-        public override void Highlight()
-        {
-            CheckBoxLabel.Highlight();
-        }
-
-        public string Get()
-        {
-            return this.IsChecked.ToString();
-        }
+        public override void Highlight() => CheckBoxLabel.Highlight();
     }
 }

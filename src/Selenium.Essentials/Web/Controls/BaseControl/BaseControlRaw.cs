@@ -84,6 +84,7 @@ namespace Selenium.Essentials
         public string Value => RawElement.Value();
         public string Text => RawElement.Text();
         public string Class => RawElement.Class();
+        public string[] Classes => RawElement.Classes();
 
         public string GetAttribute(string attributeName) => RawElement.GetAttribute(attributeName);
 

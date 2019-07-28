@@ -7,12 +7,15 @@ namespace Selenium.Essentials
 {
     public class DateTimeControl : BaseControl, IEditableControl
     {
-        public DateTimeControl(IWebDriver driver, By by, BaseControl parentControl = null, string description = null)
+        private readonly string _dateFormat = "";
+        private string _dateTimeFormat => RawElement.GetAttribute("_dateFormat");
+
+        public DateTimeControl(IWebDriver driver, By by, BaseControl parentControl = null, string description = null, string dateFormat = "data-format")
             : base(driver, by, parentControl, description)
         {
+            _dateFormat = dateFormat;
         }
 
-        private string _dateTimeFormat => RawElement.GetAttribute("data-format");
 
         public string Get()
         {
