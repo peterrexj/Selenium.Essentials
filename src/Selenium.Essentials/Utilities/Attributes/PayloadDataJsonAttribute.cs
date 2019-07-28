@@ -18,6 +18,10 @@ namespace Selenium.Essentials
             {
                 FilePath = Path.Combine(Utility.Runtime.ExecutingFolder, filePath);
             }
+            else
+            {
+                FilePath = filePath;
+            }
 
             File.Exists(FilePath).Should()
                 .BeTrue($"The Json file trying to load is unavailable in the location {FilePath}");
