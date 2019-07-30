@@ -5,5 +5,6 @@ dotnet: 2.1.502
 dist: trusty
 
 script:
+ - cd src/Selenium.Essentials
  - dotnet restore 
  - dotnet build
