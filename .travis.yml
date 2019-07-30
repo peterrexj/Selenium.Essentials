@@ -4,9 +4,7 @@ mono: none
 dotnet: 2.1.502
 
 install:
-  - nuget restore ./src/Selenium.Essentials/Selenium.Essentials.sln
-  - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
+  - dotnet restore 
 
 script:
  - dotnet build
- - dotnet test test/Selenium.Essentials.UnitTests/Selenium.Essentials.UnitTests.csproj
