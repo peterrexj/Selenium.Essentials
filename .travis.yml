@@ -1,5 +1,5 @@
 language: csharp
-solution: src/Selenium.Essentials/Selenium.Essentials.sln
+solution: "./src/Selenium.Essentials/Selenium.Essentials.sln"
 mono: none
 dotnet: 2.0.0
 
