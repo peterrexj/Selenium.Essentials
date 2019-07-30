@@ -8,4 +8,3 @@ script:
  - cd src/Selenium.Essentials
  - dotnet restore 
  - dotnet build
- - dotnet test
