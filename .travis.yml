@@ -1,7 +1,7 @@
 language: csharp
 solution: src/Selenium.Essentials/Selenium.Essentials.sln
 mono: none
-dotnet: 2.1.0
+dotnet: 2.0.0
 
 install:
 - dotnet restore
