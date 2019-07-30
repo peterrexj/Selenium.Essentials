@@ -1,0 +1,11 @@
+language: csharp
+solution: src/Selenium.Essentials/Selenium.Essentials.sln
+mono: none
+dotnet: 2.1.0
+
+install:
+- dotnet restore
+
+script:
+ - dotnet build
+ - dotnet test test/Selenium.Essentials.UnitTests/Selenium.Essentials.UnitTests.csproj
