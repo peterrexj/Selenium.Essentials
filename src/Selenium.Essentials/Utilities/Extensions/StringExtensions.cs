@@ -168,7 +168,7 @@ namespace Selenium.Essentials
                 }
                 else
                 {
-                    return default;
+                    return default(T);
                 }
             }
         }
