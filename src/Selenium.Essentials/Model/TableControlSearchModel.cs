@@ -17,6 +17,5 @@ namespace Selenium.Essentials
         public bool DoExactMatch { get; set; }
         public By SelectorToFindControlInColumn { get; set; }
         public bool GetTheWholeContentWithInColumn { get; set; }
-
     }
 }

@@ -9,11 +9,6 @@ namespace Selenium.Essentials
 {
     public static class AsyncExtensions
     {
-        /// <summary>
-        /// This logic will restrict only specific number of threads to run concurrently. As there will be many number of tasks to run, we should restrict the concurrency
-        /// </summary>
-        /// <param name="tasks"></param>
-        /// <param name="parallelExecutionCount"></param>
         internal static void ExecuteAllTasks(this IEnumerable<Task> tasks, int parallelExecutionCount = 1, int waitTimeInMilliSecondsBetweenEachTask = 0)
         {
             if (!tasks.Any())
@@ -63,19 +58,6 @@ namespace Selenium.Essentials
 
         private static Dictionary<string, List<Task>> _tasks = new Dictionary<string, List<Task>>();
 
-        [Obsolete("Use the TaskGroup class instead")]
-        public static void ExecuteAsync(this Task task, string id)
-        {
-            if (!_tasks.ContainsKey(id))
-            {
-                _tasks.Add(id, new List<Task>());
-            }
-
-            _tasks[id].Add(task);
-            task.Start();
-            task.ContinueWith(t => RemoveTask(id, t));
-        }
-
         private static void RemoveTask(string id, Task t)
         {
             if (_tasks.ContainsKey(id))
@@ -110,13 +92,6 @@ namespace Selenium.Essentials
                     }
                 }
             }
-        }
-
-        [Obsolete("Use the TaskGroup class instead")]
-        public static void WaitAllAysncTaskToComplete(string id)
-        {
-            Task.WaitAll(_tasks[id].ToArray());
-            RemoveAllTasks(id);
         }
     }
 

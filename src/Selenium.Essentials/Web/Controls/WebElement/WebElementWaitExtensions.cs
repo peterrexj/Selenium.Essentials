@@ -19,7 +19,7 @@ namespace Selenium.Essentials
             bool whenConditionFailed = false,
             IBaseControl baseControl = null)
         {
-            waitTimeSec = waitTimeSec == 0 ? AppConfig.DefaultTimeoutWaitPeriodInSeconds : waitTimeSec;
+            waitTimeSec = waitTimeSec == 0 ? SeAppConfig.DefaultTimeoutWaitPeriodInSeconds : waitTimeSec;
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(waitTimeSec));
             var conditionSatisfied = false;
 
@@ -76,7 +76,7 @@ namespace Selenium.Essentials
             string errorMessage = null)
              => WaitForElementEnabled(element,
                     driver,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -104,7 +104,7 @@ namespace Selenium.Essentials
             string errorMessage = null)
              => WaitForElementVisible(element,
                     driver,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -132,7 +132,7 @@ namespace Selenium.Essentials
             string errorMessage = null)
              => WaitForElementExists(element,
                     driver,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -160,7 +160,7 @@ namespace Selenium.Essentials
             string errorMessage = null)
              => WaitForElementCssDisplayed(element,
                     driver,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -188,7 +188,7 @@ namespace Selenium.Essentials
             string errorMessage = null)
              => WaitForElementInvisible(element,
                     driver,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -215,7 +215,7 @@ namespace Selenium.Essentials
             string errorMessage = null)
              => WaitForElementIsClickable(element,
                     driver,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -244,7 +244,7 @@ namespace Selenium.Essentials
              => WaitForElementTextTrimEquals(element,
                     driver,
                     textToMatch,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -274,7 +274,7 @@ namespace Selenium.Essentials
              => WaitForElementTextStartsWith(element,
                     driver,
                     textToMatch,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -304,7 +304,7 @@ namespace Selenium.Essentials
              => WaitForElementTextStartsWith(element,
                     driver,
                     textsToMatch,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -334,7 +334,7 @@ namespace Selenium.Essentials
              => WaitForElementTextContains(element,
                     driver,
                     textToMatch,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -364,7 +364,7 @@ namespace Selenium.Essentials
              => WaitForElementTextContains(element,
                     driver,
                     textsToMatch,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 
@@ -392,7 +392,7 @@ namespace Selenium.Essentials
             string errorMessage = null)
              => WaitForElementHasSomeText(element,
                     driver,
-                    AppConfig.DefaultTimeoutWaitPeriodInSeconds,
+                    SeAppConfig.DefaultTimeoutWaitPeriodInSeconds,
                     throwExceptionWhenNotFound,
                     errorMessage);
 

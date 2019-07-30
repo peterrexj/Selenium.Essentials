@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Selenium.Essentials
 {
-    public interface IBaseControl : IWaitableControl
+    public interface IBaseControl : IWaitControl
     {
         IWebElement RawElement { get; }
         IWebDriver Driver { get; }

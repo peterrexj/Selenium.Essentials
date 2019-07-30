@@ -14,6 +14,7 @@ namespace Selenium.Essentials.SampleTest.WebTests.PageObjects.Wikipedia
         public MainPage(IWebDriver driver) : base(driver) { }
 
         private UnorderedListControl _tabNavigation => new UnorderedListControl(_driver, By.XPath("//div[@id='p-namespaces']/ul"));
+        private TableControl _tableMainContent => new TableControl(_driver, By.Id("mp-upper"));
 
         public void Navigate()
         {

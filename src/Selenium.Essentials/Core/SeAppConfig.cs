@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Selenium.Essentials
 {
-    public static class AppConfig
+    public static class SeAppConfig
     {
         public static int DefaultTimeoutWaitPeriodInSeconds { get; set; } = 60;
         public static int DefaultApiResponseTimeoutWaitPeriodInSeconds { get; set; } = 60;

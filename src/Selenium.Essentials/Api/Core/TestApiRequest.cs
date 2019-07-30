@@ -257,7 +257,7 @@ namespace Selenium.Essentials
                 client.DefaultRequestHeaders.Authorization = HeaderAuthentication;
             }
 
-            client.Timeout = TimeSpan.FromSeconds(AppConfig.DefaultApiResponseTimeoutWaitPeriodInSeconds);
+            client.Timeout = TimeSpan.FromSeconds(SeAppConfig.DefaultApiResponseTimeoutWaitPeriodInSeconds);
 
             foreach (var kvp in Headers)
             {

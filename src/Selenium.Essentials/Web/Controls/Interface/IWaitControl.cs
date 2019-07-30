@@ -6,30 +6,25 @@ using System.Threading.Tasks;
 
 namespace Selenium.Essentials
 {
-    public interface IWaitableControl
+    public interface IWaitControl
     {
         bool WaitForElementEnabled(bool throwExceptionWhenNotFound = true, string errorMessage = null);
         bool WaitForElementEnabled(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
         bool WaitForElementVisible(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-
         bool WaitForElementVisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
         bool WaitForElementExists(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-
         bool WaitForElementExists(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
         bool WaitForElementCssDisplayed(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-
         bool WaitForElementCssDisplayed(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
         bool WaitForElementInvisible(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-
         bool WaitForElementInvisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
         bool WaitForElementClickable(bool throwExceptionWhenNotFound = true, string errorMessage = null);
         bool WaitForElementClickable(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
-
 
         bool WaitForElementTextTrimEquals(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
         bool WaitForElementTextTrimEquals(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);

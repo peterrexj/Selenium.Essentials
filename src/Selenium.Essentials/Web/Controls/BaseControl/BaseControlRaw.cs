@@ -27,7 +27,7 @@ namespace Selenium.Essentials
 
         private IWebElement RetryFindElement(int waitTimeSec = 1, int retryCount = -1)
         {
-            if (retryCount == -1) retryCount = AppConfig.DefaultRetryElementCount;
+            if (retryCount == -1) retryCount = SeAppConfig.DefaultRetryElementCount;
 
             for (var i = 0; i < retryCount + 1; i++)
             {

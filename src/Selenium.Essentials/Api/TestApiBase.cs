@@ -54,12 +54,5 @@ namespace Selenium.Essentials
             });
             return content;
         }
-
-        //protected ExcelData ExcelDataSource { get; private set; }
-
-        //protected void InitializeExcelData(string filePath, string worksheet, string key = "", string column = "", string filter = "")
-        //{
-        //    ExcelDataSource = new ExcelData(filePath, worksheet, key, column, filter);
-        //}
     }
 }
