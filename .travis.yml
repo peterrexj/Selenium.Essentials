@@ -1,10 +1,11 @@
 language: csharp
-solution: "./src/Selenium.Essentials/Selenium.Essentials.sln"
+solution: ./src/Selenium.Essentials/Selenium.Essentials.sln
 mono: none
-dotnet: 2.0.0
+dotnet: 2.1.502
 
 install:
-- dotnet restore
+  - nuget restore ./src/Selenium.Essentials/Selenium.Essentials.sln
+  - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
 
 script:
  - dotnet build
