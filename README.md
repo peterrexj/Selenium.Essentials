@@ -42,9 +42,8 @@ Visual Studio 2017 or higher
 # Usage
 
 
-This is the conventional way to declare IWebElement
+This is the conventional way to declare IWebElement (OLD WAY)
 ```c#
-[
 private IWebElement _headerContent = _driver.FindElement(By.Id("chkAreYouRobot"));
 ```
 
