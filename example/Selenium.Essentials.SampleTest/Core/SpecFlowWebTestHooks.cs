@@ -14,7 +14,7 @@ namespace Selenium.Essentials.SampleTest.Core
             Utility.InitializeFramework();
 
             TestContextHelper.Set("Driver", new BrowserHelper().GetChromeBrowser());
-            TestContextHelper.Driver.Manage().Timeouts().PageLoad = (TimeSpan.FromSeconds(120));
+            TestContextHelper.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(TestUtility.EnvData["PageLoadTimeoutInSeconds"].ToInteger());
         }
 
         [AfterScenario]

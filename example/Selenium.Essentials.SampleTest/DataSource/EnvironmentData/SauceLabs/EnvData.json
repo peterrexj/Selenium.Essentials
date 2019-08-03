@@ -1,3 +1,4 @@
 {
+  "PageLoadTimeoutInSeconds": 120,
   "WikipediaDomain": "https://ml.wikipedia.org"
 }
