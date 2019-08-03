@@ -34,10 +34,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="DataSource\EnvironmentData\Demo\EnvData.json">
+    <None Update="DataSource\EnvironmentData\Local\EnvData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DataSource\EnvironmentData\UAT\EnvData.json">
+    <None Update="DataSource\EnvironmentData\SauceLabs\EnvData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
