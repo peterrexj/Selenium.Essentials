@@ -21,13 +21,13 @@ namespace Selenium.Essentials.WebTests.PageObjects.Google
 
         public int GetResultHeaderPosition(string headerToFindInPage)
         {
-            _searchResultsHeader.WaitForElementVisible();
+            _searchResultsHeader.WaitForElementVisible(position: 1);
             return _searchResultsHeader.FindPositionByText(headerToFindInPage);
         }
 
         public void ClickOnResult(string headerToFindInPage)
         {
-            _searchResultsHeader.WaitForElementVisible();
+            _searchResultsHeader.WaitForElementVisible(position: 1);
             var position = _searchResultsHeader.FindPositionByText(headerToFindInPage);
             _searchResultLink.Item<LinkControl>(position).Href.Should().NotBeEmpty("The hyperlink on the result is empty");
             _searchResultLink.Item<LinkControl>(position).Click();
