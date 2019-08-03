@@ -1,6 +1,6 @@
 ![](https://travis-ci.org/peterrexj/Selenium.Essentials.svg?branch=master)
 
-# Selenium.Essentials 
+# Selenium.Essentials (work in progress)
 
 ![](https://github.com/peterrexj/Selenium.Essentials/blob/master/docs/resources/images/Icon.png)
 
