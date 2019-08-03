@@ -18,5 +18,20 @@
         }
       }
     }
+  },
+  "glossaryTransalators": {
+    "Language": [
+      {
+        "Language": "Malayalam",
+        "Fish": "Meen",
+        "Look": "Nooku"
+      },
+      {
+        "Language": "Hindi",
+        "Fish": "Machali",
+        "Chair": "Dheko"
+      }
+    ]
   }
+    
 }
