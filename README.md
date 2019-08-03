@@ -83,7 +83,30 @@ private TextboxControl _passwordTxt => new TextboxControl(_driver, By.Id("txtPas
 private ButtonControl _loginBtn => new ButtonControl(_driver, By.Name("loginUser"));
 ```
 
+Custom control default properties and methods (few listed)
 
+
+| Properties      | Description                        | Methods                    | Description       |  
+| -------------   | ---------------------------------- |--------------------------- |-------------------|
+| `IsReadonly`    | Element is readonly                | `GetAttribute(string)`     |                   | 
+| `IsDisabled`    |         						               | `Click()`                  |                   |
+| `IsEnabled`     |                                    | `WaitAndClick(int)`        |                   |
+| `IsVisible`     |                                    | `ScrollAndClick()`         |                   |
+| `CssDisplayed`  |                                    | `ClickByJsScript()`        |                   |
+| `IsDisplayed`   |                                    | `WaitClickAndIgnoreError()`|                   |
+| `IsHidden`      |                                    | `SendKeys()`               |                   |
+| `Exists`        |                                    | `SendEnter()`              |                   |
+| `Value`         |                                    | `SendTab()`                |                   |
+| `Text`          |                                    | `ScrollTo()`               |                   |
+| `Class`         |                                    | `Clear()`                  |                   |
+| `Classes`       |                                    | `Highlight()`              |                   |
+| `XpathSelector` |                                    | `SetFocusByJavascript()`   |                   |
+| `Driver`        |                                    |                            |                   |
+| `RawElement`    |                                    |                            |                   |
+| `ParentControl` |                                    |                            |                   |
+| `ParentRawElement`|                                  |                            |                   |
+| `ElementId`     |                                    |                            |                   |
+| `By`            |                                    |                            |                   |
 
 
 # Useful resource
