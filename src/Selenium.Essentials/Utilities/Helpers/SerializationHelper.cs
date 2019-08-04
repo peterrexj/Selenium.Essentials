@@ -78,41 +78,91 @@ namespace Selenium.Essentials
 
         public static Dictionary<string, string> JsonToDictionary(string content) => _JsonReadToDict(content);
 
+        private static string _CalculateJsonKeyPropertyName(string parent, string currentPropertyName)
+        {
+            return parent.IsEmpty() ? currentPropertyName : $"{parent} - {currentPropertyName}";
+        }
+
+        private static Dictionary<string, string> _JsonInnerCollectionPropertyNameDuplicateNumberingLogic(
+            Dictionary<string, string> primaryDictionary,
+            Dictionary<string, string> innerCollectionDictionary,
+            JProperty currentProperty,
+            string parentPropertyName
+            )
+        {
+            if (innerCollectionDictionary.Any())
+            {
+                innerCollectionDictionary.Iter(d =>
+                {
+                    var calculatedKey = _CalculateJsonKeyPropertyName(parentPropertyName, d.Key);
+                    if (primaryDictionary.ContainsKey(calculatedKey))
+                    {
+                        calculatedKey = $"{calculatedKey}_{Guid.NewGuid()}";
+                    }
+                    primaryDictionary.Add(calculatedKey, d.Value);
+                });
+            }
+            else
+            {
+                if (currentProperty != null)
+                {
+                    var calculatedKey = _CalculateJsonKeyPropertyName(parentPropertyName, currentProperty.Name);
+                    if (primaryDictionary.ContainsKey(calculatedKey))
+                    {
+                        calculatedKey = $"{calculatedKey}_{Guid.NewGuid()}";
+                    }
+                    primaryDictionary.Add(calculatedKey, currentProperty?.Value.ToString());
+                }
+            }
+            return primaryDictionary;
+        }
+
         private static Dictionary<string, string> _JsonReadToDict(string content, string parent = "")
         {
             var dicCollector = new Dictionary<string, string>();
             try
             {
-                var jobj = JObject.Parse(content);
-                jobj.Children()
-                    .OfType<JProperty>()
-                    .Iter(jProp =>
+                if (content.Trim().StartsWith("[") && content.Trim().EndsWith("]"))
+                {
+                    var jarr = JArray.Parse(content);
+                    jarr.Children().OfType<JObject>().Iter(c =>
                     {
-                        if (jProp.Value.ToString().Contains("{"))
+                        var inner = _JsonReadToDict(c.ToString(), parent);
+                        dicCollector = _JsonInnerCollectionPropertyNameDuplicateNumberingLogic(dicCollector, inner, null, parent);
+                    });
+                }
+                else
+                {
+                    var jobj = JObject.Parse(content);
+                    jobj.Children()
+                        .OfType<JProperty>()
+                        .Iter(jProp =>
                         {
-                            var innerProps = _JsonReadToDict(jProp.Value.ToString(), jProp.Name);
-                            if (innerProps.Any())
+                            if (jProp.Value.ToString().Contains("{"))
                             {
-                                innerProps.Iter(d =>
-                                {
-                                    var keyToStore = d.Key;
-                                    if (dicCollector.ContainsKey(d.Key))
-                                    {
-                                        keyToStore = $"{keyToStore}_{Guid.NewGuid()}";
-                                    }
-                                    dicCollector.Add(parent.IsEmpty() ? keyToStore : $"{parent} - {keyToStore}", d.Value);
-                                });
+                                //Read all inner properties
+                                var innerProps = _JsonReadToDict(jProp.Value.ToString(), jProp.Name);
+                                dicCollector = _JsonInnerCollectionPropertyNameDuplicateNumberingLogic(dicCollector, innerProps, jProp, parent);
+                            }
+                            else if (jProp.Value.ToString().Trim().StartsWith("[") && jProp.Value.ToString().Trim().EndsWith("]"))
+                            {
+                                dicCollector.Add(_CalculateJsonKeyPropertyName(parent, jProp.Name),
+                                            string.Join(",", jProp
+                                                .Value
+                                                .ToString()
+                                                .SplitAndTrim(",")
+                                                .Select(s => s.ReplaceMultiple(string.Empty,
+                                                                    Environment.NewLine,
+                                                                    "[",
+                                                                    "]",
+                                                                    "\"").Trim())));
                             }
                             else
                             {
-                                dicCollector.Add(parent.IsEmpty() ? jProp.Name : $"{parent} - {jProp.Name}", jProp.Value.ToString());
+                                dicCollector.Add(_CalculateJsonKeyPropertyName(parent, jProp.Name), jProp.Value.ToString());
                             }
-                        }
-                        else
-                        {
-                            dicCollector.Add(parent.IsEmpty() ? jProp.Name : $"{parent} - {jProp.Name}", jProp.Value.ToString());
-                        }
-                    });
+                        });
+                }
             }
             catch (Exception ex)
             {

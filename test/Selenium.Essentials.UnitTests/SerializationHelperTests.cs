@@ -19,7 +19,7 @@ namespace Selenium.Essentials.UnitTests
         public void JsonToDictionaryShouldConvert()
         {
             var dictionary = SerializationHelper.JsonToDictionary(JsonPayloadContent);
-            dictionary.Count.Should().Be(10, "The total number of property does not match result in dictionary");
+            dictionary.Count.Should().Be(16, "The total number of property does not match result in dictionary");
         }
     }
 }
