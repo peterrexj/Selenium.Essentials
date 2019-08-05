@@ -27,6 +27,27 @@ Also comes with lots of extensions and helpers on different types which will hel
 - Serialization and Deserialization
 - Regular Expression, DateTime, String, Enumerable, Async
 
+# Benefits
+- Readable page objects which clearly defines what each control resemble in the browser
+- Custom controls with wrapped operations 
+ -- Checkbox - Check, UnCheck, IsChecked, more
+ -- Textbox - Custom clear and set operations (extented clear which will make sure the content is cleared by doing Ctrl+a and BackSpace) and Set operation to overcome some responsive issues
+ -- UnorderedList - Total, Items
+ -- Select - operations on SelectElement
+ -- Table - TotalColumns, TotalRows, ColumnNames, GeCellContent, GetRowPosition, GetColumnPosition, more
+ -- Collection - working with Driver.FindElements(...)
+ -- FileUpload - UploadFile
+ -- Button
+ -- WebControl - for all generic html control
+- WebElement and WebDriver extension methods for most of the 
+- Api framework to write integration tests
+-- Supports fluent 
+ -- Support most of the operations
+ -- Simple and easy to manage the tests
+- Extensions which provide many methods for automation engineering works
+-- String, RegEx, Enumerable, DatTime, Async, more
+- Helpers to load excel, serialization, Json to Dictonary, more
+- Attributes for test to load json and xml data
 
 # Documentation
 https://github.com/peterrexj/Selenium.Essentials/wiki
@@ -47,22 +68,31 @@ This is the conventional way to declare IWebElement (OLD WAY)
 private IWebElement _headerContent = _driver.FindElement(By.Id("chkAreYouRobot"));
 ```
 
-The below code show how to declare custom controls of type Checkbox. This clearly defines what control in the UI resemble and also contains its custom properties and methods.
+The below code show how to declare custom controls of type Checkbox. This clearly defines what control in the UI corresponds to and also contains its custom properties and methods.
+
+Add the `using` statement for this package
+
+```c#
+using Selenium.Essentials
+```
+
+Initialize the custom controls in your page objects. If you have existing page objects with IWebElement, then you can easily change by using the same selector and passing it to the new custom control.
+Remember, the driver is explicitly passed to the control, in order to have better control over the page objects if you intend to run the scripts in parallel, on the same machine.
 
 ```c#
 private CheckboxControl _userTypeCheck => new CheckboxControl(_driver, By.CssSelector("div.user h2"));
 ```
 
-To make an operation on this control for Check (tick the checkbox)
+To make an operation on this control, for example Check (tick the checkbox)
 
 ```c#
 public void CheckUserType() {
-  _userTypeCheck.WaitForElementVisible(errorMessage: "The User Type checkbox was not visible in the UI");
+  _userTypeCheck.WaitForElementVisible(errorMessage: "The User Type checkbox was not visible in the UI"); //This can be used as an assertions, and when not found, it will throw with an exception with "errorMessage" passed
   _userTypeCheck.Check();
 }
 ```
 
-Conditionally check if the element exist by waiting for 2 seconds and make a check operation if available
+Conditionally check if the element exist by waiting for maximum of 2 seconds and make a check operation if available. The below sample will not throw an exception if the control was not found in the browser, instead the `WaitForElementVisible` will return false after 2 seconds and will not go inside the `if` condition
 
 ```c#
 public void CheckUserType() {
@@ -71,6 +101,9 @@ public void CheckUserType() {
   }
 }
 ```
+
+Benefits
+
 
 Shows how the page object element looks like
 
@@ -85,28 +118,19 @@ private ButtonControl _loginBtn => new ButtonControl(_driver, By.Name("loginUser
 
 Custom control default properties and methods (few listed)
 
+| Properties      | Properties             | Methods                    | Methods       |  
+| -------------   | -----------------------|--------------------------- |---------------|
+| `IsReadonly`    | `Value`                | `GetAttribute(string)`     | `ScrollTo()`  | 
+| `IsDisabled`    | `Text`        				 | `Click()`                  | `Clear()`     |
+| `IsEnabled`     | `ElementId`            | `WaitAndClick(int)`        | `Highlight()` |
+| `IsVisible`     | `Class`                | `ScrollAndClick()`         |               |
+| `CssDisplayed`  | `Classes`              | `ClickByJsScript()`        |               |
+| `IsDisplayed`   | `Driver`               | `WaitClickAndIgnoreError()`|               |
+| `IsHidden`      | `RawElement`           | `SendKeys()`               |               |
+| `Exists`        | `ParentControl`        | `SendEnter()`              |               |
+| `XpathSelector` | `ParentRawElement`     | `SendTab()`                |               |
+| `By`            |                        | `SetFocusByJavascript()`   |               |
 
-| Properties      | Description                        | Methods                    | Description       |  
-| -------------   | ---------------------------------- |--------------------------- |-------------------|
-| `IsReadonly`    | Element is readonly                | `GetAttribute(string)`     |                   | 
-| `IsDisabled`    |         						               | `Click()`                  |                   |
-| `IsEnabled`     |                                    | `WaitAndClick(int)`        |                   |
-| `IsVisible`     |                                    | `ScrollAndClick()`         |                   |
-| `CssDisplayed`  |                                    | `ClickByJsScript()`        |                   |
-| `IsDisplayed`   |                                    | `WaitClickAndIgnoreError()`|                   |
-| `IsHidden`      |                                    | `SendKeys()`               |                   |
-| `Exists`        |                                    | `SendEnter()`              |                   |
-| `Value`         |                                    | `SendTab()`                |                   |
-| `Text`          |                                    | `ScrollTo()`               |                   |
-| `Class`         |                                    | `Clear()`                  |                   |
-| `Classes`       |                                    | `Highlight()`              |                   |
-| `XpathSelector` |                                    | `SetFocusByJavascript()`   |                   |
-| `Driver`        |                                    |                            |                   |
-| `RawElement`    |                                    |                            |                   |
-| `ParentControl` |                                    |                            |                   |
-| `ParentRawElement`|                                  |                            |                   |
-| `ElementId`     |                                    |                            |                   |
-| `By`            |                                    |                            |                   |
-
+Most of the above operations are also added to IWebElement as extension methods
 
 # Useful resource
