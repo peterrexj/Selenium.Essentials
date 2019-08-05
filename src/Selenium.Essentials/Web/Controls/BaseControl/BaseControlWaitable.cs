@@ -228,7 +228,7 @@ namespace Selenium.Essentials
         /// <summary>
         /// Wait until the text on the element after trim, starts with one of the element in the collection of text passed for match
         /// </summary>
-        /// <param name="textsToMatch">text that will be used for the match</param>
+        /// <param name="textsToMatch">text collection that will be used for the match</param>
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
@@ -238,7 +238,7 @@ namespace Selenium.Essentials
         /// <summary>
         /// Wait until the text on the element after trim, starts with one of the element in the collection of text passed for match
         /// </summary>
-        /// <param name="textsToMatch">text that will be used for the match</param>
+        /// <param name="textsToMatch">text colletion that will be used for the match</param>
         /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
@@ -257,7 +257,7 @@ namespace Selenium.Essentials
         /// <summary>
         /// Wait until the text on the element contains the text passed for match
         /// </summary>
-        /// <param name="textToMatch"></param>
+        /// <param name="textToMatch">text that will be used for the match</param>
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
@@ -267,7 +267,7 @@ namespace Selenium.Essentials
         /// <summary>
         /// Wait until the text on the element contains the text passed for match
         /// </summary>
-        /// <param name="textToMatch"></param>
+        /// <param name="textToMatch">text that will be used for the match</param>
         /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
@@ -285,7 +285,7 @@ namespace Selenium.Essentials
         /// <summary>
         /// Wait until the text on the element contains one of the element in the collection of text passed for match
         /// </summary>
-        /// <param name="textsToMatch">text that will be used for the match</param>
+        /// <param name="textsToMatch">text collection that will be used for the match</param>
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
@@ -295,7 +295,7 @@ namespace Selenium.Essentials
         /// <summary>
         /// Wait until the text on the element contains one of the element in the collection of text passed for match
         /// </summary>
-        /// <param name="textsToMatch">text that will be used for the match</param>
+        /// <param name="textsToMatch">text collection that will be used for the match</param>
         /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
@@ -318,6 +318,14 @@ namespace Selenium.Essentials
         /// <returns>true when the condition is met or else returns false</returns>
         public bool WaitForElementHasSomeText(bool throwExceptionWhenNotFound = true, string errorMessage = null)
             => WaitForElementHasSomeText(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+
+        /// <summary>
+        /// Wait until the element has any text on it
+        /// </summary>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public bool WaitForElementHasSomeText(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
             => WebElementExtensions.WaitForElementHasSomeText(RawElement,
                 Driver,
