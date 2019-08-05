@@ -56,6 +56,11 @@ https://github.com/peterrexj/Selenium.Essentials/wiki
 
 Visual Studio 2017 or higher
 
+You need to know 
+- about the basics of writing test using Selenium (concept of IWebDriver, IWebElement and starting the driver)
+- know how to inspect and find elements (creating selectors)
+- know about the page object model
+
 # Install
 
 `nuget install Selenium.Essentials`
