@@ -9,6 +9,20 @@ namespace Selenium.Essentials
 {
     public static partial class WebElementExtensions
     {
+        /// <summary>
+        /// Wait generic method which will be called by every wait operation.
+        /// The method will determine the condition and parameters and returns accordingly
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="process">the process that will be used to satisfy the condition. For example, () => element.Text().HasValue() </param>
+        /// <param name="reasonForFailedCondition"></param>
+        /// <param name="whenConditionFailed"></param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         internal static bool WaitGeneric(this IWebElement element,
             IWebDriver driver,
             int waitTimeSec,
@@ -70,6 +84,14 @@ namespace Selenium.Essentials
         }
 
         #region Wait Enabled
+        /// <summary>
+        /// Wait until the element is enabled 
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementEnabled(this IWebElement element,
             IWebDriver driver,
             bool throwExceptionWhenNotFound = true,
@@ -80,6 +102,16 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the element is enabled 
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementEnabled(
             this IWebElement element,
             IWebDriver driver,
@@ -98,6 +130,14 @@ namespace Selenium.Essentials
         #endregion
 
         #region Visible
+        /// <summary>
+        /// Wait until the element is visible
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementVisible(this IWebElement element,
             IWebDriver driver,
             bool throwExceptionWhenNotFound = true,
@@ -108,6 +148,16 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the element is visible
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementVisible(
             this IWebElement element,
             IWebDriver driver,
@@ -126,6 +176,14 @@ namespace Selenium.Essentials
         #endregion
 
         #region Exsits
+        /// <summary>
+        /// Wait until the element exists
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementExists(this IWebElement element,
             IWebDriver driver,
             bool throwExceptionWhenNotFound = true,
@@ -136,6 +194,16 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the element exists
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementExists(
             this IWebElement element,
             IWebDriver driver,
@@ -154,6 +222,14 @@ namespace Selenium.Essentials
         #endregion
 
         #region CssDisplayed
+        /// <summary>
+        /// Wait until the element is Css Displayed (display: none not applied)
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementCssDisplayed(this IWebElement element,
             IWebDriver driver,
             bool throwExceptionWhenNotFound = true,
@@ -164,6 +240,16 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the element is Css Displayed (display: none not applied)
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementCssDisplayed(
             this IWebElement element,
             IWebDriver driver,
@@ -182,6 +268,14 @@ namespace Selenium.Essentials
         #endregion
 
         #region Invisible
+        /// <summary>
+        /// Wait until the element is not visible 
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementInvisible(this IWebElement element,
             IWebDriver driver,
             bool throwExceptionWhenNotFound = true,
@@ -192,6 +286,16 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the element is not visible 
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementInvisible(
             this IWebElement element,
             IWebDriver driver,
@@ -209,6 +313,14 @@ namespace Selenium.Essentials
         #endregion
 
         #region Clickable
+        /// <summary>
+        /// Wait until the element is clickable
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementIsClickable(this IWebElement element,
             IWebDriver driver,
             bool throwExceptionWhenNotFound = true,
@@ -219,6 +331,16 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the element is clickable
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementIsClickable(
             this IWebElement element,
             IWebDriver driver,
@@ -236,6 +358,15 @@ namespace Selenium.Essentials
         #endregion
 
         #region Text trim equals
+        /// <summary>
+        /// Wait until the text on the element after trim is equal to the text passed for match
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="textToMatch">text that will be used for the match</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementTextTrimEquals(this IWebElement element,
             IWebDriver driver,
             string textToMatch,
@@ -248,6 +379,17 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the text on the element after trim is equal to the text passed for match
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="textToMatch">text that will be used for the match</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementTextTrimEquals(
             this IWebElement element,
             IWebDriver driver,
@@ -266,6 +408,15 @@ namespace Selenium.Essentials
         #endregion
 
         #region Text starts with
+        /// <summary>
+        /// Wait until the text on the element after trim is starts with the text passed for match
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="textToMatch">text that will be used for the match</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementTextStartsWith(this IWebElement element,
             IWebDriver driver,
             string textToMatch,
@@ -278,6 +429,17 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the text on the element after trim is starts with the text passed for match
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="textToMatch">text that will be used for the match</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementTextStartsWith(
             this IWebElement element,
             IWebDriver driver,
@@ -296,6 +458,15 @@ namespace Selenium.Essentials
         #endregion
 
         #region Text collection starts with
+        /// <summary>
+        /// Wait until the text on the element after trim, starts with one of the element in the collection of text passed for match
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="textsToMatch">text collection that will be used for the match</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementTextStartsWith(this IWebElement element,
             IWebDriver driver,
             string[] textsToMatch,
@@ -308,6 +479,17 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the text on the element after trim, starts with one of the element in the collection of text passed for match
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="textsToMatch">text collection that will be used for the match</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementTextStartsWith(
             this IWebElement element,
             IWebDriver driver,
@@ -326,6 +508,15 @@ namespace Selenium.Essentials
         #endregion
 
         #region Text contains
+        /// <summary>
+        /// Wait until the text on the element contains the text passed for match
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="textToMatch">text that will be used for the match</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementTextContains(this IWebElement element,
             IWebDriver driver,
             string textToMatch,
@@ -338,6 +529,17 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the text on the element contains the text passed for match
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="textToMatch">text that will be used for the match</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementTextContains(
             this IWebElement element,
             IWebDriver driver,
@@ -356,6 +558,15 @@ namespace Selenium.Essentials
         #endregion
 
         #region Text collection contains
+        /// <summary>
+        /// Wait until the text on the element contains one of the element in the collection of text passed for match
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="textsToMatch">text collection that will be used for the match</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementTextContains(this IWebElement element,
             IWebDriver driver,
             string[] textsToMatch,
@@ -368,6 +579,17 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the text on the element contains one of the element in the collection of text passed for match
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="textsToMatch">text collection that will be used for the match</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementTextContains(
             this IWebElement element,
             IWebDriver driver,
@@ -385,7 +607,15 @@ namespace Selenium.Essentials
                     baseControl: baseControl);
         #endregion
 
-        #region Text collection contains
+        #region Element has some text
+        /// <summary>
+        /// Wait until the element has any text on it
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementHasSomeText(this IWebElement element,
             IWebDriver driver,
             bool throwExceptionWhenNotFound = true,
@@ -396,6 +626,16 @@ namespace Selenium.Essentials
                     throwExceptionWhenNotFound,
                     errorMessage);
 
+        /// <summary>
+        /// Wait until the element has any text on it
+        /// </summary>
+        /// <param name="element">element (IWebElement) for which the operation is performed</param>
+        /// <param name="driver">driver (IWebDriver) associated with the element</param>
+        /// <param name="waitTimeSec">total amount of time to wait (in seconds) to meet the condition</param>
+        /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
+        /// <param name="errorMessage">message for the exception when condition is not met</param>
+        /// <param name="baseControl">the custom control associated with this IWebElement (element). The custom control can be passed as null if it is not associated</param>
+        /// <returns>true when the condition is met or else returns false</returns>
         public static bool WaitForElementHasSomeText(
             this IWebElement element,
             IWebDriver driver,
