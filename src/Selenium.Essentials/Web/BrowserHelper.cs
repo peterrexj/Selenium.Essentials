@@ -76,12 +76,14 @@ namespace Selenium.Essentials
         {
             get
             {
-
-                _internetExplorerOptions = new InternetExplorerOptions
+                if (_internetExplorerOptions == null)
                 {
-                    IgnoreZoomLevel = false,
-                    IntroduceInstabilityByIgnoringProtectedModeSettings = true
-                };
+                    _internetExplorerOptions = new InternetExplorerOptions
+                    {
+                        IgnoreZoomLevel = false,
+                        IntroduceInstabilityByIgnoringProtectedModeSettings = true
+                    };
+                }
                 return _internetExplorerOptions;
             }
             set

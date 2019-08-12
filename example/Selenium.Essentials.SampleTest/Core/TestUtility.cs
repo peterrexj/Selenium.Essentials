@@ -48,17 +48,11 @@ namespace Selenium.Essentials.SampleTest
         /// <param name="browserType"></param>
         public static void InitializeDriver(string browserType)
         {
-            var openLocalBrowser = true; //variable to determine local browser
+            var openLocalBrowser = Utility.Runtime.IsInDebugMode; //variable to determine local browser
             BrowserCapabilitiesModal browserCapability = null;
 
             var pathToBrowserCapabilities = EnvData["PathToBrowserCapabilities"];
-
-            if (Utility.Runtime.IsInDebugMode)
-            {
-                openLocalBrowser = true;
-            }
-            //not in debug and contains browser capabilities
-            else if (StorageHelper.Exists(StorageHelper.GetAbsolutePath(pathToBrowserCapabilities)))
+            if (!openLocalBrowser && StorageHelper.Exists(StorageHelper.GetAbsolutePath(pathToBrowserCapabilities)))
             {
                 var capabilities = SerializationHelper.DeSerializeFromJsonFile<List<BrowserCapabilitiesModal>>(pathToBrowserCapabilities);
                 browserCapability = capabilities.FirstOrDefault(c => c.CapabilityName.EqualsIgnoreCase(browserType));
@@ -68,7 +62,7 @@ namespace Selenium.Essentials.SampleTest
                 }
             }
 
-            if (openLocalBrowser || browserCapability == null)
+            if (openLocalBrowser)
             {
                 TestContextHelper.Set("Driver", BrowserHelper.GetChromeBrowser());
                 TestContextHelper.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(EnvData["PageLoadTimeoutInSeconds"].ToInteger());
