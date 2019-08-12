@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -159,6 +160,25 @@ namespace Selenium.Essentials
             service.HideCommandPromptWindow = true;
 
             return new InternetExplorerDriver(service, InternetExplorerOptions);
+        }
+        public IWebDriver GetRemoteDriver(RemoteDriverAccessModel remoteDriverAccessModel)
+        {
+            if (remoteDriverAccessModel == null)
+                return null;
+
+            var capabilities = new DesiredCapabilities();
+
+            if (remoteDriverAccessModel.Capabilities != null)
+            {
+                foreach (var capability in remoteDriverAccessModel.Capabilities)
+                {
+                    capabilities.SetCapability(capability.Key, capability.Value);
+                }
+            }
+            var driver = new RemoteWebDriver(new Uri(remoteDriverAccessModel.RemoteHubUrl), 
+                capabilities, 
+                TimeSpan.FromSeconds(remoteDriverAccessModel.CommandTimeoutInSeconds));
+            return driver;
         }
 
         public static BrowserType GetBrowserType(string browserName)

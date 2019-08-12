@@ -37,6 +37,9 @@
     <None Update="DataSource\EnvironmentData\Local\EnvData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="DataSource\EnvironmentData\SauceLabs\BrowserCapabilities.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="DataSource\EnvironmentData\SauceLabs\EnvData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

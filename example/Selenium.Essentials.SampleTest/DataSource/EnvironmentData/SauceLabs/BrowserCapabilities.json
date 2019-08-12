@@ -1,3 +1,23 @@
-{
-  "Safari": ""
-}
+[
+  {
+    "CapabilityName": "Safari_Mac10.13_v11.1_r1024x768",
+    "BrowserName": "Safari",
+    "Platform": "macOS 10.13",
+    "Version": "11.1",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Chrome_Win10_v76.0_r1024x768",
+    "BrowserName": "Chrome",
+    "Platform": "Windows 10",
+    "Version": "76.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Chrome_Win10_v76.0_r1152x864",
+    "BrowserName": "Chrome",
+    "Platform": "Windows 10",
+    "Version": "76.0",
+    "ScreenResolution": "1152x864"
+  }
+]
