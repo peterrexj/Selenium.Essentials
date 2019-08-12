@@ -9,13 +9,13 @@ namespace Selenium.Essentials.SampleTest.Core
     public class WebUnitTestBase : TestApiBase
     {
         [SetUp]
-        public void Setup()
+        public static void Setup()
         {
             Utility.InitializeFramework();
         }
 
         [TearDown]
-        public void TearDown()
+        public static void TearDown()
         {
             var passed = TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Passed;
             TestContextHelper.Driver.ExecuteJavaScript("sauce:job-result=" + (passed ? "passed" : "failed"), supressErrors: true);

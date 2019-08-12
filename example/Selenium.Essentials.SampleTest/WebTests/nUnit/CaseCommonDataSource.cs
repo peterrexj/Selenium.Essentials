@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Selenium.Essentials.SampleTest.WebTests.nUnit
 {
-    public class CaseCommonDataSource
+    public static class CaseCommonDataSource
     {
         /// <summary>
         /// Returns all the browser capabilities as test case source. It also includes the additional parameters that is 

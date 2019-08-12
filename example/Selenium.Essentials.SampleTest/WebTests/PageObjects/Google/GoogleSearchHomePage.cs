@@ -7,11 +7,11 @@ namespace Selenium.Essentials.SampleTest.WebTests.PageObjects.Google
 {
     public class GoogleSearchHomePage : PageBase
     {
-        private string _url = "https://www.google.com";
+        private readonly string _url = "https://www.google.com";
 
         public GoogleSearchHomePage(IWebDriver driver) : base(driver) { }
 
-        public override void Navigate(string path = "")
+        public void Navigate()
         {
             base.Navigate(_url);
         }

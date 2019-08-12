@@ -68,34 +68,36 @@ namespace Selenium.Essentials.SampleTest
                 }
             }
 
-            if (openLocalBrowser)
+            if (openLocalBrowser || browserCapability == null)
             {
-                TestContextHelper.Set("Driver", new BrowserHelper().GetChromeBrowser());
-                TestContextHelper.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(TestUtility.EnvData["PageLoadTimeoutInSeconds"].ToInteger());
-            }
-            else if (browserCapability != null)
-            {
-                var remoteDriverModel = new RemoteDriverAccessModel
-                {
-                    RemoteHubUrl = TestUtility.EnvData["SauceLabsRemoteHubUrl"],
-                    CommandTimeoutInSeconds = TestUtility.EnvData["PageLoadTimeoutInSeconds"].ToInteger(),
-                    Capabilities = new Dictionary<string, string>
-                    {
-                        { "username", TestUtility.EnvData["SauceLabsUsername"] },
-                        { "accessKey", TestUtility.EnvData["SauceLabsAccessKey"] },
-                        { "browserName", browserCapability.BrowserName },
-                        { "platform", browserCapability.Platform },
-                        { "version", browserCapability.Version },
-                        { "screenResolution", browserCapability.ScreenResolution },
-                        { "name", TestContext.CurrentContext.Test.Name }
-                    }
-                };
-
-                TestContextHelper.Set("Driver", new BrowserHelper().GetRemoteDriver(remoteDriverModel));
+                TestContextHelper.Set("Driver", BrowserHelper.GetChromeBrowser());
+                TestContextHelper.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(EnvData["PageLoadTimeoutInSeconds"].ToInteger());
             }
             else
             {
-                Assert.IsTrue(false, "The browser initialization failed as was not to determine which browser to open");
+                if (browserCapability != null)
+                {
+                    var remoteDriverModel = new RemoteDriverAccessModel
+                    {
+                        RemoteHubUrl = EnvData["SauceLabsRemoteHubUrl"],
+                        CommandTimeoutInSeconds = EnvData["PageLoadTimeoutInSeconds"].ToInteger(),
+                        Capabilities = new Dictionary<string, string>
+                        {
+                            { "username", EnvData["SauceLabsUsername"] },
+                            { "accessKey", EnvData["SauceLabsAccessKey"] },
+                            { "browserName", browserCapability.BrowserName },
+                            { "platform", browserCapability.Platform },
+                            { "version", browserCapability.Version },
+                            { "screenResolution", browserCapability.ScreenResolution },
+                            { "name", TestContext.CurrentContext.Test.Name }
+                        }
+                    };
+                    TestContextHelper.Set("Driver", BrowserHelper.GetRemoteDriver(remoteDriverModel));
+                }
+                else
+                {
+                    Assert.IsTrue(false, "The browser initialization failed as was not to determine which browser to open");
+                }
             }
         }
     }

@@ -14,7 +14,7 @@ namespace Selenium.Essentials.SampleTest.WebTests.nUnit
             new object[] { "Microsoft Support, Microsoft Software Support and Product Help" })]
         [TestCaseSource(typeof(CaseCommonDataSource), "BrowserCapabilitiesWithAdditionalParams", 
             new object[] { "nuget package docs, NuGet Documentation | Microsoft Docs" })]
-        public void GoogleSearch(string browserType, string searchText, string searchResultExpectedHeader)
+        public static void GoogleSearch(string browserType, string searchText, string searchResultExpectedHeader)
         {
             TestUtility.InitializeDriver(browserType);
             GoogleSearchHomePage googleSearchHomePage = new GoogleSearchHomePage(TestContextHelper.Driver);

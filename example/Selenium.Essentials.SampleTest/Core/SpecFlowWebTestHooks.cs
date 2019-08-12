@@ -8,17 +8,17 @@ namespace Selenium.Essentials.SampleTest.Core
         [BeforeScenario]
         public void BeforeScenario()
         {
-            new WebUnitTestBase().Setup();
+            WebUnitTestBase.Setup();
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            new WebUnitTestBase().TearDown();
+            WebUnitTestBase.TearDown();
         }
 
         [Given(@"I open a new browser of type (.*)")]
-        public void GivenIOpenANewBrowserOfTypeChrome(string browserType)
+        public static void GivenIOpenANewBrowserOfTypeChrome(string browserType)
         {
             TestUtility.InitializeDriver(browserType);
         }
