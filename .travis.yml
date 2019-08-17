@@ -8,3 +8,8 @@ script:
  - cd src/Selenium.Essentials
  - dotnet restore 
  - dotnet build
+
+addons:
+  sauce_connect:
+    username: peterrexj
+    access_key: d2d0caa7-58c6-414d-9107-9a54297cfbdf
