@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Selenium.Essentials.SampleTest.Core;
@@ -13,7 +14,7 @@ namespace Selenium.Essentials.SampleTest
 {
     public static class TestUtility
     {
-        public static ConcurrentDictionary<string, IWebDriver> SessionDrivers = new ConcurrentDictionary<string, IWebDriver>();
+        public readonly static ConcurrentDictionary<string, IWebDriver> SessionDrivers = new ConcurrentDictionary<string, IWebDriver>();
 
         private static Dictionary<string, string> _envData;
 
@@ -101,8 +102,9 @@ namespace Selenium.Essentials.SampleTest
             }
             if (SessionDrivers.ContainsKey(TestContext.CurrentContext.Test.Name))
             {
-                driver.CloseDriver();
-                throw new Exception($"Driver already initiated for test: [{TestContext.CurrentContext.Test.Name}] with session id [{(driver as RemoteWebDriver).SessionId.ToString()}]");
+                driver?.CloseDriver();
+                SessionDrivers.ContainsKey(TestContext.CurrentContext.Test.Name)
+                    .Should().BeFalse($"Driver already initiated for test: [{TestContext.CurrentContext.Test.Name}] with session id [{(driver as RemoteWebDriver).SessionId.ToString()}]");
             }
             else
             {
