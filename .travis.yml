@@ -8,8 +8,8 @@ script:
  - cd src/Selenium.Essentials
  - dotnet restore 
  - dotnet build
- - cd /
- - dotnet test test/Selenium.Essentials.UnitTests/Selenium.Essentials.UnitTests.csproj
+ - cd test
+ - dotnet test Selenium.Essentials.UnitTests/Selenium.Essentials.UnitTests.csproj
  
 addons:
   sauce_connect: true
