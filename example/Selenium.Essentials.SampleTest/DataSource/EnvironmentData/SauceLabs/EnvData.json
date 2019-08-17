@@ -3,7 +3,7 @@
   "SauceLabsRemoteHubUrl": "http://ondemand.saucelabs.com:80/wd/hub",
   "SauceLabsUsername": "peterrexj",
   "SauceLabsAccessKey": "d2d0caa7-58c6-414d-9107-9a54297cfbdf",
-  "PathToBrowserCapabilities": "DataSource\\EnvironmentData\\SauceLabs\\BrowserCapabilities.json",
+  "PathToBrowserCapabilities": "DataSource/EnvironmentData/SauceLabs/BrowserCapabilities.json",
   "PageLoadTimeoutInSeconds": 300,
   "WikipediaDomain": "https://en.wikipedia.org"
 }
