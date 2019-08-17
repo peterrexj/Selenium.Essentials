@@ -38,5 +38,10 @@ namespace Selenium.Essentials
                 return Directory.Exists(path);
             }
         }
+
+        public static string GetAbsolutePath(string path)
+        {
+            return Path.Combine(Utility.Runtime.ExecutingFolder, path);
+        }
     }
 }

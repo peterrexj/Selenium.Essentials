@@ -71,22 +71,31 @@ namespace Selenium.Essentials.SampleTest.WebTests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Land to Wikipedia and see today\'s feature")]
+        [NUnit.Framework.DescriptionAttribute("Navigate to Wikipedia and verify today\'s feature")]
         [NUnit.Framework.CategoryAttribute("wikipedia")]
-        public virtual void LandToWikipediaAndSeeTodaysFeature()
+        [NUnit.Framework.TestCaseAttribute("Safari_Mac10.13_v11.1_r1024x768", null)]
+        [NUnit.Framework.TestCaseAttribute("Chrome_Win10_v76.0_r1024x768", null)]
+        public virtual void NavigateToWikipediaAndVerifyTodaysFeature(string browser, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Land to Wikipedia and see today\'s feature", null, new string[] {
-                        "wikipedia"});
+            string[] @__tags = new string[] {
+                    "wikipedia"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Navigate to Wikipedia and verify today\'s feature", null, @__tags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 8
- testRunner.Given("I have navigated to Wikipedia", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("I open a new browser of type {0}", browser), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
- testRunner.When("I have selected Wikipedia Main Page tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I have navigated to Wikipedia", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
- testRunner.Then("I should see the Wikipedia Welcome content", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I have selected Wikipedia Main Page tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
+ testRunner.Then("I should see the Wikipedia Welcome content", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 12
  testRunner.And("I should see the Wikipedia today\'s feature", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

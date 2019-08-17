@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,24 +25,12 @@ namespace Selenium.Essentials
         Safari,
     }
 
-    public class BrowserHelper
+    public static class BrowserHelper
     {
-        public string DriverFolder { get; set; }
+        public static string DriverFolder { get; set; } = Utility.Runtime.ExecutingFolder;
 
-        public BrowserHelper(string driverFolder = "")
-        {
-            if (driverFolder.HasValue() && Directory.Exists(driverFolder))
-            {
-                DriverFolder = driverFolder;
-            }
-            else
-            {
-                DriverFolder = Utility.Runtime.ExecutingFolder;
-            }
-        }
-
-        private ChromeOptions _chromeOptions;
-        public ChromeOptions ChromeOptions
+        private static ChromeOptions _chromeOptions;
+        public static ChromeOptions ChromeOptions
         {
             get
             {
@@ -62,8 +51,8 @@ namespace Selenium.Essentials
             }
         }
 
-        private FirefoxOptions _firefoxOptions;
-        public FirefoxOptions FirefoxOptions
+        private static FirefoxOptions _firefoxOptions;
+        public static FirefoxOptions FirefoxOptions
         {
             get
             {
@@ -82,17 +71,19 @@ namespace Selenium.Essentials
 
         }
 
-        private InternetExplorerOptions _internetExplorerOptions;
-        public InternetExplorerOptions InternetExplorerOptions
+        private static InternetExplorerOptions _internetExplorerOptions;
+        public static InternetExplorerOptions InternetExplorerOptions
         {
             get
             {
-
-                _internetExplorerOptions = new InternetExplorerOptions
+                if (_internetExplorerOptions == null)
                 {
-                    IgnoreZoomLevel = false,
-                    IntroduceInstabilityByIgnoringProtectedModeSettings = true
-                };
+                    _internetExplorerOptions = new InternetExplorerOptions
+                    {
+                        IgnoreZoomLevel = false,
+                        IntroduceInstabilityByIgnoringProtectedModeSettings = true
+                    };
+                }
                 return _internetExplorerOptions;
             }
             set
@@ -101,7 +92,7 @@ namespace Selenium.Essentials
             }
         }
 
-        public IWebDriver GetDriver(BrowserType browserType)
+        public static IWebDriver GetDriver(BrowserType browserType)
         {
             switch (browserType)
             {
@@ -119,8 +110,7 @@ namespace Selenium.Essentials
                     return GetChromeBrowser();
             }
         }
-
-        public IWebDriver GetChromeBrowser()
+        public static IWebDriver GetChromeBrowser()
         {
             var chromeService = ChromeDriverService.CreateDefaultService(DriverFolder);
             chromeService.HideCommandPromptWindow = true;
@@ -134,8 +124,8 @@ namespace Selenium.Essentials
                 return new ChromeDriver(chromeService, ChromeOptions);
             }
         }
-        public IWebDriver GetEdgeBrowser() { return null; }
-        public IWebDriver GetFirefoxBrowser()
+        public static IWebDriver GetEdgeBrowser() { return null; }
+        public static IWebDriver GetFirefoxBrowser()
         {
             InstalledBrowsers
                 .Any(d =>
@@ -152,13 +142,34 @@ namespace Selenium.Essentials
 
             return new FirefoxDriver(service, FirefoxOptions);
         }
-        public IWebDriver GetSafariBrowser() { return null; }
-        public IWebDriver GetInternetExplorerBrowser()
+        public static IWebDriver GetSafariBrowser() { return null; }
+        public static IWebDriver GetInternetExplorerBrowser()
         {
             var service = InternetExplorerDriverService.CreateDefaultService(DriverFolder);
             service.HideCommandPromptWindow = true;
 
             return new InternetExplorerDriver(service, InternetExplorerOptions);
+        }
+        public static IWebDriver GetRemoteDriver(RemoteDriverAccessModel remoteDriverAccessModel)
+        {
+            if (remoteDriverAccessModel == null)
+            {
+                return null;
+            }
+
+            var capabilities = new DesiredCapabilities();
+
+            if (remoteDriverAccessModel.Capabilities != null)
+            {
+                foreach (var capability in remoteDriverAccessModel.Capabilities)
+                {
+                    capabilities.SetCapability(capability.Key, capability.Value);
+                }
+            }
+            var driver = new RemoteWebDriver(new Uri(remoteDriverAccessModel.RemoteHubUrl), 
+                capabilities, 
+                TimeSpan.FromSeconds(remoteDriverAccessModel.CommandTimeoutInSeconds));
+            return driver;
         }
 
         public static BrowserType GetBrowserType(string browserName)

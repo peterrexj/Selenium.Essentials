@@ -16,14 +16,14 @@ namespace Selenium.Essentials
         private CollectionControl _bodyColumnControls => new CollectionControl(Driver, By.CssSelector("tbody>tr>th"), parentControl: this);
         private CollectionControl _headerColumnControls => new CollectionControl(Driver, By.CssSelector("thead>tr>th"), parentControl: this);
 
-        private IList<string> _headerColumns => _headerColumnControls.Get();
-        private IList<string> _bodyColumns => _bodyColumnControls.Get();
-        private IList<string> _columnNames;
-        public int TotalColumns => ColumnNames.Count;
+        private IEnumerable<string> _headerColumns => _headerColumnControls.Get();
+        private IEnumerable<string> _bodyColumns => _bodyColumnControls.Get();
+        private IEnumerable<string> _columnNames;
+        public int TotalColumns => ColumnNames.Count();
         public int TotalBodyColumns => _bodyColumnControls.Total;
         public int TotalRows => _bodyRowControls.Total;
 
-        public IList<string> ColumnNames
+        public IEnumerable<string> ColumnNames
         {
             get
             {

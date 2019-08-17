@@ -40,7 +40,7 @@ namespace Selenium.Essentials
         /// <summary>
         /// Total number of visible elements matching the selector
         /// </summary>
-        public int Total => Enumerable.Range(1, TotalRaw).Count(pos => Item(pos).IsDisplayed && Item(pos).CssDisplayed);
+        public int Total => Driver.FindElements(By).Count(e => e.IsVisible());
 
         /// <summary>
         /// Get the control of type T at the given position which match in the UI 
@@ -51,7 +51,7 @@ namespace Selenium.Essentials
         public T Item<T>(int position) where T : BaseControl
         {
             (position <= TotalRaw).Should()
-                .BeTrue($"The requested item position [{position}] is greater than the total items [{TotalRaw}] available in the UI now");
+               .BeTrue($"The requested item position [{position}] is greater than the total items [{TotalRaw}] available in the UI now");
 
             var xpath = Driver.FindElements(By).Skip(position - 1).First().GetElementXPath(Driver, _excludeIdChecksForXpathCalculation);
 
@@ -96,20 +96,39 @@ namespace Selenium.Essentials
         /// </summary>
         /// <param name="position">Position of the element as visible in the UI</param>
         /// <returns></returns>
-        public string Get(int position) => Item(position).Value ?? Item(position).Text;
+        public string Get(int position) => Item(position).Text;
 
         /// <summary>
         /// Get value of all the elements available in the UI matching the selector
         /// </summary>
         /// <returns>Collection of string value extracted from each element</returns>
-        public IList<string> Get() => Enumerable.Range(1, Total).Select(Get).ToList();
+        public IEnumerable<string> Get()
+        {
+            var currentTotal = Total;
+            for (int i = 1; i <= currentTotal; i++)
+            {
+                yield return Get(i);
+            }
+        }
 
         /// <summary>
         /// Finds the element position based on the text it contains
         /// </summary>
         /// <param name="valueToSearch">Value to match</param>
         /// <returns>Position of the element as visible in the UI</returns>
-        public int FindPositionByText(string valueToSearch) => Get().Select(item => item.ToLower()).ToList().IndexOf(valueToSearch.ToLower()) + 1;
+        public int FindPositionByText(string valueToSearch)
+        {
+            var currentTotal = Total;
+
+            for (int i = 1; i <= currentTotal; i++)
+            {
+                if (Get(i).EqualsIgnoreCase(valueToSearch))
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
 
         /// <summary>
         /// Waits till the element on the position is available in the UI
@@ -120,10 +139,12 @@ namespace Selenium.Essentials
         /// <param name="errorMessage">Error message text when the element is not found</param>
         public void WaitForElementVisible(int position, int waitTimeSec = 0, bool throwExceptionWhenNotFound = true, string errorMessage = "")
         {
-            (Total == 0 && position > 1).Should()
-                .BeFalse($"The are no UI elements matching and you have requested for {position} to appear");
+            var currentTotal = Total;
 
-            if (Total == 0) //If there are no such element in the UI then wait for the first one to appear
+            (currentTotal == 0 && position > 1).Should()
+               .BeFalse($"The are no UI elements matching and you have requested for {position} to appear");
+
+            if (currentTotal == 0) //If there are no such element in the UI then wait for the first one to appear
             {
                 RawElement.WaitGeneric(driver: Driver,
                     waitTimeSec: waitTimeSec,

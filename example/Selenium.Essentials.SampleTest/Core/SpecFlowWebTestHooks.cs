@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 
 namespace Selenium.Essentials.SampleTest.Core
 {
@@ -11,19 +8,19 @@ namespace Selenium.Essentials.SampleTest.Core
         [BeforeScenario]
         public void BeforeScenario()
         {
-            Utility.InitializeFramework();
-
-            TestContextHelper.Set("Driver", new BrowserHelper().GetChromeBrowser());
-            TestContextHelper.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(TestUtility.EnvData["PageLoadTimeoutInSeconds"].ToInteger());
+            WebUnitTestBase.Setup();
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            if (TestContextHelper.Driver != null)
-            {
-                TestContextHelper.Driver.CloseDriver();
-            }
+            WebUnitTestBase.TearDown();
+        }
+
+        [Given(@"I open a new browser of type (.*)")]
+        public static void GivenIOpenANewBrowserOfTypeChrome(string browserType)
+        {
+            TestUtility.InitializeDriver(browserType);
         }
     }
 }

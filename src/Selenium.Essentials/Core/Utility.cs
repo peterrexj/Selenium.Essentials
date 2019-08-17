@@ -38,6 +38,7 @@ namespace Selenium.Essentials
             public static string CallingAssemblyFullPath => CallingAssembly?.Location;
             public static string CallingAssemblyFolder => Path.GetDirectoryName(CallingAssemblyFullPath);
             public static string CallingAssemblyNameWithNoExtension => Path.GetFileNameWithoutExtension(CallingAssemblyFullPath);
+            public static bool IsInDebugMode => System.Diagnostics.Debugger.IsAttached;
         }
 
         public static class AppConfig
