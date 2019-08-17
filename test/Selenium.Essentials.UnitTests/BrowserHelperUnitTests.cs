@@ -18,7 +18,7 @@ namespace Selenium.Essentials.UnitTests
         {
             BrowserHelper.InstalledBrowsers.Count
                 .Should()
-                .BeGreaterThan(0, because: "Expecting at least one browser is installed on the host computer");
+                .BeGreaterOrEqualTo(0, because: "Expecting at least one browser is installed on the host computer");
         }
 
         [Test]

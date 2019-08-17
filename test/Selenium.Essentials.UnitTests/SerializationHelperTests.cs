@@ -15,7 +15,7 @@ namespace Selenium.Essentials.UnitTests
         }
 
         [TestCase]
-        [PayloadDataJson(@"Data\dataSerializeToDictionary.json")]
+        [PayloadDataJson(@"Data/dataSerializeToDictionary.json")]
         public void JsonToDictionaryShouldConvert()
         {
             var dictionary = SerializationHelper.JsonToDictionary(JsonPayloadContent);
