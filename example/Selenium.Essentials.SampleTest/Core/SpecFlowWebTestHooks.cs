@@ -3,24 +3,22 @@
 namespace Selenium.Essentials.SampleTest.Core
 {
     [Binding]
-    public class SpecFlowWebTestHooks
+    public class SpecFlowWebTestHooks : WebUnitTestBase
     {
+        private WebTests.PageObjects.Wikipedia.MainPage _wikiMainPage;
+        protected WebTests.PageObjects.Wikipedia.MainPage WikipediaMainPage => 
+            _wikiMainPage ?? (_wikiMainPage = new WebTests.PageObjects.Wikipedia.MainPage(_driver));
+
         [BeforeScenario]
         public void BeforeScenario()
         {
-            WebUnitTestBase.Setup();
+            Setup();
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            WebUnitTestBase.TearDown();
-        }
-
-        [Given(@"I open a new browser of type (.*)")]
-        public static void GivenIOpenANewBrowserOfTypeChrome(string browserType)
-        {
-            TestUtility.InitializeDriver(browserType);
+            TearDown();
         }
     }
 }

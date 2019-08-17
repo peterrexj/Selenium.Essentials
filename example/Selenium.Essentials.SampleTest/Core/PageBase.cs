@@ -9,14 +9,6 @@ namespace Selenium.Essentials.SampleTest
     {
         protected IWebDriver _driver;
 
-        public PageBase()
-        {
-            if (TestContextHelper.Driver != null)
-            {
-                _driver = TestContextHelper.Driver;
-            }
-        }
-
         public PageBase(IWebDriver driver)
         {
             _driver = driver;
@@ -24,8 +16,8 @@ namespace Selenium.Essentials.SampleTest
 
         public virtual void Navigate(string path)
         {
-            TestContextHelper.Driver.Navigate().GoToUrl(path);
-            TestContextHelper.Driver.WaitTillPageLoad();
+            _driver.Navigate().GoToUrl(path);
+            _driver.WaitTillPageLoad();
         }
     }
 }

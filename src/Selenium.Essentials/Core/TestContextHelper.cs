@@ -31,19 +31,5 @@ namespace Selenium.Essentials
                 ContextObject.Remove(key);
             }
         }
-
-        public static IWebDriver Driver
-        {
-            get
-            {
-                if (Exists("Driver"))
-                {
-                    return Get<IWebDriver>("Driver");
-                }
-                return null;
-            }
-        }
     }
-
-
 }

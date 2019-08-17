@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
+using OpenQA.Selenium;
 using Selenium.Essentials.SampleTest.Core;
 using Selenium.Essentials.SampleTest.WebTests.PageObjects.Wikipedia;
 using System;
@@ -13,10 +14,10 @@ namespace Selenium.Essentials.SampleTest.WebTests.nUnit
     public class WikipediaTests : WebUnitTestBase
     {
         [TestCaseSource(typeof(CaseCommonDataSource), "BrowserCapabilities")]
-        public static void NavigateToWikipedia(string browserType)
+        public void NavigateToWikipedia(string browserType)
         {
-            TestUtility.InitializeDriver(browserType);
-            var _wikiMainPage = new MainPage(TestContextHelper.Driver);
+            _driver = TestUtility.InitializeDriver(browserType);
+            var _wikiMainPage = new MainPage(_driver);
             _wikiMainPage.Navigate();
         }
     }
