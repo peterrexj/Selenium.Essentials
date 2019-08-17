@@ -5,9 +5,8 @@ dotnet: 2.1.502
 dist: trusty
 
 script:
- - cd src/Selenium.Essentials
- - dotnet restore 
- - dotnet build
+ - dotnet restore src/Selenium.Essentials/Selenium.Essentials.sln
+ - dotnet build src/Selenium.Essentials/Selenium.Essentials.sln
  - dotnet test test/Selenium.Essentials.UnitTests/Selenium.Essentials.UnitTests.csproj
  
 addons:
