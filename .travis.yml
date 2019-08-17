@@ -8,6 +8,7 @@ script:
  - dotnet restore src/Selenium.Essentials/Selenium.Essentials.sln
  - dotnet build src/Selenium.Essentials/Selenium.Essentials.sln
  - dotnet test test/Selenium.Essentials.UnitTests/Selenium.Essentials.UnitTests.csproj
+ - dotnet test test/Selenium.Essentials.IntegrationTests/Selenium.Essentials.IntegrationTests.csproj
  
 addons:
   sauce_connect: true
