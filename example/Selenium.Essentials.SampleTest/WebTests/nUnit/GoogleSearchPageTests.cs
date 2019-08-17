@@ -8,6 +8,8 @@ using System.Text;
 
 namespace Selenium.Essentials.SampleTest.WebTests.nUnit
 {
+    [TestFixture]
+    [Parallelizable(ParallelScope.All)]
     public class GoogleSearchPageTests : WebUnitTestBase
     {
         [TestCaseSource(typeof(CaseCommonDataSource), "BrowserCapabilitiesWithAdditionalParams", 

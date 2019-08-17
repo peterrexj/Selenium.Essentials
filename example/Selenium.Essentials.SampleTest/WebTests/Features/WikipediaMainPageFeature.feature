@@ -1,4 +1,4 @@
-﻿Feature: WikipediaFeature
+﻿	Feature: WikipediaFeature
 	In order to get information
 	As a general user
 	I want to make sure wikipedia is working
