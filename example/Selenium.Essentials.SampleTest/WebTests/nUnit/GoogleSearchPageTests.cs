@@ -23,6 +23,15 @@ namespace Selenium.Essentials.SampleTest.WebTests.nUnit
             googleSearchHomePage.Navigate();
             googleSearchHomePage.SetTextToSearch(searchText);
             googleSearchHomePage.ClickToSearch();
+        }
+
+        public static void GooglewSearchWithNavigate(string browserType, string searchText, string searchResultExpectedHeader)
+        {
+            TestUtility.InitializeDriver(browserType);
+            GoogleSearchHomePage googleSearchHomePage = new GoogleSearchHomePage(TestContextHelper.Driver);
+            googleSearchHomePage.Navigate();
+            googleSearchHomePage.SetTextToSearch(searchText);
+            googleSearchHomePage.ClickToSearch();
 
             GoogleSearchResultPage googleSearchResultPage = new GoogleSearchResultPage(TestContextHelper.Driver);
             var contextToClickPosition = googleSearchResultPage.GetResultHeaderPosition(searchResultExpectedHeader);
