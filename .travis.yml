@@ -8,6 +8,7 @@ script:
  - cd src/Selenium.Essentials
  - dotnet restore 
  - dotnet build
+ - dotnet test
 
 addons:
   sauce_connect: true
