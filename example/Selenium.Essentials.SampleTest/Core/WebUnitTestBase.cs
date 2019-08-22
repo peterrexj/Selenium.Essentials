@@ -31,7 +31,6 @@ namespace Selenium.Essentials.SampleTest.Core
                     driver.CloseDriver();
                 }
                 TestUtility.SessionDrivers.TryRemove(TestContext.CurrentContext.Test.Name, out driver);
-                driver = null;
             }
         }
     }
