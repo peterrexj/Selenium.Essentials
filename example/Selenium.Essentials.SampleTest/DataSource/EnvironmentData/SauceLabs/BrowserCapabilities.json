@@ -33,5 +33,54 @@
     "Platform": "Windows 7",
     "Version": "76.0",
     "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Chrome_Linux_v48.0_r1024x768",
+    "BrowserName": "Chrome",
+    "Platform": "Linux",
+    "Version": "48.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "MsEdge_Win10_v16.16299_r1024x768",
+    "BrowserName": "MicrosoftEdge",
+    "Platform": "Windows 10",
+    "Version": "16.16299",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "MsEdge_Win10_v15.15063_r1024x768",
+    "BrowserName": "MicrosoftEdge",
+    "Platform": "Windows 10",
+    "Version": "15.15063",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "MsEdge_Win10_v14.14393_r1024x768",
+    "BrowserName": "MicrosoftEdge",
+    "Platform": "Windows 10",
+    "Version": "14.14393",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "MsEdge_Win10_v17.17134_r1024x768",
+    "BrowserName": "MicrosoftEdge",
+    "Platform": "Windows 10",
+    "Version": "17.17134",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "MsEdge_Win10_v13.10586_r1024x768",
+    "BrowserName": "MicrosoftEdge",
+    "Platform": "Windows 10",
+    "Version": "13.10586",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "MsEdge_Win10_v18.17763_r1024x768",
+    "BrowserName": "MicrosoftEdge",
+    "Platform": "Windows 10",
+    "Version": "18.17763",
+    "ScreenResolution": "1024x768"
   }
 ]
