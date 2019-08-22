@@ -7,8 +7,14 @@ using TechTalk.SpecFlow;
 namespace Selenium.Essentials.SampleTest.WebTests.Steps
 {
     [Binding]
-    internal class WikipediaMainPageSteps : FeatureStepsBase
+    internal class WikipediaMainPageSteps : SpecFlowWebTestHooks
     {
+        [Given(@"I open a new browser of type (.*)")]
+        public void GivenIOpenANewBrowserOfTypeChrome(string browserType)
+        {
+            _driver = TestUtility.InitializeDriver(browserType);
+        }
+
         [Given(@"I have navigated to Wikipedia")]
         public void GivenIHaveNavigatedToWikipedia()
         {

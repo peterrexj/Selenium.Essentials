@@ -1,6 +1,10 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using Selenium.Essentials.SampleTest.Core;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +14,19 @@ namespace Selenium.Essentials.SampleTest
 {
     public static class TestUtility
     {
+        private static ConcurrentDictionary<string, IWebDriver> _sessionDrivers;
+        public static ConcurrentDictionary<string, IWebDriver> SessionDrivers
+        {
+            get
+            {
+                if (_sessionDrivers == null)
+                {
+                    _sessionDrivers = new ConcurrentDictionary<string, IWebDriver>();
+                }
+                return _sessionDrivers;
+            }
+        }
+
         private static Dictionary<string, string> _envData;
 
         /// <summary>
@@ -46,10 +63,11 @@ namespace Selenium.Essentials.SampleTest
         /// browserType defined in that file, else will fall back to the local browser
         /// </summary>
         /// <param name="browserType"></param>
-        public static void InitializeDriver(string browserType)
+        public static IWebDriver InitializeDriver(string browserType)
         {
             var openLocalBrowser = Utility.Runtime.IsInDebugMode; //variable to determine local browser
             BrowserCapabilitiesModal browserCapability = null;
+            IWebDriver driver = null;
 
             var pathToBrowserCapabilities = EnvData["PathToBrowserCapabilities"];
             if (!openLocalBrowser && StorageHelper.Exists(StorageHelper.GetAbsolutePath(pathToBrowserCapabilities)))
@@ -64,8 +82,8 @@ namespace Selenium.Essentials.SampleTest
 
             if (openLocalBrowser)
             {
-                TestContextHelper.Set("Driver", BrowserHelper.GetChromeBrowser());
-                TestContextHelper.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(EnvData["PageLoadTimeoutInSeconds"].ToInteger());
+                driver = BrowserHelper.GetChromeBrowser();
+                driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(EnvData["PageLoadTimeoutInSeconds"].ToInteger());
             }
             else
             {
@@ -86,13 +104,24 @@ namespace Selenium.Essentials.SampleTest
                             { "name", TestContext.CurrentContext.Test.Name }
                         }
                     };
-                    TestContextHelper.Set("Driver", BrowserHelper.GetRemoteDriver(remoteDriverModel));
+                    driver = BrowserHelper.GetRemoteDriver(remoteDriverModel);
                 }
                 else
                 {
                     Assert.IsTrue(false, "The browser initialization failed as was not to determine which browser to open");
                 }
             }
+            if (SessionDrivers.ContainsKey(TestContext.CurrentContext.Test.Name))
+            {
+                driver?.CloseDriver();
+                SessionDrivers.ContainsKey(TestContext.CurrentContext.Test.Name)
+                    .Should().BeFalse($"Driver already initiated for test: [{TestContext.CurrentContext.Test.Name}] with session id [{(driver as RemoteWebDriver).SessionId.ToString()}]");
+            }
+            else
+            {
+                SessionDrivers.TryAdd(TestContext.CurrentContext.Test.Name, driver);
+            }
+            return driver;
         }
     }
 }
