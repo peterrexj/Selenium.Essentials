@@ -14,7 +14,18 @@ namespace Selenium.Essentials.SampleTest
 {
     public static class TestUtility
     {
-        public readonly static ConcurrentDictionary<string, IWebDriver> SessionDrivers = new ConcurrentDictionary<string, IWebDriver>();
+        private static ConcurrentDictionary<string, IWebDriver> _sessionDrivers;
+        public static ConcurrentDictionary<string, IWebDriver> SessionDrivers
+        {
+            get
+            {
+                if (_sessionDrivers == null)
+                {
+                    _sessionDrivers = new ConcurrentDictionary<string, IWebDriver>();
+                }
+                return _sessionDrivers;
+            }
+        }
 
         private static Dictionary<string, string> _envData;
 
