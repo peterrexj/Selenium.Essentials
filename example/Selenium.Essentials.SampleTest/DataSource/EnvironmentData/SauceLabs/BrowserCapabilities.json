@@ -117,5 +117,47 @@
     "Platform": "Linux",
     "Version": "45.0",
     "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "IE_Win10_v11.285_r1024x768",
+    "BrowserName": "Internet Explorer",
+    "Platform": "Windows 10",
+    "Version": "11.285",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "IE_Win8.1_v11.0_r1024x768",
+    "BrowserName": "Internet Explorer",
+    "Platform": "Windows 8.1",
+    "Version": "11.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "IE_Win8_v10.0_r1024x768",
+    "BrowserName": "Internet Explorer",
+    "Platform": "Windows 8",
+    "Version": "10.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "IE_Win7_v11.0_r1024x768",
+    "BrowserName": "Internet Explorer",
+    "Platform": "Windows 7",
+    "Version": "11.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "IE_Win7_v10.0_r1024x768",
+    "BrowserName": "Internet Explorer",
+    "Platform": "Windows 7",
+    "Version": "10.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "IE_Win7_v9.0_r1024x768",
+    "BrowserName": "Internet Explorer",
+    "Platform": "Windows 7",
+    "Version": "9.0",
+    "ScreenResolution": "1024x768"
   }
 ]
