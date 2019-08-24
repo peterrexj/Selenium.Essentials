@@ -1,4 +1,6 @@
 ![](https://travis-ci.org/peterrexj/Selenium.Essentials.svg?branch=master)
+[![Sauce Test Status](https://saucelabs.com/buildstatus/peterrexj)](https://app.saucelabs.com/u/peterrexj)
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/peterrexj.svg)](https://saucelabs.com/u/peterrexj)
 
 # Selenium.Essentials (work in progress)
 
