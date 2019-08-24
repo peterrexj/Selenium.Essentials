@@ -12,10 +12,10 @@ namespace Selenium.Essentials.SampleTest.WebTests.nUnit
     [Parallelizable(ParallelScope.All)]
     public class GoogleSearchPageTests : WebUnitTestBase
     {
-        [TestCaseSource(typeof(CaseCommonDataSource), "BrowserCapabilitiesWithAdditionalParams", 
-            new object[] { "Microsoft Support, Microsoft Software Support and Product Help" })]
-        [TestCaseSource(typeof(CaseCommonDataSource), "BrowserCapabilitiesWithAdditionalParams", 
-            new object[] { "nuget package docs, NuGet Documentation | Microsoft Docs" })]
+        //[TestCaseSource(typeof(CaseCommonDataSource), "BrowserCapabilitiesWithAdditionalParams", 
+        //    new object[] { "Microsoft Support, Microsoft Software Support and Product Help" })]
+        //[TestCaseSource(typeof(CaseCommonDataSource), "BrowserCapabilitiesWithAdditionalParams", 
+        //    new object[] { "nuget package docs, NuGet Documentation | Microsoft Docs" })]
         public void GoogleSearch(string browserType, string searchText, string searchResultExpectedHeader)
         {
             _driver = TestUtility.InitializeDriver(browserType);
