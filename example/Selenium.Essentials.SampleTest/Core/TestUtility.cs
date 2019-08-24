@@ -101,7 +101,8 @@ namespace Selenium.Essentials.SampleTest
                             { "platform", browserCapability.Platform },
                             { "version", browserCapability.Version },
                             { "screenResolution", browserCapability.ScreenResolution },
-                            { "name", TestContext.CurrentContext.Test.Name }
+                            { "name", TestContext.CurrentContext.Test.Name },
+                            { "build", "" }
                         }
                     };
                     driver = BrowserHelper.GetRemoteDriver(remoteDriverModel);
