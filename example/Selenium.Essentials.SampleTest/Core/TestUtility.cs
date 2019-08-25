@@ -89,10 +89,10 @@ namespace Selenium.Essentials.SampleTest
             {
                 if (browserCapability != null)
                 {
-                    Console.WriteLine($"Travis CI build number: {Environment.GetEnvironmentVariable("TRAVIS_BUILD_NUMBER")}");
-                    Console.WriteLine($"Travis CI job number: {Environment.GetEnvironmentVariable("TRAVIS_JOB_NUMBER")}");
-                    Console.WriteLine($"Travis CI access key (sauce): {Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY")}");
-                    Console.WriteLine($"Travis CI username (sauce): {Environment.GetEnvironmentVariable("SAUCE_USERNAME")}");
+                    var buildNumber = Environment.GetEnvironmentVariable("TRAVIS_BUILD_NUMBER") ?? string.Empty;
+                    var travisJobNumber = Environment.GetEnvironmentVariable("TRAVIS_JOB_NUMBER") ?? string.Empty;
+                    var sauceUsername = Environment.GetEnvironmentVariable("SAUCE_USERNAME") ?? EnvData["SauceLabsUsername"];
+                    var sauceAccessKey = Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY") ?? EnvData["SauceLabsAccessKey"];
 
                     var remoteDriverModel = new RemoteDriverAccessModel
                     {
@@ -100,8 +100,10 @@ namespace Selenium.Essentials.SampleTest
                         CommandTimeoutInSeconds = EnvData["PageLoadTimeoutInSeconds"].ToInteger(),
                         Capabilities = new Dictionary<string, string>
                         {
-                            { "username", EnvData["SauceLabsUsername"] },
-                            { "accessKey", EnvData["SauceLabsAccessKey"] },
+                            { "build", buildNumber },
+                            { "tunnel-identifier", travisJobNumber },
+                            { "username", sauceUsername },
+                            { "accessKey", sauceAccessKey },
                             { "browserName", browserCapability.BrowserName },
                             { "platform", browserCapability.Platform },
                             { "version", browserCapability.Version },
