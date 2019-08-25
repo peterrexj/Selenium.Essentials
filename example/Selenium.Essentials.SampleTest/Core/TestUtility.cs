@@ -89,6 +89,11 @@ namespace Selenium.Essentials.SampleTest
             {
                 if (browserCapability != null)
                 {
+                    Console.WriteLine($"Travis CI build number: {Environment.GetEnvironmentVariable("TRAVIS_BUILD_NUMBER")}");
+                    Console.WriteLine($"Travis CI job number: {Environment.GetEnvironmentVariable("TRAVIS_JOB_NUMBER")}");
+                    Console.WriteLine($"Travis CI access key (sauce): {Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY")}");
+                    Console.WriteLine($"Travis CI username (sauce): {Environment.GetEnvironmentVariable("SAUCE_USERNAME")}");
+
                     var remoteDriverModel = new RemoteDriverAccessModel
                     {
                         RemoteHubUrl = EnvData["SauceLabsRemoteHubUrl"],
@@ -101,8 +106,7 @@ namespace Selenium.Essentials.SampleTest
                             { "platform", browserCapability.Platform },
                             { "version", browserCapability.Version },
                             { "screenResolution", browserCapability.ScreenResolution },
-                            { "name", TestContext.CurrentContext.Test.Name },
-                            { "build", "" }
+                            { "name", TestContext.CurrentContext.Test.Name }
                         }
                     };
                     driver = BrowserHelper.GetRemoteDriver(remoteDriverModel);
