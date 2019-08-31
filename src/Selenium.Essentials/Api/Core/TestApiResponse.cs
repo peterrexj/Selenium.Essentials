@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Selenium.Essentials
 {
+    /// <summary>
+    /// Api Response
+    /// </summary>
     public class TestApiResponse
     {
         public TestApiResponse() { }
@@ -16,11 +19,29 @@ namespace Selenium.Essentials
             HttpResponseMessage = httpResponseMessage;
         }
 
+        /// <summary>
+        /// Response code
+        /// </summary>
         public HttpStatusCode ResponseCode { get; set; }
+
+        /// <summary>
+        /// Response message received from the request
+        /// </summary>
         public HttpResponseMessage HttpResponseMessage { get; set; }
+
+        /// <summary>
+        /// Cookies received as part of the request
+        /// </summary>
         public CookieCollection Cookies { get; set; }
+
+        /// <summary>
+        /// Response body container
+        /// </summary>
         public TestApiBody ResponseBody { get; set; }
 
+        /// <summary>
+        /// Assertion on the status code of the request
+        /// </summary>
         public void AssertResponseStatusForSuccess()
         {
             var passStatus = new[] { HttpStatusCode.OK, HttpStatusCode.Accepted };
