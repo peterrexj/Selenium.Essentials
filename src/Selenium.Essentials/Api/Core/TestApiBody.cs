@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 
 namespace Selenium.Essentials
 {
+    /// <summary>
+    /// Api Response body representation
+    /// </summary>
     public class TestApiBody
     {
         public TestApiBody(string content)
@@ -16,6 +19,9 @@ namespace Selenium.Essentials
         private TestApiHtmlDoc _contentHtml;
         private string _contentString;
 
+        /// <summary>
+        /// Returns the response message content as string
+        /// </summary>
         public string ContentString
         {
             get
@@ -32,6 +38,9 @@ namespace Selenium.Essentials
             }
         }
 
+        /// <summary>
+        /// Returns the response message as Json (which is of type dynamic)
+        /// </summary>
         public dynamic ContentJson
         {
             get
@@ -47,6 +56,9 @@ namespace Selenium.Essentials
             }
         }
 
+        /// <summary>
+        /// Returns the response message as type HtmlDocument (HtmlAgilityPack)
+        /// </summary>
         public TestApiHtmlDoc ContentHtml
         {
             get
@@ -58,24 +70,83 @@ namespace Selenium.Essentials
             }
         }
 
-        public string FilterByXpath(string xpathExpression, string attributeToRetrive) => 
+        /// <summary>
+        /// Convert the Json to a type
+        /// </summary>
+        /// <typeparam name="T">Type to which the json needs to be converted</typeparam>
+        /// <returns>T: Type to which json is converted</returns>
+        public T ToType<T>()
+        {
+            try
+            {
+                return SerializationHelper.DeSerializeJsonFromString<T>(JsonConvert.SerializeObject(ContentJson));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Convert the Json to a type
+        /// </summary>
+        /// <typeparam name="T">Type to which the json needs to be converted</typeparam>
+        /// <param name="content">json in form of dynamic content</param>
+        /// <returns>T: Type to which json is converted</returns>
+        public T ToType<T>(dynamic content)
+        {
+            try
+            {
+                return SerializationHelper.DeSerializeJsonFromString<T>(JsonConvert.SerializeObject(content));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Filter the Html content using xpath selector and returns the attribute value
+        /// </summary>
+        /// <param name="xpathExpression">xpath expression to filter</param>
+        /// <param name="attributeToRetrive">attribute within the html tag to return</param>
+        /// <returns>The attribute value of the element matched</returns>
+        public string FilterByXpath(string xpathExpression, string attributeToRetrive) =>
             ContentHtml
             .Select(xpathExpression)
             .FirstOrDefault()?
             .GetAttributeValue(attributeToRetrive, string.Empty);
 
-        public IEnumerable<string> FilterByXpathGetAll(string xpathExpression, string attributeToRetrive) => 
+        /// <summary>
+        /// Filter the Html content using xpath selector and returns the attribute values of all match element
+        /// </summary>
+        /// <param name="xpathExpression">xpath expression to filter</param>
+        /// <param name="attributeToRetrive">attribute of the element which will read and returned</param>
+        /// <returns>The collection of attribute value of the element matched</returns>
+        public IEnumerable<string> FilterByXpathGetAll(string xpathExpression, string attributeToRetrive) =>
             ContentHtml
             .Select(xpathExpression)
             .Select(s => s.GetAttributeValue(attributeToRetrive, string.Empty));
 
-        public string FilterByXpathAndGetInnerText(string xpathExpression) => 
+        /// <summary>
+        /// Filter the Html content using xpath selector and return the InnerText of the element
+        /// </summary>
+        /// <param name="xpathExpression">xpath expression to filter</param>
+        /// <returns>InnerText of the matched xapth</returns>
+        public string FilterByXpathAndGetInnerText(string xpathExpression) =>
             ContentHtml
             .Select(xpathExpression)
             .FirstOrDefault()
             .InnerText;
 
-        public IEnumerable<string> FilterJsonContent(string filterText) => 
+        /// <summary>
+        /// Filter the json using json path expression
+        /// </summary>
+        /// <param name="filterText">json path expression</param>
+        /// <returns>returns the IEnumerable<string> which matched the json path expression against the content</returns>
+        public IEnumerable<string> FilterJsonContent(string filterText) =>
             ContentString
             .ApplyJsonPathExpression(filterText);
     }

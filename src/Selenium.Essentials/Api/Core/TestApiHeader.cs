@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Selenium.Essentials
 {
+    /// <summary>
+    /// Api Header class which will hold the header information which will used for request
+    /// </summary>
     public class TestApiHeader
     {
         public TestApiHeader(string key, string value)

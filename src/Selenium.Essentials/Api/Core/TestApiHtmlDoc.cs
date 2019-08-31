@@ -5,6 +5,9 @@ using HtmlAgilityPack;
 
 namespace Selenium.Essentials
 {
+    /// <summary>
+    /// Api response in the form of HTML document
+    /// </summary>
     public class TestApiHtmlDoc
     {
         private HtmlDocument doc;
@@ -15,6 +18,11 @@ namespace Selenium.Essentials
             doc.LoadHtml(htmlContent);
         }
 
+        /// <summary>
+        /// Selects the html nodes based on the xpath filter
+        /// </summary>
+        /// <param name="xpath">xpath filter expression</param>
+        /// <returns>Html node matching the xpath expression</returns>
         public IEnumerable<HtmlNode> Select(string xpath)
         {
             return doc.DocumentNode.SelectNodes(xpath).EmptyIfNull();
