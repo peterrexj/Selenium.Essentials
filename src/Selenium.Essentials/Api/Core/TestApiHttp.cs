@@ -4,11 +4,26 @@ using System.Text;
 
 namespace Selenium.Essentials
 {
+    /// <summary>
+    /// Base http class for performing api tests
+    /// </summary>
     public class TestApiHttp
     {
+        /// <summary>
+        /// Environment or domain path (example: https://www.yourdomain.com)
+        /// </summary>
         public Uri EnvironmentUri { get; private set; }
+
+        /// <summary>
+        /// Default headers required for the Api. Headers can be added based on the request you need to make.
+        /// </summary>
         public HeaderCollection CommonHeaders { get; set; }
 
+        /// <summary>
+        /// Set the environment or domain
+        /// </summary>
+        /// <param name="environment">example: https://www.yourdomain.com</param>
+        /// <returns></returns>
         public TestApiHttp SetEnvironment(string environment)
         {
             EnvironmentUri = new Uri(environment);
@@ -17,17 +32,15 @@ namespace Selenium.Essentials
 
         public TestApiHttp()
         {
-            CommonHeaders = new HeaderCollection {
-                new TestApiHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"),
-                new TestApiHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"),
-                new TestApiHeader("Accept-Encoding", "gzip, deflate"),
-                new TestApiHeader("Accept-Language", "en-GB,en-US;q=0.9,en;q=0.8"),
-                new TestApiHeader("Cache-Control", "max-age=0"),
-                new TestApiHeader("Upgrade-Insecure-Requests", "1"),
-                //new TestHeader("Host", "dims.cba")
-            };
+            CommonHeaders = new HeaderCollection();
         }
 
+        /// <summary>
+        /// Prepare your api request and you need to pass the route information
+        /// Example: new TestApiHttp().SetEnvironment("https://www.yourdomain.com").PrepareRequest("/path/to/my/endpoint")
+        /// </summary>
+        /// <param name="path">endpoint or the route of your api</param>
+        /// <returns></returns>
         public TestApiRequest PrepareRequest(string path = "")
         {
             var request = new TestApiRequest(EnvironmentUri, path);
@@ -40,11 +53,12 @@ namespace Selenium.Essentials
 
             return request;
         }
+
+        /// <summary>
+        /// This response will hold the cookie information. For example when you perform a login using credentials
+        /// and set response received to this property, 
+        /// every subsequent request will try to use the cookies which was received for the login, which make all other request authenticated
+        /// </summary>
         public TestApiResponse LoginResponse { get; set; }
-
-        public void Login()
-        {
-
-        }
     }
 }

@@ -69,7 +69,7 @@ namespace Selenium.Essentials
 
             return JsonConvert.DeserializeObject<T>(File.ReadAllText(fileName));
         }
-        public static T DeSerializeFromJsonContent<T>(string content)
+        public static T DeSerializeJsonFromString<T>(string content)
         {
             if (string.IsNullOrEmpty(content)) { return default(T); }
 

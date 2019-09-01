@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace Selenium.Essentials
 {
+    /// <summary>
+    /// Request class for the Api test
+    /// </summary>
     public class TestApiRequest
     {
         public Uri Uri { get; private set; }
@@ -56,11 +59,22 @@ namespace Selenium.Essentials
             Uri = new Uri(baseUri, path);
         }
 
+        /// <summary>
+        /// Remove all headers
+        /// </summary>
+        /// <returns></returns>
         public virtual TestApiRequest RemoveAllHeaders()
         {
             Headers.Clear();
             return this;
         }
+
+        /// <summary>
+        /// Add a header required for making the request
+        /// </summary>
+        /// <param name="key">key or name of the header</param>
+        /// <param name="value">value of the header</param>
+        /// <returns></returns>
         public virtual TestApiRequest AddHeader(string key, string value)
         {
             if (Headers.Any(tHead => tHead.Key.EqualsIgnoreCase(key)))
@@ -70,11 +84,25 @@ namespace Selenium.Essentials
             Headers.Add(new TestApiHeader(key, value));
             return this;
         }
+
+        /// <summary>
+        /// Add a collection of headers required for making the request
+        /// </summary>
+        /// <param name="headers">header collection</param>
+        /// <returns></returns>
         public virtual TestApiRequest AddHeaders(HeaderCollection headers)
         {
             Headers.AddRange(headers);
             return this;
         }
+
+        /// <summary>
+        /// Add basic authentication information if required for making the api request.
+        /// This depends on your api request
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public virtual TestApiRequest AddBasicAuthorizationHeader(string username, string password)
         {
             HeaderAuthentication = new AuthenticationHeaderValue(
@@ -83,6 +111,12 @@ namespace Selenium.Essentials
                        Encoding.ASCII.GetBytes($"{username}:{password}")));
             return this;
         }
+
+        /// <summary>
+        /// Add the default headers which is required to make a web request. 
+        /// Web request are normal page request that are made from a browser
+        /// </summary>
+        /// <returns></returns>
         public virtual TestApiRequest AddDefaultWebHeaders()
         {
             var defaultWebHeaders = new HeaderCollection {
@@ -97,11 +131,22 @@ namespace Selenium.Essentials
             return this;
         }
 
+        /// <summary>
+        /// Add cookie collection
+        /// </summary>
+        /// <param name="cookies"></param>
+        /// <returns></returns>
         public virtual TestApiRequest AddingCookies(CookieCollection cookies)
         {
             Cookies = cookies;
             return this;
         }
+
+        /// <summary>
+        /// Set the NTML (Windows authentication) before making api request
+        /// </summary>
+        /// <param name="useNtml"></param>
+        /// <returns></returns>
         public virtual TestApiRequest SetNtmlAuthentication(bool useNtml = true)
         {
             NtmlAuthentication = useNtml;
@@ -120,6 +165,11 @@ namespace Selenium.Essentials
             return this;
         }
 
+        /// <summary>
+        /// Sets the parameters as header for the api request
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
         public virtual TestApiRequest SetQueryParamsAsHeader(ParameterCollection values)
         {
             var nameValueCollection = values.Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value as string)).ToList();
@@ -129,6 +179,12 @@ namespace Selenium.Essentials
             }
             return this;
         }
+
+        /// <summary>
+        /// Set the query parameters
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
         public virtual TestApiRequest SetQueryParams(ParameterCollection values)
         {
             var nameValueCollection = values.Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value as string)).ToList();
@@ -142,16 +198,34 @@ namespace Selenium.Essentials
 
             return this;
         }
+
+        /// <summary>
+        /// Set the POST parameters
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public virtual TestApiRequest SetContent(ParameterCollection parameters)
         {
             PostParams = parameters;
             return this;
         }
+
+        /// <summary>
+        /// Set Json body for the POST operation
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
         public virtual TestApiRequest SetJsonBody(string json)
         {
             JsonBody = json;
             return this;
         }
+
+        /// <summary>
+        /// Set default body for the POST operation
+        /// </summary>
+        /// <param name="body"></param>
+        /// <returns></returns>
         public virtual TestApiRequest SetBody(string body)
         {
             Body = body;
@@ -159,15 +233,48 @@ namespace Selenium.Essentials
         }
 
         #region Operations
+        /// <summary>
+        /// Makes a Delete request (sync)
+        /// </summary>
+        /// <returns></returns>
         public TestApiResponse Delete() => DeleteAsync().Result;
+
+        /// <summary>
+        /// Makes a Delete request (async)
+        /// </summary>
+        /// <returns></returns>
         public virtual async Task<TestApiResponse> DeleteAsync() => await SendRequestAsync(HttpMethod.Delete);
 
+        /// <summary>
+        /// Makes a Get request (sync)
+        /// </summary>
+        /// <returns></returns>
         public TestApiResponse Get() => GetAsync().Result;
+
+        /// <summary>
+        /// Makes a Get request (async)
+        /// </summary>
+        /// <returns></returns>
         public virtual async Task<TestApiResponse> GetAsync() => await SendRequestAsync(HttpMethod.Get);
 
+        /// <summary>
+        /// Makes a Download request (sync)
+        /// </summary>
+        /// <param name="filePath">Path to save the file</param>
+        /// <returns></returns>
         public virtual TestApiResponse Download(string filePath) => DownloadAsync(filePath).Result;
+
+        /// <summary>
+        /// Makes a Download request (async)
+        /// </summary>
+        /// <param name="filePath">Path to save the file</param>
+        /// <returns></returns>
         public virtual async Task<TestApiResponse> DownloadAsync(string filePath) => await SendRequestAsync(HttpMethod.Get, requestToDownloadFile: filePath);
 
+        /// <summary>
+        /// Makes a Post request (sync)
+        /// </summary>
+        /// <returns></returns>
         public virtual TestApiResponse Post()
         {
             try
@@ -186,8 +293,17 @@ namespace Selenium.Essentials
                 }
             }
         }
+
+        /// <summary>
+        /// Makes a Post request (async)
+        /// </summary>
+        /// <returns></returns>
         public virtual async Task<TestApiResponse> PostAsync() => await SendRequestAsync(HttpMethod.Post);
 
+        /// <summary>
+        /// Makes a Put request (sync)
+        /// </summary>
+        /// <returns></returns>
         public virtual TestApiResponse Put()
         {
             try
@@ -206,12 +322,23 @@ namespace Selenium.Essentials
                 }
             }
         }
+
+        /// <summary>
+        /// Makes a Put request (async)
+        /// </summary>
+        /// <returns></returns>
         public virtual async Task<TestApiResponse> PutAsync() => await SendRequestAsync(HttpMethod.Put);
         #endregion
 
         private bool _handleSslCertificateErrors;
         private bool _logSslCertificateErrors;
 
+        /// <summary>
+        /// Handle the Ssl certificate error during the request
+        /// </summary>
+        /// <param name="handleSslCertExceptions">True if you want to handle the ssl exception and continue</param>
+        /// <param name="logSslCertExceptions">True if you want to log the ssl exception</param>
+        /// <returns></returns>
         public virtual TestApiRequest HandleSslCertificateErrors(bool handleSslCertExceptions, bool logSslCertExceptions)
         {
             _handleSslCertificateErrors = handleSslCertExceptions;
@@ -219,7 +346,13 @@ namespace Selenium.Essentials
             return this;
         }
 
-        public async Task<TestApiResponse> SendRequestAsync(HttpMethod httpMethod, string requestToDownloadFile = null)
+        /// <summary>
+        /// Base handler for making the api request
+        /// </summary>
+        /// <param name="httpMethod"></param>
+        /// <param name="requestToDownloadFile"></param>
+        /// <returns></returns>
+        private async Task<TestApiResponse> SendRequestAsync(HttpMethod httpMethod, string requestToDownloadFile = null)
         {
             var httpClientHandler = new HttpClientHandler
             {
