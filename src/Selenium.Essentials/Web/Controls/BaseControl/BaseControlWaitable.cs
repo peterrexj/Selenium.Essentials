@@ -16,8 +16,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementEnabled(bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementEnabled(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementEnabled(bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementEnabled(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the element is enabled 
@@ -26,8 +26,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementEnabled(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementEnabled(RawElement, 
+        public bool WaitUntilElementEnabled(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementEnabled(RawElement, 
                 Driver, 
                 waitTimeSec: waitTimeSec, 
                 throwExceptionWhenNotFound: throwExceptionWhenNotFound, 
@@ -43,8 +43,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementVisible(bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementVisible(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementVisible(bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementVisible(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the element is visible
@@ -53,8 +53,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementVisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementVisible(RawElement,
+        public bool WaitUntilElementVisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementVisible(RawElement,
                 Driver,
                 waitTimeSec: waitTimeSec,
                 throwExceptionWhenNotFound: throwExceptionWhenNotFound,
@@ -69,8 +69,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementExists(bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementExists(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementExists(bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementExists(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the element exists
@@ -79,8 +79,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementExists(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementExists(RawElement,
+        public bool WaitUntilElementExists(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementExists(RawElement,
                 Driver,
                 waitTimeSec: waitTimeSec,
                 throwExceptionWhenNotFound: throwExceptionWhenNotFound,
@@ -95,8 +95,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementCssDisplayed(bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementCssDisplayed(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementCssDisplayed(bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementCssDisplayed(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the element is Css Displayed (display: none not applied)
@@ -105,8 +105,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementCssDisplayed(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementCssDisplayed(RawElement,
+        public bool WaitUntilElementCssDisplayed(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementCssDisplayed(RawElement,
                 Driver,
                 waitTimeSec: waitTimeSec,
                 throwExceptionWhenNotFound: throwExceptionWhenNotFound,
@@ -121,8 +121,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementInvisible(bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementInvisible(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementInvisible(bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementInvisible(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the element is not visible
@@ -131,8 +131,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementInvisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementInvisible(RawElement,
+        public bool WaitUntilElementInvisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementInvisible(RawElement,
                 Driver,
                 waitTimeSec: waitTimeSec,
                 throwExceptionWhenNotFound: throwExceptionWhenNotFound,
@@ -147,8 +147,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementClickable(bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementClickable(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementClickable(bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementClickable(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the element is clickable
@@ -157,8 +157,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementClickable(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementIsClickable(RawElement,
+        public bool WaitUntilElementClickable(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementIsClickable(RawElement,
                 Driver,
                 waitTimeSec: waitTimeSec,
                 throwExceptionWhenNotFound: throwExceptionWhenNotFound,
@@ -174,8 +174,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementTextTrimEquals(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementTextTrimEquals(textToMatch, SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementTextTrimEquals(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementTextTrimEquals(textToMatch, SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the text on the element after trim is equal to the text passed for match
@@ -185,8 +185,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementTextTrimEquals(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementTextTrimEquals(RawElement,
+        public bool WaitUntilElementTextTrimEquals(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementTextTrimEquals(RawElement,
                 Driver,
                 textToMatch: textToMatch,
                 waitTimeSec: waitTimeSec,
@@ -203,8 +203,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementTextStartsWith(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementTextStartsWith(textToMatch, SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementTextStartsWith(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementTextStartsWith(textToMatch, SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the text on the element after trim is starts with the text passed for match
@@ -214,8 +214,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementTextStartsWith(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementTextStartsWith(RawElement,
+        public bool WaitUntilElementTextStartsWith(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementTextStartsWith(RawElement,
                 Driver,
                 textToMatch: textToMatch,
                 waitTimeSec: waitTimeSec,
@@ -232,8 +232,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementTextStartsWith(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementTextStartsWith(textsToMatch, SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementTextStartsWith(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementTextStartsWith(textsToMatch, SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the text on the element after trim, starts with one of the element in the collection of text passed for match
@@ -243,8 +243,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementTextStartsWith(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementTextStartsWith(RawElement,
+        public bool WaitUntilElementTextStartsWith(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementTextStartsWith(RawElement,
                 Driver,
                 textsToMatch: textsToMatch,
                 waitTimeSec: waitTimeSec,
@@ -261,8 +261,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementTextContains(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementTextContains(textToMatch, SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementTextContains(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementTextContains(textToMatch, SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the text on the element contains the text passed for match
@@ -272,8 +272,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementTextContains(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementTextContains(RawElement,
+        public bool WaitUntilElementTextContains(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementTextContains(RawElement,
                 Driver,
                 textToMatch: textToMatch,
                 waitTimeSec: waitTimeSec,
@@ -289,8 +289,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementTextContains(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementTextContains(textsToMatch, SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementTextContains(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementTextContains(textsToMatch, SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the text on the element contains one of the element in the collection of text passed for match
@@ -300,8 +300,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementTextContains(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementTextContains(RawElement,
+        public bool WaitUntilElementTextContains(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementTextContains(RawElement,
                 Driver,
                 textsToMatch: textsToMatch,
                 waitTimeSec: waitTimeSec,
@@ -316,8 +316,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementHasSomeText(bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WaitForElementHasSomeText(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
+        public bool WaitUntilElementHasSomeText(bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WaitUntilElementHasSomeText(SeAppConfig.DefaultTimeoutWaitPeriodInSeconds, throwExceptionWhenNotFound, errorMessage);
 
         /// <summary>
         /// Wait until the element has any text on it
@@ -326,8 +326,8 @@ namespace Selenium.Essentials
         /// <param name="throwExceptionWhenNotFound">throw an exception when the condition is not met</param>
         /// <param name="errorMessage">message for the exception when condition is not met</param>
         /// <returns>true when the condition is met or else returns false</returns>
-        public bool WaitForElementHasSomeText(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
-            => WebElementExtensions.WaitForElementHasSomeText(RawElement,
+        public bool WaitUntilElementHasSomeText(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null)
+            => WebElementExtensions.WaitUntilElementHasSomeText(RawElement,
                 Driver,
                 waitTimeSec: waitTimeSec,
                 errorMessage: errorMessage,

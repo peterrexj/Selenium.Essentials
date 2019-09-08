@@ -17,36 +17,36 @@ namespace Selenium.Essentials
 
         public void SelectByText(string textValue)
         {
-            WaitForElementVisible();
+            WaitUntilElementVisible();
             new SelectElement(RawElement).SelectByText(textValue);
         }
         public void SelectByTextPartial(string textValue, int preferredCompareLength = 12)
         {
-            WaitForElementVisible();
+            WaitUntilElementVisible();
             string textValuePartial = textValue.Length <= preferredCompareLength ? textValue : textValue.Substring(0, preferredCompareLength);
             new SelectElement(RawElement).SelectByText(textValuePartial, true);
         }
         public void SelectByValue(string textValue)
         {
-            WaitForElementVisible();
+            WaitUntilElementVisible();
             new SelectElement(RawElement).SelectByValue(textValue);
         }
         public void SelectByIndex(int index)
         {
-            WaitForElementVisible();
+            WaitUntilElementVisible();
             new SelectElement(RawElement).SelectByIndex(index);
         }
 
-        public string GetCurrentlySelectedOption()
+        public string GetCurrentSelectedOption()
         {
-            WaitForElementVisible();
+            WaitUntilElementVisible();
             return new SelectElement(RawElement).SelectedOption.Text;
         }
 
         #region IEditableControl
         public void Set(string value) => SelectByText(value);
 
-        public string Get() => GetCurrentlySelectedOption();
+        public string Get() => GetCurrentSelectedOption();
         #endregion
 
         public List<string> AvailableOptions => new SelectElement(RawElement).Options.Select(option => option.Text).ToList();

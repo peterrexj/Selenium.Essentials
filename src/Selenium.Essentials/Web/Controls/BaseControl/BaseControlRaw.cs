@@ -256,9 +256,9 @@ namespace Selenium.Essentials
         {
             if (timeToWaitInSeconds != 0)
             {
-                WaitForElementInvisible(timeToWaitInSeconds, throwExceptionWhenNotFound: false);
+                WaitUntilElementInvisible(timeToWaitInSeconds, throwExceptionWhenNotFound: false);
             }
-            WaitForElementClickable();
+            WaitUntilElementClickable();
             Click();
         }
 
@@ -283,14 +283,14 @@ namespace Selenium.Essentials
         {
             WaitAndClick();
 
-            if (!WaitForElementInvisible(5, throwExceptionWhenNotFound: false))
+            if (!WaitUntilElementInvisible(5, throwExceptionWhenNotFound: false))
             {
-                if (WaitForElementClickable(waitTimeSec: 5, throwExceptionWhenNotFound: false))
+                if (WaitUntilElementClickable(waitTimeSec: 5, throwExceptionWhenNotFound: false))
                 {
                     WaitAndClick();
                 }
             }
-            WaitForElementInvisible();
+            WaitUntilElementInvisible();
         }
 
         /// <summary>
