@@ -2,10 +2,11 @@
 # Selenium.Essentials (work in progress)
 ![](https://github.com/peterrexj/Selenium.Essentials/blob/master/docs/resources/images/Icon.png) </br>
 
-![](https://travis-ci.org/peterrexj/Selenium.Essentials.svg?branch=master) </br>
-[![Sauce Test Status](https://saucelabs.com/buildstatus/peterrexj)](https://app.saucelabs.com/u/peterrexj) </br>
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/peterrexj.svg)](https://saucelabs.com/u/peterrexj) </br>
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/02286e55e59c476a9c0d4fd2c4dae87e)](https://www.codacy.com/app/peterrexj/Selenium.Essentials?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=peterrexj/Selenium.Essentials&amp;utm_campaign=Badge_Grade)
+![](https://travis-ci.org/peterrexj/Selenium.Essentials.svg?branch=master) 
+[![Sauce Test Status](https://saucelabs.com/buildstatus/peterrexj)](https://app.saucelabs.com/u/peterrexj)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/02286e55e59c476a9c0d4fd2c4dae87e)](https://www.codacy.com/app/peterrexj/Selenium.Essentials?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=peterrexj/Selenium.Essentials&amp;utm_campaign=Badge_Grade) </br>
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/peterrexj.svg)](https://saucelabs.com/u/peterrexj) 
+
 
 
 Build Selenium test in C# using advanced controls, wrappers and plenty of extensions which fastens the development time, focus more on test logic, better consistent script execution, less maintenance, no hardwaits with improved script execution performance and integrated api testing.
