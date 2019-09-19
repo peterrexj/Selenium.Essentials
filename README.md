@@ -1,5 +1,5 @@
 
-# Selenium.Essentials (work in progress)
+# Selenium.Essentials
 ![](https://github.com/peterrexj/Selenium.Essentials/blob/master/docs/resources/images/Icon.png) </br>
 
 ![](https://travis-ci.org/peterrexj/Selenium.Essentials.svg?branch=master) 
