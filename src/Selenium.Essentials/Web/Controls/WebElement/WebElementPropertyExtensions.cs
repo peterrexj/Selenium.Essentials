@@ -181,7 +181,7 @@ namespace Selenium.Essentials
         public static void WaitAndClick(this IWebElement element, IWebDriver driver, int waitSeconds = 0)
         {
             waitSeconds = waitSeconds == 0 ? SeAppConfig.DefaultTimeoutWaitPeriodInSeconds : waitSeconds;
-            element.WaitForElementVisible(driver, waitTimeSec: waitSeconds);
+            element.WaitUntilElementVisible(driver, waitTimeSec: waitSeconds);
             element.Click();
         }
 
@@ -195,7 +195,7 @@ namespace Selenium.Essentials
         public static void WaitAndSendKeys(this IWebElement element, IWebDriver driver, string valueToSet, int waitSeconds = 0)
         {
             waitSeconds = waitSeconds == 0 ? SeAppConfig.DefaultTimeoutWaitPeriodInSeconds : waitSeconds;
-            element.WaitForElementVisible(driver, waitTimeSec: waitSeconds);
+            element.WaitUntilElementVisible(driver, waitTimeSec: waitSeconds);
             element.Clear();
             element.SendKeys(valueToSet);
         }

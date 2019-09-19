@@ -43,7 +43,7 @@ namespace Selenium.Essentials
             By loadWaitingSelector = null) : base(driver, selector, parentControl)
         {
             {
-                if (WaitForElementVisible(waitTimeSec: 2, throwExceptionWhenNotFound: false))
+                if (WaitUntilElementVisible(waitTimeSec: 2, throwExceptionWhenNotFound: false))
                 {
                     _totalColumns = RawElement.FindElements(By.CssSelector("thead>tr>th")).Count;
                 }
@@ -191,12 +191,12 @@ namespace Selenium.Essentials
 
         public void WaitForTableLoadComplete(bool expectingRows = false)
         {
-            RawElement.WaitForElementVisible(Driver);
+            RawElement.WaitUntilElementVisible(Driver);
             _loadingSpinner.WaitClickTillElementGoesInvisible();
 
             if (expectingRows)
             {
-                GetBodyControl<WebControl>(1, 1, getContentWithinTDelement: true).WaitForElementVisible(errorMessage: "Table expecting atleast one row to be rendered");
+                GetBodyControl<WebControl>(1, 1, getContentWithinTDelement: true).WaitUntilElementVisible(errorMessage: "Table expecting atleast one row to be rendered");
             }
         }
     }

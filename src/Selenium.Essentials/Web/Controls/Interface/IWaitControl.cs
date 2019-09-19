@@ -8,40 +8,40 @@ namespace Selenium.Essentials
 {
     public interface IWaitControl
     {
-        bool WaitForElementEnabled(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementEnabled(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementEnabled(bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementEnabled(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementVisible(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementVisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementVisible(bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementVisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementExists(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementExists(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementExists(bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementExists(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementCssDisplayed(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementCssDisplayed(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementCssDisplayed(bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementCssDisplayed(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementInvisible(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementInvisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementInvisible(bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementInvisible(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementClickable(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementClickable(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementClickable(bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementClickable(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementTextTrimEquals(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementTextTrimEquals(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementTextTrimEquals(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementTextTrimEquals(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementTextStartsWith(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementTextStartsWith(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementTextStartsWith(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementTextStartsWith(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementTextStartsWith(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementTextStartsWith(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementTextStartsWith(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementTextStartsWith(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementTextContains(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementTextContains(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementTextContains(string textToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementTextContains(string textToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementTextContains(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementTextContains(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementTextContains(string[] textsToMatch, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementTextContains(string[] textsToMatch, int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
 
-        bool WaitForElementHasSomeText(bool throwExceptionWhenNotFound = true, string errorMessage = null);
-        bool WaitForElementHasSomeText(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementHasSomeText(bool throwExceptionWhenNotFound = true, string errorMessage = null);
+        bool WaitUntilElementHasSomeText(int waitTimeSec, bool throwExceptionWhenNotFound = true, string errorMessage = null);
     }
 }

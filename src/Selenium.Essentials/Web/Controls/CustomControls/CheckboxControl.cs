@@ -25,7 +25,7 @@ namespace Selenium.Essentials
         {
             if (!IsChecked)
             {
-                ClickableElement.WaitForElementCssDisplayed();
+                ClickableElement.WaitUntilElementCssDisplayed();
                 ClickableElement.Click();
             }
         }
@@ -38,7 +38,7 @@ namespace Selenium.Essentials
         {
             if (IsChecked)
             {
-                ClickableElement.WaitForElementCssDisplayed();
+                ClickableElement.WaitUntilElementCssDisplayed();
                 ClickableElement.Click();
             }
         }

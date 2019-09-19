@@ -26,13 +26,13 @@ namespace Selenium.Essentials.SampleTest.WebTests.PageObjects.Google
 
         public void SetTextToSearch(string searchText)
         {
-            _searchInputControl.WaitForElementVisible();
+            _searchInputControl.WaitUntilElementVisible();
             _searchInputControl.Set(searchText);
         }
 
         public void ClickToSearch()
         {
-            _googleSearchButton.WaitForElementVisible();
+            _googleSearchButton.WaitUntilElementVisible();
             _googleSearchButton.Click();
         }
     }

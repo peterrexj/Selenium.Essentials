@@ -20,14 +20,14 @@ namespace Selenium.Essentials
         public void Set(string val)
         {
             Console.WriteLine($"Trying to set value [{val}] in the textbox [{By}]");
-            WaitForElementVisible();
+            WaitUntilElementVisible();
             Clear();
             SendKeys(val);
 
             if (Get().EqualsIgnoreCase(val)) return;
 
             Console.WriteLine($"Re-trying to set value [{val}] in the textbox [{By}]");
-            WaitForElementInvisible(1, throwExceptionWhenNotFound: false); //Wait for a period before apply. There are some textbox which have UI alterations like $ signs and datetimes
+            WaitUntilElementInvisible(1, throwExceptionWhenNotFound: false); //Wait for a period before apply. There are some textbox which have UI alterations like $ signs and datetimes
             Clear();
             SendKeys(val);
         }
@@ -39,7 +39,7 @@ namespace Selenium.Essentials
 
         public void Append(string val)
         {
-            WaitForElementVisible();
+            WaitUntilElementVisible();
             SendKeys(val);
         }
 
