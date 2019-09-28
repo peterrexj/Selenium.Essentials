@@ -1,0 +1,29 @@
+[
+  {
+    "CapabilityName": "iPhone_XS_ iOS_12.2_appium_1.13.0",
+    "AppiumVersion": "1.13.0",
+    "DeviceName": "iPhone XS Simulator",
+    "DeviceOrientation": "portrait",
+    "PlatformVersion": "12.2",
+    "PlatformName": "iOS",
+    "BrowserName": "Safari"
+  },
+  {
+    "CapabilityName": "iPhone_XS_ iOS_12.2_appium_1.12.1",
+    "AppiumVersion": "1.12.1",
+    "DeviceName": "iPhone XS Simulator",
+    "DeviceOrientation": "portrait",
+    "PlatformVersion": "12.2",
+    "PlatformName": "iOS",
+    "BrowserName": "Safari"
+  },
+  {
+    "CapabilityName": "iPhone_XS_ iOS_12.0_appium_1.19.0",
+    "AppiumVersion": "1.9.1",
+    "DeviceName": "iPhone XS Simulator",
+    "DeviceOrientation": "portrait",
+    "PlatformVersion": "12.0",
+    "PlatformName": "iOS",
+    "BrowserName": "Safari"
+  }
+]

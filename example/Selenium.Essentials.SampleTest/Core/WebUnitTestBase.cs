@@ -28,7 +28,14 @@ namespace Selenium.Essentials.SampleTest.Core
                 if (driver != null)
                 {
                     driver.ExecuteJavaScript("sauce:job-result=" + (passed ? "passed" : "failed"), supressErrors: true);
-                    driver.CloseDriver();
+                    try
+                    {
+                        driver.CloseDriver();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Unable to Close driver gracefully due to: {ex.ToString()}");
+                    }
                 }
                 TestUtility.SessionDrivers.TryRemove(TestContext.CurrentContext.Test.Name, out driver);
             }

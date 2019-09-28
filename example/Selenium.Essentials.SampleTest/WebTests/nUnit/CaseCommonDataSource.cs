@@ -17,11 +17,9 @@ namespace Selenium.Essentials.SampleTest.WebTests.nUnit
         /// <returns></returns>
         public static IEnumerable<TestCaseData> BrowserCapabilitiesWithAdditionalParams(string additionalParams)
         {
-            var pathToBrowserCapabilities = TestUtility.EnvData["PathToBrowserCapabilities"];
-            if (StorageHelper.Exists(StorageHelper.GetAbsolutePath(pathToBrowserCapabilities)))
+            if (BrowserCapabilityHelper.CurrentBrowserCapabilities.Any())
             {
-                return SerializationHelper
-                    .DeSerializeFromJsonFile<List<BrowserCapabilitiesModal>>(pathToBrowserCapabilities)
+                return BrowserCapabilityHelper.CurrentBrowserCapabilities
                     .Select(b => 
                         new TestCaseData(
                             (new string[] { b.CapabilityName }.Union(additionalParams.SplitAndTrim(","))).ToArray()
@@ -45,11 +43,9 @@ namespace Selenium.Essentials.SampleTest.WebTests.nUnit
         /// <returns></returns>
         public static IEnumerable<TestCaseData> BrowserCapabilities()
         {
-            var pathToBrowserCapabilities = TestUtility.EnvData["PathToBrowserCapabilities"];
-            if (StorageHelper.Exists(StorageHelper.GetAbsolutePath(pathToBrowserCapabilities)))
+            if (BrowserCapabilityHelper.CurrentBrowserCapabilities.Any())
             {
-                return SerializationHelper.DeSerializeFromJsonFile<List<BrowserCapabilitiesModal>>(pathToBrowserCapabilities)
-                    .Select(b => new TestCaseData(b.CapabilityName));
+                return BrowserCapabilityHelper.CurrentBrowserCapabilities.Select(b => new TestCaseData(b.CapabilityName));
             }
             else
             {

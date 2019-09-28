@@ -34,10 +34,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DataSource\BrowserCapabilities\Andriod Google Api Emulator.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataSource\BrowserCapabilities\Andriod Emulator.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataSource\BrowserCapabilities\iPhone XS Emulator.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="DataSource\EnvironmentData\Local\EnvData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DataSource\EnvironmentData\SauceLabs\BrowserCapabilities.json">
+    <None Update="DataSource\BrowserCapabilities\BrowserCapabilities.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="DataSource\EnvironmentData\SauceLabs\EnvData.json">
