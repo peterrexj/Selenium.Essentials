@@ -49,9 +49,6 @@
     <None Update="DataSource\BrowserCapabilities\Andriod Google Api Emulator.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DataSource\BrowserCapabilities\Andriod Emulator.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="DataSource\BrowserCapabilities\iPhone XS Emulator.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

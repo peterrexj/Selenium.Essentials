@@ -1,9 +1,58 @@
 [
   {
+    "CapabilityName": "Safari_Mac10.13_v12.1_r1024x768",
+    "BrowserName": "Safari",
+    "Platform": "macOS 10.13",
+    "Version": "12.1",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Safari_Mac10.14_v12.0_r1024x768",
+    "BrowserName": "Safari",
+    "Platform": "macOS 10.14",
+    "Version": "12.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
     "CapabilityName": "Safari_Mac10.13_v11.1_r1024x768",
     "BrowserName": "Safari",
     "Platform": "macOS 10.13",
     "Version": "11.1",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Safari_Mac10.12_v11.0_r1024x768",
+    "BrowserName": "Safari",
+    "Platform": "macOS 10.12",
+    "Version": "11.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Safari_Mac10.12_v10.1_r1024x768",
+    "BrowserName": "Safari",
+    "Platform": "macOS 10.12",
+    "Version": "10.1",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Safari_OsX_v_10.11_10.0_r1024x768",
+    "BrowserName": "Safari",
+    "Platform": "OS X 10.11",
+    "Version": "10.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Safari_OsX_v_10.11_9.0_r1024x768",
+    "BrowserName": "Safari",
+    "Platform": "OS X 10.11",
+    "Version": "9.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Safari_OsX_v_10.10_8.0_r1024x768",
+    "BrowserName": "Safari",
+    "Platform": "OS X 10.10",
+    "Version": "8.0",
     "ScreenResolution": "1024x768"
   }
 ]
