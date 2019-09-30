@@ -1,100 +1,10 @@
 [
   {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.0_Chrome_9.0",
-    "AppiumVersion": "1.8.0",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "9.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.1_Chrome_9.0",
-    "AppiumVersion": "1.8.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "9.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.9.1_Chrome_9.0",
-    "AppiumVersion": "1.9.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "9.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.11.1_Chrome_9.0",
-    "AppiumVersion": "1.11.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "9.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.12.1_Chrome_9.0",
-    "AppiumVersion": "1.12.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "9.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
     "CapabilityName": "Android_GoogleApiEmu_1.13.0_Chrome_9.0",
     "AppiumVersion": "1.13.0",
     "DeviceName": "Android GoogleAPI Emulator",
     "DeviceOrientation": "portrait",
     "PlatformVersion": "9.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.0_Chrome_8.1",
-    "AppiumVersion": "1.8.0",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "8.1",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.1_Chrome_8.1",
-    "AppiumVersion": "1.8.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "8.1",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.9.1_Chrome_8.1",
-    "AppiumVersion": "1.9.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "8.1",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.11.1_Chrome_8.1",
-    "AppiumVersion": "1.11.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "8.1",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.12.1_Chrome_8.1",
-    "AppiumVersion": "1.12.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "8.1",
     "PlatformName": "Android",
     "BrowserName": "Chrome"
   },
@@ -108,101 +18,11 @@
     "BrowserName": "Chrome"
   },
   {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.0_Chrome_8.0",
-    "AppiumVersion": "1.8.0",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "8.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.1_Chrome_8.0",
-    "AppiumVersion": "1.8.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "8.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.9.1_Chrome_8.0",
-    "AppiumVersion": "1.9.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "8.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.11.1_Chrome_8.0",
-    "AppiumVersion": "1.11.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "8.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.12.1_Chrome_8.0",
-    "AppiumVersion": "1.12.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "8.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
     "CapabilityName": "Android_GoogleApiEmu_1.13.0_Chrome_8.0",
     "AppiumVersion": "1.13.0",
     "DeviceName": "Android GoogleAPI Emulator",
     "DeviceOrientation": "portrait",
     "PlatformVersion": "8.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.0_Chrome_7.0",
-    "AppiumVersion": "1.8.0",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "7.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.1_Chrome_7.1",
-    "AppiumVersion": "1.8.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "7.1",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.9.1_Chrome_7.1",
-    "AppiumVersion": "1.9.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "7.1",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.11.1_Chrome_7.1",
-    "AppiumVersion": "1.11.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "7.1",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.12.1_Chrome_7.1",
-    "AppiumVersion": "1.12.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "7.1",
     "PlatformName": "Android",
     "BrowserName": "Chrome"
   },
@@ -216,101 +36,11 @@
     "BrowserName": "Chrome"
   },
   {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.0_Chrome_7.0",
-    "AppiumVersion": "1.8.0",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "7.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.1_Chrome_7.0",
-    "AppiumVersion": "1.8.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "7.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.9.1_Chrome_7.0",
-    "AppiumVersion": "1.9.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "7.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.11.1_Chrome_7.0",
-    "AppiumVersion": "1.11.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "7.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.12.1_Chrome_7.0",
-    "AppiumVersion": "1.12.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "7.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
     "CapabilityName": "Android_GoogleApiEmu_1.13.0_Chrome_7.0",
     "AppiumVersion": "1.13.0",
     "DeviceName": "Android GoogleAPI Emulator",
     "DeviceOrientation": "portrait",
     "PlatformVersion": "7.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.0_Chrome_6.0",
-    "AppiumVersion": "1.8.0",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "6.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.1_Chrome_6.0",
-    "AppiumVersion": "1.8.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "6.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.9.1_Chrome_6.0",
-    "AppiumVersion": "1.9.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "6.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.11.1_Chrome_6.0",
-    "AppiumVersion": "1.11.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "6.0",
-    "PlatformName": "Android",
-    "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.12.1_Chrome_6.0",
-    "AppiumVersion": "1.12.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "6.0",
     "PlatformName": "Android",
     "BrowserName": "Chrome"
   },
@@ -322,51 +52,6 @@
     "PlatformVersion": "6.0",
     "PlatformName": "Android",
     "BrowserName": "Chrome"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.0_Chrome_5.1",
-    "AppiumVersion": "1.8.0",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "5.1",
-    "PlatformName": "Android",
-    "BrowserName": "Browser"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.8.1_Chrome_5.1",
-    "AppiumVersion": "1.8.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "5.1",
-    "PlatformName": "Android",
-    "BrowserName": "Browser"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.9.1_Chrome_5.1",
-    "AppiumVersion": "1.9.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "5.1",
-    "PlatformName": "Android",
-    "BrowserName": "Browser"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.11.1_Chrome_5.1",
-    "AppiumVersion": "1.11.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "5.1",
-    "PlatformName": "Android",
-    "BrowserName": "Browser"
-  },
-  {
-    "CapabilityName": "Android_GoogleApiEmu_1.12.1_Chrome_5.1",
-    "AppiumVersion": "1.12.1",
-    "DeviceName": "Android GoogleAPI Emulator",
-    "DeviceOrientation": "portrait",
-    "PlatformVersion": "5.1",
-    "PlatformName": "Android",
-    "BrowserName": "Browser"
   },
   {
     "CapabilityName": "Android_GoogleApiEmu_1.13.0_Chrome_5.1",
