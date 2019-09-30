@@ -41,7 +41,6 @@ namespace Selenium.Essentials
 
         public static void CloseDriver(this IWebDriver driver)
         {
-            driver?.Close();
             driver?.Quit();
         }
 

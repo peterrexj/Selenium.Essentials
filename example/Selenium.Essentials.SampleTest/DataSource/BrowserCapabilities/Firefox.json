@@ -1,0 +1,37 @@
+[
+  {
+    "CapabilityName": "Firefox_Win10_v68.0_r1024x768",
+    "BrowserName": "Firefox",
+    "Platform": "Windows 10",
+    "Version": "68.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Firefox_Win8.1_v68.0_r1024x768",
+    "BrowserName": "Firefox",
+    "Platform": "Windows 8.1",
+    "Version": "68.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Firefox_Win8_v68.0_r1024x768",
+    "BrowserName": "Firefox",
+    "Platform": "Windows 8",
+    "Version": "68.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Firefox_Win7_v68.0_r1024x768",
+    "BrowserName": "Firefox",
+    "Platform": "Windows 7",
+    "Version": "68.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Firefox_Linux_v45.0_r1024x768",
+    "BrowserName": "Firefox",
+    "Platform": "Linux",
+    "Version": "45.0",
+    "ScreenResolution": "1024x768"
+  }
+]

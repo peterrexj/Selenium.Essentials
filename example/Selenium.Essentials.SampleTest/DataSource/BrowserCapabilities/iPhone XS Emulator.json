@@ -1,0 +1,11 @@
+[
+  {
+    "CapabilityName": "iPhone_XS_ iOS_12.2_appium_1.13.0",
+    "AppiumVersion": "1.13.0",
+    "DeviceName": "iPhone XS Simulator",
+    "DeviceOrientation": "portrait",
+    "PlatformVersion": "12.2",
+    "PlatformName": "iOS",
+    "BrowserName": "Safari"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "CapabilityName": "Chrome_Win10_v76.0_r1024x768",
+    "BrowserName": "Chrome",
+    "Platform": "Windows 10",
+    "Version": "76.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Chrome_Win8.1_v76.0_r1024x768",
+    "BrowserName": "Chrome",
+    "Platform": "Windows 8.1",
+    "Version": "76.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Chrome_Win8_v76.0_r1024x768",
+    "BrowserName": "Chrome",
+    "Platform": "Windows 8",
+    "Version": "76.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Chrome_Win7_v76.0_r1024x768",
+    "BrowserName": "Chrome",
+    "Platform": "Windows 7",
+    "Version": "76.0",
+    "ScreenResolution": "1024x768"
+  },
+  {
+    "CapabilityName": "Chrome_Linux_v48.0_r1024x768",
+    "BrowserName": "Chrome",
+    "Platform": "Linux",
+    "Version": "48.0",
+    "ScreenResolution": "1024x768"
+  }
+]

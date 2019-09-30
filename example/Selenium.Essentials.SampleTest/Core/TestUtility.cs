@@ -69,11 +69,9 @@ namespace Selenium.Essentials.SampleTest
             BrowserCapabilitiesModal browserCapability = null;
             IWebDriver driver = null;
 
-            var pathToBrowserCapabilities = EnvData["PathToBrowserCapabilities"];
-            if (!openLocalBrowser && StorageHelper.Exists(StorageHelper.GetAbsolutePath(pathToBrowserCapabilities)))
+            if (!openLocalBrowser && BrowserCapabilityHelper.CurrentBrowserCapabilities.Any())
             {
-                var capabilities = SerializationHelper.DeSerializeFromJsonFile<List<BrowserCapabilitiesModal>>(pathToBrowserCapabilities);
-                browserCapability = capabilities.FirstOrDefault(c => c.CapabilityName.EqualsIgnoreCase(browserType));
+                browserCapability = BrowserCapabilityHelper.CurrentBrowserCapabilities.FirstOrDefault(c => c.CapabilityName.EqualsIgnoreCase(browserType));
                 if (browserCapability != null)
                 {
                     openLocalBrowser = false;
@@ -108,13 +106,10 @@ namespace Selenium.Essentials.SampleTest
                             { "tunnel-identifier", travisJobNumber },
                             { "username", sauceUsername },
                             { "accessKey", sauceAccessKey },
-                            { "browserName", browserCapability.BrowserName },
-                            { "platform", browserCapability.Platform },
-                            { "version", browserCapability.Version },
-                            { "screenResolution", browserCapability.ScreenResolution },
                             { "name", TestContext.CurrentContext.Test.Name }
                         }
                     };
+                    remoteDriverModel.Capabilities.AddOrUpdate(browserCapability.ToCustomDictionary());
                     driver = BrowserHelper.GetRemoteDriver(remoteDriverModel);
                 }
                 else
