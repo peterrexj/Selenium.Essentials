@@ -3,12 +3,26 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <Authors>Peter Rex Joseph</Authors>
+    <Copyright>Apache License 2.0</Copyright>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/peterrexj/Selenium.Essentials</PackageProjectUrl>
+    <RepositoryType>Public</RepositoryType>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageIconUrl>https://github.com/peterrexj/Selenium.Essentials/blob/master/docs/resources/images/Icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/peterrexj/Selenium.Essentials</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>Build Selenium web automation test using advanced web controls with wrappers and plenty of extensions to fasten your automation development time. Focus more on script logic with better consistent script execution, less maintenance, no hardwaits, with improved script execution performance and integrated Api testing framework.</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Utilities\Helper\**" />
     <EmbeddedResource Remove="Utilities\Helper\**" />
     <None Remove="Utilities\Helper\**" />
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
