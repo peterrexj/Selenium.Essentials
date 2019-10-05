@@ -11,7 +11,7 @@ namespace Selenium.Essentials
         {
             if (!File.Exists(path)) return;
 
-            Console.WriteLine($"Deleting file: {path}");
+            Utility.Runtime.Logger.Log($"Deleting file: {path}");
             File.Delete(path);
         }
 

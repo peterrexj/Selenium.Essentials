@@ -92,9 +92,9 @@ namespace Selenium.Essentials.SampleTest
                     var sauceUsername = Environment.GetEnvironmentVariable("SAUCE_USERNAME") ?? EnvData["SauceLabsUsername"];
                     var sauceAccessKey = Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY") ?? EnvData["SauceLabsAccessKey"];
 
-                    Console.WriteLine($"Travis CI build number: {buildNumber}");
-                    Console.WriteLine($"Travis CI job number: {travisJobNumber}");
-                    Console.WriteLine($"Travis CI username (sauce): {sauceUsername}");
+                    Utility.Runtime.Logger.Log($"Travis CI build number: {buildNumber}");
+                    Utility.Runtime.Logger.Log($"Travis CI job number: {travisJobNumber}");
+                    Utility.Runtime.Logger.Log($"Travis CI username (sauce): {sauceUsername}");
 
                     var remoteDriverModel = new RemoteDriverAccessModel
                     {
