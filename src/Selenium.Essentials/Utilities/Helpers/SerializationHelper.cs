@@ -166,7 +166,7 @@ namespace Selenium.Essentials
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Utility.Runtime.Logger.Log(ex.Message);
             }
             return dicCollector;
         }

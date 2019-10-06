@@ -62,7 +62,7 @@ namespace Selenium.Essentials
             }
             catch (OperationCanceledException e)
             {
-                Console.WriteLine(e);
+                Utility.Runtime.Logger.Log(e.Message, e);
             }
             finally
             {

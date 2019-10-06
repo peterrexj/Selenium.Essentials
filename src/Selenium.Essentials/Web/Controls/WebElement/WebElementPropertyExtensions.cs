@@ -136,7 +136,7 @@ namespace Selenium.Essentials
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Cannot get Text from the control due to: {ex.Message}");
+                Utility.Runtime.Logger.Log($"Cannot get Text from the control due to: {ex.Message}", ex);
                 return string.Empty;
             }
         }
