@@ -81,7 +81,7 @@ namespace Selenium.Essentials
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Utility.Runtime.Logger.Log(ex.Message, ex);
                 return String.Empty;
             }
         }
@@ -96,7 +96,7 @@ namespace Selenium.Essentials
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Utility.Runtime.Logger.Log(e.Message, e);
             }
         }
 
@@ -117,7 +117,7 @@ namespace Selenium.Essentials
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error while scroll page to top {e.Message}");
+                Utility.Runtime.Logger.Log($"Error while scroll page to top {e.Message}", e);
             }
         }
 
@@ -129,7 +129,7 @@ namespace Selenium.Essentials
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error while scroll page to bottom {e.Message}");
+                Utility.Runtime.Logger.Log($"Error while scroll page to bottom {e.Message}", e);
             }
         }
 
@@ -141,7 +141,7 @@ namespace Selenium.Essentials
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error while scroll {e.Message}");
+                Utility.Runtime.Logger.Log($"Error while scroll {e.Message}", e);
             }
         }
 

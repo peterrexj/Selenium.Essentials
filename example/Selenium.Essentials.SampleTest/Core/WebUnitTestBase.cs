@@ -14,7 +14,7 @@ namespace Selenium.Essentials.SampleTest.Core
         [SetUp]
         public void Setup()
         {
-            Utility.InitializeFramework();
+            Utility.InitializeFramework(new CutomLogger());
         }
 
         [TearDown]
@@ -34,7 +34,7 @@ namespace Selenium.Essentials.SampleTest.Core
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Unable to Close driver gracefully due to: {ex.ToString()}");
+                        Utility.Runtime.Logger.Log($"Unable to Close driver gracefully due to: {ex.ToString()}");
                     }
                 }
                 TestUtility.SessionDrivers.TryRemove(TestContext.CurrentContext.Test.Name, out driver);

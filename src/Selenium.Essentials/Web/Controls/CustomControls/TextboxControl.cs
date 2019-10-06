@@ -19,14 +19,14 @@ namespace Selenium.Essentials
 
         public void Set(string val)
         {
-            Console.WriteLine($"Trying to set value [{val}] in the textbox [{By}]");
+            Utility.Runtime.Logger.Log($"Trying to set value [{val}] in the textbox [{By}]");
             WaitUntilElementVisible();
             Clear();
             SendKeys(val);
 
             if (Get().EqualsIgnoreCase(val)) return;
 
-            Console.WriteLine($"Re-trying to set value [{val}] in the textbox [{By}]");
+            Utility.Runtime.Logger.Log($"Re-trying to set value [{val}] in the textbox [{By}]");
             WaitUntilElementInvisible(1, throwExceptionWhenNotFound: false); //Wait for a period before apply. There are some textbox which have UI alterations like $ signs and datetimes
             Clear();
             SendKeys(val);

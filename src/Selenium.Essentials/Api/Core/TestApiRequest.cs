@@ -368,11 +368,11 @@ namespace Selenium.Essentials
                 {
                     if (_logSslCertificateErrors)
                     {
-                        Console.WriteLine($"Problem with the Certificate: {cert.Subject}");
-                        Console.WriteLine($"Sender: {sender}");
-                        Console.WriteLine($"cert: {cert}");
-                        Console.WriteLine($"chain: {chain}");
-                        Console.WriteLine($"sslPolicyErrors: {sslPolicyErrors}");
+                        Utility.Runtime.Logger.Log($"Problem with the Certificate: {cert.Subject}");
+                        Utility.Runtime.Logger.Log($"Sender: {sender}");
+                        Utility.Runtime.Logger.Log($"cert: {cert}");
+                        Utility.Runtime.Logger.Log($"chain: {chain}");
+                        Utility.Runtime.Logger.Log($"sslPolicyErrors: {sslPolicyErrors}");
                     }
                     return true;
                 };
@@ -446,14 +446,14 @@ namespace Selenium.Essentials
             }
             else if (httpMethod == HttpMethod.Get)
             {
-                Console.WriteLine($"Requesting GET: {Uri.AbsoluteUri}");
+                Utility.Runtime.Logger.Log($"Requesting GET: {Uri.AbsoluteUri}");
                 httpResponseMessage = requestToDownloadFile.IsEmpty() ? await client.GetAsync(Uri) : await client.GetAsync(Uri, HttpCompletionOption.ResponseHeadersRead);
             }
             else if (httpMethod == HttpMethod.Delete)
             {
                 if (JsonBody.IsEmpty())
                 {
-                    Console.WriteLine($"Requesting DELETE: {Uri.AbsoluteUri}");
+                    Utility.Runtime.Logger.Log($"Requesting DELETE: {Uri.AbsoluteUri}");
                     httpResponseMessage = await client.DeleteAsync(Uri);
                 }
                 else
@@ -499,7 +499,7 @@ namespace Selenium.Essentials
 
             if (response.ResponseCode != HttpStatusCode.OK && response.ResponseCode != HttpStatusCode.Accepted)
             {
-                Console.WriteLine($"Resposne status: {response.ResponseCode}, ResponseMessage: {response.ResponseBody.ContentString}");
+                Utility.Runtime.Logger.Log($"Resposne status: {response.ResponseCode}, ResponseMessage: {response.ResponseBody.ContentString}");
             }
 
             return response;
