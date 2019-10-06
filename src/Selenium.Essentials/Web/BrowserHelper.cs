@@ -212,11 +212,11 @@ namespace Selenium.Essentials
                     }
                     catch (SecurityException e)
                     {
-                        Console.WriteLine($"Unable to get browser info due to access issues. {e.Message}");
+                        Utility.Runtime.Logger.Log($"Unable to get browser info due to access issues. {e.Message}", e);
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine($"Unable to get browser info due to exception : {e.Message}");
+                        Utility.Runtime.Logger.Log($"Unable to get browser info due to exception : {e.Message}", e);
                     }
                 }
                 return _installedBrowsers;

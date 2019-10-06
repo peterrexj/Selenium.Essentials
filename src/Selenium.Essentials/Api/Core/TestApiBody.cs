@@ -83,7 +83,7 @@ namespace Selenium.Essentials
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
+                Utility.Runtime.Logger.Log($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
                 throw;
             }
         }
@@ -102,7 +102,7 @@ namespace Selenium.Essentials
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
+                Utility.Runtime.Logger.Log($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
                 throw;
             }
         }

@@ -35,6 +35,29 @@ namespace Selenium.Essentials
             /// </summary>
             public static string LogOutputFolder { get; set; } = Path.Combine(ExecutingFolder, "Logs");
 
+            private static ILog _logger;
+            /// <summary>
+            /// Logging interface to log all your details.
+            /// This interface can be implemented in your project and passed into Utility.InitializeFramework(..)
+            /// which help you in custom logging.
+            /// By Default it will log details into Console
+            /// </summary>
+            public static ILog Logger
+            {
+                get
+                {
+                    if (_logger == null)
+                    {
+                        _logger = new StandardOutputLogger();
+                    }
+                    return _logger;
+                }
+                internal set
+                {
+                    _logger = value;
+                }
+            }
+
             /// <summary>
             /// Get the assembly based on the name provided
             /// The assembly is fetched from the stacktrace information and not by reading the assembly folder
@@ -138,7 +161,7 @@ namespace Selenium.Essentials
                 var customAssesmblyConfig = LoadConfiguration(assembly);
                 customAssesmblyConfig?.AppSettings.Settings.AllKeys.Iter(k =>
                 {
-                    Console.WriteLine($"Reading AppSettings from custom project level[{assembly.ManifestModule.Name}] : Key: {k}, Value: {customAssesmblyConfig.AppSettings.Settings[k].Value}");
+                    Utility.Runtime.Logger.Log($"Reading AppSettings from custom project level[{assembly.ManifestModule.Name}] : Key: {k}, Value: {customAssesmblyConfig.AppSettings.Settings[k].Value}");
                     dataDict.AddOrUpdate(k, customAssesmblyConfig.AppSettings.Settings[k].Value);
                 });
                 return dataDict;
@@ -195,8 +218,11 @@ namespace Selenium.Essentials
         /// Initialize the selenium essentials framework.
         /// Create a test context and initialze the logging
         /// </summary>
-        public static void InitializeFramework()
+        public static void InitializeFramework(ILog logger = null)
         {
+            logger = logger ?? new StandardOutputLogger();
+            Runtime.Logger = logger;
+
             TestContextHelper.CreateTestContext();
         }
     }

@@ -30,7 +30,7 @@ namespace Selenium.Essentials
             {
                 if (!CacheData.ContainsKey(FilePath))
                 {
-                    Console.WriteLine($"Loading the excel data into memory: {FilePath}");
+                    Utility.Runtime.Logger.Log($"Loading the excel data into memory: {FilePath}");
                     CacheData.TryAdd(FilePath, new ExcelOperationAspose(FilePath, columnHeaderRow, numberOfRowsToRead, Worksheet, loadAllSheets));
                 }
                 return CacheData[FilePath];
