@@ -9,13 +9,59 @@
     <PackageProjectUrl>https://github.com/peterrexj/Selenium.Essentials</PackageProjectUrl>
     <RepositoryType>Public</RepositoryType>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageIconUrl>https://github.com/peterrexj/Selenium.Essentials/blob/master/docs/resources/images/Icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/peterrexj/Selenium.Essentials</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Description>Build Selenium web automation test using advanced web controls with wrappers and plenty of extensions to fasten your automation development time. Focus more on script logic with better consistent script execution, less maintenance, no hardwaits, with improved script execution performance and integrated Api testing framework.</Description>
+    <PackageIcon>icon.png</PackageIcon>
+    <Title>Selenium.Essentials</Title>
+    <Description>Build Selenium web automation test using advanced web controls with wrappers and plenty of extensions to fasten your automation development time. Focus more on script logic with better consistent script execution, less maintenance, no hardwaits, with improved script execution performance and integrated Api testing framework.
+
+Overview
+Selenium provides only option to create only a single generic control which is called the IWebElement. Imagine if you have option to declare controls which resemble the html elements and provide its functionality, for example, Checkbox, Textbox, Button.
+
+Selenium Essentials provide new custom controls giving meaning to your page objects and making it more readable. Every control is defined from a BaseControl which has a set of definitions applicable to all controls as well as its custom actions. For example, Checkbox control will have all properties of the BaseControl and also defines Check() which ticks the checkbox in the UI, UnCheck() which unticks the checkbox, IsChecked returns a bool value based on the control is Checked or Unchecked reading from the UI.
+
+The Custom control also expose the underlying IWebElement as a property used by Selenium, in case you need to do any operations on top of this.
+
+There are plenty of Wait operation defined on the base control which flows through all the custom controls. There are different overrides to the wait operation where you can control the time to wait, whether to throw exception if fails, message for assertions when the waits are used for assert operations. Some custom control overrides the default wait to give a better meaning.
+
+Read more about controls here
+
+WebDriver and WebElement comes with some useful extensions which helps during the automation. For example, executing javascript, scroll operations, taking screenshot, getting driver capabilities.
+
+There is a simple Api framework, which can help in writing Integration tests using a fluent approach.
+
+Package contains lots of extensions and helpers over different types which will help increase productivity. Example,
+- Loading excel and converting to C#
+- Converting Json to Dictionary
+- Serialization and Deserialization
+- Regular Expression, DateTime, String, Enumerable, Async
+
+Benefits
+- Readable page objects which clearly defines what each control resemble in the browser
+- Custom controls with wrapped operations
+-- Checkbox - Check, UnCheck, IsChecked, more
+-- Textbox - Custom clear and set operations (extented clear which will make sure the content is cleared by doing Ctrl+a and BackSpace) and Set operation to overcome some responsive issues
+-- UnorderedList - Total, Items
+-- Select - operations on SelectElement
+-- Table - TotalColumns, TotalRows, ColumnNames, GeCellContent, GetRowPosition, GetColumnPosition, more
+-- Collection - working with Driver.FindElements(...)
+-- FileUpload - UploadFile
+-- Button
+-- WebControl - for all generic html control
+- WebElement and WebDriver extension methods for most of the
+- Api framework to write integration tests
+-- Supports fluent
+-- Support most of the operations
+-- Simple and easy to manage the tests
+- Extensions which provide many methods for automation engineering works
+-- String, RegEx, Enumerable, DatTime, Async, more
+- Helpers to load excel, serialization, Json to Dictonary, more
+- Attributes for test to load json and xml data</Description>
+    <PackageTags>selenium automation c# browser web essentials nUnit xUnit webdriver webelement</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="icon.png" Pack="true" Visible="false" PackagePath="" />
     <Compile Remove="Utilities\Helper\**" />
     <EmbeddedResource Remove="Utilities\Helper\**" />
     <None Remove="Utilities\Helper\**" />
