@@ -10,12 +10,6 @@ namespace Selenium.Essentials
     public interface ILog
     {
         /// <summary>
-        /// Log Message
-        /// </summary>
-        /// <param name="message"></param>
-        void Log(string message);
-
-        /// <summary>
         /// Log message with the error details
         /// </summary>
         /// <param name="message"></param>
