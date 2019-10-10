@@ -4,10 +4,12 @@
 
 ![](https://travis-ci.org/peterrexj/Selenium.Essentials.svg?branch=master) 
 [![Sauce Test Status](https://saucelabs.com/buildstatus/peterrexj)](https://app.saucelabs.com/u/peterrexj)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/02286e55e59c476a9c0d4fd2c4dae87e)](https://www.codacy.com/app/peterrexj/Selenium.Essentials?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=peterrexj/Selenium.Essentials&amp;utm_campaign=Badge_Grade) </br>
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/peterrexj.svg)](https://saucelabs.com/u/peterrexj) 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/02286e55e59c476a9c0d4fd2c4dae87e)](https://www.codacy.com/app/peterrexj/Selenium.Essentials?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=peterrexj/Selenium.Essentials&amp;utm_campaign=Badge_Grade) 
 </br>
-[![Powered By Sauce Labs](https://github.com/peterrexj/Selenium.Essentials/blob/master/docs/resources/images/PoweredBySauce LabsBadgesGray.svg)](https://saucelabs.com) 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/peterrexj.svg)](https://saucelabs.com/u/peterrexj) 
+<a href="https://saucelabs.com"><img src="https://github.com/peterrexj/Selenium.Essentials/blob/develop/docs/resources/images/SauceLabLogo.svg" height="100"/></a>
+</br>
+
 
 
 Build Selenium web automation test using advanced web controls with wrappers and plenty of extensions to fasten your automation development time. Focus more on script logic with better consistent script execution, less maintenance, no hardwaits, with improved script execution performance and integrated Api testing framework.
