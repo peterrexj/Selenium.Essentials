@@ -59,7 +59,9 @@ Benefits
 - Attributes for test to load json and xml data</Description>
     <PackageTags>selenium automation c# browser web essentials nUnit xUnit webdriver webelement</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <PackageReleaseNotes>Release 1.0.2 - Fix: Remove ChromeDriver package dependency</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -74,15 +76,14 @@ Benefits
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspose.Cells" Version="19.9.0" />
+    <PackageReference Include="Aspose.Cells" Version="19.10.0" />
     <PackageReference Include="FluentAssertions" Version="5.9.0" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.15" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.16" />
     <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="4.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="77.0.3865.4000" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
