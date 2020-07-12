@@ -1,4 +1,4 @@
-﻿	Feature: WikipediaFeature
+﻿Feature: WikipediaFeature
 	In order to get information
 	As a general user
 	I want to make sure wikipedia is working
@@ -12,6 +12,6 @@ Scenario Outline: Navigate to Wikipedia and verify today's feature
 	And I should see the Wikipedia today's feature
 
 	Examples:
-		| Browser                         |
-		| Chrome_Win10_v76.0_r1024x768    |
+		| Browser                       |
+		| Chrome_Win10_latest_r1024x768 |
 		#| Safari_Mac10.13_v11.1_r1024x768 |
