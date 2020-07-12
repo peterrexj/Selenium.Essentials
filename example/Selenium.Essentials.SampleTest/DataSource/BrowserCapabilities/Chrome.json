@@ -1,30 +1,30 @@
 [
   {
-    "CapabilityName": "Chrome_Win10_v76.0_r1024x768",
+    "CapabilityName": "Chrome_Win10_v83.0_r1024x768",
     "BrowserName": "Chrome",
     "Platform": "Windows 10",
-    "Version": "76.0",
+    "Version": "83.0",
     "ScreenResolution": "1024x768"
   },
   {
-    "CapabilityName": "Chrome_Win8.1_v76.0_r1024x768",
+    "CapabilityName": "Chrome_Win8.1_v83.0_r1024x768",
     "BrowserName": "Chrome",
     "Platform": "Windows 8.1",
-    "Version": "76.0",
+    "Version": "83.0",
     "ScreenResolution": "1024x768"
   },
   {
-    "CapabilityName": "Chrome_Win8_v76.0_r1024x768",
+    "CapabilityName": "Chrome_Win8_v83.0_r1024x768",
     "BrowserName": "Chrome",
     "Platform": "Windows 8",
-    "Version": "76.0",
+    "Version": "83.0",
     "ScreenResolution": "1024x768"
   },
   {
-    "CapabilityName": "Chrome_Win7_v76.0_r1024x768",
+    "CapabilityName": "Chrome_Win7_v83.0_r1024x768",
     "BrowserName": "Chrome",
     "Platform": "Windows 7",
-    "Version": "76.0",
+    "Version": "83.0",
     "ScreenResolution": "1024x768"
   },
   {
