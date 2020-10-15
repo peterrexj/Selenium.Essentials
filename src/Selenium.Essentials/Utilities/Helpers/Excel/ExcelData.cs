@@ -19,7 +19,7 @@ namespace Selenium.Essentials
         public Dictionary<string, string> DataContent { get; private set; }
         public dynamic ExcelDataDynamic { get; private set; }
 
-        public ExcelData(string filePath, string worksheet, string key = "", string column = "", string filter = "")
+        public ExcelData(string filePath, string worksheet, string key = "", string column = "", string filter = "", bool useCache = true)
         {
             FilePath = Path.Combine(Utility.Runtime.ExecutingFolder, filePath);
             WorkSheet = worksheet;
@@ -29,7 +29,7 @@ namespace Selenium.Essentials
             File.Exists(FilePath).Should()
                 .BeTrue($"The Excel file trying to load is unavailable in the location {FilePath}");
 
-            var helper = new ExcelHelper(FilePath, WorkSheet, true);
+            var helper = new ExcelHelper(FilePath, WorkSheet, useCache);
 
             ExcelDataRaw = helper.LoadDataset();
 
