@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using FluentAssertions;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
@@ -155,6 +156,20 @@ namespace Selenium.Essentials
                 errorMessage: "failed while waiting for document ready state",
                 process: () => driver.ExecuteJavaScript("return document.readyState").Equals("complete"),
                 reasonForFailedCondition: "");
+        }
+
+        /// <summary>
+        /// Switch into different tab based on driver window handle position
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <param name="position"></param>
+        public static void SwitchWindowHandle(this IWebDriver driver, int position)
+        {
+            (driver.WindowHandles.Count >= position)
+                .Should()
+                .BeTrue($"The window handle switch failed as the count of handle [{driver.WindowHandles.Count}] is less than the requested position [{position}]");
+
+            driver.SwitchTo().Window(driver.WindowHandles[position]);
         }
     }
 }
