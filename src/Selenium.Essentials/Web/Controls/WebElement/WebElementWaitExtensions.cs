@@ -123,7 +123,7 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.IsEnabled(),
+                    () => element?.IsEnabled() ?? false,
                     "Wait until enabled",
                     baseControl: baseControl);
 
@@ -169,7 +169,7 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.Displayed,
+                    () => element?.Displayed ?? false,
                     "Wait until visible",
                     baseControl: baseControl);
 
@@ -215,7 +215,7 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.Exists(),
+                    () => element?.Exists() ?? false,
                     "Wait until exists",
                     baseControl: baseControl);
 
@@ -261,7 +261,7 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.IsCssDisplayed(),
+                    () => element?.IsCssDisplayed() ?? false,
                     "Wait until displayed (not have display-none)",
                     baseControl: baseControl);
 
@@ -307,7 +307,7 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => !element.Displayed,
+                    () => !element?.Displayed ?? true,
                     "Wait until element is invisible",
                     baseControl: baseControl);
         #endregion
@@ -352,7 +352,8 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.Exists() && element.Displayed && element.IsCssDisplayed() && element.Enabled,
+                    () => element != null ? 
+                        (element.Exists() && element.Displayed && element.IsCssDisplayed() && element.Enabled) : false,
                     "Wait until element is clickable",
                     baseControl: baseControl);
         #endregion
@@ -402,7 +403,8 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.Exists() && element.Text.Trim().EqualsIgnoreCase(textToMatch),
+                    () => element != null ? 
+                        (element.Exists() && element.Text.Trim().EqualsIgnoreCase(textToMatch)) : false,
                     $"Wait till Text (trim) is equals '{textToMatch}'",
                     baseControl: baseControl);
         #endregion
@@ -452,7 +454,7 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.Exists() && element.Text.Trim().StartsWith(textToMatch),
+                    () => element != null ? (element.Exists() && element.Text.Trim().StartsWith(textToMatch)) : false,
                     $"Wait till Text starts with '{textToMatch}'",
                     baseControl: baseControl);
         #endregion
@@ -502,7 +504,8 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.Exists() && textsToMatch.Any(text => element.Text.Trim().StartsWith(text)),
+                    () => element != null ? 
+                        (element.Exists() && textsToMatch.Any(text => element.Text.Trim().StartsWith(text))) : false,
                     $"Wait till either one of the Text starts with '{string.Join(",", textsToMatch)}'",
                     baseControl: baseControl);
         #endregion
@@ -552,7 +555,7 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.Exists() && element.Text.Contains(textToMatch),
+                    () => element != null ? (element.Exists() && element.Text.Contains(textToMatch)) : false,
                     $"Wait till Text contains '{textToMatch}'",
                     baseControl: baseControl);
         #endregion
@@ -602,7 +605,8 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.Exists() && textsToMatch.Any(text => element.Text.Contains(text)),
+                    () => element != null ?
+                        (element.Exists() && textsToMatch.Any(text => element.Text.Contains(text))) : false,
                     $"Wait till either one of the Text contains '{string.Join(",", textsToMatch)}'",
                     baseControl: baseControl);
         #endregion
@@ -647,7 +651,7 @@ namespace Selenium.Essentials
                     waitTimeSec,
                     throwExceptionWhenNotFound,
                     errorMessage,
-                    () => element.Exists() && element.Text.HasValue(),
+                    () => element != null ? (element.Exists() && element.Text.HasValue()) : false,
                     $"Wait until the element contains any text value",
                     baseControl: baseControl);
         #endregion

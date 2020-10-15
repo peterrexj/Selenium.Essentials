@@ -48,7 +48,7 @@ namespace Selenium.Essentials
         /// <param name="waitTimeSec">Time to wait in between each retry logic</param>
         /// <param name="retryCount">Number of times to retry the element from the browser</param>
         /// <returns>IWebElement</returns>
-        private IWebElement RetryFindElement(int waitTimeSec = 1, int retryCount = -1)
+        private IWebElement RetryFindElement(int waitTimeSec = 1, int retryCount = -1, bool onFindMode = false)
         {
             if (retryCount == -1) retryCount = SeAppConfig.DefaultRetryElementCount;
 
@@ -60,16 +60,22 @@ namespace Selenium.Essentials
                 }
                 catch (System.Net.WebException ex)
                 {
-                    if (i == retryCount)
+                    if (!onFindMode)
                     {
-                        throw new WebControlException(Driver, ex, uiControl: this);
+                        if (i == retryCount)
+                        {
+                            throw new WebControlException(Driver, ex, uiControl: this);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    if (i == retryCount)
+                    if (!onFindMode)
                     {
-                        throw new Exception(ex.Message, ex);
+                        if (i == retryCount)
+                        {
+                            throw new Exception(ex.Message, ex);
+                        }
                     }
                 }
 
@@ -77,7 +83,14 @@ namespace Selenium.Essentials
                 System.Threading.Thread.Sleep(waitTimeSec * 200);
             }
 
-            throw new WebControlException(Driver, $"Retry failed: Not able to find the element [{ToString()}] from the UI", uiControl: this);
+            if (!onFindMode)
+            {
+                throw new WebControlException(Driver, $"Retry failed: Not able to find the element [{ToString()}] from the UI", uiControl: this);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         #region Control Properties
@@ -90,6 +103,7 @@ namespace Selenium.Essentials
         /// Selenium's IWebElement associated against the control
         /// </summary>
         public IWebElement RawElement => RetryFindElement();
+        internal IWebElement RawElementFind => RetryFindElement(onFindMode: true);
 
         /// <summary>
         /// Returns the parent control of the current selector from the broswer as type of BaseControl
