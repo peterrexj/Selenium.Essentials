@@ -61,7 +61,10 @@ Benefits
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.2.1</Version>
     <AssemblyVersion>1.0.2.1</AssemblyVersion>
-    <PackageReleaseNotes>Release 1.0.2 - Fix: Remove ChromeDriver package dependency</PackageReleaseNotes>
+    <PackageReleaseNotes>Release 1.0.2.1
+Fix: Element wait throws exception when the element is not available
+Feat: Use cache while loading excel data to improve the performace and to support multi worksheet loads from same workbook
+Feat: Web driver extension - Switch window handle</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
