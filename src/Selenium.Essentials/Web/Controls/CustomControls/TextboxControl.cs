@@ -1,10 +1,12 @@
 ﻿using FluentAssertions;
 using OpenQA.Selenium;
+using Pj.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
 {
@@ -19,14 +21,14 @@ namespace Selenium.Essentials
 
         public void Set(string val)
         {
-            Utility.Runtime.Logger.Log($"Trying to set value [{val}] in the textbox [{By}]");
+            Runtime.Logger.Log($"Trying to set value [{val}] in the textbox [{By}]");
             WaitUntilElementVisible();
             Clear();
             SendKeys(val);
 
             if (Get().EqualsIgnoreCase(val)) return;
 
-            Utility.Runtime.Logger.Log($"Re-trying to set value [{val}] in the textbox [{By}]");
+            Runtime.Logger.Log($"Re-trying to set value [{val}] in the textbox [{By}]");
             WaitUntilElementInvisible(1, throwExceptionWhenNotFound: false); //Wait for a period before apply. There are some textbox which have UI alterations like $ signs and datetimes
             Clear();
             SendKeys(val);

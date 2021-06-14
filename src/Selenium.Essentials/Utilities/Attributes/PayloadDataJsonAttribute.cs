@@ -30,7 +30,7 @@ namespace Selenium.Essentials
         {
             if (!File.Exists(filePath))
             {
-                FilePath = Path.Combine(Utility.Runtime.ExecutingFolder, filePath);
+                FilePath = Path.Combine(Pj.Library.PjUtility.Runtime.ExecutingFolder, filePath);
             }
             else
             {

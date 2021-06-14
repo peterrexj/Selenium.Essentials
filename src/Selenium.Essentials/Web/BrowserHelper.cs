@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
+using Pj.Library;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,6 +14,7 @@ using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
 {
@@ -27,7 +29,7 @@ namespace Selenium.Essentials
 
     public static class BrowserHelper
     {
-        public static string DriverFolder { get; set; } = Utility.Runtime.ExecutingFolder;
+        public static string DriverFolder { get; set; } = Runtime.ExecutingFolder;
 
         private static ChromeOptions _chromeOptions;
         public static ChromeOptions ChromeOptions
@@ -37,7 +39,7 @@ namespace Selenium.Essentials
                 if (_chromeOptions == null)
                 {
                     _chromeOptions = new ChromeOptions();
-                    _chromeOptions.AddUserProfilePreference("download.default_directory", Utility.Runtime.ExecutingFolder);
+                    _chromeOptions.AddUserProfilePreference("download.default_directory", Runtime.ExecutingFolder);
                     _chromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
                     _chromeOptions.AddUserProfilePreference("profile.content_settings.exceptions.automatic_downloads.*.setting", 1);
                     _chromeOptions.AddArgument("--disable-extensions");
@@ -212,11 +214,11 @@ namespace Selenium.Essentials
                     }
                     catch (SecurityException e)
                     {
-                        Utility.Runtime.Logger.Log($"Unable to get browser info due to access issues. {e.Message}", e);
+                        Runtime.Logger.Log($"Unable to get browser info due to access issues. {e.Message}", e);
                     }
                     catch (Exception e)
                     {
-                        Utility.Runtime.Logger.Log($"Unable to get browser info due to exception : {e.Message}", e);
+                        Runtime.Logger.Log($"Unable to get browser info due to exception : {e.Message}", e);
                     }
                 }
                 return _installedBrowsers;

@@ -1,9 +1,14 @@
 [
   {
-    "CapabilityName": "MsEdge_Win10_latest_r1024x768",
+    "CapabilityName": "MsEdge_Win10_latest",
     "BrowserName": "MicrosoftEdge",
     "Platform": "Windows 10",
-    "Version": "latest",
-    "ScreenResolution": "1024x768"
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "MsEdge_Win10_latest_1",
+    "BrowserName": "MicrosoftEdge",
+    "Platform": "Windows 10",
+    "Version": "latest-1"
   }
 ]

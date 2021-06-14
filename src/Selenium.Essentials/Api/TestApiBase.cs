@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Pj.Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
 {
@@ -15,21 +17,21 @@ namespace Selenium.Essentials
         /// Xml payload content based on the usage of the xml payload attribute
         /// </summary>
         protected string XmlPayloadContent
-          => Utility.Runtime.CallerMethod.GetCustomAttributes().OfType<PayloadDataXmlAttribute>()
+          => Runtime.CallerMethod.GetCustomAttributes().OfType<PayloadDataXmlAttribute>()
               .Select(xmlAttr => xmlAttr.FileContent).FirstOrDefault().EmptyIfNull();
 
         /// <summary>
         /// json payload content based on the usage of the json payload attribute
         /// </summary>
         protected string JsonPayloadContent
-            => Utility.Runtime.CallerMethod.GetCustomAttributes().OfType<PayloadDataJsonAttribute>()
+            => Runtime.CallerMethod.GetCustomAttributes().OfType<PayloadDataJsonAttribute>()
                 .Select(jsonAttr => jsonAttr.FileContent).FirstOrDefault();
 
         /// <summary>
         /// excel data content based on the usage of the excel payload attribute
         /// </summary>
         protected ExcelData ExcelDataSourceContent =>
-            Utility.Runtime.CallerMethod.GetCustomAttributes().OfType<ExcelDataSourceAttribute>()
+            Runtime.CallerMethod.GetCustomAttributes().OfType<ExcelDataSourceAttribute>()
                 .Select(excelEnvAttr => excelEnvAttr.ExcelData).FirstOrDefault();
 
         /// <summary>

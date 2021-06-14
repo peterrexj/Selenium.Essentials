@@ -1,37 +1,62 @@
 [
   {
-    "CapabilityName": "Firefox_Win10_latest_r1024x768",
+    "CapabilityName": "Firefox_Win10_latest",
     "BrowserName": "Firefox",
     "Platform": "Windows 10",
-    "Version": "latest",
-    "ScreenResolution": "1024x768"
+    "Version": "latest"
   },
   {
-    "CapabilityName": "Firefox_Win8.1_latest_r1024x768",
+    "CapabilityName": "Firefox_Win10_latest_1",
+    "BrowserName": "Firefox",
+    "Platform": "Windows 10",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Firefox_Win8.1_latest",
     "BrowserName": "Firefox",
     "Platform": "Windows 8.1",
-    "Version": "latest",
-    "ScreenResolution": "1024x768"
+    "Version": "latest"
   },
   {
-    "CapabilityName": "Firefox_Win8_latest_r1024x768",
+    "CapabilityName": "Firefox_Win8.1_latest_1",
+    "BrowserName": "Firefox",
+    "Platform": "Windows 8.1",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Firefox_Win8_latest",
     "BrowserName": "Firefox",
     "Platform": "Windows 8",
-    "Version": "latest",
-    "ScreenResolution": "1024x768"
+    "Version": "latest"
   },
   {
-    "CapabilityName": "Firefox_Win7_latest_r1024x768",
+    "CapabilityName": "Firefox_Win8_latest_1",
+    "BrowserName": "Firefox",
+    "Platform": "Windows 8",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Firefox_Win7_latest",
     "BrowserName": "Firefox",
     "Platform": "Windows 7",
-    "Version": "latest",
-    "ScreenResolution": "1024x768"
+    "Version": "latest"
   },
   {
-    "CapabilityName": "Firefox_Linux_latest_r1024x768",
+    "CapabilityName": "Firefox_Win7_latest_1",
+    "BrowserName": "Firefox",
+    "Platform": "Windows 7",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Firefox_Linux_latest",
     "BrowserName": "Firefox",
     "Platform": "Linux",
-    "Version": "latest",
-    "ScreenResolution": "1024x768"
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Firefox_Linux_latest_1",
+    "BrowserName": "Firefox",
+    "Platform": "Linux",
+    "Version": "latest-1"
   }
 ]

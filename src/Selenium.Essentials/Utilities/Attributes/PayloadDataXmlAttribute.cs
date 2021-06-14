@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
 {
@@ -30,7 +31,7 @@ namespace Selenium.Essentials
         {
             if (!File.Exists(filePath))
             {
-                FilePath = Path.Combine(Utility.Runtime.ExecutingFolder, filePath);
+                FilePath = Path.Combine(Runtime.ExecutingFolder, filePath);
             }
             else
             {

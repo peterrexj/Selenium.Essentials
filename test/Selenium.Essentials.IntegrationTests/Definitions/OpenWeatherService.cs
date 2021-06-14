@@ -1,4 +1,6 @@
 ﻿
+using Pj.Library;
+
 namespace Selenium.Essentials.IntegrationTests.Definitions
 {
     public class OpenWeatherService

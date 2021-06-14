@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using Pj.Library;
 using Selenium.Essentials.SampleTest.Core;
 using System;
 using System.Collections.Concurrent;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials.SampleTest
 {
@@ -38,13 +40,14 @@ namespace Selenium.Essentials.SampleTest
             {
                 if (_envData == null)
                 {
-                    var currentEnv = Utility.AppConfig.AppSettingsCallerAssembly
+                    var currentEnv = AppConfig.AppSettingsCallerAssembly
                         .Where(k => k.Key.EqualsIgnoreCase("Environment"))
                         .FirstOrDefault().Value;
-                    var envDataFilePath = Path.Combine(Utility.Runtime.ExecutingFolder, "DataSource", "EnvironmentData", currentEnv, "EnvData.json");
+                    var envDataFilePath = Path.Combine(Runtime.ExecutingFolder, "DataSource", "EnvironmentData", currentEnv, "EnvData.json");
                     if (File.Exists(envDataFilePath))
                     {
-                        _envData = SerializationHelper.JsonToDictionary(new PayloadDataJsonAttribute(envDataFilePath).FileContent);
+                        _envData = SerializationHelper.ConvertComplexJsonDataToDictionary(new PayloadDataJsonAttribute(envDataFilePath).FileContent)
+                            .ToDictionary(d => d.Key, d => d.Value);
                     }
                     else
                     {
@@ -65,7 +68,7 @@ namespace Selenium.Essentials.SampleTest
         /// <param name="browserType"></param>
         public static IWebDriver InitializeDriver(string browserType)
         {
-            var openLocalBrowser = Utility.Runtime.IsInDebugMode; //variable to determine local browser
+            var openLocalBrowser = Runtime.IsInDebugMode; //variable to determine local browser
             BrowserCapabilitiesModal browserCapability = null;
             IWebDriver driver = null;
 
@@ -92,9 +95,9 @@ namespace Selenium.Essentials.SampleTest
                     var sauceUsername = Environment.GetEnvironmentVariable("SAUCE_USERNAME") ?? EnvData["SauceLabsUsername"];
                     var sauceAccessKey = Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY") ?? EnvData["SauceLabsAccessKey"];
 
-                    Utility.Runtime.Logger.Log($"Travis CI build number: {buildNumber}");
-                    Utility.Runtime.Logger.Log($"Travis CI job number: {travisJobNumber}");
-                    Utility.Runtime.Logger.Log($"Travis CI username (sauce): {sauceUsername}");
+                    Runtime.Logger.Log($"Travis CI build number: {buildNumber}");
+                    Runtime.Logger.Log($"Travis CI job number: {travisJobNumber}");
+                    Runtime.Logger.Log($"Travis CI username (sauce): {sauceUsername}");
 
                     var remoteDriverModel = new RemoteDriverAccessModel
                     {

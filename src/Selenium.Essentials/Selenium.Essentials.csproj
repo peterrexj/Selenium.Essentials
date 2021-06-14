@@ -13,58 +13,13 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
     <Title>Selenium.Essentials</Title>
-    <Description>Build Selenium web automation test using advanced web controls with wrappers and plenty of extensions to fasten your automation development time. Focus more on script logic with better consistent script execution, less maintenance, no hardwaits, with improved script execution performance and integrated Api testing framework.
-
-Overview
-Selenium provides only option to create only a single generic control which is called the IWebElement. Imagine if you have option to declare controls which resemble the html elements and provide its functionality, for example, Checkbox, Textbox, Button.
-
-Selenium Essentials provide new custom controls giving meaning to your page objects and making it more readable. Every control is defined from a BaseControl which has a set of definitions applicable to all controls as well as its custom actions. For example, Checkbox control will have all properties of the BaseControl and also defines Check() which ticks the checkbox in the UI, UnCheck() which unticks the checkbox, IsChecked returns a bool value based on the control is Checked or Unchecked reading from the UI.
-
-The Custom control also expose the underlying IWebElement as a property used by Selenium, in case you need to do any operations on top of this.
-
-There are plenty of Wait operation defined on the base control which flows through all the custom controls. There are different overrides to the wait operation where you can control the time to wait, whether to throw exception if fails, message for assertions when the waits are used for assert operations. Some custom control overrides the default wait to give a better meaning.
-
-Read more about controls here
-
-WebDriver and WebElement comes with some useful extensions which helps during the automation. For example, executing javascript, scroll operations, taking screenshot, getting driver capabilities.
-
-There is a simple Api framework, which can help in writing Integration tests using a fluent approach.
-
-Package contains lots of extensions and helpers over different types which will help increase productivity. Example,
-- Loading excel and converting to C#
-- Converting Json to Dictionary
-- Serialization and Deserialization
-- Regular Expression, DateTime, String, Enumerable, Async
-
-Benefits
-- Readable page objects which clearly defines what each control resemble in the browser
-- Custom controls with wrapped operations
--- Checkbox - Check, UnCheck, IsChecked, more
--- Textbox - Custom clear and set operations (extented clear which will make sure the content is cleared by doing Ctrl+a and BackSpace) and Set operation to overcome some responsive issues
--- UnorderedList - Total, Items
--- Select - operations on SelectElement
--- Table - TotalColumns, TotalRows, ColumnNames, GeCellContent, GetRowPosition, GetColumnPosition, more
--- Collection - working with Driver.FindElements(...)
--- FileUpload - UploadFile
--- Button
--- WebControl - for all generic html control
-- WebElement and WebDriver extension methods for most of the
-- Api framework to write integration tests
--- Supports fluent
--- Support most of the operations
--- Simple and easy to manage the tests
-- Extensions which provide many methods for automation engineering works
--- String, RegEx, Enumerable, DatTime, Async, more
-- Helpers to load excel, serialization, Json to Dictonary, more
-- Attributes for test to load json and xml data</Description>
+    <PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/release-notes.txt"))</PackageReleaseNotes>
+    <Description>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/product-description.txt"))</Description>
     <PackageTags>selenium automation c# browser web essentials nUnit xUnit webdriver webelement</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.2.1</Version>
-    <AssemblyVersion>1.0.2.1</AssemblyVersion>
-    <PackageReleaseNotes>Release 1.0.2.1
-Fix: Element wait throws exception when the element is not available
-Feat: Use cache while loading excel data to improve the performace and to support multi worksheet loads from same workbook
-Feat: Web driver extension - Switch window handle</PackageReleaseNotes>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -79,20 +34,29 @@ Feat: Web driver extension - Switch window handle</PackageReleaseNotes>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspose.Cells" Version="19.10.0" />
-    <PackageReference Include="FluentAssertions" Version="5.9.0" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.16" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
-    <PackageReference Include="Microsoft.Win32.Registry" Version="4.6.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.34" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Pj.Library" Version="1.0.0" />
+    <PackageReference Include="Pj.Library.ThirdParty" Version="1.0.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilities\Helpers\Excel\" />
     <Folder Include="Web\Drivers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="product-description.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="release-notes.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

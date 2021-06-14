@@ -1,12 +1,15 @@
 ﻿using FluentAssertions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using Pj.Library;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
 {
@@ -82,8 +85,8 @@ namespace Selenium.Essentials
             }
             catch (Exception ex)
             {
-                Utility.Runtime.Logger.Log(ex.Message, ex);
-                return String.Empty;
+                Runtime.Logger.Log(ex.Message, ex);
+                return string.Empty;
             }
         }
 
@@ -97,15 +100,15 @@ namespace Selenium.Essentials
             }
             catch (Exception e)
             {
-                Utility.Runtime.Logger.Log(e.Message, e);
+                Runtime.Logger.Log(e.Message, e);
             }
         }
 
-        public static Dictionary<string, string> Capabilities(this IWebDriver driver)
+        public static ConcurrentDictionary<string, string> Capabilities(this IWebDriver driver)
         {
             if (driver is RemoteWebDriver)
             {
-                return SerializationHelper.JsonToDictionary((driver as RemoteWebDriver).Capabilities.ToString());
+                return SerializationHelper.ConvertComplexJsonDataToDictionary((driver as RemoteWebDriver).Capabilities.ToString());
             }
             return null;
         }
@@ -118,7 +121,7 @@ namespace Selenium.Essentials
             }
             catch (Exception e)
             {
-                Utility.Runtime.Logger.Log($"Error while scroll page to top {e.Message}", e);
+                Runtime.Logger.Log($"Error while scroll page to top {e.Message}", e);
             }
         }
 
@@ -130,7 +133,7 @@ namespace Selenium.Essentials
             }
             catch (Exception e)
             {
-                Utility.Runtime.Logger.Log($"Error while scroll page to bottom {e.Message}", e);
+                Runtime.Logger.Log($"Error while scroll page to bottom {e.Message}", e);
             }
         }
 
@@ -142,7 +145,7 @@ namespace Selenium.Essentials
             }
             catch (Exception e)
             {
-                Utility.Runtime.Logger.Log($"Error while scroll {e.Message}", e);
+                Runtime.Logger.Log($"Error while scroll {e.Message}", e);
             }
         }
 

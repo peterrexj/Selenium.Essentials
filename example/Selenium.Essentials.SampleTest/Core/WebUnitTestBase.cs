@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials.SampleTest.Core
 {
@@ -34,7 +35,7 @@ namespace Selenium.Essentials.SampleTest.Core
                     }
                     catch (Exception ex)
                     {
-                        Utility.Runtime.Logger.Log($"Unable to Close driver gracefully due to: {ex.ToString()}");
+                        Runtime.Logger.Log($"Unable to Close driver gracefully due to: {ex.ToString()}");
                     }
                 }
                 TestUtility.SessionDrivers.TryRemove(TestContext.CurrentContext.Test.Name, out driver);
