@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pj.Library;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Selenium.Essentials.SampleTest.Core
                 {
                     _browserCapabilitiesModals = new List<BrowserCapabilitiesModal>();
 
-                    var capFiles = Directory.EnumerateFiles(StorageHelper.GetAbsolutePath(TestUtility.EnvData["PathToBrowserCapabilities"]), "*.json");
+                    var capFiles = Directory.EnumerateFiles(IoHelper.LocalFile(TestUtility.EnvData["PathToBrowserCapabilities"]), "*.json");
 
                     if (capFiles.Any())
                     {

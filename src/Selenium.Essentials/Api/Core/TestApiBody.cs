@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using Pj.Library;
+using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
 {
@@ -83,7 +85,7 @@ namespace Selenium.Essentials
             }
             catch (Exception ex)
             {
-                Utility.Runtime.Logger.Log($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
+                Runtime.Logger.Log($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
                 throw;
             }
         }
@@ -102,7 +104,7 @@ namespace Selenium.Essentials
             }
             catch (Exception ex)
             {
-                Utility.Runtime.Logger.Log($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
+                Runtime.Logger.Log($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
                 throw;
             }
         }

@@ -1,30 +1,32 @@
 [
   {
-    "CapabilityName": "IE_Win10_latest_r1024x768",
+    "CapabilityName": "IE_Win10_latest",
     "BrowserName": "Internet Explorer",
     "Platform": "Windows 10",
-    "Version": "latest",
-    "ScreenResolution": "1024x768"
+    "Version": "latest"
   },
   {
-    "CapabilityName": "IE_Win8.1_latest_r1024x768",
+    "CapabilityName": "IE_Win8.1_latest",
     "BrowserName": "Internet Explorer",
     "Platform": "Windows 8.1",
-    "Version": "latest",
-    "ScreenResolution": "1024x768"
+    "Version": "latest"
   },
   {
-    "CapabilityName": "IE_Win8_latest_r1024x768",
+    "CapabilityName": "IE_Win8_latest",
     "BrowserName": "Internet Explorer",
     "Platform": "Windows 8",
-    "Version": "latest",
-    "ScreenResolution": "1024x768"
+    "Version": "latest"
   },
   {
-    "CapabilityName": "IE_Win7_latest_r1024x768",
+    "CapabilityName": "IE_Win7_latest",
     "BrowserName": "Internet Explorer",
     "Platform": "Windows 7",
-    "Version": "latest",
-    "ScreenResolution": "1024x768"
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "IE_Win7_latest_1",
+    "BrowserName": "Internet Explorer",
+    "Platform": "Windows 7",
+    "Version": "latest-1"
   }
 ]

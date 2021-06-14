@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Pj.Library;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +9,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
 {
@@ -368,11 +370,11 @@ namespace Selenium.Essentials
                 {
                     if (_logSslCertificateErrors)
                     {
-                        Utility.Runtime.Logger.Log($"Problem with the Certificate: {cert.Subject}");
-                        Utility.Runtime.Logger.Log($"Sender: {sender}");
-                        Utility.Runtime.Logger.Log($"cert: {cert}");
-                        Utility.Runtime.Logger.Log($"chain: {chain}");
-                        Utility.Runtime.Logger.Log($"sslPolicyErrors: {sslPolicyErrors}");
+                        Runtime.Logger.Log($"Problem with the Certificate: {cert.Subject}");
+                        Runtime.Logger.Log($"Sender: {sender}");
+                        Runtime.Logger.Log($"cert: {cert}");
+                        Runtime.Logger.Log($"chain: {chain}");
+                        Runtime.Logger.Log($"sslPolicyErrors: {sslPolicyErrors}");
                     }
                     return true;
                 };
@@ -446,14 +448,14 @@ namespace Selenium.Essentials
             }
             else if (httpMethod == HttpMethod.Get)
             {
-                Utility.Runtime.Logger.Log($"Requesting GET: {Uri.AbsoluteUri}");
+                Runtime.Logger.Log($"Requesting GET: {Uri.AbsoluteUri}");
                 httpResponseMessage = requestToDownloadFile.IsEmpty() ? await client.GetAsync(Uri) : await client.GetAsync(Uri, HttpCompletionOption.ResponseHeadersRead);
             }
             else if (httpMethod == HttpMethod.Delete)
             {
                 if (JsonBody.IsEmpty())
                 {
-                    Utility.Runtime.Logger.Log($"Requesting DELETE: {Uri.AbsoluteUri}");
+                    Runtime.Logger.Log($"Requesting DELETE: {Uri.AbsoluteUri}");
                     httpResponseMessage = await client.DeleteAsync(Uri);
                 }
                 else
@@ -469,7 +471,7 @@ namespace Selenium.Essentials
 
             if (requestToDownloadFile.HasValue())
             {
-                StorageHelper.CreateDirectory(requestToDownloadFile);
+                IoHelper.CreateDirectory(requestToDownloadFile);
                 if (!File.Exists(requestToDownloadFile))
                 {
                     using (Stream streamToReadFrom = await httpResponseMessage.Content.ReadAsStreamAsync())
@@ -499,7 +501,7 @@ namespace Selenium.Essentials
 
             if (response.ResponseCode != HttpStatusCode.OK && response.ResponseCode != HttpStatusCode.Accepted)
             {
-                Utility.Runtime.Logger.Log($"Resposne status: {response.ResponseCode}, ResponseMessage: {response.ResponseBody.ContentString}");
+                Runtime.Logger.Log($"Resposne status: {response.ResponseCode}, ResponseMessage: {response.ResponseBody.ContentString}");
             }
 
             return response;

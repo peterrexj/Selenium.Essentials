@@ -1,0 +1,8 @@
+﻿Release 1.0.3
+- All extensions and helpers are now referenced from Pj packages
+- Usage of extensions are helpers should be followed by adding using Pj.Library to the class files
+
+Release 1.0.2.1
+Fix: Element wait throws exception when the element is not available
+Feat: Use cache while loading excel data to improve the performace and to support multi worksheet loads from same workbook
+Feat: Web driver extension - Switch window handle

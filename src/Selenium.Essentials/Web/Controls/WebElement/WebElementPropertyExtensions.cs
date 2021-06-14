@@ -1,8 +1,10 @@
 ﻿using OpenQA.Selenium;
+using Pj.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
 {
@@ -136,7 +138,7 @@ namespace Selenium.Essentials
             }
             catch (Exception ex)
             {
-                Utility.Runtime.Logger.Log($"Cannot get Text from the control due to: {ex.Message}", ex);
+                Runtime.Logger.Log($"Cannot get Text from the control due to: {ex.Message}", ex);
                 return string.Empty;
             }
         }

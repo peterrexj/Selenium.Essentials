@@ -10,7 +10,13 @@
 <a href="https://saucelabs.com"><img src="https://github.com/peterrexj/Selenium.Essentials/blob/develop/docs/resources/images/SauceLabLogo.svg" height="100"/></a>
 </br>
 
+# Notice: Release version 1.3.0
 
+All extensions and helpers are now moved to Pj library and should use  
+```c# 
+using Pj.Library
+``` 
+to your class if refering to any extensions or helpers. The document to the extensions and helpers will be updated soon.
 
 Build Selenium web automation test using advanced web controls with wrappers and plenty of extensions to fasten your automation development time. Focus more on script logic with better consistent script execution, less maintenance, no hardwaits, with improved script execution performance and integrated Api testing framework.
 
@@ -38,6 +44,7 @@ Package contains lots of extensions and helpers over different types which will 
 - Regular Expression, DateTime, String, Enumerable, Async
 
 # Benefits
+
 * Readable page objects which clearly defines what each control resemble in the browser
 * Custom controls with wrapped operations 
   * Checkbox - Check, UnCheck, IsChecked, more
@@ -86,7 +93,7 @@ You need to know
     * c# Generics
     * OOPS concepts
     * Linq and Lamda (basic)
-    * Multithread programming 
+    * Multithread programming
 
 # Install
 
@@ -184,8 +191,8 @@ Wait operations (few listed)
 |`WaitUntilElementTextContains`|Wait until the text on the element contains the text passed for match|
 |`WaitUntilElementHasSomeText`|Wait until the element has any text on it|
 
-
 Most of the above operations are also added to IWebElement as extension methods
 
 # Documentation
+
 https://github.com/peterrexj/Selenium.Essentials/wiki

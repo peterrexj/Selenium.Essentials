@@ -36,11 +36,20 @@
     "BrowserName": "Safari"
   },
   {
-    "CapabilityName": "iPhone_iOS_11.1_appium_1.9.1",
-    "AppiumVersion": "1.9.1",
-    "DeviceName": "iPhone Simulator",
+    "CapabilityName": "iPhone12Mini_iOS_14.3_appium_1.20.1",
+    "AppiumVersion": "1.20.1",
+    "DeviceName": "iPhone 12 mini Simulator",
     "DeviceOrientation": "portrait",
-    "PlatformVersion": "11.1",
+    "PlatformVersion": "14.3",
+    "PlatformName": "iOS",
+    "BrowserName": "Safari"
+  },
+  {
+    "CapabilityName": "iPhone11Pro_iOS_14.3_appium_1.20.1",
+    "AppiumVersion": "1.20.1",
+    "DeviceName": "iPhone 11 Pro Max Simulator",
+    "DeviceOrientation": "portrait",
+    "PlatformVersion": "14.3",
     "PlatformName": "iOS",
     "BrowserName": "Safari"
   },
