@@ -1,4 +1,7 @@
-﻿Release 1.0.3
+﻿Release 1.0.3.1
+- Upgrade few dependent packages
+
+Release 1.0.3
 - All extensions and helpers are now referenced from Pj packages
 - Usage of extensions are helpers should be followed by adding using Pj.Library to the class files
 

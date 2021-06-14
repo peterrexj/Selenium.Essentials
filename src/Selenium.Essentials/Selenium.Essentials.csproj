@@ -17,9 +17,9 @@
     <Description>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/product-description.txt"))</Description>
     <PackageTags>selenium automation c# browser web essentials nUnit xUnit webdriver webelement</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.3</Version>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
+    <Version>1.0.3.1</Version>
+    <AssemblyVersion>1.0.3.1</AssemblyVersion>
+    <FileVersion>1.0.3.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,8 +39,8 @@
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Pj.Library" Version="1.0.0" />
-    <PackageReference Include="Pj.Library.ThirdParty" Version="1.0.0" />
+    <PackageReference Include="Pj.Library" Version="1.0.1" />
+    <PackageReference Include="Pj.Library.ThirdParty" Version="1.0.1" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
