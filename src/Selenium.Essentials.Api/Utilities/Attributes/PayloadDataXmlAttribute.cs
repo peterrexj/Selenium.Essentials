@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using Pj.Library;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,8 +38,10 @@ namespace Selenium.Essentials
                 FilePath = filePath;
             }
 
-            File.Exists(FilePath).Should()
-                .BeTrue($"The Xml file trying to load is unavailable in the location {FilePath}");
+            if (IoHelper.FileNotExists(FilePath))
+            {
+                throw new Exception($"The Xml file trying to load is unavailable in the location {FilePath}");
+            }
 
             FileContent = File.ReadAllText(FilePath);
         }

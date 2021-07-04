@@ -1,4 +1,3 @@
-using FluentAssertions;
 using Pj.Library;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,10 @@ namespace Selenium.Essentials
         }
         private void InitUri(Uri baseUri, string path)
         {
-            baseUri.Should().NotBeNull("The baseUri is required. Call SetEnvironment method or set EnvironmentUri property on TestApiHttp object");
+            if (baseUri == null)
+            {
+                throw new Exception("The baseUri is required. Call SetEnvironment method or set EnvironmentUri property on TestApiHttp object");
+            }
 
             if (path.IsEmpty())
             {

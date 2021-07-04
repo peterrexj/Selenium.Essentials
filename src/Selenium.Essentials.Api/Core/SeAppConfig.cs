@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Pj.Library;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,5 +36,28 @@ namespace Selenium.Essentials
         /// Default is set to 60 seconds
         /// </summary>
         public static int WebDriverPageLoadWaitTime { get; set; } = 60;
+
+        /// <summary>
+        /// Tablet window size.
+        /// Default to Size(768, 1024)
+        /// </summary>
+        public static Size TabletWindowSize { get; set; } = new Size(768, 1024);
+
+
+        /// <summary>
+        /// Mobile window size
+        /// Default to Size(375, 667)
+        /// </summary>
+        public static Size MobileWindowSize { get; set; } = new Size(375, 667);
+
+        /// <summary>
+        /// Initialize the selenium essentials framework.
+        /// Create a test context and initialze the logging
+        /// </summary>
+        public static void InitializeFramework(ILog logger = null)
+        {
+            Pj.Library.PjUtility.InitializeUtility(logger);
+            TestContextHelper.CreateTestContext();
+        }
     }
 }

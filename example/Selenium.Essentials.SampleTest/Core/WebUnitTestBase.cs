@@ -15,7 +15,7 @@ namespace Selenium.Essentials.SampleTest.Core
         [SetUp]
         public void Setup()
         {
-            Utility.InitializeFramework(new CutomLogger());
+            SeAppConfig.InitializeFramework(new CutomLogger());
         }
 
         [TearDown]

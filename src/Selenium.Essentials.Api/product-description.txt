@@ -1,0 +1,17 @@
+﻿Build your Api test easily with few simple steps and this framework allows you to focus more on your Test. The wrapper allows to call the endpoints easily and provide different options on your request and response.
+
+Overview
+This framework is build as part of Selenium Essentials to provide a Api framework which allows to make calls to endpoint easily.
+
+- Api framework to write integration tests
+-- Supports fluent way of endpoint definitions
+-- Support most of the operations
+-- Simple and easy to manage the tests
+
+Example,
+    return new TestApiHttp()
+                .SetEnvironment("http://api.openweathermap.org")
+                .PrepareRequest("/data/2.5/forecase")
+                .Get()
+                .ResponseBody
+                .ContentJson;

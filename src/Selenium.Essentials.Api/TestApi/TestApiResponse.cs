@@ -1,4 +1,3 @@
-using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,10 +44,11 @@ namespace Selenium.Essentials
         public void AssertResponseStatusForSuccess()
         {
             var passStatus = new[] { HttpStatusCode.OK, HttpStatusCode.Accepted };
-            passStatus
-                .Contains(this.HttpResponseMessage.StatusCode)
-                .Should()
-                .BeTrue($"The response from the server resulted with status code: {this.HttpResponseMessage.StatusCode} with reason: {this.HttpResponseMessage.ReasonPhrase}");
+
+            if (!passStatus.Contains(this.HttpResponseMessage.StatusCode))
+            {
+                throw new Exception($"The response from the server resulted with status code: {this.HttpResponseMessage.StatusCode} with reason: {this.HttpResponseMessage.ReasonPhrase}");
+            }
         }
     }
 }

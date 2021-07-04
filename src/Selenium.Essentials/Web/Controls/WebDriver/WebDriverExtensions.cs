@@ -65,10 +65,10 @@ namespace Selenium.Essentials
                     driver.Manage().Window.Maximize();
                     break;
                 case Device.Tablet:
-                    driver.Manage().Window.Size = Utility.TabletWindowSize;
+                    driver.Manage().Window.Size = SeAppConfig.TabletWindowSize;
                     break;
                 case Device.Mobile:
-                    driver.Manage().Window.Size = Utility.MobileWindowSize;
+                    driver.Manage().Window.Size = SeAppConfig.MobileWindowSize;
                     break;
                 case Device.Default:
                 default:
