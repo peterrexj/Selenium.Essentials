@@ -12,7 +12,7 @@ namespace Selenium.Essentials.UnitTests
         [SetUp]
         public void Setup()
         {
-            Utility.InitializeFramework();
+            SeAppConfig.InitializeFramework();
         }
 
         [TestCase]

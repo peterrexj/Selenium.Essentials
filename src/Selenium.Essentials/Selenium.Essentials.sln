@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{45
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Selenium.Essentials.SampleTest", "..\..\example\Selenium.Essentials.SampleTest\Selenium.Essentials.SampleTest.csproj", "{B8AC8A3A-7340-46C5-975A-CEFE2772B98C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium.Essentials.Api", "..\Selenium.Essentials.Api\Selenium.Essentials.Api.csproj", "{3CB187F1-C8FD-4CBE-8964-D5C927F7A2FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{B8AC8A3A-7340-46C5-975A-CEFE2772B98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8AC8A3A-7340-46C5-975A-CEFE2772B98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8AC8A3A-7340-46C5-975A-CEFE2772B98C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CB187F1-C8FD-4CBE-8964-D5C927F7A2FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CB187F1-C8FD-4CBE-8964-D5C927F7A2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CB187F1-C8FD-4CBE-8964-D5C927F7A2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CB187F1-C8FD-4CBE-8964-D5C927F7A2FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

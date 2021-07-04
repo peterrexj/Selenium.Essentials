@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Selenium.Essentials.Api\Selenium.Essentials.Api.csproj" />
     <ProjectReference Include="..\..\src\Selenium.Essentials\Selenium.Essentials.csproj" />
   </ItemGroup>
 

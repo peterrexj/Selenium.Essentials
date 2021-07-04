@@ -14,7 +14,7 @@ namespace Selenium.Essentials.IntegrationTests.Tests
         [SetUp]
         public void Setup()
         {
-            Utility.InitializeFramework();
+            SeAppConfig.InitializeFramework();
             _openWeatherService = new OpenWeatherService();
         }
 
