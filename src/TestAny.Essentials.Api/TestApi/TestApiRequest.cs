@@ -8,9 +8,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using TestAny.Essentials.Core;
+using TestAny.Essentials.Core.Dtos.Api;
 using static Pj.Library.PjUtility;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Api
 {
     /// <summary>
     /// Request class for the Api test
@@ -394,7 +396,7 @@ namespace Selenium.Essentials
                 client.DefaultRequestHeaders.Authorization = HeaderAuthentication;
             }
 
-            client.Timeout = TimeSpan.FromSeconds(SeAppConfig.DefaultApiResponseTimeoutWaitPeriodInSeconds);
+            client.Timeout = TimeSpan.FromSeconds(TestAnyAppConfig.DefaultApiResponseTimeoutWaitPeriodInSeconds);
 
             foreach (var kvp in Headers)
             {

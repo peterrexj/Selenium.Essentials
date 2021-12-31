@@ -77,7 +77,7 @@ namespace Selenium.Essentials.SampleTest.WebTests.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Navigate to Wikipedia and verify today\'s feature")]
         [NUnit.Framework.CategoryAttribute("wikipedia")]
-        [NUnit.Framework.TestCaseAttribute("Chrome_Win10_latest_r1024x768", null)]
+        [NUnit.Framework.TestCaseAttribute("Chrome_Win10_latest", null)]
         public virtual void NavigateToWikipediaAndVerifyTodaysFeature(string browser, string[] exampleTags)
         {
             string[] @__tags = new string[] {

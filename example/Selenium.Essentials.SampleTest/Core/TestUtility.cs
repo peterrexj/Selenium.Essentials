@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using TestAny.Essentials.Core.Attributes;
 using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials.SampleTest
@@ -40,13 +41,13 @@ namespace Selenium.Essentials.SampleTest
             {
                 if (_envData == null)
                 {
-                    var currentEnv = AppConfig.AppSettingsCallerAssembly
+                    var currentEnv = AppSettingsConfig.AppSettingsCallerAssembly
                         .Where(k => k.Key.EqualsIgnoreCase("Environment"))
                         .FirstOrDefault().Value;
                     var envDataFilePath = Path.Combine(Runtime.ExecutingFolder, "DataSource", "EnvironmentData", currentEnv, "EnvData.json");
                     if (File.Exists(envDataFilePath))
                     {
-                        _envData = SerializationHelper.ConvertComplexJsonDataToDictionary(new PayloadDataJsonAttribute(envDataFilePath).FileContent)
+                        _envData = JsonHelper.ConvertComplexJsonDataToDictionary(new PayloadDataJsonAttribute(envDataFilePath).FileContent)
                             .ToDictionary(d => d.Key, d => d.Value);
                     }
                     else

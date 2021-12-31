@@ -13,5 +13,5 @@ Scenario Outline: Navigate to Wikipedia and verify today's feature
 
 	Examples:
 		| Browser                       |
-		| Chrome_Win10_latest_r1024x768 |
+		| Chrome_Win10_latest |
 		#| Safari_Mac10.13_v11.1_r1024x768 |

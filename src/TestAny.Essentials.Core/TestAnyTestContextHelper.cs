@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Core
 {
     /// <summary>
     /// A context container for a test case
     /// </summary>
-    public static class TestContextHelper
+    public static class TestAnyTestContextHelper
     {
         private static Dictionary<string, object> _contextCollection;
 

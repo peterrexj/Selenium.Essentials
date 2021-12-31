@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Core.Dtos.Api
 {
     /// <summary>
     /// Api Header class which will hold the header information which will used for request

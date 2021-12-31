@@ -1,0 +1,5 @@
+﻿Release 1.0.5
+- Introducing the Core utility
+
+Overview
+TestAny Essentials is a mini framework that helps in automating Web Applications and Api, making it more easy for Engineers to focus on the test and assertions

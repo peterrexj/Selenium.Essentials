@@ -3,34 +3,35 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using static Pj.Library.PjUtility;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Core.Attributes
 {
     /// <summary>
-    /// Json Payload attribute for nUnit Api and Web tests
+    /// Xml Payload attribute for nUnit Api and Web tests
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
-    public class PayloadDataJsonAttribute : Attribute
+    public class PayloadDataXmlAttribute : Attribute
     {
         /// <summary>
-        /// Relative path to the json file
+        /// Relative path to the xml file
         /// </summary>
         public string FilePath { get; set; }
 
         /// <summary>
-        /// Content of the json file, which will be loaded during initialization
+        /// Content of the xml file, which will be loaded during initialization
         /// </summary>
         public string FileContent { get; private set; }
 
         /// <summary>
-        /// Read the json file and exposed through FileContent property
+        /// Read the xml file and exposed through FileContent property
         /// </summary>
-        /// <param name="filePath">path to the json file (relative path)</param>
-        public PayloadDataJsonAttribute(string filePath)
+        /// <param name="filePath"></param>
+        public PayloadDataXmlAttribute(string filePath)
         {
             if (!File.Exists(filePath))
             {
-                FilePath = Path.Combine(Pj.Library.PjUtility.Runtime.ExecutingFolder, filePath);
+                FilePath = Path.Combine(Runtime.ExecutingFolder, filePath);
             }
             else
             {
@@ -39,7 +40,7 @@ namespace Selenium.Essentials
 
             if (IoHelper.FileNotExists(FilePath))
             {
-                throw new Exception($"The Json file trying to load is unavailable in the location {FilePath}");
+                throw new Exception($"The Xml file trying to load is unavailable in the location {FilePath}");
             }
 
             FileContent = File.ReadAllText(FilePath);

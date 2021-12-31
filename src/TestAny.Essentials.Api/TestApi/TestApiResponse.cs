@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Api
 {
     /// <summary>
     /// Api Response

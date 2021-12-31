@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TestAny.Essentials.Core;
 using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
@@ -182,7 +183,7 @@ namespace Selenium.Essentials
         /// <param name="waitSeconds">total amount of time to wait for the element to be available</param>
         public static void WaitAndClick(this IWebElement element, IWebDriver driver, int waitSeconds = 0)
         {
-            waitSeconds = waitSeconds == 0 ? SeAppConfig.DefaultTimeoutWaitPeriodInSeconds : waitSeconds;
+            waitSeconds = waitSeconds == 0 ? TestAnyAppConfig.DefaultTimeoutWaitPeriodInSeconds : waitSeconds;
             element.WaitUntilElementVisible(driver, waitTimeSec: waitSeconds);
             element.Click();
         }
@@ -196,7 +197,7 @@ namespace Selenium.Essentials
         /// <param name="waitSeconds">total amount of time to wait for the element to be available</param>
         public static void WaitAndSendKeys(this IWebElement element, IWebDriver driver, string valueToSet, int waitSeconds = 0)
         {
-            waitSeconds = waitSeconds == 0 ? SeAppConfig.DefaultTimeoutWaitPeriodInSeconds : waitSeconds;
+            waitSeconds = waitSeconds == 0 ? TestAnyAppConfig.DefaultTimeoutWaitPeriodInSeconds : waitSeconds;
             element.WaitUntilElementVisible(driver, waitTimeSec: waitSeconds);
             element.Clear();
             element.SendKeys(valueToSet);

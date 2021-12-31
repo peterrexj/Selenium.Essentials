@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Core
 {
     /// <summary>
     /// Static Framework settings and configuration
     /// </summary>
-    public static class SeAppConfig
+    public static class TestAnyAppConfig
     {
         /// <summary>
         /// Total amount of time for wait operations in web driver. 
@@ -57,7 +57,7 @@ namespace Selenium.Essentials
         public static void InitializeFramework(ILog logger = null)
         {
             Pj.Library.PjUtility.InitializeUtility(logger);
-            TestContextHelper.CreateTestContext();
+            TestAnyTestContextHelper.CreateTestContext();
         }
     }
 }

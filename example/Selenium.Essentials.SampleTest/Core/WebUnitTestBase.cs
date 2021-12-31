@@ -4,6 +4,8 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TestAny.Essentials.Api;
+using TestAny.Essentials.Core;
 using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials.SampleTest.Core
@@ -15,7 +17,7 @@ namespace Selenium.Essentials.SampleTest.Core
         [SetUp]
         public void Setup()
         {
-            SeAppConfig.InitializeFramework(new CutomLogger());
+            TestAnyAppConfig.InitializeFramework(new CutomLogger());
         }
 
         [TearDown]

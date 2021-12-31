@@ -1,6 +1,0 @@
-﻿Release 1.0.4
-- Introduction of Selenium.Essentials.Api for Api testing
-- Usage of utilities from Pj.Library
-- Remove Utility class from Selenium Essentials
-- Move properties from Utility class to SeAppConfig class
-- Move InitializeFramework(..) from Utility to SeAppConfig class
