@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestAny.Essentials.Core;
 
 namespace Selenium.Essentials
 {
@@ -51,7 +52,7 @@ namespace Selenium.Essentials
         /// <returns>IWebElement</returns>
         private IWebElement RetryFindElement(int waitTimeSec = 1, int retryCount = -1, bool onFindMode = false)
         {
-            if (retryCount == -1) retryCount = SeAppConfig.DefaultRetryElementCount;
+            if (retryCount == -1) retryCount = TestAnyAppConfig.DefaultRetryElementCount;
 
             for (var i = 0; i < retryCount + 1; i++)
             {

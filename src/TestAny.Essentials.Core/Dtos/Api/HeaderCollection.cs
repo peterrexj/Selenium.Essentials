@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Core.Dtos.Api
 {
     public class HeaderCollection : List<TestApiHeader>
     {

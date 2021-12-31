@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestAny.Essentials.Core;
 using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
@@ -65,10 +66,10 @@ namespace Selenium.Essentials
                     driver.Manage().Window.Maximize();
                     break;
                 case Device.Tablet:
-                    driver.Manage().Window.Size = SeAppConfig.TabletWindowSize;
+                    driver.Manage().Window.Size = TestAnyAppConfig.TabletWindowSize;
                     break;
                 case Device.Mobile:
-                    driver.Manage().Window.Size = SeAppConfig.MobileWindowSize;
+                    driver.Manage().Window.Size = TestAnyAppConfig.MobileWindowSize;
                     break;
                 case Device.Default:
                 default:
@@ -108,7 +109,7 @@ namespace Selenium.Essentials
         {
             if (driver is RemoteWebDriver)
             {
-                return SerializationHelper.ConvertComplexJsonDataToDictionary((driver as RemoteWebDriver).Capabilities.ToString());
+                return JsonHelper.ConvertComplexJsonDataToDictionary((driver as RemoteWebDriver).Capabilities.ToString());
             }
             return null;
         }

@@ -1,7 +1,7 @@
 language: csharp
 solution: ./src/Selenium.Essentials/Selenium.Essentials.sln
 mono: none
-dotnet: 2.1.502
+dotnet: 3.1
 dist: trusty
 
 script:

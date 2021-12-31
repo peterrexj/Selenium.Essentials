@@ -4,6 +4,9 @@ using Pj.Library;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TestAny.Essentials.Api;
+using TestAny.Essentials.Core;
+using TestAny.Essentials.Core.Attributes;
 
 namespace Selenium.Essentials.UnitTests
 {
@@ -12,14 +15,14 @@ namespace Selenium.Essentials.UnitTests
         [SetUp]
         public void Setup()
         {
-            SeAppConfig.InitializeFramework();
+            TestAnyAppConfig.InitializeFramework();
         }
 
         [TestCase]
         [PayloadDataJson(@"Data/dataSerializeToDictionary.json")]
         public void JsonToDictionaryShouldConvert()
         {
-            var dictionary = SerializationHelper.ConvertComplexJsonDataToDictionary(JsonPayloadContent);
+            var dictionary = JsonHelper.ConvertComplexJsonDataToDictionary(JsonPayloadContent);
             dictionary.Count.Should().Be(16, "The total number of property does not match result in dictionary");
         }
     }

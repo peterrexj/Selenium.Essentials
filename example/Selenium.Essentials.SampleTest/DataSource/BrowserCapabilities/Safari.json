@@ -1,11 +1,5 @@
 [
   {
-    "CapabilityName": "Safari_Mac11_latest",
-    "BrowserName": "Safari",
-    "Platform": "macOS 11",
-    "Version": "latest"
-  },
-  {
     "CapabilityName": "Safari_Mac10.15_latest",
     "BrowserName": "Safari",
     "Platform": "macOS 10.15",
@@ -39,18 +33,6 @@
     "CapabilityName": "Safari_Mac10.12_latest_1",
     "BrowserName": "Safari",
     "Platform": "macOS 10.12",
-    "Version": "latest-1"
-  },
-  {
-    "CapabilityName": "Safari_Mac10.11_latest",
-    "BrowserName": "Safari",
-    "Platform": "OS X 10.11",
-    "Version": "latest"
-  },
-  {
-    "CapabilityName": "Safari_OS10.11_latest_1",
-    "BrowserName": "Safari",
-    "Platform": "OS X 10.11",
     "Version": "latest-1"
   }
 ]

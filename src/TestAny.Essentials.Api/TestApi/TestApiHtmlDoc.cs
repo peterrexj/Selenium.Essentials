@@ -4,7 +4,7 @@ using System.Text;
 using HtmlAgilityPack;
 using Pj.Library;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Api
 {
     /// <summary>
     /// Api response in the form of HTML document

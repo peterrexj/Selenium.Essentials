@@ -4,6 +4,8 @@ using Selenium.Essentials.IntegrationTests.Definitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TestAny.Essentials.Api;
+using TestAny.Essentials.Core;
 
 namespace Selenium.Essentials.IntegrationTests.Tests
 {
@@ -14,7 +16,7 @@ namespace Selenium.Essentials.IntegrationTests.Tests
         [SetUp]
         public void Setup()
         {
-            SeAppConfig.InitializeFramework();
+            TestAnyAppConfig.InitializeFramework();
             _openWeatherService = new OpenWeatherService();
         }
 

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using TestAny.Essentials.Core.Attributes;
 using static Pj.Library.PjUtility;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Api
 {
     /// <summary>
     /// Api test base class, inherit this class on top of your api test class

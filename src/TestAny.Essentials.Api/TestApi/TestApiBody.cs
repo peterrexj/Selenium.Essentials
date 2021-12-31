@@ -4,7 +4,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Pj.Library;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Api
 {
     /// <summary>
     /// Api Response body representation

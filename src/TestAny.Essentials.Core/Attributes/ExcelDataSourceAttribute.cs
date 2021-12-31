@@ -1,7 +1,7 @@
 ﻿using Pj.Library;
 using System;
 
-namespace Selenium.Essentials
+namespace TestAny.Essentials.Core.Attributes
 {
     /// <summary>
     /// Excel Payload attribute for nUnit Api and Web tests
