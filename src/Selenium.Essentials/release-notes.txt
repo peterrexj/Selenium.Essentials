@@ -1,4 +1,7 @@
-﻿Release 1.0.5
+﻿Release 1.0.5.1
+- Bug fix when loading ApiResponse as HtmlContent
+
+Release 1.0.5
 - Introduce TestAny.Essentials.Core
 - Introduce TestAny.Essentials.Api. All Api related functionality are moved into this new package
 - There are some breaking changes

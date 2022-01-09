@@ -16,7 +16,14 @@ namespace TestAny.Essentials.Api
         public TestApiHtmlDoc(string htmlContent)
         {
             doc = new HtmlDocument();
-            doc.LoadHtml(htmlContent);
+            if (htmlContent.HasValue())
+            {
+                try
+                {
+                    doc.LoadHtml(htmlContent);
+                }
+                catch (Exception) { }
+            }
         }
 
         /// <summary>
@@ -26,7 +33,7 @@ namespace TestAny.Essentials.Api
         /// <returns>Html node matching the xpath expression</returns>
         public IEnumerable<HtmlNode> Select(string xpath)
         {
-            return doc.DocumentNode.SelectNodes(xpath).EmptyIfNull();
+            return doc?.DocumentNode?.SelectNodes(xpath)?.EmptyIfNull();
         }
     }
 }
