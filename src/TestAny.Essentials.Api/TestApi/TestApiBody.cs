@@ -63,10 +63,17 @@ namespace TestAny.Essentials.Api
         {
             get
             {
-                if (_contentHtml == null)
-                    _contentHtml = new TestApiHtmlDoc(ContentString);
+                try
+                {
+                    if (_contentHtml == null)
+                        _contentHtml = new TestApiHtmlDoc(ContentString);
 
-                return _contentHtml;
+                    return _contentHtml;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
             }
         }
 
