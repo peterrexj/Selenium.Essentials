@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using TestAny.Essentials.Core.Dtos.Api;
 
 namespace TestAny.Essentials.Api
 {
@@ -37,6 +38,10 @@ namespace TestAny.Essentials.Api
         /// Response body container
         /// </summary>
         public TestApiBody ResponseBody { get; set; }
+
+        public TestApiRequest Request { get; set; }
+
+        public KeyValuePatternModel ResponseHeaders { get; set; }
 
         /// <summary>
         /// Assertion on the status code of the request
