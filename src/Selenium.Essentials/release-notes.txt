@@ -1,4 +1,14 @@
-﻿Release 1.0.5.1
+﻿Release 1.0.5.2
+- Introduce Api framework with PUT PATCH commands
+-- WithRetry option with time on interval
+-- Response contains cookies extracted from domains
+-- Cookie extension to merge and contact cookies
+-- Introducing Proxy for API request based on the user data
+-- Introducing Certificates to be passed on the request
+-- Response has more request details from headers to cookies
+- Tests are now upgraded to .NET 6
+
+Release 1.0.5.1
 - Bug fix when loading ApiResponse as HtmlContent
 
 Release 1.0.5
