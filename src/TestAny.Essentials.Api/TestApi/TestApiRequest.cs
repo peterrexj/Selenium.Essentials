@@ -561,7 +561,8 @@ namespace TestAny.Essentials.Api
             bool assertOk = false,
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
-            bool throwExceptionOnAssertFail = false)
+            bool throwExceptionOnAssertFail = false,
+            HttpStatusCode[] httpStatusCodes = null)
         {
             TestApiResponse response = null;
             for (int i = 1; i <= retryOption; i++)
@@ -571,26 +572,36 @@ namespace TestAny.Essentials.Api
                     response = responseFactory();
                     if (assertOk)
                     {
-                        if (new[]
+                        if (httpStatusCodes == null)
                         {
-                            HttpStatusCode.OK,
-                            HttpStatusCode.Created,
-                            HttpStatusCode.Accepted,
-                            HttpStatusCode.NonAuthoritativeInformation,
-                            HttpStatusCode.NoContent,
-                            HttpStatusCode.ResetContent,
-                            HttpStatusCode.PartialContent,
-                            HttpStatusCode.Continue,
-                            HttpStatusCode.SwitchingProtocols,
-                            HttpStatusCode.MultipleChoices,
-                            HttpStatusCode.MovedPermanently,
-                            HttpStatusCode.Found,
-                            HttpStatusCode.SeeOther,
-                            HttpStatusCode.NotModified,
-                            HttpStatusCode.TemporaryRedirect
-                        }.Contains(response.ResponseCode) == false)
+                            if (new[]
+                            {
+                                HttpStatusCode.OK,
+                                HttpStatusCode.Created,
+                                HttpStatusCode.Accepted,
+                                HttpStatusCode.NonAuthoritativeInformation,
+                                HttpStatusCode.NoContent,
+                                HttpStatusCode.ResetContent,
+                                HttpStatusCode.PartialContent,
+                                HttpStatusCode.Continue,
+                                HttpStatusCode.SwitchingProtocols,
+                                HttpStatusCode.MultipleChoices,
+                                HttpStatusCode.MovedPermanently,
+                                HttpStatusCode.Found,
+                                HttpStatusCode.SeeOther,
+                                HttpStatusCode.NotModified,
+                                HttpStatusCode.TemporaryRedirect
+                            }.Contains(response.ResponseCode) == false)
+                                {
+                                    throw new Exception($"The response code from the server was not successful, actual code {response?.ResponseCode.ToString()}");
+                                }
+                        }
+                        else
                         {
-                            throw new Exception($"The response code from the server was not successful, actual code {response?.ResponseCode.ToString()}");
+                            if (httpStatusCodes.Contains(response.ResponseCode))
+                            {
+                                throw new Exception($"The response code from the server was not successful, actual code {response?.ResponseCode.ToString()}");
+                            }
                         }
                     }
                     break;
@@ -622,8 +633,10 @@ namespace TestAny.Essentials.Api
         public virtual TestApiResponse GetWithRetry(bool assertOk = false,
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
-            bool throwExceptionOnAssertFail = false)
-            => WithRetry(() => Get(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, throwExceptionOnAssertFail);
+            bool throwExceptionOnAssertFail = false,
+            HttpStatusCode[] httpStatusCodes = null)
+            => WithRetry(() => Get(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, 
+                throwExceptionOnAssertFail, httpStatusCodes);
 
         /// <summary>
         /// Makes a Get request (sync)
@@ -654,8 +667,10 @@ namespace TestAny.Essentials.Api
         public virtual TestApiResponse DownloadWithRetry(string filePath, bool assertOk = false,
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
-            bool throwExceptionOnAssertFail = false)
-            => WithRetry(() => Download(filePath), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, throwExceptionOnAssertFail);
+            bool throwExceptionOnAssertFail = false,
+            HttpStatusCode[] httpStatusCodes = null)
+            => WithRetry(() => Download(filePath), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, 
+                throwExceptionOnAssertFail, httpStatusCodes);
 
 
         /// <summary>
@@ -690,8 +705,10 @@ namespace TestAny.Essentials.Api
         public virtual TestApiResponse PostWithRetry(bool assertOk = false,
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
-            bool throwExceptionOnAssertFail = false)
-            => WithRetry(() => Post(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, throwExceptionOnAssertFail);
+            bool throwExceptionOnAssertFail = false,
+            HttpStatusCode[] httpStatusCodes = null)
+            => WithRetry(() => Post(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, 
+                throwExceptionOnAssertFail, httpStatusCodes);
 
         public virtual async Task<TestApiResponse> PatchAsync() => await SendRequestAsync(new HttpMethod("PATCH"));
         public virtual TestApiResponse Patch()
@@ -715,8 +732,10 @@ namespace TestAny.Essentials.Api
         public virtual TestApiResponse PatchWithRetry(bool assertOk = false,
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
-            bool throwExceptionOnAssertFail = false)
-            => WithRetry(() => Patch(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, throwExceptionOnAssertFail);
+            bool throwExceptionOnAssertFail = false,
+            HttpStatusCode[] httpStatusCodes = null)
+            => WithRetry(() => Patch(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, 
+                throwExceptionOnAssertFail, httpStatusCodes);
 
 
         /// <summary>
@@ -750,8 +769,10 @@ namespace TestAny.Essentials.Api
         public virtual TestApiResponse PutWithRetry(bool assertOk = false,
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
-            bool throwExceptionOnAssertFail = false)
-            => WithRetry(() => Put(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, throwExceptionOnAssertFail);
+            bool throwExceptionOnAssertFail = false,
+            HttpStatusCode[] httpStatusCodes = null)
+            => WithRetry(() => Put(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, 
+                throwExceptionOnAssertFail, httpStatusCodes);
 
         #endregion
 
@@ -976,7 +997,7 @@ namespace TestAny.Essentials.Api
             };
 
             Runtime.Logger.Log($"Request {httpMethod} on: {Uri.AbsoluteUri} returned with: {response.ResponseCode}");
-            if (response.ResponseCode != HttpStatusCode.OK && 
+            if (response.ResponseCode != HttpStatusCode.OK &&
                 response.ResponseCode != HttpStatusCode.Accepted &&
                 response.ResponseCode != HttpStatusCode.Created &&
                 response.ResponseCode != HttpStatusCode.Redirect)

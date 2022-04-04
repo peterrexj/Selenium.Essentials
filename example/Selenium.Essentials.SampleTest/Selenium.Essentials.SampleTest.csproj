@@ -8,13 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="nunit" Version="3.13.2" />
+    <PackageReference Include="nunit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="99.0.4844.5100" />
-    <PackageReference Include="SpecFlow" Version="3.9.8" />
-    <PackageReference Include="SpecFlow.NUnit" Version="3.9.8" />
-    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.9.8" />
+    <PackageReference Include="SpecFlow" Version="3.9.58" />
+    <PackageReference Include="SpecFlow.NUnit" Version="3.9.58" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.9.58" />
   </ItemGroup>
 
   <ItemGroup>

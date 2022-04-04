@@ -1,5 +1,6 @@
 ﻿
 using Pj.Library;
+using System.Net;
 using TestAny.Essentials.Api;
 
 namespace Selenium.Essentials.IntegrationTests.Definitions
@@ -25,7 +26,9 @@ namespace Selenium.Essentials.IntegrationTests.Definitions
             return new TestApiHttp()
                 .SetEnvironment(__OpenWeatherDomain)
                 .PrepareRequest(route)
-                .Get()
+                .GetWithRetry(assertOk: true, timeToSleepBetweenRetryInMilliseconds: 1000, 
+                    retryOption: 10, throwExceptionOnAssertFail: true,
+                    new [] { HttpStatusCode.ProxyAuthenticationRequired })
                 .ResponseBody
                 .ContentJson;
         }
