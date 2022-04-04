@@ -1,4 +1,7 @@
 ﻿Release 1.0.5.2
+- Api Retry option now has ability to control on which httpstatuscode the retry should occur
+
+Release 1.0.5.2
 - Introduce Api framework with PUT PATCH commands
 -- WithRetry option with time on interval
 -- Response contains cookies extracted from domains
