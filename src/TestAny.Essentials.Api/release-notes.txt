@@ -1,4 +1,7 @@
-﻿Release 1.0.5.2
+﻿Release 1.0.5.4
+- Api Request can now accept SetQueryParameter and SetJsonBody with any object passed
+
+Release 1.0.5.2
 - Api Retry option now has ability to control on which httpstatuscode the retry should occur
 
 Release 1.0.5.2

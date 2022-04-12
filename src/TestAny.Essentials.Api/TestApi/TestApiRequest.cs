@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using Pj.Library;
 using System;
 using System.Collections.Generic;
@@ -214,12 +215,7 @@ namespace TestAny.Essentials.Api
             return this;
         }
 
-        /// <summary>
-        /// Set the query parameters
-        /// </summary>
-        /// <param name="values"></param>
-        /// <returns></returns>
-        public virtual TestApiRequest SetQueryParams(ParameterCollection values)
+        private void SetInternalQueryParameters(ParameterCollection values)
         {
             var nameValueCollection = values.Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value as string)).ToList();
             var content = new FormUrlEncodedContent(nameValueCollection);
@@ -229,7 +225,44 @@ namespace TestAny.Essentials.Api
 
             QueryParams = values;
             Uri = uri;
-
+        }
+        /// <summary>
+        /// Set the query parameters
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public virtual TestApiRequest SetQueryParams(ParameterCollection values)
+        {
+            SetInternalQueryParameters(values);
+            return this;
+        }
+        /// <summary>
+        /// Set the query parameters from the Dictionary
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public virtual TestApiRequest SetQueryParams(IDictionary<string, string> value)
+        {
+            ParameterCollection values = new();
+            foreach (var prop in value.Where(v => v.Value.HasValue()))
+            {
+                values.AddOrUpdate(prop.Key, prop.Value);
+            }
+            SetInternalQueryParameters(values);
+            return this;
+        }
+        /// <summary>
+        /// Set the query parameters from the oject parameter and using all its parameters
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public virtual TestApiRequest SetQueryParams(object value)
+        {
+            if (value == null) return this;
+            ParameterCollection values = new();
+            value.GetPropertyValuesV2().Iter(p => values.AddOrUpdate(p.Key, p.Value));
+            
+            SetInternalQueryParameters(values);
             return this;
         }
 
@@ -252,6 +285,17 @@ namespace TestAny.Essentials.Api
         public virtual TestApiRequest SetJsonBody(string json)
         {
             JsonBody = json;
+            return this;
+        }
+
+        /// <summary>
+        /// Set the json content from the object passed
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public virtual TestApiRequest SetJsonBody(object content)
+        {
+            JsonBody = JsonConvert.SerializeObject(content);
             return this;
         }
 

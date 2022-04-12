@@ -48,11 +48,11 @@ namespace TestAny.Essentials.Api
         /// </summary>
         public void AssertResponseStatusForSuccess()
         {
-            var passStatus = new[] { HttpStatusCode.OK, HttpStatusCode.Accepted };
+            var passStatus = new[] { HttpStatusCode.OK, HttpStatusCode.Accepted, HttpStatusCode.Created, HttpStatusCode.NoContent };
 
             if (!passStatus.Contains(this.HttpResponseMessage.StatusCode))
             {
-                throw new Exception($"The response from the server resulted with status code: {this.HttpResponseMessage.StatusCode} with reason: {this.HttpResponseMessage.ReasonPhrase}");
+                throw new Exception($"The response from the server resulted with status code: {this.HttpResponseMessage.StatusCode} with reason: [{this.HttpResponseMessage.ReasonPhrase}], with message: [{this.ResponseBody?.ContentString}]");
             }
         }
     }
