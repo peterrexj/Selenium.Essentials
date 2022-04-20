@@ -261,7 +261,7 @@ namespace TestAny.Essentials.Api
             if (value == null) return this;
             ParameterCollection values = new();
             value.GetPropertyValuesV2().Iter(p => values.AddOrUpdate(p.Key, p.Value));
-            
+
             SetInternalQueryParameters(values);
             return this;
         }
@@ -636,9 +636,9 @@ namespace TestAny.Essentials.Api
                                 HttpStatusCode.NotModified,
                                 HttpStatusCode.TemporaryRedirect
                             }.Contains(response.ResponseCode) == false)
-                                {
-                                    throw new Exception($"The response code from the server was not successful, actual code {response?.ResponseCode.ToString()}");
-                                }
+                            {
+                                throw new Exception($"The response code from the server was not successful, actual code {response?.ResponseCode.ToString()}");
+                            }
                         }
                         else
                         {
@@ -650,12 +650,13 @@ namespace TestAny.Essentials.Api
                     }
                     break;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     if (i >= retryOption && throwExceptionOnAssertFail)
                     {
                         throw;
                     }
+                    Log($"Request retry option: {ex.Message}");
                     System.Threading.Thread.Sleep(timeToSleepBetweenRetryInMilliseconds);
                 }
             }
@@ -679,7 +680,7 @@ namespace TestAny.Essentials.Api
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
             HttpStatusCode[] httpStatusCodes = null)
-            => WithRetry(() => Get(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, 
+            => WithRetry(() => Get(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption,
                 throwExceptionOnAssertFail, httpStatusCodes);
 
         /// <summary>
@@ -713,7 +714,7 @@ namespace TestAny.Essentials.Api
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
             HttpStatusCode[] httpStatusCodes = null)
-            => WithRetry(() => Download(filePath), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, 
+            => WithRetry(() => Download(filePath), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption,
                 throwExceptionOnAssertFail, httpStatusCodes);
 
 
@@ -751,7 +752,7 @@ namespace TestAny.Essentials.Api
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
             HttpStatusCode[] httpStatusCodes = null)
-            => WithRetry(() => Post(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, 
+            => WithRetry(() => Post(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption,
                 throwExceptionOnAssertFail, httpStatusCodes);
 
         public virtual async Task<TestApiResponse> PatchAsync() => await SendRequestAsync(new HttpMethod("PATCH"));
@@ -778,7 +779,7 @@ namespace TestAny.Essentials.Api
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
             HttpStatusCode[] httpStatusCodes = null)
-            => WithRetry(() => Patch(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, 
+            => WithRetry(() => Patch(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption,
                 throwExceptionOnAssertFail, httpStatusCodes);
 
 
@@ -815,7 +816,7 @@ namespace TestAny.Essentials.Api
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
             HttpStatusCode[] httpStatusCodes = null)
-            => WithRetry(() => Put(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption, 
+            => WithRetry(() => Put(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption,
                 throwExceptionOnAssertFail, httpStatusCodes);
 
         #endregion
