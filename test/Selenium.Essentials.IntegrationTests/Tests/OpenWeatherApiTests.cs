@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Selenium.Essentials.IntegrationTests.Definitions;
 using System;
 using System.Collections.Generic;
@@ -25,7 +24,7 @@ namespace Selenium.Essentials.IntegrationTests.Tests
         {
             var forcast = _openWeatherService.GetForcastWeatherByCityName(city, OpenWeatherService.ResponseFormat.Json);
             var responseCodeWeatherApp = (string)forcast.cod;
-            responseCodeWeatherApp.Should().Be("200", $"The weather app was not able to get forcast for city: {city}");
+            Assert.IsTrue(responseCodeWeatherApp == "200", $"The weather app was not able to get forcast for city: {city}");
         }
     }
 }

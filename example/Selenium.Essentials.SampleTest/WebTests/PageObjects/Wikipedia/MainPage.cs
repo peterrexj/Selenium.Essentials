@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -23,14 +23,9 @@ namespace Selenium.Essentials.SampleTest.WebTests.PageObjects.Wikipedia
 
         public void SelectMainPageTab(string tabText)
         {
-            _tabNavigation.TotalItems
-                .Should()
-                .BeGreaterThan(0, "The tab on the wikipedia main page is missing");
+            Assert.Greater(_tabNavigation.TotalItems, 0, "The tab on the wikipedia main page is missing");
 
-            _tabNavigation.List
-                .Any(p => p.Text.Contains(tabText))
-                .Should()
-                .BeTrue($"The Wikipedia main page is missing with a tab text '{tabText}'");
+            Assert.IsTrue(_tabNavigation.List.Any(p => p.Text.Contains(tabText)), $"The Wikipedia main page is missing with a tab text '{tabText}'");
 
             _tabNavigation.List
                 .Where(p => p.Text.Contains(tabText))

@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Pj.Library;
 using System;
 using System.Collections.Generic;
@@ -51,8 +50,8 @@ namespace Selenium.Essentials
         /// <returns></returns>
         public T Item<T>(int position) where T : BaseControl
         {
-            (position <= TotalRaw).Should()
-               .BeTrue($"The requested item position [{position}] is greater than the total items [{TotalRaw}] available in the UI now");
+            if (position > TotalRaw) 
+                throw new Exception($"The requested item position [{position}] is greater than the total items [{TotalRaw}] available in the UI now");
 
             var xpath = Driver.FindElements(By).Skip(position - 1).First().GetElementXPath(Driver, _excludeIdChecksForXpathCalculation);
 
@@ -142,8 +141,8 @@ namespace Selenium.Essentials
         {
             var currentTotal = Total;
 
-            (currentTotal == 0 && position > 1).Should()
-               .BeFalse($"The are no UI elements matching and you have requested for {position} to appear");
+            if (currentTotal == 0 && position > 1)
+                throw new Exception($"The are no UI elements matching and you have requested for {position} to appear");
 
             if (currentTotal == 0) //If there are no such element in the UI then wait for the first one to appear
             {
@@ -163,7 +162,7 @@ namespace Selenium.Essentials
         /// <param name="waitTimeSec">Maximum amount of time to wait</param>
         /// <param name="throwExceptionWhenNotFound">Throw exception if the element is not found</param>
         /// <param name="errorMessage">Error message text when the element is not found</param>
-        public new void WaitForElementInvisible(int waitTimeSec = 0, bool throwExceptionWhenNotFound = true, string errorMessage = "")
+        public void WaitForElementInvisible(int waitTimeSec = 0, bool throwExceptionWhenNotFound = true, string errorMessage = "")
         {
             if (Total <= 0) return;
 

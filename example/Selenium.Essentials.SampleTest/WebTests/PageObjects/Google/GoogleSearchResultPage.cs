@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace Selenium.Essentials.SampleTest.WebTests.PageObjects.Google
 
         public void ClickOnResult(int position)
         {
-            _searchResultLink.Item<LinkControl>(position).Href.Should().NotBeEmpty("The hyperlink on the result is empty");
+            Assert.IsNotEmpty(_searchResultLink.Item<LinkControl>(position).Href, "The hyperlink on the result is empty");
             _searchResultLink.Item<LinkControl>(position).Click();
         }
     }

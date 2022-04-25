@@ -1,4 +1,3 @@
-using FluentAssertions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Pj.Library;
@@ -383,7 +382,8 @@ namespace Selenium.Essentials
                     RawElement.SendKeys(Keys.Delete);
                 }
 
-                Value.Should().BeEmpty("Control was not cleared");
+                if (Value.HasValue())
+                    throw new Exception("Control was not cleared");
             }
             catch (Exception ex)
             {

@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Pj.Library;
 using System;
 using System.Collections.Generic;
@@ -23,7 +22,7 @@ namespace Selenium.Essentials.UnitTests
         public void JsonToDictionaryShouldConvert()
         {
             var dictionary = JsonHelper.ConvertComplexJsonDataToDictionary(JsonPayloadContent);
-            dictionary.Count.Should().Be(16, "The total number of property does not match result in dictionary");
+            Assert.IsTrue(dictionary.Count == 16, "The total number of property does not match result in dictionary");
         }
     }
 }

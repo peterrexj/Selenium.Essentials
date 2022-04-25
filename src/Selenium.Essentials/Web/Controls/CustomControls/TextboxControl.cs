@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Pj.Library;
 using System;
 using System.Collections.Generic;
@@ -59,7 +58,8 @@ namespace Selenium.Essentials
                         base.Clear();
                     }
 
-                    Value.Should().BeEmpty("Control was not cleared");
+                    if (Value.HasValue())
+                        throw new Exception("Control was not cleared");
                 }
                 else
                 {

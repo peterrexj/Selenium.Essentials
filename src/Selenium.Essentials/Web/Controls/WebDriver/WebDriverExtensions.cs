@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Pj.Library;
 using System;
@@ -169,10 +168,9 @@ namespace Selenium.Essentials
         /// <param name="position"></param>
         public static void SwitchWindowHandle(this IWebDriver driver, int position)
         {
-            (driver.WindowHandles.Count >= position)
-                .Should()
-                .BeTrue($"The window handle switch failed as the count of handle [{driver.WindowHandles.Count}] is less than the requested position [{position}]");
-
+            if (driver.WindowHandles.Count < position)
+                throw new Exception($"The window handle switch failed as the count of handle [{driver.WindowHandles.Count}] is less than the requested position [{position}]");
+            
             driver.SwitchTo().Window(driver.WindowHandles[position]);
         }
     }
