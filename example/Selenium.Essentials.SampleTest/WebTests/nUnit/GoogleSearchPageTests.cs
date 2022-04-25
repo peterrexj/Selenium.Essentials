@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Selenium.Essentials.SampleTest.Core;
 using Selenium.Essentials.SampleTest.WebTests.PageObjects.Google;
 using System;
@@ -35,7 +34,7 @@ namespace Selenium.Essentials.SampleTest.WebTests.nUnit
 
             GoogleSearchResultPage googleSearchResultPage = new GoogleSearchResultPage(_driver);
             var contextToClickPosition = googleSearchResultPage.GetResultHeaderPosition(searchResultExpectedHeader);
-            contextToClickPosition.Should().BeGreaterOrEqualTo(1, $"Cannot find the {searchResultExpectedHeader} in google search");
+            Assert.GreaterOrEqual(contextToClickPosition, 1, $"Cannot find the {searchResultExpectedHeader} in google search");
             googleSearchResultPage.ClickOnResult(contextToClickPosition);
         }
     }

@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Pj.Library;
@@ -124,8 +123,9 @@ namespace Selenium.Essentials.SampleTest
             if (SessionDrivers.ContainsKey(TestContext.CurrentContext.Test.Name))
             {
                 driver?.CloseDriver();
-                SessionDrivers.ContainsKey(TestContext.CurrentContext.Test.Name)
-                    .Should().BeFalse($"Driver already initiated for test: [{TestContext.CurrentContext.Test.Name}] with session id [{(driver as RemoteWebDriver).SessionId.ToString()}]");
+
+                if (SessionDrivers.ContainsKey(TestContext.CurrentContext.Test.Name))
+                    throw new Exception($"Driver already initiated for test: [{TestContext.CurrentContext.Test.Name}] with session id [{(driver as RemoteWebDriver).SessionId}]");
             }
             else
             {

@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,9 +15,7 @@ namespace Selenium.Essentials.UnitTests
         [Test]
         public void Test_InstalledBrowser()
         {
-            BrowserHelper.InstalledBrowsers.Count
-                .Should()
-                .BeGreaterOrEqualTo(0, because: "Expecting at least one browser is installed on the host computer");
+            Assert.GreaterOrEqual(BrowserHelper.InstalledBrowsers.Count, 0, "Expecting at least one browser is installed on the host computer");
         }
 
         [Test]
