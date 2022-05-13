@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -129,13 +128,11 @@ namespace Selenium.Essentials
         public static IWebDriver GetEdgeBrowser() { return null; }
         public static IWebDriver GetFirefoxBrowser()
         {
-            InstalledBrowsers
+            if (InstalledBrowsers
                 .Any(d =>
                     d.Name.ContainsIgnoreCase("firefox") &&
-                    d.InstallationPath.HasValue())
-                .Should()
-                .BeTrue(
-                "Firefox is not installed in your computer. Make sure you installed firefox in your machine and InstalledBrowsers is listing the browser");
+                    d.InstallationPath.HasValue()) == false)
+                throw new Exception("Firefox is not installed in your computer. Make sure you installed firefox in your machine and InstalledBrowsers is listing the browser (try running as admin)");
 
             FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(DriverFolder);
             service.FirefoxBinaryPath = InstalledBrowsers

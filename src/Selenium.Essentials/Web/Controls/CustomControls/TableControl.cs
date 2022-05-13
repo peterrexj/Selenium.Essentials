@@ -3,7 +3,6 @@ using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 using OpenQA.Selenium;
-using FluentAssertions;
 using Pj.Library;
 
 namespace Selenium.Essentials
@@ -59,7 +58,8 @@ namespace Selenium.Essentials
 
         public int GetColumnPosition(string columnname)
         {
-            ColumnNames.ContainsIgnoreCase(columnname).Should().BeTrue($"The column name specified [{columnname}] does not exist in the Grid");
+            if (ColumnNames.ContainsIgnoreCase(columnname) == false)
+                throw new Exception($"The column name specified [{columnname}] does not exist in the Grid");
 
             return RawElement.FindElements(By.CssSelector("thead>tr>th")).Union(RawElement.FindElements(By.CssSelector("tbody>tr>th")))
                 .Select(x => x.Text)
