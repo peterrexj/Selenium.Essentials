@@ -1,4 +1,7 @@
-﻿Release 1.0.5.2
+﻿Release 1.0.5.7
+- Pj library update to have environment variables load from local setting files. This feature will enable to control the critical informations required for the test to hold in a local file which can be git ignored.
+
+Release 1.0.5.2
 - Api Retry option now has ability to control on which httpstatuscode the retry should occur
 
 Release 1.0.5.2
