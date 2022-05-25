@@ -30,9 +30,9 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Pj.Library" Version="1.0.4.8" />
-    <PackageReference Include="Pj.Library.Secure" Version="1.0.4.8" />
-    <PackageReference Include="Pj.Library.ThirdParty" Version="1.0.4.8" />
+    <PackageReference Include="Pj.Library" Version="1.0.4.10" />
+    <PackageReference Include="Pj.Library.Secure" Version="1.0.4.10" />
+    <PackageReference Include="Pj.Library.ThirdParty" Version="1.0.4.10" />
   </ItemGroup>
 
   <ItemGroup>
