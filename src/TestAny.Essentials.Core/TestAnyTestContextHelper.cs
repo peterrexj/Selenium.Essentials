@@ -9,9 +9,16 @@ namespace TestAny.Essentials.Core
     /// </summary>
     public static class TestAnyTestContextHelper
     {
+        private static Dictionary<string, object> _globalContextCollection;
         private static Dictionary<string, object> _contextCollection;
 
+        private static Dictionary<string, object> GlobalContextObject => _globalContextCollection;
         private static Dictionary<string, object> ContextObject => _contextCollection;
+        
+        static TestAnyTestContextHelper()
+        {
+            _globalContextCollection = new Dictionary<string, object>();
+        }
 
         /// <summary>
         /// Initialze the test context for a test case
@@ -20,6 +27,8 @@ namespace TestAny.Essentials.Core
         {
             _contextCollection = new Dictionary<string, object>();
         }
+
+        #region Local Context
 
         /// <summary>
         /// Get the value from the context container based on the key
@@ -60,5 +69,49 @@ namespace TestAny.Essentials.Core
                 ContextObject.Remove(key);
             }
         }
+        #endregion
+
+        #region Global Context
+        /// <summary>
+        /// Get the value from the global context container based on the key
+        /// </summary>
+        /// <typeparam name="T">Generic type to which to convert when fetched</typeparam>
+        /// <param name="key">key to search</param>
+        /// <returns>The value stored as type mentioned in T</returns>
+        public static T GetGlobalContext<T>(string key) => (T)GlobalContextObject[key];
+
+        /// <summary>
+        /// Get the value from global context container based on the key as 'string'
+        /// </summary>
+        /// <param name="key">key to search</param>
+        /// <returns>The value stored as string</returns>
+        public static string GetGlobalContextAsString(string key) => GetGlobalContext<string>(key);
+
+        /// <summary>
+        /// Set the value into the global context container. If the value is already present, it will removed first.
+        /// </summary>
+        /// <param name="key">unique name of the key to store in the context container</param>
+        /// <param name="value">value to store</param>
+        public static void SetGlobalContext(string key, object value)
+        {
+            RemoveGlobalContext(key);
+            GlobalContextObject.Add(key, value);
+        }
+
+        /// <summary>
+        /// Checks if the value exists in the global context container
+        /// </summary>
+        /// <param name="key">key to search</param>
+        /// <returns>returns true or false based on the search result</returns>
+        public static bool ExistsGlobalContext(string key) => GlobalContextObject.ContainsKey(key);
+        public static void RemoveGlobalContext(string key)
+        {
+            if (ExistsGlobalContext(key))
+            {
+                GlobalContextObject.Remove(key);
+            }
+        }
+
+        #endregion
     }
 }
