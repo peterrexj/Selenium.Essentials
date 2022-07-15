@@ -71,6 +71,7 @@ namespace Selenium.Essentials.SampleTest
             var openLocalBrowser = Runtime.IsInDebugMode; //variable to determine local browser
             BrowserCapabilitiesModal browserCapability = null;
             IWebDriver driver = null;
+            string testName = TestContext.CurrentContext.TestName();
 
             if (!openLocalBrowser && BrowserCapabilityHelper.CurrentBrowserCapabilities.Any())
             {
@@ -90,7 +91,9 @@ namespace Selenium.Essentials.SampleTest
             {
                 if (browserCapability != null)
                 {
-                    var buildNumber = Environment.GetEnvironmentVariable("TRAVIS_BUILD_NUMBER") ?? string.Empty;
+                    var buildNumber = Environment.GetEnvironmentVariable("TRAVIS_BUILD_NUMBER") ?? 
+                        TestAny.Essentials.Core.TestAnyTestContextHelper.GetGlobalContextAsString("BuildId") ??
+                        string.Empty;
                     var travisJobNumber = Environment.GetEnvironmentVariable("TRAVIS_JOB_NUMBER") ?? string.Empty;
                     var sauceUsername = Environment.GetEnvironmentVariable("SAUCE_USERNAME") ?? EnvData["SauceLabsUsername"];
                     var sauceAccessKey = Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY") ?? EnvData["SauceLabsAccessKey"];
@@ -109,7 +112,7 @@ namespace Selenium.Essentials.SampleTest
                             { "tunnel-identifier", travisJobNumber },
                             { "username", sauceUsername },
                             { "accessKey", sauceAccessKey },
-                            { "name", TestContext.CurrentContext.Test.Name }
+                            { "name", testName }
                         }
                     };
                     remoteDriverModel.Capabilities.AddOrUpdate(browserCapability.ToCustomDictionary());
@@ -120,16 +123,16 @@ namespace Selenium.Essentials.SampleTest
                     Assert.IsTrue(false, "The browser initialization failed as was not to determine which browser to open");
                 }
             }
-            if (SessionDrivers.ContainsKey(TestContext.CurrentContext.Test.Name))
+            if (SessionDrivers.ContainsKey(testName))
             {
                 driver?.CloseDriver();
 
-                if (SessionDrivers.ContainsKey(TestContext.CurrentContext.Test.Name))
-                    throw new Exception($"Driver already initiated for test: [{TestContext.CurrentContext.Test.Name}] with session id [{(driver as RemoteWebDriver).SessionId}]");
+                if (SessionDrivers.ContainsKey(testName))
+                    throw new Exception($"Driver already initiated for test: [{testName}] with session id [{(driver as RemoteWebDriver).SessionId}]");
             }
             else
             {
-                SessionDrivers.TryAdd(TestContext.CurrentContext.Test.Name, driver);
+                SessionDrivers.TryAdd(testName, driver);
             }
             return driver;
         }

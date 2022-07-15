@@ -13,11 +13,19 @@ namespace Selenium.Essentials.SampleTest.Core
     public class WebUnitTestBase : TestApiBase
     {
         protected IWebDriver _driver;
+        private object _lock = new();
 
         [SetUp]
         public void Setup()
         {
             TestAnyAppConfig.InitializeFramework(new CutomLogger());
+            lock (_lock)
+            {
+                if (TestAnyTestContextHelper.ExistsGlobalContext("BuildId") == false)
+                {
+                    TestAnyTestContextHelper.SetGlobalContext("BuildId", Guid.NewGuid().ToString());
+                }
+            }
         }
 
         [TearDown]
@@ -25,9 +33,9 @@ namespace Selenium.Essentials.SampleTest.Core
         {
             var passed = TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Passed;
 
-            if (TestUtility.SessionDrivers.ContainsKey(TestContext.CurrentContext.Test.Name))
+            if (TestUtility.SessionDrivers.ContainsKey(TestContext.CurrentContext.TestName()))
             {
-                var driver = TestUtility.SessionDrivers[TestContext.CurrentContext.Test.Name];
+                var driver = TestUtility.SessionDrivers[TestContext.CurrentContext.TestName()];
                 if (driver != null)
                 {
                     driver.ExecuteJavaScript("sauce:job-result=" + (passed ? "passed" : "failed"), supressErrors: true);
@@ -40,7 +48,7 @@ namespace Selenium.Essentials.SampleTest.Core
                         Runtime.Logger.Log($"Unable to Close driver gracefully due to: {ex.ToString()}");
                     }
                 }
-                TestUtility.SessionDrivers.TryRemove(TestContext.CurrentContext.Test.Name, out driver);
+                TestUtility.SessionDrivers.TryRemove(TestContext.CurrentContext.TestName(), out driver);
             }
         }
     }
