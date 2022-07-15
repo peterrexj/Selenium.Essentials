@@ -2,13 +2,22 @@
 # Selenium.Essentials
 ![](https://github.com/peterrexj/Selenium.Essentials/blob/master/docs/resources/images/Icon.png) </br>
 
-![](https://travis-ci.org/peterrexj/Selenium.Essentials.svg?branch=master) 
+![Build](https://github.com/peterrexj/Selenium.Essentials/actions/workflows/dotnet.yml/badge.svg)
 [![Sauce Test Status](https://saucelabs.com/buildstatus/peterrexj)](https://app.saucelabs.com/u/peterrexj)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/02286e55e59c476a9c0d4fd2c4dae87e)](https://www.codacy.com/app/peterrexj/Selenium.Essentials?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=peterrexj/Selenium.Essentials&amp;utm_campaign=Badge_Grade) 
 </br>
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/peterrexj.svg)](https://saucelabs.com/u/peterrexj) 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/peterrexj.svg)](https://saucelabs.com/u/peterrexj)
+</br> 
 <a href="https://saucelabs.com"><img src="https://github.com/peterrexj/Selenium.Essentials/blob/develop/docs/resources/images/SauceLabLogo.svg" height="100"/></a>
 </br>
+
+| Package (Test Automation) | Description |
+|---------|-------------|
+|<a href="https://www.nuget.org/packages/Selenium.Essentials">Selenium Essentials</a>|Build Selenium web automation test using advanced web controls with wrappers and plenty of extensions to fasten your automation development time|
+|<a href="https://www.nuget.org/packages/TestAny.Essentials.Api">Api Tests</a>|Simple and powerful framework to write API tests focused for Shift Left. For those who think quality as engineering and work along with the developers using .NET c# |
+|<a href="https://www.nuget.org/packages/Jira.Rest.Sdk">Jira Rest SDK</a>|SDK using Jira REST to query Jira application using Rest endpoints. Manage your Jira process from query, create and update issues. Integrate with you existing automation solution or process that will manage both Jira Server and Cloud based application|
+|<a href="https://www.nuget.org/packages/ZephyrScale.Rest.Sdk">Zephyr Scale Rest SDK</a>|SDK to connect to the Zephyr Scale app using Zephyr Scale's Rest endpoints. Manage your communication and easily retrieve and publish test cases, test cycle and execution results to Zephyr Scale. You can integrate with you existing automation solution or process that will manage these process. Support both Server and Cloud hosted Zephyr Scale application|
+
 
 # Notice: Release version 1.3.0
 
@@ -135,7 +144,7 @@ To tick the checkbox
 
 ```c#
 public void CheckUserType() {
-  _userTypeCheck.WaitForElementVisible(errorMessage: "The User Type checkbox was not visible in the UI"); //This can be used as an assertions, and when not found, it will throw with an exception with "errorMessage" passed
+  _userTypeCheck.WaitForElementVisible(errorMessage: "The User Type checkbox was not visible in the UI"); //This can be used as an assertions, and when not found, it will throw with an exception with "errorMessage"
   _userTypeCheck.Check();
 }
 ```
