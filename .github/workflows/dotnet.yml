@@ -18,6 +18,8 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+      run: dotnet restore src/Selenium.Essentials/Selenium.Essentials.sln
+    - name: Build 
+      run: dotnet build src/Selenium.Essentials/Selenium.Essentials.sln --no-restore
+    - name: Test
+      run: dotnet test test/Selenium.Essentials.UnitTests/Selenium.Essentials.UnitTests.sln --no-build --verbosity normal
