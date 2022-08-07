@@ -28,6 +28,7 @@ namespace Selenium.Essentials.IntegrationTests.Definitions
                 .PrepareRequest(route)
                 .GetWithRetry(assertOk: true, timeToSleepBetweenRetryInMilliseconds: 1000, 
                     retryOption: 10, throwExceptionOnAssertFail: true,
+                    retryOnRequestTimeout: false,
                     new [] { HttpStatusCode.ProxyAuthenticationRequired })
                 .ResponseBody
                 .ContentJson;

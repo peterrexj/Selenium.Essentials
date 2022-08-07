@@ -49,7 +49,7 @@ namespace TestAny.Essentials.Api
 
             if (LoginResponse != null)
             {
-                request.AddingCookies(LoginResponse.Cookies);
+                request.AddCookies(LoginResponse.Cookies);
             }
 
             return request;

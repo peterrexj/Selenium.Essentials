@@ -1,4 +1,13 @@
-﻿Release 1.0.5.4
+﻿Release 1.0.5.9
+- Retry on every action [Get, Post, Delete, Put] has now additional parameter to control the timeout error from server. retryOnRequestTimeout, can be set to true/false to fail when the request timeout or to retry
+- AddingCookies is renamed to AddCookies under TestApiRequest
+- Option to control
+-- Set Timeout
+-- Auto Redirection on the server for a request
+-- Extract Domain cookies
+-- No Cache
+
+Release 1.0.5.4
 - Api Request can now accept SetQueryParameter and SetJsonBody with any object passed
 
 Release 1.0.5.2
