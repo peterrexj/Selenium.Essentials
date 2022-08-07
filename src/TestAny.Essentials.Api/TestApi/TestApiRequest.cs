@@ -171,7 +171,7 @@ namespace TestAny.Essentials.Api
         /// </summary>
         /// <param name="cookies"></param>
         /// <returns></returns>
-        public virtual TestApiRequest AddingCookies(CookieCollection cookies)
+        public virtual TestApiRequest AddCookies(CookieCollection cookies)
         {
             Cookies = cookies;
             return this;
@@ -316,6 +316,53 @@ namespace TestAny.Essentials.Api
             if (!File.Exists(path)) throw new Exception($"The specified file path does not exists [{path}]");
             Body = path.Trim();
             FilePathUploadMode = true;
+            return this;
+        }
+
+        /// <summary>
+        /// Set timeout on the request in seconds. 
+        /// Total time to wait a request to get a successful response from the server
+        /// </summary>
+        /// <param name="waitTimeoutInSeconds">Total time to wait in Seconds</param>
+        /// <returns></returns>
+        public virtual TestApiRequest SetTimeout(int waitTimeoutInSeconds)
+        {
+            Timeout = waitTimeoutInSeconds;
+            return this;
+        }
+
+        /// <summary>
+        /// Enable or disable auto redirect request on the server.
+        /// Control this if you need to stop redirection and redirect to the next endpoint manually
+        /// The response header will contain details where to redirect next (Location) if the response code is 304
+        /// </summary>
+        /// <param name="mode">true to automatically redirect on the server</param>
+        /// <returns></returns>
+        public virtual TestApiRequest SetAutoRedirect(bool mode = true)
+        {
+            AutoRedirectMode = mode;
+            return this;
+        }
+
+        /// <summary>
+        /// Extract domain level cookies from the response from server
+        /// </summary>
+        /// <param name="extractDomainCookies">true to extract the domain cookies</param>
+        /// <returns></returns>
+        public virtual TestApiRequest SetDomainCookieExtraction(bool extractDomainCookies = true)
+        {
+            ExtractDomainCookies = extractDomainCookies;
+            return this;
+        }
+
+        /// <summary>
+        /// With no cache control
+        /// </summary>
+        /// <param name="withNoCache"></param>
+        /// <returns></returns>
+        public virtual TestApiRequest SetNoCache(bool withNoCache)
+        {
+            NoCache = withNoCache;
             return this;
         }
 
@@ -606,6 +653,7 @@ namespace TestAny.Essentials.Api
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
+            bool retryOnRequestTimeout = false,
             HttpStatusCode[] httpStatusCodes = null)
         {
             TestApiResponse response = null;
@@ -652,6 +700,10 @@ namespace TestAny.Essentials.Api
                 }
                 catch (Exception ex)
                 {
+                    if (response == null && ex.Message.ContainsIgnoreCase("A task was canceled") && retryOnRequestTimeout == false)
+                    {
+                        throw;
+                    }
                     if (i >= retryOption && throwExceptionOnAssertFail)
                     {
                         throw;
@@ -679,9 +731,10 @@ namespace TestAny.Essentials.Api
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
+            bool retryOnRequestTimeout = false,
             HttpStatusCode[] httpStatusCodes = null)
             => WithRetry(() => Get(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption,
-                throwExceptionOnAssertFail, httpStatusCodes);
+                throwExceptionOnAssertFail, retryOnRequestTimeout, httpStatusCodes);
 
         /// <summary>
         /// Makes a Get request (sync)
@@ -713,9 +766,10 @@ namespace TestAny.Essentials.Api
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
+            bool retryOnRequestTimeout = false,
             HttpStatusCode[] httpStatusCodes = null)
             => WithRetry(() => Download(filePath), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption,
-                throwExceptionOnAssertFail, httpStatusCodes);
+                throwExceptionOnAssertFail, retryOnRequestTimeout, httpStatusCodes);
 
 
         /// <summary>
@@ -751,9 +805,10 @@ namespace TestAny.Essentials.Api
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
+            bool retryOnRequestTimeout = false,
             HttpStatusCode[] httpStatusCodes = null)
             => WithRetry(() => Post(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption,
-                throwExceptionOnAssertFail, httpStatusCodes);
+                throwExceptionOnAssertFail, retryOnRequestTimeout, httpStatusCodes);
 
         public virtual async Task<TestApiResponse> PatchAsync() => await SendRequestAsync(new HttpMethod("PATCH"));
         public virtual TestApiResponse Patch()
@@ -778,9 +833,10 @@ namespace TestAny.Essentials.Api
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
+            bool retryOnRequestTimeout = false,
             HttpStatusCode[] httpStatusCodes = null)
             => WithRetry(() => Patch(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption,
-                throwExceptionOnAssertFail, httpStatusCodes);
+                throwExceptionOnAssertFail, retryOnRequestTimeout, httpStatusCodes);
 
 
         /// <summary>
@@ -815,9 +871,10 @@ namespace TestAny.Essentials.Api
             int timeToSleepBetweenRetryInMilliseconds = 1000,
             int retryOption = 6,
             bool throwExceptionOnAssertFail = false,
+            bool retryOnRequestTimeout = false,
             HttpStatusCode[] httpStatusCodes = null)
             => WithRetry(() => Put(), assertOk, timeToSleepBetweenRetryInMilliseconds, retryOption,
-                throwExceptionOnAssertFail, httpStatusCodes);
+                throwExceptionOnAssertFail, retryOnRequestTimeout, httpStatusCodes);
 
         #endregion
 
