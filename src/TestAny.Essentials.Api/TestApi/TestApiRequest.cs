@@ -22,6 +22,7 @@ namespace TestAny.Essentials.Api
     public class TestApiRequest
     {
         public Uri Uri { get; private set; }
+        public Uri ServerUri { get; private set; }
         public string JsonBody { get; private set; }
         public string Body { get; private set; }
         public ParameterCollection QueryParams { get; private set; }
@@ -39,10 +40,12 @@ namespace TestAny.Essentials.Api
         public List<X509Certificate2> Certificates { get; private set; }
         public IWebProxy Proxy { get; private set; }
         private AuthenticationHeaderValue HeaderAuthentication { get; set; }
+        public HttpClient HttpClient { get; private set; }
 
         public TestApiRequest(Uri fullPath)
         {
             Uri = fullPath;
+            ServerUri = new Uri(Uri.GetDomain());
             Init();
         }
         public TestApiRequest(Uri baseUri, string path)
@@ -67,6 +70,8 @@ namespace TestAny.Essentials.Api
             {
                 throw new Exception("The baseUri is required. Call SetEnvironment method or set EnvironmentUri property on TestApiHttp object");
             }
+
+            ServerUri = baseUri;
 
             if (path.IsEmpty())
             {
@@ -178,6 +183,24 @@ namespace TestAny.Essentials.Api
         }
 
         /// <summary>
+        /// Set the route part of the request
+        /// For example: /Employee/CreateNew
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public virtual TestApiRequest SetRoute(string path)
+        {
+            if (ServerUri == null)
+            {
+                throw new Exception("Cannot add a path when the base url is not set. Initialize with baseUri or invoke SetEnvironment() on TestHttp instance.");
+            }
+            Uri = new Uri($"{ServerUri.AbsoluteUri.EndWithCompareThenTrim(new[] { "/" })}/{path.StartWithCompareThenTrim(new[] { "/" })}");
+
+            return this;
+        }
+
+        /// <summary>
         /// Set the NTML (Windows authentication) before making api request
         /// </summary>
         /// <param name="useNtml"></param>
@@ -200,6 +223,26 @@ namespace TestAny.Essentials.Api
             return this;
         }
 
+        public virtual TestApiRequest SetQueryParamsAsHeader(object value)
+        {
+            if (value == null) return this;
+            var props = value.GetPropertiesV2();
+            ParameterCollection values = new ParameterCollection();
+            foreach (var prop in props)
+            {
+                if (value.GetPropertyValueV2<object>(prop.Name) != null)
+                {
+                    values.AddOrUpdate(prop.Name, value.GetPropertyValueV2<object>(prop.Name).ToString());
+                }
+            }
+
+            var nameValueCollection = values.Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value as string)).ToList();
+            foreach (var item in nameValueCollection)
+            {
+                Headers.Add(new TestApiHeader(item.Key, item.Value));
+            }
+            return this;
+        }
         /// <summary>
         /// Sets the parameters as header for the api request
         /// </summary>
@@ -363,6 +406,12 @@ namespace TestAny.Essentials.Api
         public virtual TestApiRequest SetNoCache(bool withNoCache)
         {
             NoCache = withNoCache;
+            return this;
+        }
+
+        public virtual TestApiRequest SetHttpClient(HttpClient httpClient)
+        {
+            HttpClient = httpClient;
             return this;
         }
 
@@ -943,41 +992,45 @@ namespace TestAny.Essentials.Api
                 httpClientHandler.Proxy = Proxy;
             }
 
-            var client = new HttpClient(httpClientHandler);
+            if (HttpClient == null)
+            {
+                HttpClient = new HttpClient(httpClientHandler);
 
-            if (HeaderAuthentication != null)
-            {
-                client.DefaultRequestHeaders.Authorization = HeaderAuthentication;
-            }
-
-            if (Timeout > 0)
-            {
-                client.Timeout = TimeSpan.FromSeconds(Timeout);
-            }
-            else if (TestAnyAppConfig.DefaultApiResponseTimeoutWaitPeriodInSeconds > 0)
-            {
-                client.Timeout = TimeSpan.FromSeconds(TestAnyAppConfig.DefaultApiResponseTimeoutWaitPeriodInSeconds);
-            }
-
-            foreach (var kvp in Headers)
-            {
-                if (kvp.Key.EqualsIgnoreCase("Content-Type") && httpMethod == HttpMethod.Get)
+                if (HeaderAuthentication != null)
                 {
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(kvp.Value));
+                    HttpClient.DefaultRequestHeaders.Authorization = HeaderAuthentication;
                 }
-                else
+
+                if (Timeout > 0)
                 {
-                    client.DefaultRequestHeaders.TryAddWithoutValidation(kvp.Key, kvp.Value);
+                    HttpClient.Timeout = TimeSpan.FromSeconds(Timeout);
+                }
+                else if (TestAnyAppConfig.DefaultApiResponseTimeoutWaitPeriodInSeconds > 0)
+                {
+                    HttpClient.Timeout = TimeSpan.FromSeconds(TestAnyAppConfig.DefaultApiResponseTimeoutWaitPeriodInSeconds);
+                }
+
+                foreach (var kvp in Headers)
+                {
+                    if (kvp.Key.EqualsIgnoreCase("Content-Type") && httpMethod == HttpMethod.Get)
+                    {
+                        HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(kvp.Value));
+                    }
+                    else
+                    {
+                        HttpClient.DefaultRequestHeaders.TryAddWithoutValidation(kvp.Key, kvp.Value);
+                    }
+                }
+
+                if (NoCache)
+                {
+                    HttpClient.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
+                    {
+                        NoCache = true
+                    };
                 }
             }
-
-            if (NoCache)
-            {
-                client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
-                {
-                    NoCache = true
-                };
-            }
+            
 
             foreach (Cookie cookie in Cookies)
             {
@@ -997,7 +1050,7 @@ namespace TestAny.Essentials.Api
                     {
                         httpRequest.Content = new StreamContent(stream);
                         httpRequest.Content.Headers.ContentType = new MediaTypeWithQualityHeaderValue(Headers.First(h => h.Key == "Content-Type").Value);
-                        httpResponseMessage = await client.SendAsync(httpRequest);
+                        httpResponseMessage = await HttpClient.SendAsync(httpRequest);
                     }
                 }
                 else
@@ -1023,7 +1076,7 @@ namespace TestAny.Essentials.Api
                     {
                         httpRequest.Content = new FormUrlEncodedContent(PostParams.Select(kvp => new KeyValuePair<string, string>(kvp.Key, (string)kvp.Value)));
                     }
-                    httpResponseMessage = await client.SendAsync(httpRequest);
+                    httpResponseMessage = await HttpClient.SendAsync(httpRequest);
                 }
             }
             else if (httpMethod == HttpMethod.Get)
@@ -1039,20 +1092,20 @@ namespace TestAny.Essentials.Api
                     httpRequest.Content.Headers.ContentType = new MediaTypeWithQualityHeaderValue(Headers.First(h => h.Key == "Content-Type").Value);
                 }
                 httpResponseMessage = requestToDownloadFile.IsEmpty() ?
-                    await client.SendAsync(httpRequest) :
-                    await client.SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead);
+                    await HttpClient.SendAsync(httpRequest) :
+                    await HttpClient.SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead);
             }
             else if (httpMethod == HttpMethod.Delete)
             {
                 if (string.IsNullOrEmpty(JsonBody ?? Body))
                 {
-                    httpResponseMessage = await client.DeleteAsync(Uri);
+                    httpResponseMessage = await HttpClient.DeleteAsync(Uri);
                 }
                 else
                 {
                     var request = new HttpRequestMessage(httpMethod, Uri);
                     request.Content = new StringContent(JsonBody ?? Body, Encoding.UTF8, "application/json");
-                    httpResponseMessage = await client.SendAsync(request);
+                    httpResponseMessage = await HttpClient.SendAsync(request);
                 }
             }
 
