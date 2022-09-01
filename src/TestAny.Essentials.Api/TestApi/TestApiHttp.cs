@@ -1,3 +1,4 @@
+using Pj.Library;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -45,6 +46,19 @@ namespace TestAny.Essentials.Api
         public TestApiRequest PrepareRequest(string path = "")
         {
             var request = new TestApiRequest(EnvironmentUri, path);
+            request.AddHeaders(CommonHeaders);
+
+            if (LoginResponse != null)
+            {
+                request.AddCookies(LoginResponse.Cookies);
+            }
+
+            return request;
+        }
+
+        public TestApiRequest OpenFullUrl(string path)
+        {
+            var request = new TestApiRequest(new Uri(new Uri(path).GetDomain()), path.Replace(new Uri(path).GetDomain(), ""));
             request.AddHeaders(CommonHeaders);
 
             if (LoginResponse != null)
