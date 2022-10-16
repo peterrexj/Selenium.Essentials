@@ -3,8 +3,6 @@ using Pj.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Selenium.Essentials
 {
@@ -35,12 +33,12 @@ namespace Selenium.Essentials
         /// <summary>
         /// Total number of elements matching the selector including the hidden
         /// </summary>
-        public int TotalRaw => Driver.FindElements(By).Count;
+        public int TotalRaw => NotExists ? 0 : RetryFindElements().Count;
 
         /// <summary>
         /// Total number of visible elements matching the selector
         /// </summary>
-        public int Total => Driver.FindElements(By).Count(e => e.IsVisible());
+        public int Total => Enumerable.Range(0, TotalRaw).Count(pos => Item(pos).IsDisplayed && Item(pos).CssDisplayed);
 
         /// <summary>
         /// Get the control of type T at the given position which match in the UI 
@@ -50,10 +48,10 @@ namespace Selenium.Essentials
         /// <returns></returns>
         public T Item<T>(int position) where T : BaseControl
         {
-            if (position > TotalRaw) 
+            if (position > TotalRaw)
                 throw new Exception($"The requested item position [{position}] is greater than the total items [{TotalRaw}] available in the UI now");
 
-            var xpath = Driver.FindElements(By).Skip(position - 1).First().GetElementXPath(Driver, _excludeIdChecksForXpathCalculation);
+            var xpath = RetryFindElements().Skip(position - 1).FirstOrDefault().GetElementXPath(Driver, _excludeIdChecksForXpathCalculation);
 
             if (_scrollCustomEvent != null)
             {
@@ -70,7 +68,6 @@ namespace Selenium.Essentials
             return ControlFactory.CreateNew<T>(Driver, By.XPath(xpath), ParentControl);
         }
 
-
         /// <summary>
         /// Get the control of type WebControl at the given position which match in the UI 
         /// </summary>
@@ -78,11 +75,53 @@ namespace Selenium.Essentials
         /// <returns></returns>
         public WebControl Item(int position) => Item<WebControl>(position);
 
+        public T VisibleItem<T>(int position) where T : BaseControl
+        {
+            if (position > TotalRaw)
+                throw new Exception($"The requested item position [{position}] is greater than the total items [{TotalRaw}] available in the UI now");
+
+            var xpath = RetryFindElements().Where(elm => elm.IsVisible()).Skip(position - 1).FirstOrDefault().GetElementXPath(Driver, _excludeIdChecksForXpathCalculation);
+
+            if (_scrollCustomEvent != null)
+            {
+                ControlFactory.CreateNew<WebControl>(Driver, By.XPath(xpath), ParentControl).ScrollTo();
+                _scrollCustomEvent.Invoke();
+            }
+
+            if (_scrollCustomEventConditional != null)
+            {
+                ControlFactory.CreateNew<WebControl>(Driver, By.XPath(xpath), ParentControl).ScrollTo();
+                _scrollCustomEventConditional.Invoke(position);
+            }
+
+            return ControlFactory.CreateNew<T>(Driver, By.XPath(xpath), ParentControl);
+        }
+
+        /// <summary>
+        /// Return the first visible control from the list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public T FirstVisibleControl<T>() where T : BaseControl
+        {
+            if (Total <= 0)
+                throw new Exception($"The total count of controls within this collection is equal to 0 and cannot find any elements by {By}");
+
+            var xpath = RetryFindElements().FirstOrDefault(elm => elm.IsVisible()).GetElementXPath(Driver, _excludeIdChecksForXpathCalculation);
+
+            return ControlFactory.CreateNew<T>(Driver, By.XPath(xpath), ParentControl);
+        }
+
+        public WebControl FirstVisibleElement => FirstVisibleControl<WebControl>();
+
         /// <summary>
         /// Click on the element at the given position
         /// </summary>
         /// <param name="position">Position of the element as visible in the UI</param>
         public void Click(int position) => Item(position).Click();
+
+        public void DoubleClick(int position) => Item(position).DoubleClick();
 
         /// <summary>
         /// Set value to the element 
@@ -128,6 +167,27 @@ namespace Selenium.Essentials
                 }
             }
             return 0;
+        }
+
+        /// <summary>
+        /// Waits till the element at the position appears
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="waitTimeSec"></param>
+        /// <param name="throwExceptionWhenNotFound"></param>
+        /// <param name="errorMessage"></param>
+        public void WaitForMinimumOne(int position = 1, int waitTimeSec = 0, bool throwExceptionWhenNotFound = true, string errorMessage = "")
+        {
+            if (Total == 0)
+            {
+                RawElement.WaitGeneric(driver: Driver,
+                   waitTimeSec: waitTimeSec,
+                   throwExceptionWhenNotFound: throwExceptionWhenNotFound,
+                   errorMessage: errorMessage,
+                   () => Total == position,
+                   $"Collection Control failed on to find the total element by {By}",
+                   baseControl: this);
+            }
         }
 
         /// <summary>

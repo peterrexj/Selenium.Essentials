@@ -1,4 +1,5 @@
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using Pj.Library;
 using System;
@@ -49,7 +50,7 @@ namespace Selenium.Essentials
         /// <param name="waitTimeSec">Time to wait in between each retry logic</param>
         /// <param name="retryCount">Number of times to retry the element from the browser</param>
         /// <returns>IWebElement</returns>
-        private IWebElement RetryFindElement(int waitTimeSec = 1, int retryCount = -1, bool onFindMode = false)
+        protected IWebElement RetryFindElement(int waitTimeSec = 1, int retryCount = -1, bool onFindMode = false)
         {
             if (retryCount == -1) retryCount = TestAnyAppConfig.DefaultRetryElementCount;
 
@@ -94,6 +95,64 @@ namespace Selenium.Essentials
             }
         }
 
+        protected List<IWebElement> RetryFindElements(int waitTimeSec = 1, int retryCount = -1, bool onFindMode = false)
+        {
+            if (retryCount == -1) retryCount = TestAnyAppConfig.DefaultRetryElementCount;
+
+            for (var i = 0; i < retryCount + 1; i++)
+            {
+                try
+                {
+                    return ParentControl != null ? ParentControl.RawElement.FindElements(By)?.ToList() : Driver.FindElements(By)?.ToList();
+                }
+                catch (System.Net.WebException ex)
+                {
+                    if (!onFindMode)
+                    {
+                        if (i == retryCount)
+                        {
+                            throw new WebControlException(Driver, ex, uiControl: this);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (!onFindMode)
+                    {
+                        if (i == retryCount)
+                        {
+                            throw new Exception(ex.Message, ex);
+                        }
+                    }
+                }
+
+                // Short interval before a retry occurs
+                System.Threading.Thread.Sleep(waitTimeSec * 200);
+            }
+
+            if (!onFindMode)
+            {
+                throw new WebControlException(Driver, $"Retry failed: Not able to find the elements [{ToString()}] from the UI", uiControl: this);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private bool QuickFindElement(int waitTimeSec = 1, int retryCount = 2)
+        {
+            try
+            {
+                var el = RetryFindElement(waitTimeSec, retryCount);
+                return el != null;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         #region Control Properties
         /// <summary>
         /// Current web driver associated with the element
@@ -104,6 +163,12 @@ namespace Selenium.Essentials
         /// Selenium's IWebElement associated against the control
         /// </summary>
         public IWebElement RawElement => RetryFindElement();
+
+        /// <summary>
+        /// Selenium's IWebElement associated controls based on the selector
+        /// </summary>
+        public List<IWebElement> RawElements => RetryFindElements();
+
         internal IWebElement RawElementFind => RetryFindElement(onFindMode: true);
 
         /// <summary>
@@ -172,9 +237,14 @@ namespace Selenium.Essentials
         public bool IsHidden => !IsVisible;
 
         /// <summary>
-        /// Whether element exists
+        /// Returns true when element exists
         /// </summary>
         public bool Exists => RawElement.Exists();
+
+        /// <summary>
+        /// Returns true when the element does not exists otherwise false
+        /// </summary>
+        public bool NotExists => !Exists;
 
         /// <summary>
         /// Returns the value in the attribute [value]
@@ -261,6 +331,14 @@ namespace Selenium.Essentials
                     throw new WebControlException(Driver, ex, "Control could not be clicked on", this);
                 }
             }
+        }
+
+        /// <summary>
+        /// Performs Double click action on the element
+        /// </summary>
+        public virtual void DoubleClick()
+        {
+            new Actions(Driver).DoubleClick(RawElement).Perform();
         }
 
         /// <summary>

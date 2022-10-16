@@ -1,15 +1,12 @@
 ﻿using NUnit.Framework;
-using NUnit.Framework.Interfaces;
-using OpenQA.Selenium;
+using Pj.Library;
 using Selenium.Essentials.SampleTest.Core;
 using Selenium.Essentials.SampleTest.WebTests.PageObjects.Wikipedia;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Selenium.Essentials.SampleTest.WebTests.nUnit
 {
-    [TestFixture]
+    [TestFixture, Order(2)]
     [Parallelizable(ParallelScope.All)]
     public class WikipediaTests : WebUnitTestBase
     {
