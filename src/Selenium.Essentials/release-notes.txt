@@ -1,4 +1,16 @@
-﻿Release 1.0.5.7
+﻿Release 1.0.5.11
+- BaseControl - RawElements - gives a list of RawElements if the request is to get more than one element (for collection control)
+- BaseControl - NotExists - bool to return if the element does not exists and available for all controls
+- BaseControl - DoubleClick - performs double click and available for all controls
+- CollectionControl - Fix issue when search or operations were not considering the parent control
+- CollectionControl - VisibleItem<control> at position - returns the item/element/control visible at the position
+- CollectionControl - FirstVisibleControl<control> - returns the first visible item/element/control from the collection
+- CollectionControl - FirstVisibleElement - returns element/control of type WebControl which is first visible in the collection
+- CollectionControl - DoubleClick(position) - performs double click on the control at position
+- CollectionControl - WaitForMinimumOne(position) - waits for the control/element at specified position is available
+
+
+Release 1.0.5.7
 - Pj library update to have environment variables load from local setting files. This feature will enable to control the critical informations required for the test to hold in a local file which can be git ignored.
 
 Release 1.0.5.2

@@ -10,6 +10,7 @@ namespace Selenium.Essentials
     public interface IBaseControl : IWaitControl
     {
         IWebElement RawElement { get; }
+        List<IWebElement> RawElements { get; }
         IWebDriver Driver { get; }
         IBaseControl ParentControl { get; }
         IWebElement ParentRawElement { get; }
