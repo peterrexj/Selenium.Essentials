@@ -592,8 +592,7 @@ namespace TestAny.Essentials.Api
             var keyToUseInTeamcity = $"Proxy_{proxyKey}_UseOnlyInPipeline";
 
             if (PjUtility.EnvironmentConfig.ReadConfigData(keyToUseInTeamcity,
-                throwErrorWhenNotFound: false, returnNullWhenNotFound: true).ToBool() == true &&
-                !PjUtility.Runtime.IsPipelineExecution)
+                throwErrorWhenNotFound: false, returnNullWhenNotFound: true).ToBool() == true)
             {
                 return this;
             }
@@ -640,7 +639,8 @@ namespace TestAny.Essentials.Api
             {
                 password = PjUtility.EnvironmentVariables.GetValue(
                         CryptoHelper.Decrypt(
-                            PjUtility.EnvironmentConfig.ReadConfigData(keyToPassword, throwErrorWhenNotFound: false, returnNullWhenNotFound: true)));
+                            PjUtility.EnvironmentConfig.ReadConfigData(keyToPassword, throwErrorWhenNotFound: false, returnNullWhenNotFound: true),
+                            throwException: false));
             }
 
             if (username.HasValue() && password.HasValue())
