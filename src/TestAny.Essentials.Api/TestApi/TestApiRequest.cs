@@ -145,10 +145,28 @@ namespace TestAny.Essentials.Api
         /// <returns></returns>
         public virtual TestApiRequest AddBasicAuthorizationHeader(string username, string password)
         {
-            HeaderAuthentication = new AuthenticationHeaderValue(
-                   "Basic",
-                   Convert.ToBase64String(
-                       Encoding.ASCII.GetBytes($"{username}:{password}")));
+            if (username.HasValue() && password.HasValue())
+            {
+                HeaderAuthentication = new AuthenticationHeaderValue(
+                       "Basic",
+                       Convert.ToBase64String(
+                           Encoding.ASCII.GetBytes($"{username}:{password}")));
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Add Bearer authorization information if required for making the api request.
+        /// This depends on your api request
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public virtual TestApiRequest AddBearerAuthorizationHeader(string token)
+        {
+            if (token.HasValue())
+            {
+                AddHeader("Authorization", $"Bearer {token}");
+            }
             return this;
         }
 
@@ -1030,7 +1048,7 @@ namespace TestAny.Essentials.Api
                     };
                 }
             }
-            
+
 
             foreach (Cookie cookie in Cookies)
             {
