@@ -1,4 +1,7 @@
-﻿Release 1.0.5.11
+﻿Release 1.0.5.15
+- Newtonsoft package update due to vulnerability
+
+Release 1.0.5.11
 - BaseControl - RawElements - gives a list of RawElements if the request is to get more than one element (for collection control)
 - BaseControl - NotExists - bool to return if the element does not exists and available for all controls
 - BaseControl - DoubleClick - performs double click and available for all controls
