@@ -1,7 +1,7 @@
 ﻿Set-ExecutionPolicy Bypass
 
 $apiKey = [System.Environment]::GetEnvironmentVariable('NugetApiKey', 'User')
-$packageVersion = '.1.0.5.16.nupkg'
+$packageVersion = '.1.0.5.17.nupkg'
 
 $score = [IO.Path]::Combine($PSScriptRoot, '..\src\TestAny.Essentials.Core\bin\Debug\TestAny.Essentials.Core' + $packageVersion)
 $sapi = [IO.Path]::Combine($PSScriptRoot, '..\src\TestAny.Essentials.Api\bin\Debug\TestAny.Essentials.Api' + $packageVersion)
