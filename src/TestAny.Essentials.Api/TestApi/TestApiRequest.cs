@@ -40,6 +40,7 @@ namespace TestAny.Essentials.Api
         public List<X509Certificate2> Certificates { get; private set; }
         public IWebProxy Proxy { get; private set; }
         private AuthenticationHeaderValue HeaderAuthentication { get; set; }
+        public MultipartFormDataContent FormDataContent { get; private set; }
         public HttpClient HttpClient { get; private set; }
 
         public TestApiRequest(Uri fullPath)
@@ -430,6 +431,40 @@ namespace TestAny.Essentials.Api
         public virtual TestApiRequest SetHttpClient(HttpClient httpClient)
         {
             HttpClient = httpClient;
+            return this;
+        }
+
+        public virtual TestApiRequest SetMultipartFormDataBody(List<MultipartFormDataProperty> props)
+        {
+            FormDataContent = new MultipartFormDataContent();
+
+            foreach (var prop in props)
+            {
+                HttpContent content = null;
+                if (prop.ContentTransmitType == MultipartFormDataProperty.ContentTransmitTypeEnum.AsString)
+                {
+                    content = new StringContent(prop.PropertyValue);
+                    content.Headers.Add("Content-Disposition", $"form-data; name=\"{prop.PropertyName}\"");
+                    FormDataContent.Add(content, prop.PropertyName);
+                }
+                if (prop.ContentTransmitType == MultipartFormDataProperty.ContentTransmitTypeEnum.AsFile)
+                {
+                    if (!File.Exists(prop.PropertyValue)) continue;
+
+                    if (prop.ContentStreamType == MultipartFormDataProperty.ContentStreamTypeEnum.Stream)
+                    {
+                        content = new StreamContent(File.OpenRead(prop.PropertyValue));
+                        content.Headers.ContentType = MediaTypeHeaderValue.Parse(prop.ContentType);
+
+                    }
+                    else if (prop.ContentStreamType == MultipartFormDataProperty.ContentStreamTypeEnum.Text)
+                    {
+                        content = new StringContent(File.ReadAllText(prop.PropertyValue), Encoding.UTF8, prop.ContentType);
+                    }
+                    content.Headers.Add($"Content-Disposition", $"form-data; name=\"{prop.PropertyName}\"; filename=\"{Path.GetFileName(prop.PropertyValue)}\"");
+                    FormDataContent.Add(content, prop.PropertyName, Path.GetFileName(prop.PropertyValue));
+                }
+            }
             return this;
         }
 
@@ -1062,7 +1097,11 @@ namespace TestAny.Essentials.Api
             {
                 HttpRequestMessage httpRequest = new HttpRequestMessage(httpMethod, Uri);
 
-                if (ContentTypeSetAsEntity && FilePathUploadMode && Body.HasValue())
+                if (FormDataContent != null)
+                {
+                    httpResponseMessage = await HttpClient.PostAsync(httpRequest.RequestUri, FormDataContent);
+                }
+                else if (ContentTypeSetAsEntity && FilePathUploadMode && Body.HasValue())
                 {
                     using (var stream = File.OpenRead(Body))
                     {
