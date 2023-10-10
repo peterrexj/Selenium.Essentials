@@ -1,61 +1,62 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <Authors>Peter Joseph</Authors>
-    <Copyright>Apache License 2.0</Copyright>
-    <PackageLicenseExpression></PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/peterrexj/Selenium.Essentials</PackageProjectUrl>
-    <RepositoryType>Public</RepositoryType>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <RepositoryUrl>https://github.com/peterrexj/Selenium.Essentials</RepositoryUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>icon.png</PackageIcon>
-    <Title>Selenium.Essentials</Title>
-    <PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/release-notes.txt"))</PackageReleaseNotes>
-    <Description>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/product-description.txt"))</Description>
-    <PackageTags>selenium automation c# browser api web essentials nUnit xUnit webdriver webelement</PackageTags>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.5.17</Version>
-    <Company>Peter Joseph</Company>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<Authors>Peter Joseph</Authors>
+		<Copyright>Apache License 2.0</Copyright>
+		<PackageLicenseExpression></PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/peterrexj/Selenium.Essentials</PackageProjectUrl>
+		<RepositoryType>Public</RepositoryType>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<RepositoryUrl>https://github.com/peterrexj/Selenium.Essentials</RepositoryUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageIcon>icon.png</PackageIcon>
+		<Title>Selenium.Essentials</Title>
+		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/release-notes.txt"))</PackageReleaseNotes>
+		<Description>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/product-description.txt"))</Description>
+		<PackageTags>selenium automation c# browser api web essentials nUnit xUnit webdriver webelement</PackageTags>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<Version>1.0.5.18</Version>
+		<Company>Peter Joseph</Company>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\icon.png" Pack="true" Visible="false" PackagePath="" />
-    <Compile Remove="Web\Drivers\**" />
-    <EmbeddedResource Remove="Web\Drivers\**" />
-    <None Remove="Web\Drivers\**" />
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\icon.png" Pack="true" Visible="false" PackagePath="" />
+		<Compile Remove="Web\Drivers\**" />
+		<EmbeddedResource Remove="Web\Drivers\**" />
+		<None Remove="Web\Drivers\**" />
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Pj.Library" Version="1.0.4.18" />
-    <PackageReference Include="Pj.Library.Secure" Version="1.0.4.18" />
-    <PackageReference Include="Pj.Library.ThirdParty" Version="1.0.4.18" />
-    <PackageReference Include="Selenium.Support" Version="3.141.0" />
-    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Pj.Library" Version="1.0.4.19" />
+		<PackageReference Include="Pj.Library.Secure" Version="1.0.4.19" />
+		<PackageReference Include="Pj.Library.ThirdParty" Version="1.0.4.19" />
+		<PackageReference Include="Selenium.Support" Version="3.141.0" />
+		<PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TestAny.Essentials.Api\TestAny.Essentials.Api.csproj" />
-    <ProjectReference Include="..\TestAny.Essentials.Core\TestAny.Essentials.Core.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\TestAny.Essentials.Api\TestAny.Essentials.Api.csproj" />
+		<ProjectReference Include="..\TestAny.Essentials.Core\TestAny.Essentials.Core.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="product-description.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="release-notes.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="product-description.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="release-notes.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>

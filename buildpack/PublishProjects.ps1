@@ -1,11 +1,11 @@
 ﻿Set-ExecutionPolicy Bypass
 
 $apiKey = [System.Environment]::GetEnvironmentVariable('NugetApiKey', 'User')
-$packageVersion = '.1.0.5.18.nupkg'
+$packageVersion = '.1.0.5.19.nupkg'
 
-$score = [IO.Path]::Combine($PSScriptRoot, '..\src\TestAny.Essentials.Core\bin\Debug\TestAny.Essentials.Core' + $packageVersion)
-$sapi = [IO.Path]::Combine($PSScriptRoot, '..\src\TestAny.Essentials.Api\bin\Debug\TestAny.Essentials.Api' + $packageVersion)
-$se = [IO.Path]::Combine($PSScriptRoot, '..\src\Selenium.Essentials\bin\Debug\Selenium.Essentials' + $packageVersion)
+$score = [IO.Path]::Combine($PSScriptRoot, '..\Output\TestAny.Essentials.Core' + $packageVersion)
+$sapi = [IO.Path]::Combine($PSScriptRoot, '..\Output\TestAny.Essentials.Api' + $packageVersion)
+$se = [IO.Path]::Combine($PSScriptRoot, '..\Output\Selenium.Essentials' + $packageVersion)
 
 Get-ChildItem -Path $score -ErrorAction Stop
 Get-ChildItem -Path $sapi -ErrorAction Stop
