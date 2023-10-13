@@ -691,9 +691,7 @@ namespace TestAny.Essentials.Api
                 returnNullWhenNotFound: true).HasValue())
             {
                 password = PjUtility.EnvironmentVariables.GetValue(
-                        CryptoHelper.Decrypt(
-                            PjUtility.EnvironmentConfig.ReadConfigData(keyToPassword, throwErrorWhenNotFound: false, returnNullWhenNotFound: true),
-                            throwException: false));
+                    PjUtility.EnvironmentConfig.ReadConfigData(keyToPassword, throwErrorWhenNotFound: false, returnNullWhenNotFound: true));
             }
 
             if (username.HasValue() && password.HasValue())
