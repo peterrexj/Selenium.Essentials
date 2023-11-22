@@ -18,7 +18,7 @@
 		<Description>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/product-description.txt"))</Description>
 		<PackageTags>selenium automation c# browser api web essentials nUnit xUnit webdriver webelement test</PackageTags>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Version>1.0.5.20</Version>
+		<Version>1.0.5.26</Version>
 		<Company>Peter Joseph</Company>
 	</PropertyGroup>
 
@@ -31,8 +31,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Pj.Library" Version="1.0.4.22" />
-		<PackageReference Include="Pj.Library.ThirdParty" Version="1.0.4.22" />
+		<PackageReference Include="Pj.Library" Version="1.0.4.28" />
 	</ItemGroup>
 
 	<ItemGroup>

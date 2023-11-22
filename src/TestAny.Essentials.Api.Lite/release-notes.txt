@@ -1,0 +1,44 @@
+﻿Release 1.0.5.9
+- Retry on every action [Get, Post, Delete, Put] has now additional parameter to control the timeout error from server. retryOnRequestTimeout, can be set to true/false to fail when the request timeout or to retry
+- AddingCookies is renamed to AddCookies under TestApiRequest
+- Option to control
+-- Set Timeout
+-- Auto Redirection on the server for a request
+-- Extract Domain cookies
+-- No Cache
+
+Release 1.0.5.4
+- Api Request can now accept SetQueryParameter and SetJsonBody with any object passed
+
+Release 1.0.5.2
+- Api Retry option now has ability to control on which httpstatuscode the retry should occur
+
+Release 1.0.5.2
+- Introduce Api framework with PUT PATCH commands
+-- WithRetry option with time on interval
+-- Response contains cookies extracted from domains
+-- Cookie extension to merge and contact cookies
+-- Introducing Proxy for API request based on the user data
+-- Introducing Certificates to be passed on the request
+-- Response has more request details from headers to cookies
+- Tests are now upgraded to .NET 6
+
+Release 1.0.5.1
+- Bug fix when loading ApiResponse as HtmlContent
+
+Release 1.0.5
+- Introduce TestAny.Essentials.Core
+- Introduce TestAny.Essentials.Api. All Api related functionality are moved into this new package
+- There are some breaking changes
+-- SeAppConfig is renamed to TestAnyAppConfig
+-- TestAnyAppConfig is now moved into TestAny.Essentials.Core
+-- TestContextHelper is renamed to TestAnyTestContextHelper
+-- TestAnyTestContextHelper is now moved into TestAny.Essentials.Core
+-- Dtos models are now moved into the Core project
+
+Release 1.0.4
+- Introduction of Selenium.Essentials.Api for Api testing
+- Usage of utilities from Pj.Library
+- Remove Utility class from Selenium Essentials
+- Move properties from Utility class to SeAppConfig class
+- Move InitializeFramework(..) from Utility to SeAppConfig class

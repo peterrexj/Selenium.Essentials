@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using TestAny.Essentials.Core.Dtos.Api;
+
+namespace TestAny.Essentials.Api
+{
+    /// <summary>
+    /// Api Response
+    /// </summary>
+    public class TestApiResponse
+    {
+        public TestApiResponse() { }
+        public TestApiResponse(HttpResponseMessage httpResponseMessage)
+        {
+            HttpResponseMessage = httpResponseMessage;
+        }
+
+        /// <summary>
+        /// Response code
+        /// </summary>
+        public HttpStatusCode ResponseCode { get; set; }
+
+        /// <summary>
+        /// Response message received from the request
+        /// </summary>
+        public HttpResponseMessage HttpResponseMessage { get; set; }
+
+        /// <summary>
+        /// Cookies received as part of the request
+        /// </summary>
+        public CookieCollection Cookies { get; set; }
+
+        /// <summary>
+        /// Response body container
+        /// </summary>
+        public TestApiBody ResponseBody { get; set; }
+
+        public TestApiRequest Request { get; set; }
+
+        public KeyValuePatternModel ResponseHeaders { get; set; }
+
+        /// <summary>
+        /// Assertion on the status code of the request
+        /// </summary>
+        public void AssertResponseStatusForSuccess()
+        {
+            var passStatus = new[] { HttpStatusCode.OK, HttpStatusCode.Accepted, HttpStatusCode.Created, HttpStatusCode.NoContent };
+
+            if (!passStatus.Contains(this.HttpResponseMessage.StatusCode))
+            {
+                throw new Exception($"The response from the server resulted with status code: {this.HttpResponseMessage.StatusCode} with reason: [{this.HttpResponseMessage.ReasonPhrase}], with message: [{this.ResponseBody?.ContentString}]");
+            }
+        }
+    }
+}

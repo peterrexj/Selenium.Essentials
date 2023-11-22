@@ -40,7 +40,7 @@ namespace Selenium.Essentials.SampleTest
             {
                 if (_envData == null)
                 {
-                    var currentEnv = AppSettingsConfig.AppSettingsCallerAssembly
+                    var currentEnv = Pj.Library.Extended.PjUtilityEx.AppSettingsConfig.AppSettingsCallerAssembly
                         .Where(k => k.Key.EqualsIgnoreCase("Environment"))
                         .FirstOrDefault().Value;
                     var envDataFilePath = Path.Combine(Runtime.ExecutingFolder, "DataSource", "EnvironmentData", currentEnv, "EnvData.json");
