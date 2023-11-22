@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<Authors>Peter Joseph</Authors>
+		<Copyright>Apache License 2.0</Copyright>
+		<PackageLicenseExpression></PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/peterrexj/Selenium.Essentials</PackageProjectUrl>
+		<RepositoryType>Public</RepositoryType>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<RepositoryUrl>https://github.com/peterrexj/Selenium.Essentials</RepositoryUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageIcon>icon.png</PackageIcon>
+		<Title>TestAny Essentials Api</Title>
+		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/release-notes.txt"))</PackageReleaseNotes>
+		<Description>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/product-description.txt"))</Description>
+		<PackageTags>selenium automation c# browser api web essentials nUnit xUnit webdriver webelement test</PackageTags>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<Version>1.0.5.26</Version>
+		<Company>Peter Joseph</Company>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\icon.png" Pack="true" Visible="false" PackagePath="" />
+		<None Include="..\..\LICENSE" Link="LICENSE">
+			<PackagePath></PackagePath>
+			<Pack>True</Pack>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Pj.Library" Version="1.0.4.28" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\TestAny.Essentials.Core\TestAny.Essentials.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="product-description.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="release-notes.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>
