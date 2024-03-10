@@ -9,17 +9,26 @@ namespace TestAny.Essentials.Core
     /// </summary>
     public static class TestAnyTestContextHelper
     {
-        private static Dictionary<string, object> _globalContextCollection;
-        private static Dictionary<string, object> _contextCollection;
+        private static Dictionary<string, object>? _globalContextCollection;
+        private static Dictionary<string, object>? _contextCollection;
 
-        private static Dictionary<string, object> GlobalContextObject => _globalContextCollection;
-        private static Dictionary<string, object> ContextObject => _contextCollection;
-        
-        static TestAnyTestContextHelper()
+        private static Dictionary<string, object> GlobalContextObject
         {
-            _globalContextCollection = new Dictionary<string, object>();
+            get
+            {
+                _globalContextCollection ??= new Dictionary<string, object>();
+                return _globalContextCollection;
+            }
         }
-
+        private static Dictionary<string, object> ContextObject
+        {
+            get
+            {
+                _contextCollection ??= new Dictionary<string, object>();
+                return _contextCollection;
+            }
+        }
+        
         /// <summary>
         /// Initialze the test context for a test case
         /// </summary>
