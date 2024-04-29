@@ -22,7 +22,7 @@ namespace Selenium.Essentials.SampleTest.WebTests.nUnit
             wikiMainPage.Navigate();
             int position = 2;
 
-            var total = wikiMainPage.OtherAreaOfWikipediaItems.Total;
+            var total = wikiMainPage.OtherAreaOfWikipediaItems.TotalRaw;
             var totalRaw = wikiMainPage.OtherAreaOfWikipediaItems.TotalRaw;
             var firstControl = wikiMainPage.OtherAreaOfWikipediaItems.FirstVisibleElement;
             var visibleItem2Text = wikiMainPage.OtherAreaOfWikipediaItems.VisibleItem<WebControl>(position).Text;
