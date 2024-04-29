@@ -18,9 +18,9 @@
 		<Description>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/product-description.txt"))</Description>
 		<PackageTags>selenium automation c# browser api web essentials nUnit xUnit webdriver webelement</PackageTags>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<Version>1.0.5.28</Version>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-		<Version>1.0.5.27</Version>
 		<Company>Peter Joseph</Company>
 	</PropertyGroup>
 

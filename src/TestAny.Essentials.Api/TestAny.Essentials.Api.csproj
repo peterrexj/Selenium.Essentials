@@ -20,7 +20,7 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-		<Version>1.0.5.27</Version>
+		<Version>1.0.5.28</Version>
 		<Company>Peter Joseph</Company>
 	</PropertyGroup>
 

@@ -164,7 +164,7 @@ namespace TestAny.Essentials.Api
                 }
                 catch (Exception ex)
                 {
-                    PjUtility.Runtime.Logger.Log(ex.ToString());
+                    PjUtility.Log(ex.ToString());
                 }
             }
 
