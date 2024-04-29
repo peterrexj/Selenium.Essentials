@@ -1016,11 +1016,11 @@ namespace TestAny.Essentials.Api
                 {
                     if (_logSslCertificateErrors)
                     {
-                        Runtime.Logger.Log($"Problem with the Certificate: {cert.Subject}");
-                        Runtime.Logger.Log($"Sender: {sender}");
-                        Runtime.Logger.Log($"cert: {cert}");
-                        Runtime.Logger.Log($"chain: {chain}");
-                        Runtime.Logger.Log($"sslPolicyErrors: {sslPolicyErrors}");
+                        Log($"Problem with the Certificate: {cert.Subject}");
+                        Log($"Sender: {sender}");
+                        Log($"cert: {cert}");
+                        Log($"chain: {chain}");
+                        Log($"sslPolicyErrors: {sslPolicyErrors}");
                     }
                     return true;
                 };
@@ -1089,7 +1089,7 @@ namespace TestAny.Essentials.Api
             }
 
             HttpResponseMessage httpResponseMessage = null;
-            Runtime.Logger.Log($"Requesting {httpMethod} on: {Uri.AbsoluteUri}");
+            Log($"Requesting {httpMethod} on: {Uri.AbsoluteUri}");
 
             if (httpMethod == HttpMethod.Post || httpMethod == HttpMethod.Put || httpMethod == new HttpMethod("PATCH"))
             {
@@ -1206,14 +1206,14 @@ namespace TestAny.Essentials.Api
                 ResponseHeaders = new KeyValuePatternModel(responseHeaders)
             };
 
-            Runtime.Logger.Log($"Request {httpMethod} on: {Uri.AbsoluteUri} returned with: {response.ResponseCode}");
+            Log($"Request {httpMethod} on: {Uri.AbsoluteUri} returned with: {response.ResponseCode}");
             if (response.ResponseCode != HttpStatusCode.OK &&
                 response.ResponseCode != HttpStatusCode.Accepted &&
                 response.ResponseCode != HttpStatusCode.Created &&
                 response.ResponseCode != HttpStatusCode.Redirect)
             {
-                Runtime.Logger.Log($"Request with content: {JsonBody ?? Body}");
-                Runtime.Logger.Log($"Resposne on {httpMethod} with status: {response.ResponseCode} has ResponseMessage: {response.ResponseBody.ContentString}");
+                Log($"Request with content: {JsonBody ?? Body}");
+                Log($"Resposne on {httpMethod} with status: {response.ResponseCode} has ResponseMessage: {response.ResponseBody.ContentString}");
             }
 
             return response;

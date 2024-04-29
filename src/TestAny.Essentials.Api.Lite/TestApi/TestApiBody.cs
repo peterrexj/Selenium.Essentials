@@ -65,7 +65,7 @@ namespace TestAny.Essentials.Api
             }
             catch (Exception ex)
             {
-                PjUtility.Runtime.Logger.Log($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
+                PjUtility.Log($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
                 throw;
             }
         }
@@ -84,7 +84,7 @@ namespace TestAny.Essentials.Api
             }
             catch (Exception ex)
             {
-                PjUtility.Runtime.Logger.Log($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
+                PjUtility.Log($"Conversion failed to type: {typeof(T).Name}. Error: {ex.Message}");
                 throw;
             }
         }
