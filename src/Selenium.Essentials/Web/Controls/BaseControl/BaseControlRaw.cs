@@ -281,15 +281,11 @@ namespace Selenium.Essentials
         {
             get
             {
-                if (_computedXpath.IsEmpty() && FindFirstAvailable)
+                if (_computedXpath.IsEmpty())
                 {
                     _computedXpath = ParentControl != null ?
                         ParentControl.RawElement.FindElements(By).FirstOrDefault(d => d.Displayed)?.GetElementXPath(Driver) :
                         Driver.FindElements(By).FirstOrDefault(d => d.Displayed)?.GetElementXPath(Driver);
-                }
-                else
-                {
-                    _computedXpath = Driver.FindElements(By).FirstOrDefault(d => d.Displayed)?.GetElementXPath(Driver);
                 }
                 return _computedXpath;
             }

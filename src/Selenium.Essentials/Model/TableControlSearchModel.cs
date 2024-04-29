@@ -7,15 +7,15 @@ namespace Selenium.Essentials
 {
     public class TableControlSearchModel
     {
-        public TableControlSearchModel()
-        {
-            GetTheWholeContentWithInColumn = false;
-        }
         public int Column { get; set; }
         public string ColumnName { get; set; }
         public string TextToMatch { get; set; }
         public bool DoExactMatch { get; set; }
-        public By SelectorToFindControlInColumn { get; set; }
-        public bool GetTheWholeContentWithInColumn { get; set; }
+        public string XpathToInnerControlToSearch { get; set; }
+
+        public override string ToString()
+        {
+            return $"[Column]: {Column}, [ColumnName]: {ColumnName}, [TextToMatch]: {TextToMatch}, [DoExactMatch]: {DoExactMatch}, [Selector To Find Control In Column]: {XpathToInnerControlToSearch}";
+        }
     }
 }
