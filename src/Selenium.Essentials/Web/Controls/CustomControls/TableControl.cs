@@ -20,11 +20,11 @@ namespace Selenium.Essentials
         public By LoadWaitingSelector { get; private set; }
 
         public TableControl(IWebDriver driver, By selector, BaseControl parentControl = null, By loadWaitingSelector = null,
-            string description = "", bool firstAvailable = false, bool isLazyLoad = false)
+            string description = "", bool firstAvailable = false)
             : base(driver, selector, parentControl, description, firstAvailable)
         {
             LoadWaitingSelector = loadWaitingSelector;
-            _cacheColumnNamePositionMapping = [];
+            _cacheColumnNamePositionMapping = new Dictionary<string, int>();
         }
 
         #region Wait
@@ -93,9 +93,9 @@ namespace Selenium.Essentials
             {
                 if (_columnNames == null || !_columnNames.Any())
                 {
-                    if (_cacheColumnNamePositionMapping == null)
+                    if (_cacheColumnNamePositionMapping == null || _cacheColumnNamePositionMapping?.IsEmpty() == true)
                     {
-                        _cacheColumnNamePositionMapping = [];
+                        _cacheColumnNamePositionMapping = new Dictionary<string, int>();
                         RawElement.FindElements(By.CssSelector("thead>tr>th")).Union(RawElement.FindElements(By.CssSelector("tbody>tr>th")))
                             .Select(x => x.Text)
                             .Select((name, index) => new { Name = name, Index = index })
