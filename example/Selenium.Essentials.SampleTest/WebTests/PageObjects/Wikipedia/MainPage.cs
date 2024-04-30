@@ -1,9 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Selenium.Essentials.SampleTest.WebTests.PageObjects.Wikipedia
 {
@@ -13,7 +11,7 @@ namespace Selenium.Essentials.SampleTest.WebTests.PageObjects.Wikipedia
 
         public MainPage(IWebDriver driver) : base(driver) { }
 
-        private UnorderedListControl _tabNavigation => new UnorderedListControl(_driver, By.CssSelector("nav[id$='p-namespaces'] ul.vector-menu-content-list"));
+        private UnorderedListControl _tabNavigation => new UnorderedListControl(_driver, By.CssSelector("nav[aria-label$='Namespaces'] ul.vector-menu-content-list"));
         private TableControl _tableMainContent => new TableControl(_driver, By.Id("mp-upper"));
         private WebControl OtherAreaOfWikipediaContainer => new WebControl(_driver, By.Id("mp-other-content"));
         public CollectionControl OtherAreaOfWikipediaItems => new CollectionControl(_driver, By.TagName("li"), parentControl: OtherAreaOfWikipediaContainer);
