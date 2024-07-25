@@ -43,6 +43,11 @@ namespace TestAny.Essentials.Api
         public MultipartFormDataContent FormDataContent { get; private set; }
         public HttpClient HttpClient { get; private set; }
 
+        public TestApiRequest(string fullPath)
+        {
+            Uri = new Uri(fullPath);
+            Init();
+        }
         public TestApiRequest(Uri fullPath)
         {
             Uri = fullPath;

@@ -20,7 +20,7 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-		<Version>1.0.6</Version>
+		<Version>1.0.7</Version>
 		<Company>Peter Joseph</Company>
 	</PropertyGroup>
 
@@ -33,10 +33,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Pj.Library" Version="1.0.4.29" />
-		<PackageReference Include="Pj.Library.Extended" Version="1.0.4.29" />
-		<PackageReference Include="Pj.Library.ThirdParty" Version="1.0.4.29" />
-		<PackageReference Include="HtmlAgilityPack" Version="1.11.60" />
+		<PackageReference Include="Pj.Library" Version="1.0.4.31" />
+		<PackageReference Include="Pj.Library.Extended" Version="1.0.4.31" />
+		<PackageReference Include="Pj.Library.ThirdParty" Version="1.0.4.31" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
 	</ItemGroup>
 
 	<ItemGroup>
