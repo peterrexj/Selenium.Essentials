@@ -36,12 +36,13 @@ namespace Selenium.Essentials.IntegrationTests.Tests
         [TestCase("test3.png", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Louis-Zéphirin_Moreau.png/220px-Louis-Zéphirin_Moreau.png")]
         [TestCase("test4.jpg", "https://upload.wikimedia.org/wikipedia/en/d/d1/Leonellasgorbati.jpg")]
         [TestCase("test5.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Karol_Wojtyla_image_(cropped).jpg/170px-Karol_Wojtyla_image_(cropped).jpg")]
+        [TestCase("test6.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/CR400BF-Z-0312@BJI_(20231009152047).jpg/220px-CR400BF-Z-0312@BJI_(20231009152047).jpg")]
         public void Should_Be_Able_To_Download(string localfilePath, string path)
         {
             localfilePath = Path.Combine((Pj.Library.PjUtility.Runtime.ExecutingFolder), localfilePath);
             IoHelper.DeleteFile(localfilePath);
             var res = new TestApiHttp()
-                .OpenFullUrl(path)
+                .OpenFullUrl(path, pathDirect: true)
                 .AddHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36")
                 .Download(localfilePath);
 

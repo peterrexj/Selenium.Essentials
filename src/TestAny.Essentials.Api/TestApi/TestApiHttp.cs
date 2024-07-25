@@ -56,9 +56,17 @@ namespace TestAny.Essentials.Api
             return request;
         }
 
-        public TestApiRequest OpenFullUrl(string path)
+        /// <summary>
+        /// Set the Url directly to the base path. If pathDirect is set to true, it will not process the domain or host information rather directly apply the whole route. Use this only when no validation on the route is required and directly use the fullPath
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="pathDirect"></param>
+        /// <returns></returns>
+        public TestApiRequest OpenFullUrl(string path, bool pathDirect = false)
         {
-            var request = new TestApiRequest(new Uri(new Uri(path).GetDomain()), path.Replace(new Uri(path).GetDomain(), ""));
+            TestApiRequest request = pathDirect
+                ? new TestApiRequest(path)
+                : new TestApiRequest(new Uri(new Uri(path).GetDomain()), path.Replace(new Uri(path).GetDomain(), ""));
             request.AddHeaders(CommonHeaders);
 
             if (LoginResponse != null)
