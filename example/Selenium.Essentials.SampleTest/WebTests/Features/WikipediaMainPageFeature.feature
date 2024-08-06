@@ -11,7 +11,7 @@ Scenario Outline: Navigate to Wikipedia and verify today's feature
 	Then I should see the Wikipedia Welcome content
 	And I should see the Wikipedia today's feature
 
-	Examples:
-		| Browser                       |
-		| Chrome_Win10_latest |
+Examples:
+	| Browser             |
+	| Chrome_Win10_latest |
 		#| Safari_Mac10.13_v11.1_r1024x768 |

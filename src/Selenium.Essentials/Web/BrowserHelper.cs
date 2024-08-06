@@ -1,19 +1,10 @@
 ﻿using Microsoft.Win32;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Remote;
 using Pj.Library;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using static Pj.Library.PjUtility;
 
 namespace Selenium.Essentials
 {
@@ -28,148 +19,36 @@ namespace Selenium.Essentials
 
     public static class BrowserHelper
     {
-        public static string DriverFolder { get; set; } = Runtime.ExecutingFolder;
-
-        private static ChromeOptions _chromeOptions;
-        public static ChromeOptions ChromeOptions
+        public static IWebDriver GetDriver(string browserName, bool isRemote = false, RemoteDriverAccessModel? remoteDriverAccessModel = null)
         {
-            get
-            {
-                if (_chromeOptions == null)
-                {
-                    _chromeOptions = new ChromeOptions();
-                    _chromeOptions.AddUserProfilePreference("download.default_directory", Runtime.ExecutingFolder);
-                    _chromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
-                    _chromeOptions.AddUserProfilePreference("profile.content_settings.exceptions.automatic_downloads.*.setting", 1);
-                    _chromeOptions.AddArgument("--disable-extensions");
-                    _chromeOptions.AddArgument("no-sandbox");
-                }
-                return _chromeOptions;
-            }
-            set
-            {
-                _chromeOptions = value;
-            }
+            return GetDriver(GetBrowserType(browserName), isRemote, remoteDriverAccessModel);
         }
-
-        private static FirefoxOptions _firefoxOptions;
-        public static FirefoxOptions FirefoxOptions
+        public static IWebDriver GetDriver(BrowserType browserType, bool isRemote = false, RemoteDriverAccessModel? remoteDriverAccessModel = null)
         {
-            get
+            return browserType switch
             {
-                if (_firefoxOptions == null)
-                {
-                    _firefoxOptions = new FirefoxOptions();
-                    _firefoxOptions.AddArgument("--marionette");
-                    _firefoxOptions.AcceptInsecureCertificates = true;
-                }
-                return _firefoxOptions;
-            }
-            set
-            {
-                _firefoxOptions = value;
-            }
-
+                BrowserType.Chrome => GetChromeBrowser(isRemote, remoteDriverAccessModel),
+                BrowserType.FireFox => GetFirefoxBrowser(isRemote, remoteDriverAccessModel),
+                BrowserType.InternetExplorer => GetInternetExplorerBrowser(isRemote, remoteDriverAccessModel),
+                BrowserType.Edge => GetEdgeBrowser(isRemote, remoteDriverAccessModel),
+                BrowserType.Safari => GetSafariBrowser(isRemote, remoteDriverAccessModel),
+                _ => GetChromeBrowser(isRemote, remoteDriverAccessModel),
+            };
         }
+        public static IWebDriver GetChromeBrowser(bool isRemote = false, RemoteDriverAccessModel? remoteDriverAccessModel = null) => 
+            new SeleniumDriverMiddleware().GetDriver(BrowserType.Chrome, isRemote, remoteDriverAccessModel);
 
-        private static InternetExplorerOptions _internetExplorerOptions;
-        public static InternetExplorerOptions InternetExplorerOptions
-        {
-            get
-            {
-                if (_internetExplorerOptions == null)
-                {
-                    _internetExplorerOptions = new InternetExplorerOptions
-                    {
-                        IgnoreZoomLevel = false,
-                        IntroduceInstabilityByIgnoringProtectedModeSettings = true
-                    };
-                }
-                return _internetExplorerOptions;
-            }
-            set
-            {
-                _internetExplorerOptions = value;
-            }
-        }
+        public static IWebDriver GetEdgeBrowser(bool isRemote = false, RemoteDriverAccessModel? remoteDriverAccessModel = null) =>
+            new SeleniumDriverMiddleware().GetDriver(BrowserType.Edge, isRemote, remoteDriverAccessModel);
 
-        public static IWebDriver GetDriver(BrowserType browserType)
-        {
-            switch (browserType)
-            {
-                case BrowserType.Chrome:
-                    return GetChromeBrowser();
-                case BrowserType.FireFox:
-                    return GetFirefoxBrowser();
-                case BrowserType.InternetExplorer:
-                    return GetInternetExplorerBrowser();
-                case BrowserType.Edge:
-                    return GetEdgeBrowser();
-                case BrowserType.Safari:
-                    return GetSafariBrowser();
-                default:
-                    return GetChromeBrowser();
-            }
-        }
-        public static IWebDriver GetChromeBrowser()
-        {
-            var chromeService = ChromeDriverService.CreateDefaultService(DriverFolder);
-            chromeService.HideCommandPromptWindow = true;
+        public static IWebDriver GetFirefoxBrowser(bool isRemote = false, RemoteDriverAccessModel? remoteDriverAccessModel = null) =>
+            new SeleniumDriverMiddleware().GetDriver(BrowserType.FireFox, isRemote, remoteDriverAccessModel);
+        
+        public static IWebDriver GetSafariBrowser(bool isRemote = false, RemoteDriverAccessModel? remoteDriverAccessModel = null) => 
+            new SeleniumDriverMiddleware().GetDriver(BrowserType.Safari, isRemote, remoteDriverAccessModel);
 
-            try
-            {
-                return new ChromeDriver(chromeService, ChromeOptions);
-            }
-            catch (Exception)
-            {
-                return new ChromeDriver(chromeService, ChromeOptions);
-            }
-        }
-        public static IWebDriver GetEdgeBrowser() { return null; }
-        public static IWebDriver GetFirefoxBrowser()
-        {
-            if (InstalledBrowsers
-                .Any(d =>
-                    d.Name.ContainsIgnoreCase("firefox") &&
-                    d.InstallationPath.HasValue()) == false)
-                throw new Exception("Firefox is not installed in your computer. Make sure you installed firefox in your machine and InstalledBrowsers is listing the browser (try running as admin)");
-
-            FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(DriverFolder);
-            service.FirefoxBinaryPath = InstalledBrowsers
-                .FirstOrDefault(d => d.Name.ContainsIgnoreCase("firefox"))?.InstallationPath;
-            service.HideCommandPromptWindow = true;
-
-            return new FirefoxDriver(service, FirefoxOptions);
-        }
-        public static IWebDriver GetSafariBrowser() { return null; }
-        public static IWebDriver GetInternetExplorerBrowser()
-        {
-            var service = InternetExplorerDriverService.CreateDefaultService(DriverFolder);
-            service.HideCommandPromptWindow = true;
-
-            return new InternetExplorerDriver(service, InternetExplorerOptions);
-        }
-        public static IWebDriver GetRemoteDriver(RemoteDriverAccessModel remoteDriverAccessModel)
-        {
-            if (remoteDriverAccessModel == null)
-            {
-                return null;
-            }
-
-            var capabilities = new DesiredCapabilities();
-
-            if (remoteDriverAccessModel.Capabilities != null)
-            {
-                foreach (var capability in remoteDriverAccessModel.Capabilities)
-                {
-                    capabilities.SetCapability(capability.Key, capability.Value);
-                }
-            }
-            var driver = new RemoteWebDriver(new Uri(remoteDriverAccessModel.RemoteHubUrl), 
-                capabilities, 
-                TimeSpan.FromSeconds(remoteDriverAccessModel.CommandTimeoutInSeconds));
-            return driver;
-        }
+        public static IWebDriver GetInternetExplorerBrowser(bool isRemote = false, RemoteDriverAccessModel? remoteDriverAccessModel = null) =>
+            new SeleniumDriverMiddleware().GetDriver(BrowserType.InternetExplorer, isRemote, remoteDriverAccessModel);
 
         public static BrowserType GetBrowserType(string browserName)
         {
@@ -211,11 +90,11 @@ namespace Selenium.Essentials
                     }
                     catch (SecurityException e)
                     {
-                        Runtime.Logger.Log($"Unable to get browser info due to access issues. {e.Message}", e);
+                        PjUtility.Runtime.Logger.Log($"Unable to get browser info due to access issues. {e.Message}", e);
                     }
                     catch (Exception e)
                     {
-                        Runtime.Logger.Log($"Unable to get browser info due to exception : {e.Message}", e);
+                        PjUtility.Runtime.Logger.Log($"Unable to get browser info due to exception : {e.Message}", e);
                     }
                 }
                 return _installedBrowsers;

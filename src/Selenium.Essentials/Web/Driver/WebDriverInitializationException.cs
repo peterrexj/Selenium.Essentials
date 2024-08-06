@@ -1,0 +1,27 @@
+﻿using System;
+
+namespace Selenium.Essentials
+{
+    // Inherits from the Exception class to create a custom exception type.
+    public class WebDriverInitializationException : Exception
+    {
+        // Constructor without parameters
+        public WebDriverInitializationException()
+        {
+        }
+
+        // Constructor that accepts a single string message
+        public WebDriverInitializationException(string message)
+            : base(message)
+        {
+        }
+
+        // Constructor that accepts a string message and an inner exception 
+        // which is passed to the base Exception class. This is useful for wrapping 
+        // exceptions without losing the original stack trace.
+        public WebDriverInitializationException(string message, Exception inner)
+            : base(message, inner)
+        {
+        }
+    }
+}

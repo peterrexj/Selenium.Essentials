@@ -113,10 +113,12 @@ namespace Selenium.Essentials.SampleTest
                             { "username", sauceUsername },
                             { "accessKey", sauceAccessKey },
                             { "name", testName }
-                        }
+                        },
+                        Platform = browserCapability.Platform,
+                        BrowserVersion = browserCapability.Version
                     };
                     remoteDriverModel.Capabilities.AddOrUpdate(browserCapability.ToCustomDictionary());
-                    driver = BrowserHelper.GetRemoteDriver(remoteDriverModel);
+                    driver = BrowserHelper.GetDriver(browserCapability.BrowserName, isRemote: true, remoteDriverModel);
                 }
                 else
                 {
