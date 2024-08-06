@@ -96,7 +96,7 @@ namespace Selenium.Essentials
             {
                 if (driver == null) return;
                 var screenShot = ((ITakesScreenshot)driver).GetScreenshot();
-                screenShot.SaveAsFile(path, ScreenshotImageFormat.Jpeg);
+                screenShot.SaveAsFile(path);
             }
             catch (Exception e)
             {
