@@ -21,7 +21,7 @@
 
 # Notice: Release version 2.0.1
 
-Selenium is upgraded to 4.23.0
+Selenium is upgraded to `4.23.0`
 
 # Notice: Release version 1.3.0
 
