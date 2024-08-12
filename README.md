@@ -19,6 +19,10 @@
 |<a href="https://www.nuget.org/packages/ZephyrScale.Rest.Sdk">Zephyr Scale Rest SDK</a>|SDK to connect to the Zephyr Scale app using Zephyr Scale's Rest endpoints. Manage your communication and easily retrieve and publish test cases, test cycle and execution results to Zephyr Scale. You can integrate with you existing automation solution or process that will manage these process. Support both Server and Cloud hosted Zephyr Scale application|
 
 
+# Notice: Release version 2.0.1
+
+Selenium is upgraded to 4.23.0
+
 # Notice: Release version 1.3.0
 
 All extensions and helpers are now moved to Pj library and should use  
