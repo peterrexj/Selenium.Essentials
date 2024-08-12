@@ -1,0 +1,92 @@
+[
+  {
+    "CapabilityName": "MacOS_Ventura_Chrome_Latest",
+    "PlatformName": "macOS 13",
+    "BrowserName": "Chrome",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "MacOS_Ventura_Chrome_Latest-1",
+    "PlatformName": "macOS 13",
+    "BrowserName": "Chrome",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "MacOS_Ventura_Edge_Latest",
+    "PlatformName": "macOS 13",
+    "BrowserName": "Edge",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "MacOS_Ventura_Edge_Latest-1",
+    "PlatformName": "macOS 13",
+    "BrowserName": "Edge",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "MacOS_Ventura_FireFox_Latest",
+    "PlatformName": "macOS 13",
+    "BrowserName": "FireFox",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "MacOS_Ventura_FireFox_Latest-1",
+    "PlatformName": "macOS 13",
+    "BrowserName": "FireFox",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "MacOS_Ventura_Safari_Latest",
+    "PlatformName": "macOS 13",
+    "BrowserName": "Safari",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "MacOS_Ventura_Safari_Latest-1",
+    "PlatformName": "macOS 13",
+    "BrowserName": "Safari",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "MacOS_Monterey_Chrome_Latest",
+    "PlatformName": "macOS 12",
+    "BrowserName": "Chrome",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "MacOS_Monterey_Chrome_Latest-1",
+    "PlatformName": "macOS 12",
+    "BrowserName": "Chrome",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "MacOS_Monterey_Edge_Latest",
+    "PlatformName": "macOS 12",
+    "BrowserName": "Edge",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "MacOS_Monterey_Edge_Latest-1",
+    "PlatformName": "macOS 12",
+    "BrowserName": "Edge",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "MacOS_Monterey_FireFox_Latest",
+    "PlatformName": "macOS 12",
+    "BrowserName": "FireFox",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "MacOS_Monterey_FireFox_Latest-1",
+    "PlatformName": "macOS 12",
+    "BrowserName": "FireFox",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "MacOS_Monterey_Safari_Latest",
+    "PlatformName": "macOS 12",
+    "BrowserName": "Safari",
+    "Version": "latest"
+  }
+]

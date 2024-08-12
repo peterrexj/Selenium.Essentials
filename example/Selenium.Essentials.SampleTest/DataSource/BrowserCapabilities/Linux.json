@@ -1,0 +1,26 @@
+[
+  {
+    "CapabilityName": "Linux_Chrome_Latest",
+    "PlatformName": "Linux",
+    "BrowserName": "Chrome",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Linux_Chrome_Latest-1",
+    "PlatformName": "Linux",
+    "BrowserName": "Chrome",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Linux_FireFox_Latest",
+    "PlatformName": "Linux",
+    "BrowserName": "FireFox",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Linux_FireFox_Latest-1",
+    "PlatformName": "Linux",
+    "BrowserName": "FireFox",
+    "Version": "latest-1"
+  }
+]

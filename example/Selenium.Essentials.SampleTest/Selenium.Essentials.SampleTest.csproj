@@ -35,28 +35,40 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="DataSource\BrowserCapabilities\Internet Explorer.json">
+    <None Update="DataSource\BrowserCapabilities\Linux.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DataSource\BrowserCapabilities\Firefox.json">
+    <None Update="DataSource\BrowserCapabilities\MacOS.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DataSource\BrowserCapabilities\Microsoft Edge.json">
+    <None Update="DataSource\BrowserCapabilities\Windows.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DataSource\BrowserCapabilities\Chrome.json">
+    <None Update="DataSource\MobileCapabilities\Andriod Google Api Emulator.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DataSource\BrowserCapabilities\Andriod Google Api Emulator.json">
+    <None Update="DataSource\OldCapabilities\Internet Explorer.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DataSource\BrowserCapabilities\iPhone XS Emulator.json">
+    <None Update="DataSource\OldCapabilities\Firefox.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataSource\OldCapabilities\Microsoft Edge.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataSource\OldCapabilities\Chrome.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataSource\OldCapabilities\Andriod Google Api Emulator.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataSource\OldCapabilities\iPhone XS Emulator.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="DataSource\EnvironmentData\Local\EnvData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="DataSource\BrowserCapabilities\Safari.json">
+    <None Update="DataSource\OldCapabilities\Safari.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="DataSource\EnvironmentData\SauceLabs\EnvData.json">

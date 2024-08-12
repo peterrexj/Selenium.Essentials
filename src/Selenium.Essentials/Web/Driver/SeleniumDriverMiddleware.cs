@@ -8,7 +8,7 @@ namespace Selenium.Essentials;
 internal class SeleniumDriverMiddleware
 {
     private readonly SeleniumDriverProviderLocal _seleniumDriverLocalProvider = new();
-    private readonly SeleniumDriverProviderRemote _seleniumDriverSgeProvider = new();
+    private readonly SeleniumDriverProviderRemote _seleniumDriverRemoteProvider = new();
 
     public IWebDriver GetDriver(string browserName, bool isRemote, RemoteDriverAccessModel? remoteDriverAccessModel = null, bool requireFileDetector = false)
     {
@@ -23,7 +23,7 @@ internal class SeleniumDriverMiddleware
         IWebDriver? driver = null;
         if (isRemote)
         {
-            driver = _seleniumDriverSgeProvider.GetDriver(browserType, remoteDriverAccessModel);
+            driver = _seleniumDriverRemoteProvider.GetDriver(browserType, remoteDriverAccessModel);
         }
         else
         {
