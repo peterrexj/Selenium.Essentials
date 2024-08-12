@@ -2,17 +2,16 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Pj.Library;
-using Selenium.Essentials.SampleTest.Core;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+using Pj.Library.Extended;
 using TestAny.Essentials.Core.Attributes;
 using static Pj.Library.PjUtility;
 
-namespace Selenium.Essentials.SampleTest
+namespace Selenium.Essentials.SampleTest.Core
 {
     public static class TestUtility
     {
@@ -40,9 +39,8 @@ namespace Selenium.Essentials.SampleTest
             {
                 if (_envData == null)
                 {
-                    var currentEnv = Pj.Library.Extended.PjUtilityEx.AppSettingsConfig.AppSettingsCallerAssembly
-                        .Where(k => k.Key.EqualsIgnoreCase("Environment"))
-                        .FirstOrDefault().Value;
+                    var currentEnv = PjUtilityEx.AppSettingsConfig.AppSettingsCallerAssembly
+                        .FirstOrDefault(k => k.Key.EqualsIgnoreCase("Environment")).Value;
                     var envDataFilePath = Path.Combine(Runtime.ExecutingFolder, "DataSource", "EnvironmentData", currentEnv, "EnvData.json");
                     if (File.Exists(envDataFilePath))
                     {
@@ -102,20 +100,25 @@ namespace Selenium.Essentials.SampleTest
                     Runtime.Logger.Log($"Travis CI job number: {travisJobNumber}");
                     Runtime.Logger.Log($"Travis CI username (sauce): {sauceUsername}");
 
-                    var remoteDriverModel = new RemoteDriverAccessModel
+                    var sauceLabCapabilities = new Dictionary<string, string>
+                    {
+                        { "build", buildNumber },
+                        { "tunnel-identifier", travisJobNumber },
+                        { "username", sauceUsername },
+                        { "accessKey", sauceAccessKey },
+                        { "name", testName }
+                    };
+                    if (browserCapability.AppiumVersion.HasValue()) sauceLabCapabilities.Add("appiumVersion", browserCapability.AppiumVersion);
+                    if (browserCapability.DeviceOrientation.HasValue()) sauceLabCapabilities.Add("deviceOrientation", browserCapability.DeviceOrientation);
+
+
+                    RemoteDriverAccessModel remoteDriverModel = new()
                     {
                         RemoteHubUrl = EnvData["SauceLabsRemoteHubUrl"],
                         CommandTimeoutInSeconds = EnvData["PageLoadTimeoutInSeconds"].ToInteger(),
-                        Capabilities = new Dictionary<string, string>
-                        {
-                            { "build", buildNumber },
-                            { "tunnel-identifier", travisJobNumber },
-                            { "username", sauceUsername },
-                            { "accessKey", sauceAccessKey },
-                            { "name", testName }
-                        },
-                        Platform = browserCapability.Platform,
-                        BrowserVersion = browserCapability.Version
+                        Platform = browserCapability.PlatformName,
+                        BrowserVersion = browserCapability.Version,
+                        Capabilities = new Dictionary<string, object> { { "sauce:options", sauceLabCapabilities } }
                     };
                     remoteDriverModel.Capabilities.AddOrUpdate(browserCapability.ToCustomDictionary());
                     driver = BrowserHelper.GetDriver(browserCapability.BrowserName, isRemote: true, remoteDriverModel);

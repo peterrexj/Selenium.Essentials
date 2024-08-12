@@ -7,7 +7,7 @@ namespace Selenium.Essentials
 {
     public class RemoteDriverAccessModel
     {
-        public Dictionary<string, string> Capabilities { get; set; }
+        public Dictionary<string, object> Capabilities { get; set; }
         public string RemoteHubUrl { get; set; }
         public int CommandTimeoutInSeconds { get; set; }
         public string Platform { get; set; }

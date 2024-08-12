@@ -1,13 +1,13 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
+using Selenium.Essentials.SampleTest.Core;
 using System.Linq;
 
 namespace Selenium.Essentials.SampleTest.WebTests.PageObjects.Wikipedia
 {
     public class MainPage : PageBase
     {
-        private string _path => $"{TestUtility.EnvData["WikipediaDomain"]}/wiki/Main_Page";
+        private static string Path => $"{TestUtility.EnvData["WikipediaDomain"]}/wiki/Main_Page";
 
         public MainPage(IWebDriver driver) : base(driver) { }
 
@@ -18,7 +18,7 @@ namespace Selenium.Essentials.SampleTest.WebTests.PageObjects.Wikipedia
 
         public void Navigate()
         {
-            base.Navigate(_path);
+            base.Navigate(Path);
         }
 
         public void SelectMainPageTab(string tabText)
@@ -28,9 +28,8 @@ namespace Selenium.Essentials.SampleTest.WebTests.PageObjects.Wikipedia
             Assert.IsTrue(_tabNavigation.List.Any(p => p.Text.Contains(tabText)), $"The Wikipedia main page is missing with a tab text '{tabText}'");
 
             _tabNavigation.List
-                .Where(p => p.Text.Contains(tabText))
-                .FirstOrDefault()
-                .Click();
+                .FirstOrDefault(p => p.Text.Contains(tabText))
+                ?.Click();
         }
     }
 }

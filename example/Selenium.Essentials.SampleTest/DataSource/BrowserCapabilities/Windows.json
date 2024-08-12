@@ -1,0 +1,112 @@
+[
+  {
+    "CapabilityName": "Win11_Chrome_Latest",
+    "PlatformName": "Windows 11",
+    "BrowserName": "Chrome",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Win11_Chrome_Latest-1",
+    "PlatformName": "Windows 11",
+    "BrowserName": "Chrome",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Win11_Edge_Latest",
+    "PlatformName": "Windows 11",
+    "BrowserName": "Edge",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Win11_Edge_Latest-1",
+    "PlatformName": "Windows 11",
+    "BrowserName": "Edge",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Win11_FireFox_Latest",
+    "PlatformName": "Windows 11",
+    "BrowserName": "FireFox",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Win11_FireFox_Latest-1",
+    "PlatformName": "Windows 11",
+    "BrowserName": "FireFox",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Win10_Chrome_Latest",
+    "PlatformName": "Windows 10",
+    "BrowserName": "Chrome",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Win10_Chrome_Latest-1",
+    "PlatformName": "Windows 10",
+    "BrowserName": "Chrome",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Win10_Edge_Latest",
+    "PlatformName": "Windows 10",
+    "BrowserName": "Edge",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Win10_Edge_Latest-1",
+    "PlatformName": "Windows 10",
+    "BrowserName": "Edge",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Win10_FireFox_Latest",
+    "PlatformName": "Windows 10",
+    "BrowserName": "FireFox",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Win10_FireFox_Latest-1",
+    "PlatformName": "Windows 10",
+    "BrowserName": "FireFox",
+    "Version": "latest-1"
+  },
+
+
+  {
+    "CapabilityName": "Win81_Chrome_Latest",
+    "PlatformName": "Windows 8.1",
+    "BrowserName": "Chrome",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Win81_Chrome_Latest-1",
+    "PlatformName": "Windows 8.1",
+    "BrowserName": "Chrome",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Win81_Edge_Latest",
+    "PlatformName": "Windows 8.1",
+    "BrowserName": "Edge",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Win81_Edge_Latest-1",
+    "PlatformName": "Windows 8.1",
+    "BrowserName": "Edge",
+    "Version": "latest-1"
+  },
+  {
+    "CapabilityName": "Win81_FireFox_Latest",
+    "PlatformName": "Windows 8.1",
+    "BrowserName": "FireFox",
+    "Version": "latest"
+  },
+  {
+    "CapabilityName": "Win81_FireFox_Latest-1",
+    "PlatformName": "Windows 8.1",
+    "BrowserName": "FireFox",
+    "Version": "latest-1"
+  }
+]

@@ -1,7 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Selenium.Essentials.SampleTest.Core;
 
 namespace Selenium.Essentials.SampleTest.IntegrationTests.Tests
 {
@@ -10,7 +8,8 @@ namespace Selenium.Essentials.SampleTest.IntegrationTests.Tests
         [TestCase]
         public void Test()
         {
-            var t = TestUtility.EnvData;
+            var envData = TestUtility.EnvData;
+            Assert.IsNotEmpty(envData);
         }
     }
 }

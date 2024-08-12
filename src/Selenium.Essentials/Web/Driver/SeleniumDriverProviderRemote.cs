@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using OpenQA.Selenium.Chrome;
 
 namespace Selenium.Essentials
 {
@@ -12,59 +13,30 @@ namespace Selenium.Essentials
     {
         private readonly SeleniumDriverCapabilitiesProvider _browserCapabilitiesProvider = new();
 
-        public IWebDriver GetDriver(string driverType, RemoteDriverAccessModel remoteDriverAccessModel)
+        public IWebDriver GetDriver(string browserType, RemoteDriverAccessModel remoteDriverAccessModel)
         {
-            Enum.TryParse(driverType, true, out BrowserType browserType);
+            Enum.TryParse(browserType, true, out BrowserType parsedBrowserType);
 
-            return GetDriver(browserType, remoteDriverAccessModel);
+            return GetDriver(parsedBrowserType, remoteDriverAccessModel);
         }
 
-        public IWebDriver GetDriver(BrowserType driverType, RemoteDriverAccessModel? remoteDriverAccessModel)
+        public IWebDriver GetDriver(BrowserType browserType, RemoteDriverAccessModel? remoteDriverAccessModel)
         {
             if (remoteDriverAccessModel == null)
             {
                 throw new ArgumentNullException(nameof(remoteDriverAccessModel));
             }
 
-            if (!Enum.IsDefined(typeof(BrowserType), driverType))
-                throw new InvalidEnumArgumentException(nameof(driverType), (int)driverType, typeof(BrowserType));
+            if (!Enum.IsDefined(typeof(BrowserType), browserType))
+                throw new InvalidEnumArgumentException(nameof(browserType), (int)browserType, typeof(BrowserType));
 
-            var capabilities = _browserCapabilitiesProvider.GetCapability(driverType, isRemote: true, remoteDriverAccessModel).ToCapabilities();
+            var capabilities =
+                _browserCapabilitiesProvider.GetCapability(browserType, isRemote: true, remoteDriverAccessModel);
 
             var driver = new RemoteWebDriver(new Uri(remoteDriverAccessModel.RemoteHubUrl),
-                capabilities,
-                TimeSpan.FromSeconds(remoteDriverAccessModel.CommandTimeoutInSeconds));
+                capabilities.ToCapabilities(),
+            TimeSpan.FromSeconds(remoteDriverAccessModel.CommandTimeoutInSeconds));
             return driver;
         }
-
-        //public IWebDriver GetDriver(RemoteDriverAccessModel? remoteDriverAccessModel)
-        //{
-        //    if (remoteDriverAccessModel == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(remoteDriverAccessModel));
-        //    }
-
-        //    var capabilities = new DriverOptions();
-
-        //    if (remoteDriverAccessModel.Capabilities != null)
-        //    {
-        //        foreach (var capability in remoteDriverAccessModel.Capabilities)
-        //        {
-        //            capabilities.SetCapability(capability.Key, capability.Value);
-        //        }
-        //    }
-        //    var driver = new RemoteWebDriver(new Uri(remoteDriverAccessModel.RemoteHubUrl),
-        //        capabilities,
-        //        TimeSpan.FromSeconds(remoteDriverAccessModel.CommandTimeoutInSeconds));
-        //    return driver;
-
-        //    var capabilities = _browserCapabilitiesProvider.GetCapability(driverType, isRemote: true, remoteDriverAccessModel).ToCapabilities();
-
-        //    var driver = new RemoteWebDriver(new Uri(remoteDriverAccessModel.RemoteHubUrl),
-        //        capabilities,
-        //        TimeSpan.FromSeconds(remoteDriverAccessModel.CommandTimeoutInSeconds));
-        //    return driver;
-        //}
-
     }
 }

@@ -6,6 +6,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Safari;
 using Pj.Library;
 using System;
+using System.Linq;
 
 namespace Selenium.Essentials;
 
@@ -14,7 +15,7 @@ public class SeleniumDriverCapabilitiesProvider
 {
     private readonly SeleniumDriverProxyProvider _seleniumDriverProxyProvider = new();
 
-    public DriverOptions GetCapability(BrowserType browserType, bool isRemote, RemoteDriverAccessModel? browserGridCapability)
+    public dynamic GetCapability(BrowserType browserType, bool isRemote, RemoteDriverAccessModel? browserGridCapability)
     {
         return browserType switch
         {
@@ -27,23 +28,12 @@ public class SeleniumDriverCapabilitiesProvider
         };
     }
 
-    public T GetCapability<T>(BrowserType browserType, bool isRemote, RemoteDriverAccessModel? browserGridCapability) where T : DriverOptions, new()
-    {
-        return browserType switch
-        {
-            BrowserType.Chrome => GetChrome(isRemote, browserGridCapability) as T,
-            BrowserType.FireFox => GetFirefox(isRemote, browserGridCapability) as T,
-            BrowserType.InternetExplorer => GetInternetExplorer(isRemote, browserGridCapability) as T,
-            BrowserType.Edge => GetEdge(isRemote, browserGridCapability) as T,
-            BrowserType.Safari => GetSafari(isRemote, browserGridCapability) as T,
-            _ => throw new Exception("[Can not matching driver types :] " + browserType),
-        };
-    }
+    private static readonly string[] RemoteCapabilityProperty = new[] { "browsername", "browserversion", "platformname" };
 
     public ChromeOptions GetChrome(bool isRemote, RemoteDriverAccessModel? browserGridCapability)
     {
         var options = new ChromeOptions();
-
+        
         ConfigureCommonOptions(options);
 
         if (isRemote)
@@ -58,9 +48,9 @@ public class SeleniumDriverCapabilitiesProvider
                 {
                     options.BrowserVersion = browserGridCapability.BrowserVersion;
                 }
-                if (browserGridCapability.Capabilities?.Count > 0)
+                if (browserGridCapability.Capabilities?.Any() == true)
                 {
-                    foreach (var option in browserGridCapability.Capabilities)
+                    foreach (var option in browserGridCapability.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
                     {
                         options.AddAdditionalOption(option.Key, option.Value);
                     }
@@ -91,9 +81,9 @@ public class SeleniumDriverCapabilitiesProvider
                 {
                     options.BrowserVersion = browserGridCapability.BrowserVersion;
                 }
-                if (browserGridCapability.Capabilities?.Count > 0)
+                if (browserGridCapability.Capabilities?.Any() == true)
                 {
-                    foreach (var option in browserGridCapability.Capabilities)
+                    foreach (var option in browserGridCapability.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
                     {
                         options.AddAdditionalOption(option.Key, option.Value);
                     }
@@ -125,9 +115,9 @@ public class SeleniumDriverCapabilitiesProvider
                 {
                     options.BrowserVersion = browserGridCapability.BrowserVersion;
                 }
-                if (browserGridCapability.Capabilities?.Count > 0)
+                if (browserGridCapability.Capabilities?.Any() == true)
                 {
-                    foreach (var option in browserGridCapability.Capabilities)
+                    foreach (var option in browserGridCapability.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
                     {
                         options.AddAdditionalOption(option.Key, option.Value);
                     }
@@ -146,7 +136,7 @@ public class SeleniumDriverCapabilitiesProvider
         {
             AcceptInsecureCertificates = true
         };
-
+        
         if (isRemote)
         {
             if (browserGridCapability != null)
@@ -159,15 +149,16 @@ public class SeleniumDriverCapabilitiesProvider
                 {
                     options.BrowserVersion = browserGridCapability.BrowserVersion;
                 }
-                if (browserGridCapability.Capabilities?.Count > 0)
+                if (browserGridCapability.Capabilities?.Any() == true)
                 {
-                    foreach (var option in browserGridCapability.Capabilities)
+                    foreach (var option in browserGridCapability.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
                     {
                         options.AddAdditionalOption(option.Key, option.Value);
                     }
                 }
             }
         }
+        
 
         ApplyProxySettings(options, browserGridCapability);
 
@@ -197,7 +188,7 @@ public class SeleniumDriverCapabilitiesProvider
                 }
                 if (browserGridCapability.Capabilities?.Count > 0)
                 {
-                    foreach (var option in browserGridCapability.Capabilities)
+                    foreach (var option in browserGridCapability.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
                     {
                         options.AddAdditionalOption(option.Key, option.Value);
                     }

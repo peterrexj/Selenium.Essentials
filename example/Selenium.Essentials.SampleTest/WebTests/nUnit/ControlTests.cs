@@ -17,7 +17,7 @@ namespace Selenium.Essentials.SampleTest.WebTests.nUnit
         [TestCase]
         public void CollectionControl_ShouldVerify_InternalComputedProperties()
         {
-            _driver = TestUtility.InitializeDriver("Chrome_Win10_latest");
+            _driver = TestUtility.InitializeDriver("Win11_Chrome_Latest");
             var wikiMainPage = new MainPage(_driver);
             wikiMainPage.Navigate();
             int position = 2;
