@@ -30,40 +30,71 @@ public class SeleniumDriverCapabilitiesProvider
 
     private static readonly string[] RemoteCapabilityProperty = new[] { "browsername", "browserversion", "platformname" };
 
-    public ChromeOptions GetChrome(bool isRemote, RemoteDriverAccessModel? browserGridCapability)
+    private ChromeOptions? _chromeOptions;
+    private FirefoxOptions? _firefoxOptions;
+    private InternetExplorerOptions? _internetExplorerOptions;
+    private EdgeOptions? _edgeOptions;
+    private SafariOptions? _safariOptions;
+
+    public ChromeOptions ChromeOptions
     {
+        set => _chromeOptions = value;
+    }
+    public FirefoxOptions FirefoxOptions
+    {
+        set => _firefoxOptions = value;
+    }
+    public InternetExplorerOptions InternetExplorerOptions
+    {
+        set => _internetExplorerOptions = value;
+    }
+    public EdgeOptions EdgeOptions
+    {
+        set => _edgeOptions = value;
+    }
+    public SafariOptions SafariOptions
+    {
+        set => _safariOptions = value;
+    }
+
+    public ChromeOptions GetChrome(bool isRemote, RemoteDriverAccessModel? remoteDriverDetail)
+    {
+        if (_chromeOptions != null) return _chromeOptions;
+
         var options = new ChromeOptions();
         
         ConfigureCommonOptions(options);
 
         if (isRemote)
         {
-            if (browserGridCapability != null)
+            if (remoteDriverDetail != null)
             {
-                if (browserGridCapability.Platform.HasValue())
+                if (remoteDriverDetail.Platform.HasValue())
                 {
-                    options.PlatformName = browserGridCapability.Platform;
+                    options.PlatformName = remoteDriverDetail.Platform;
                 }
-                if (browserGridCapability.BrowserVersion.HasValue())
+                if (remoteDriverDetail.BrowserVersion.HasValue())
                 {
-                    options.BrowserVersion = browserGridCapability.BrowserVersion;
+                    options.BrowserVersion = remoteDriverDetail.BrowserVersion;
                 }
-                if (browserGridCapability.Capabilities?.Any() == true)
+                if (remoteDriverDetail.Capabilities?.Any() == true)
                 {
-                    foreach (var option in browserGridCapability.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
+                    foreach (var option in remoteDriverDetail.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
                     {
                         options.AddAdditionalOption(option.Key, option.Value);
                     }
                 }
             }
         }
-        ApplyProxySettings(options, browserGridCapability);
+        ApplyProxySettings(options, remoteDriverDetail);
 
         return options;
     }
 
-    public FirefoxOptions GetFirefox(bool isRemote, RemoteDriverAccessModel? browserGridCapability)
+    public FirefoxOptions GetFirefox(bool isRemote, RemoteDriverAccessModel? remoteDriverDetail)
     {
+        if (_firefoxOptions != null) return _firefoxOptions;
+
         var options = new FirefoxOptions
         {
             AcceptInsecureCertificates = true
@@ -71,19 +102,19 @@ public class SeleniumDriverCapabilitiesProvider
 
         if (isRemote)
         {
-            if (browserGridCapability != null)
+            if (remoteDriverDetail != null)
             {
-                if (browserGridCapability.Platform.HasValue())
+                if (remoteDriverDetail.Platform.HasValue())
                 {
-                    options.PlatformName = browserGridCapability.Platform;
+                    options.PlatformName = remoteDriverDetail.Platform;
                 }
-                if (browserGridCapability.BrowserVersion.HasValue())
+                if (remoteDriverDetail.BrowserVersion.HasValue())
                 {
-                    options.BrowserVersion = browserGridCapability.BrowserVersion;
+                    options.BrowserVersion = remoteDriverDetail.BrowserVersion;
                 }
-                if (browserGridCapability.Capabilities?.Any() == true)
+                if (remoteDriverDetail.Capabilities?.Any() == true)
                 {
-                    foreach (var option in browserGridCapability.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
+                    foreach (var option in remoteDriverDetail.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
                     {
                         options.AddAdditionalOption(option.Key, option.Value);
                     }
@@ -91,13 +122,15 @@ public class SeleniumDriverCapabilitiesProvider
             }
         }
         
-        ApplyProxySettings(options, browserGridCapability);
+        ApplyProxySettings(options, remoteDriverDetail);
 
         return options;
     }
 
-    public EdgeOptions GetEdge(bool isRemote, RemoteDriverAccessModel? browserGridCapability)
+    public EdgeOptions GetEdge(bool isRemote, RemoteDriverAccessModel? remoteDriverDetail)
     {
+        if (_edgeOptions != null) return _edgeOptions;
+
         var options = new EdgeOptions
         {
             AcceptInsecureCertificates = true
@@ -105,19 +138,19 @@ public class SeleniumDriverCapabilitiesProvider
 
         if (isRemote)
         {
-            if (browserGridCapability != null)
+            if (remoteDriverDetail != null)
             {
-                if (browserGridCapability.Platform.HasValue())
+                if (remoteDriverDetail.Platform.HasValue())
                 {
-                    options.PlatformName = browserGridCapability.Platform;
+                    options.PlatformName = remoteDriverDetail.Platform;
                 }
-                if (browserGridCapability.BrowserVersion.HasValue())
+                if (remoteDriverDetail.BrowserVersion.HasValue())
                 {
-                    options.BrowserVersion = browserGridCapability.BrowserVersion;
+                    options.BrowserVersion = remoteDriverDetail.BrowserVersion;
                 }
-                if (browserGridCapability.Capabilities?.Any() == true)
+                if (remoteDriverDetail.Capabilities?.Any() == true)
                 {
-                    foreach (var option in browserGridCapability.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
+                    foreach (var option in remoteDriverDetail.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
                     {
                         options.AddAdditionalOption(option.Key, option.Value);
                     }
@@ -125,13 +158,15 @@ public class SeleniumDriverCapabilitiesProvider
             }
         }
 
-        ApplyProxySettings(options, browserGridCapability);
+        ApplyProxySettings(options, remoteDriverDetail);
 
         return options;
     }
 
-    public SafariOptions GetSafari(bool isRemote, RemoteDriverAccessModel? browserGridCapability)
+    public SafariOptions GetSafari(bool isRemote, RemoteDriverAccessModel? remoteDriverDetail)
     {
+        if (_safariOptions != null) return _safariOptions;
+
         var options = new SafariOptions
         {
             AcceptInsecureCertificates = true
@@ -139,19 +174,19 @@ public class SeleniumDriverCapabilitiesProvider
         
         if (isRemote)
         {
-            if (browserGridCapability != null)
+            if (remoteDriverDetail != null)
             {
-                if (browserGridCapability.Platform.HasValue())
+                if (remoteDriverDetail.Platform.HasValue())
                 {
-                    options.PlatformName = browserGridCapability.Platform;
+                    options.PlatformName = remoteDriverDetail.Platform;
                 }
-                if (browserGridCapability.BrowserVersion.HasValue())
+                if (remoteDriverDetail.BrowserVersion.HasValue())
                 {
-                    options.BrowserVersion = browserGridCapability.BrowserVersion;
+                    options.BrowserVersion = remoteDriverDetail.BrowserVersion;
                 }
-                if (browserGridCapability.Capabilities?.Any() == true)
+                if (remoteDriverDetail.Capabilities?.Any() == true)
                 {
-                    foreach (var option in browserGridCapability.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
+                    foreach (var option in remoteDriverDetail.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
                     {
                         options.AddAdditionalOption(option.Key, option.Value);
                     }
@@ -160,13 +195,15 @@ public class SeleniumDriverCapabilitiesProvider
         }
         
 
-        ApplyProxySettings(options, browserGridCapability);
+        ApplyProxySettings(options, remoteDriverDetail);
 
         return options;
     }
 
-    public InternetExplorerOptions GetInternetExplorer(bool isRemote, RemoteDriverAccessModel? browserGridCapability)
+    public InternetExplorerOptions GetInternetExplorer(bool isRemote, RemoteDriverAccessModel? remoteDriverDetail)
     {
+        if (_internetExplorerOptions != null) return _internetExplorerOptions;
+
         var options = new InternetExplorerOptions
         {
             AcceptInsecureCertificates = true,
@@ -176,19 +213,19 @@ public class SeleniumDriverCapabilitiesProvider
 
         if (isRemote)
         {
-            if (browserGridCapability != null)
+            if (remoteDriverDetail != null)
             {
-                if (browserGridCapability.Platform.HasValue())
+                if (remoteDriverDetail.Platform.HasValue())
                 {
-                    options.PlatformName = browserGridCapability.Platform;
+                    options.PlatformName = remoteDriverDetail.Platform;
                 }
-                if (browserGridCapability.BrowserVersion.HasValue())
+                if (remoteDriverDetail.BrowserVersion.HasValue())
                 {
-                    options.BrowserVersion = browserGridCapability.BrowserVersion;
+                    options.BrowserVersion = remoteDriverDetail.BrowserVersion;
                 }
-                if (browserGridCapability.Capabilities?.Count > 0)
+                if (remoteDriverDetail.Capabilities?.Count > 0)
                 {
-                    foreach (var option in browserGridCapability.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
+                    foreach (var option in remoteDriverDetail.Capabilities.Where(o => RemoteCapabilityProperty.ContainsIgnoreCase(o.Key) == false))
                     {
                         options.AddAdditionalOption(option.Key, option.Value);
                     }
@@ -196,13 +233,13 @@ public class SeleniumDriverCapabilitiesProvider
             }
         }
 
-        ApplyProxySettings(options, browserGridCapability);
+        ApplyProxySettings(options, remoteDriverDetail);
         return options;
     }
 
-    private void ApplyProxySettings(DriverOptions options, RemoteDriverAccessModel? browserGridCapability)
+    private void ApplyProxySettings(DriverOptions options, RemoteDriverAccessModel? remoteDriverDetail)
     {
-        var proxy = _seleniumDriverProxyProvider.BuildSeleniumProxy(browserGridCapability);
+        var proxy = _seleniumDriverProxyProvider.BuildSeleniumProxy(remoteDriverDetail);
         if (proxy != null)
         {
             options.Proxy = proxy;

@@ -2,6 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Safari;
 
 namespace Selenium.Essentials.UnitTests
 {
@@ -38,5 +43,77 @@ namespace Selenium.Essentials.UnitTests
         [TestCase("msedge", ExpectedResult = BrowserType.Edge)]
         public BrowserType Test_BrowserTypes(string browserType) 
             => BrowserHelper.GetBrowserType(browserType);
+
+
+        [Test]
+        public void CustomChromeCapabilitiesTest()
+        {
+            BrowserHelper.GetDriver(BrowserType.Chrome)
+            SeleniumDriverCapabilitiesProvider caps = new()
+            {
+                ChromeOptions = new ChromeOptions()
+            };
+
+            var options = caps.GetChrome(isRemote: false, null);
+
+            Assert.IsNotNull(options);
+            Assert.LessOrEqual(options.Arguments.Count, 0); //arguments will be empty as the chromeoption is custom
+        }
+
+        [Test]
+        public void CustomFirefoxCapabilitiesTest()
+        {
+            SeleniumDriverCapabilitiesProvider caps = new()
+            {
+                FirefoxOptions= new FirefoxOptions()
+            };
+
+            var options = caps.GetFirefox(isRemote: false, null);
+
+            Assert.IsNotNull(options);
+            Assert.IsNull(options.AcceptInsecureCertificates);
+        }
+
+        [Test]
+        public void CustomEdgeCapabilitiesTest()
+        {
+            SeleniumDriverCapabilitiesProvider caps = new()
+            {
+                EdgeOptions = new EdgeOptions()
+            };
+
+            var options = caps.GetEdge(isRemote: false, null);
+
+            Assert.IsNotNull(options);
+            Assert.IsNull(options.AcceptInsecureCertificates);
+        }
+
+        [Test]
+        public void CustomSafariCapabilitiesTest()
+        {
+            SeleniumDriverCapabilitiesProvider caps = new()
+            {
+                SafariOptions = new SafariOptions()
+            };
+
+            var options = caps.GetSafari(isRemote: false, null);
+
+            Assert.IsNotNull(options);
+            Assert.IsNull(options.AcceptInsecureCertificates);
+        }
+
+        [Test]
+        public void CustomInternetExplorerCapabilitiesTest()
+        {
+            SeleniumDriverCapabilitiesProvider caps = new()
+            {
+                InternetExplorerOptions = new InternetExplorerOptions()
+            };
+
+            var options = caps.GetInternetExplorer(isRemote: false, null);
+
+            Assert.IsNotNull(options);
+            Assert.IsNull(options.AcceptInsecureCertificates);
+        }
     }
 }
