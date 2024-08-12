@@ -48,7 +48,6 @@ namespace Selenium.Essentials.UnitTests
         [Test]
         public void CustomChromeCapabilitiesTest()
         {
-            BrowserHelper.GetDriver(BrowserType.Chrome)
             SeleniumDriverCapabilitiesProvider caps = new()
             {
                 ChromeOptions = new ChromeOptions()
