@@ -5,9 +5,9 @@ using Pj.Library;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
-using Pj.Library.Extended;
 using TestAny.Essentials.Core.Attributes;
 using static Pj.Library.PjUtility;
 
@@ -39,8 +39,11 @@ namespace Selenium.Essentials.SampleTest.Core
             {
                 if (_envData == null)
                 {
-                    var currentEnv = PjUtilityEx.AppSettingsConfig.AppSettingsCallerAssembly
-                        .FirstOrDefault(k => k.Key.EqualsIgnoreCase("Environment")).Value;
+                    var currentEnv = ConfigurationManager.AppSettings["Environment"];
+                    if (currentEnv == null)
+                    {
+                        currentEnv = "SauceLabs";
+                    }
                     var envDataFilePath = Path.Combine(Runtime.ExecutingFolder, "DataSource", "EnvironmentData", currentEnv, "EnvData.json");
                     if (File.Exists(envDataFilePath))
                     {
