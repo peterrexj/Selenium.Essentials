@@ -18,7 +18,7 @@
 		<Description>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/product-description.txt"))</Description>
 		<PackageTags>selenium automation c# browser api web essentials nUnit xUnit webdriver webelement</PackageTags>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Version>2.0.1</Version>
+		<Version>2.0.2</Version>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
 		<Company>Peter Joseph</Company>
@@ -41,14 +41,14 @@
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="Pj.Library" Version="1.0.4.31" />
-		<PackageReference Include="Pj.Library.ThirdParty" Version="1.0.4.31" />
-		<PackageReference Include="Selenium.Support" Version="4.23.0" />
-		<PackageReference Include="Selenium.WebDriver" Version="4.23.0" />
+		<PackageReference Include="Selenium.Support" Version="4.27.0" />
+		<PackageReference Include="Selenium.WebDriver" Version="4.27.0" />
 		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\PjLibrary\Pj.Library.ThirdParty\Pj.Library.ThirdParty.csproj" />
+		<ProjectReference Include="..\..\..\PjLibrary\Pj.Library\Pj.Library.csproj" />
 		<ProjectReference Include="..\TestAny.Essentials.Api\TestAny.Essentials.Api.csproj" />
 		<ProjectReference Include="..\TestAny.Essentials.Core\TestAny.Essentials.Core.csproj" />
 	</ItemGroup>
