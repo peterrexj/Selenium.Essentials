@@ -8,11 +8,17 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout main repository
     - uses: actions/checkout@v3
+
+    # Clone the first external repository
+    - name: Clone Pj Library
+      run: |
+        git clone https://github.com/peterrexj/PjLibrary.git
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
