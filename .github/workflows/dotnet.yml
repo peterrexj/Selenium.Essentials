@@ -17,9 +17,7 @@ jobs:
     # Clone the first external repository
     - name: Clone Pj Library
       run: |
-        git clone https://github.com/peterrexj/PjLibrary.git
-      env:
-        GITHUB_TOKEN: ${{ secrets.INTERNAL_PAT_TOKEN }}
+        git clone https://${{ secrets.INTERNAL_PAT_TOKEN }}@github.com/peterrexj/PjLibrary.git PjLibrary
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
