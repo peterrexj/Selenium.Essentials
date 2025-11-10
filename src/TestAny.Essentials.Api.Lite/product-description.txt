@@ -1,17 +1,44 @@
-﻿Build your Api test easily with few simple steps and this framework allows you to focus more on your Test. The wrapper allows to call the endpoints easily and provide different options on your request and response.
+﻿Lightweight API testing framework with essential features for simple integration tests. A streamlined version of TestAny.Essentials.Api focused on core functionality with minimal dependencies.
 
 Overview
-This framework is build as part of Selenium Essentials to provide a Api framework which allows to make calls to endpoint easily.
+TestAny.Essentials.Api.Lite is a lightweight version of the full API testing framework, designed for projects that need basic API testing capabilities without the overhead of advanced features. It provides the core functionality for making HTTP requests and validating responses in a simple, easy-to-use package.
 
-- Api framework to write integration tests
--- Supports fluent way of endpoint definitions
--- Support most of the operations
--- Simple and easy to manage the tests
+Key Features:
+- Lightweight Design: Minimal dependencies and reduced footprint
+- Core HTTP Operations: Support for GET, POST, PUT, DELETE, and PATCH requests
+- Fluent API: Clean, readable syntax for building API tests
+- Response Validation: Basic response handling and content validation
+- Simple Configuration: Easy setup with minimal configuration requirements
+- Essential Extensions: Core extension methods for common operations
 
-Example,
+What's Included:
+- Basic HTTP client functionality
+- Request/response handling
+- Core validation methods
+- Essential extension methods
+- Simple configuration options
+
+What's NOT Included (compared to full Api package):
+- Advanced retry mechanisms
+- Complex authentication options
+- Extensive middleware support
+- Advanced logging and monitoring
+- Excel data integration (available in Extensions package)
+- Complex proxy and certificate handling
+
+Ideal For:
+- Simple integration tests
+- Lightweight testing scenarios
+- Projects with minimal API testing requirements
+- Quick prototyping and proof-of-concepts
+- Environments where minimal dependencies are preferred
+
+Example:
     return new TestApiHttp()
                 .SetEnvironment("http://api.openweathermap.org")
-                .PrepareRequest("/data/2.5/forecase")
+                .PrepareRequest("/data/2.5/forecast")
                 .Get()
                 .ResponseBody
                 .ContentJson;
+
+For advanced features like Excel data transformation, retry mechanisms, and complex authentication, consider using TestAny.Essentials.Api with TestAny.Essentials.Api.Extensions.

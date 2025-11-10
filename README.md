@@ -35,11 +35,10 @@ Build Selenium web automation test using advanced web controls with wrappers and
 
 # Overview
 
-Selenium provides only option to create only a single generic control which is called the IWebElement. Imagine if you have option to declare controls which resemble the html elements and provide its functionality, for example, Checkbox, Textbox, Button.
+Instead of using IWebElement, the new custom controls give meaning to your page objects and make it more readable. The controls are defined from a BaseControl which has definitions for operations that are common to all the controls. Each custom control contains all the common properties together with the unqiue properties and methods which are applicable only to the control. 
+For example, CheckboxControl will have all properties of the base control and also defines Check() which ticks the checkbox, UnCheck() which unchecks the checkbox, IsChecked returns a bool value based on the control is Checked or Unchecked reading from the UI 
 
-Selenium Essentials provide new custom controls giving meaning to your page objects and making it more readable. Every control is defined from a BaseControl which has a set of definitions applicable to all controls as well as its custom actions. For example, Checkbox control will have all properties of the BaseControl and also defines Check() which ticks the checkbox in the UI, UnCheck() which unticks the checkbox, IsChecked returns a bool value based on the control is Checked or Unchecked reading from the UI.
-
-The Custom control also expose the underlying IWebElement as a property used by Selenium, in case you need to do any operations on top of this. 
+The Custom control also provides the IWebElement as a property which is used by Selenium, in case you need to do any operations on top of this. 
 
 There are plenty of Wait operation defined on the base control which flows through all the custom controls. There are different overrides to the wait operation where you can control the time to wait, whether to throw exception if fails, message for assertions when the waits are used for assert operations. Some custom control overrides the default wait to give a better meaning.
 

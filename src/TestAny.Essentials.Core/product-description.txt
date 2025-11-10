@@ -1,1 +1,26 @@
-﻿The core for TestAny.Essentials Utility
+﻿Core foundation library for TestAny.Essentials framework providing essential utilities, configuration management, and shared components for test automation.
+
+Overview
+TestAny.Essentials.Core serves as the foundational layer for the entire TestAny.Essentials ecosystem, providing core functionality that is shared across all testing frameworks including Selenium web automation and API testing.
+
+Key Components:
+- TestAnyAppConfig: Centralized configuration management for test environments and settings
+- TestAnyTestContextHelper: Test context management and utilities for test execution
+- Data Transfer Objects (DTOs): Common data models used across the framework
+- Shared Attributes: Common attributes for data loading and test configuration
+
+Core Features:
+- Configuration Management: Centralized app configuration with environment-specific settings
+- Test Context Utilities: Helper methods for managing test execution context and data
+- Shared Data Models: Common DTOs and data structures used across different testing frameworks
+- Attribute-based Configuration: Declarative approach to test setup and data management
+- Cross-framework Compatibility: Designed to work seamlessly with Selenium, API, and other testing frameworks
+
+Benefits:
+- Consistent Configuration: Unified configuration approach across all testing projects
+- Reduced Code Duplication: Shared utilities and models prevent code repetition
+- Easy Test Management: Simplified test context and data management
+- Extensible Architecture: Foundation for building additional testing capabilities
+- Framework Integration: Seamless integration with Selenium.Essentials and API testing frameworks
+
+This package is typically referenced by other TestAny.Essentials packages and provides the essential building blocks for creating robust, maintainable test automation solutions.

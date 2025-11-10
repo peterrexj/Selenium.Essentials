@@ -37,7 +37,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\PjLibrary\Pj.Library.ThirdParty\Pj.Library.ThirdParty.csproj" />
 		<ProjectReference Include="..\..\..\PjLibrary\Pj.Library\Pj.Library.csproj" />
 		<ProjectReference Include="..\TestAny.Essentials.Core\TestAny.Essentials.Core.csproj" />
 	</ItemGroup>

@@ -1,17 +1,37 @@
-﻿Build your Api test easily with few simple steps and this framework allows you to focus more on your Test. The wrapper allows to call the endpoints easily and provide different options on your request and response.
+﻿Build your API test easily with few simple steps and this framework allows you to focus more on your Test. The wrapper allows to call the endpoints easily and provide different options on your request and response.
 
 Overview
-This framework is build as part of Selenium Essentials to provide a Api framework which allows to make calls to endpoint easily.
+This framework is built as part of Selenium Essentials to provide an API framework which allows to make calls to endpoints easily. For advanced data transformation features including Excel integration, consider using TestAny.Essentials.Api.Extensions.
 
-- Api framework to write integration tests
+Key Features:
+- API framework to write integration tests
 -- Supports fluent way of endpoint definitions
 -- Support most of the operations
 -- Simple and easy to manage the tests
+-- Retry mechanisms with configurable timeouts
+-- Cookie management and domain extraction
+-- Proxy and certificate support
+-- Comprehensive response handling
 
-Example,
+Advanced Capabilities:
+- Request retry with customizable conditions
+- Timeout control for server requests
+- Cookie extraction and management
+- Auto-redirection handling
+- No-cache options
+- JSON and query parameter support
+- Comprehensive HTTP method support (GET, POST, PUT, DELETE, PATCH)
+
+Extensions Available:
+For enhanced functionality including Excel data transformation, template processing, and data-driven testing, install TestAny.Essentials.Api.Extensions which provides:
+- Excel data integration with {{placeholder}} template transformation
+- Advanced data manipulation and transformation utilities
+- Enhanced extension methods for string and data operations
+
+Example:
     return new TestApiHttp()
                 .SetEnvironment("http://api.openweathermap.org")
-                .PrepareRequest("/data/2.5/forecase")
+                .PrepareRequest("/data/2.5/forecast")
                 .Get()
                 .ResponseBody
                 .ContentJson;
