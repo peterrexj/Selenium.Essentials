@@ -1,7 +1,7 @@
-﻿using Pj.Library;
 using System;
+using Pj.Library;
 
-namespace TestAny.Essentials.Core.Attributes
+namespace TestAny.Essentials.Api.Extensions.Attributes
 {
     /// <summary>
     /// Excel Payload attribute for nUnit Api and Web tests

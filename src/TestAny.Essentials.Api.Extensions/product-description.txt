@@ -1,0 +1,36 @@
+﻿Build your Api test easily with few simple steps and this framework allows you to focus more on your Test. The wrapper allows to call the endpoints easily and provide different options on your request and response.
+
+Overview
+This framework is build as part of Selenium Essentials to provide a Api framework which allows to make calls to endpoint easily with enhanced data transformation capabilities.
+
+- Api framework to write integration tests
+-- Supports fluent way of endpoint definitions
+-- Support most of the operations
+-- Simple and easy to manage the tests
+-- Excel data transformation and template processing
+-- Data-driven testing with Excel integration
+-- String template transformation with placeholders
+
+Key Features:
+- Excel Data Integration: Load and transform data from Excel files using attributes
+- Template Processing: Transform string templates with {{placeholder}} syntax using Excel data
+- Extension Methods: Convenient extension methods for string and data transformations
+- Seamless Integration: Works with TestAny.Essentials.Api for enhanced testing capabilities
+
+Excel Data Transformation:
+- GetExcelDataSourceContent(): Retrieve Excel data from method attributes
+- TransformWithExcelData(): Transform string templates using Excel data with {{key}} placeholders
+- Support for column mapping and worksheet selection
+- Automatic data type handling and conversion
+
+Example,
+    return new TestApiHttp()
+                .SetEnvironment("http://api.openweathermap.org")
+                .PrepareRequest("/data/2.5/forecase")
+                .Get()
+                .ResponseBody
+                .ContentJson;
+
+    // Excel data transformation example
+    var template = "Hello {{name}}, your age is {{age}}";
+    var transformedContent = template.TransformWithExcelData(excelData);

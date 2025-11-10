@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pj.Library", "..\..\..\PjLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pj.Library.ThirdParty", "..\..\..\PjLibrary\Pj.Library.ThirdParty\Pj.Library.ThirdParty.csproj", "{D9C13462-0AAB-8751-9D8C-10272D442FCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAny.Essentials.Api.Extensions", "..\TestAny.Essentials.Api.Extensions\TestAny.Essentials.Api.Extensions.csproj", "{AB0CD199-CA78-4337-85CE-B61C10182BFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{D9C13462-0AAB-8751-9D8C-10272D442FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9C13462-0AAB-8751-9D8C-10272D442FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9C13462-0AAB-8751-9D8C-10272D442FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB0CD199-CA78-4337-85CE-B61C10182BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB0CD199-CA78-4337-85CE-B61C10182BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB0CD199-CA78-4337-85CE-B61C10182BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB0CD199-CA78-4337-85CE-B61C10182BFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
