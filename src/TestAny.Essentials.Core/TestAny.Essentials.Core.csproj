@@ -20,7 +20,7 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-		<Version>2.0.2</Version>
+		<Version>2.0.3</Version>
 		<Company>Peter Joseph</Company>
 	</PropertyGroup>
 
@@ -34,7 +34,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\PjLibrary\Pj.Library\Pj.Library.csproj" />
-	  <ProjectReference Include="..\..\..\PjLibrary\Pj.Library.ThirdParty\Pj.Library.ThirdParty.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

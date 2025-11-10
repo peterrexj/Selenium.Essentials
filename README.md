@@ -2,7 +2,7 @@
 # Selenium.Essentials
 ![](https://github.com/peterrexj/Selenium.Essentials/blob/master/docs/resources/images/Icon.png) </br>
 
-![](https://travis-ci.org/peterrexj/Selenium.Essentials.svg?branch=master) 
+![Build](https://github.com/peterrexj/Selenium.Essentials/actions/workflows/dotnet.yml/badge.svg)
 [![Sauce Test Status](https://saucelabs.com/buildstatus/peterrexj)](https://app.saucelabs.com/u/peterrexj)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/02286e55e59c476a9c0d4fd2c4dae87e)](https://www.codacy.com/app/peterrexj/Selenium.Essentials?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=peterrexj/Selenium.Essentials&amp;utm_campaign=Badge_Grade) 
 </br>
@@ -147,7 +147,7 @@ To tick the checkbox
 
 ```c#
 public void CheckUserType() {
-  _userTypeCheck.WaitForElementVisible(errorMessage: "The User Type checkbox was not visible in the UI"); //This can be used as an assertions, and when not found, it will throw with an exception with "errorMessage" passed
+  _userTypeCheck.WaitForElementVisible(errorMessage: "The User Type checkbox was not visible in the UI"); //This can be used as an assertions, and when not found, it will throw with an exception with "errorMessage"
   _userTypeCheck.Check();
 }
 ```
