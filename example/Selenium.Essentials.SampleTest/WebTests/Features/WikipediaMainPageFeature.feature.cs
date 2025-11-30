@@ -35,8 +35,8 @@ namespace Selenium.Essentials.SampleTest.WebTests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "WebTests/Features", "WikipediaFeature", "\tIn order to get information\n\tAs a general user\n\tI want to make sure wikipedia is" +
-                    " working", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "WebTests/Features", "WikipediaFeature", "\tIn order to get information\r\n\tAs a general user\r\n\tI want to make sure wikipedia " +
+                    "is working", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
